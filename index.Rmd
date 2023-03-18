@@ -56,9 +56,9 @@ Experiencia en áreas de analítica predictiva e inteligencia del negocio. Lead 
 Data Scientist en consultoría en diferentes sectores como tecnología, asegurador,
 financiero y bancario. Es experta en entendimiento de negocio para la correcta
 implementación de algoritmos de inteligencia y explotación de datos.
-Actualmente se desarrolla como Arquitecta de Soluciones Analíticas en Merama,
+Actualmente se desarrolla como lead data specialist en Merama,
 startup mexicana clasificada como uno de los nuevos unicornios de Latinoamérica.
-Senior Data Science en CLOSTER y como profesora del diplomado de Metodología
+Senior Data Scientist en CLOSTER y como profesora del diplomado de Metodología
 de la Investigación Social por la UNAM así como instructora de cursos de Ciencia de
 Datos en AMAT.
 
@@ -72,7 +72,7 @@ knitr::include_graphics("img/00-presentacion/lizzy.png")
 
 ## Alcances del curso {-}
 
-Al finalizar este curso el participante será capaz de consumir, manipular y visualizar información proveniente de diversas fuentes de información para resolver problemas de propósito general asociados a los datos. 
+Al finalizar este curso, el participante será capaz de consumir, manipular y visualizar información para resolver problemas de propósito general asociados a los datos. Apenderá a implementar diferentes algoritmos de machine learning y mejorar su desempeño predictivo en problemas de clasificación, regresión y segmentación.
 
 Requisitos: 
 
@@ -137,14 +137,12 @@ En esta clase estaremos usando:
 
 * R [da click aquí si aún no lo descargas](https://cran.r-project.org/)
 * RStudio [da click aquí también](https://www.rstudio.com/products/rstudio/download/)
-* Miro [úsame](https://miro.com/welcomeonboard/WXJiSGtOUnE4Mm1EQnJaQWxIR2R6RGxPaVo5eXQ3bG1SMHNWSkVIZ09YQ3JlTHRma1dYcFJzbm9wZ05OVmxVMXwzMDc0NDU3MzU1MzI0OTQwMDI5?invite_link_id=632956861297)
 * Zoom [Clases](https://us02web.zoom.us/j/5155440751?pwd=YzJCOGF0VnlZdlZlS0Fpc3MvZEhadz09)
   - Pulgar arriba: Voy bien, estoy entendiendo! 
   - Pulgar abajo: Eso no quedó muy claro
   - Mano arriba: Quiero participar/preguntar ó Ya estoy listo para iniciar 
-* Grupo de WhatsApp [El chismecito está aquí](https://chat.whatsapp.com/CNv5RxZb7FnLbzUFHGtYMG)
-* [One Drive](https://drive.google.com/drive/u/1/folders/16aKNbkhYfF-x6R2oh4RswSQOXN62UQX3)
-* Notas de clase [Revisame si quieres aprender](KaLizzyGam.github.io/index.html) 
+* [Google Drive](https://drive.google.com/drive/u/0/folders/1Rse6rBgNHe2veyD-xArGLOgRnT6-NLEe)
+* Notas de clase [Revisame si quieres aprender](https://acturio.github.io/intro2_ds_ml_r/) 
 
 
 <div class="watermark"><img src="img/header.png" width="400"></div>

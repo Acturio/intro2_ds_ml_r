@@ -1,0 +1,379 @@
+::: watermark
+<img src="img/header.png" width="400"/>
+:::
+
+# Introducción a R
+
+*R* (R Core Team) es un entorno y lenguaje de programación que permite el análisis estadístico de información y reportes gráficos. Es ampliamente usado en investigación por la comunidad estadística en campos como la biomedicina, minería de datos, matemáticas financieras, entre otros. Ha ganado mucha popularidad en los últimos años al ser un software libre que está en constante crecimiento por las aportaciones de otros usuarios y que permite la interacción con software estadísticos como STATA, SAS, SPSS, etc.. R permite la incorporación de librerías y paqueterías con funcionalidades específicas, por lo que es un lenguaje de programación muy completo y fácil de usar.
+
+## ¿Cómo obtener *R*?
+
+R puede ser fácilmente descargado de forma gratuita desde el sitio oficial <http://www.r-project.org/>. R está disponible para las plataformas Windows, Mac y Linux.
+
+## ¿Qué es RStudio?
+
+*RStudio* es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) para R. Este permite y facilita el desarrollo y ejecución de sintaxis para código en *R*, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. *RStudio* está disponible para Windows, Mac y Linux o para navegadores conectados a *RStudio Server o RStudio Server Pro*.
+
+Algunas de las principales características de Rstudio que lo hacen una gran herramienta para trabajar en *R*, son:
+
+-   Auto completado de código
+-   Sangría inteligente
+-   Resaltado de sintaxis
+-   Facilidad para definir funciones
+-   Soporte integrado
+-   Documentación integrada
+-   Administración de directorios y proyectos
+-   Visor de datos
+-   Depurador interactivo para corregir errores
+-   Conección con Rmarkwon y Sweave
+
+La siguiente imagen muestra la forma en la que está estructurado RStudio. El orden de los páneles puede ser elegido por el usuario, así como las características de tipo de letra, tamaño y color de fondo, entre otras características.
+
+```{r, echo = F, fig.align = "center", fig.cap= "Páneles de trabajo de Rstudio"}
+knitr::include_graphics("img/02-intro2r/rstudio.png")
+```
+
+
+## Lectura de datos
+
+El primer paso para analizar datos es incorporarlos a la sesión de R para que puedan ser manipulados y observados. Existen múltiples librerías y funciones en *R* que permiten leer la información proveniente de un archivo externo, el cual puede tener una de muchas posibles extensiones.
+
+Usualmente, no creamos los datos desde la sesión de *R*, sino que a través de un archivo externo se realiza la lectura de datos escritos en un archivo. Los más comúnes son:
+
+```{r, echo=F, fig.align='center',fig.width=4 }
+knitr::include_graphics("img/02-intro2r/archivos.jpg")
+```
+
+La paquetería *readr* fue desarrollada recientemente para lidiar con la lectura de archivos grandes rápidamente. Esta paquetería proporciona funciones que suelen ser mucho más rápidas que las funciones base que proporciona *R*.
+
+**Ventajas de readr:**
+
+* Por lo general, son mucho más rápidos (~ 10x) que sus funciones equivalentes.
+
+* Producen tibbles:
+  * No convierten vectores de caracteres en factores. 
+  * No usan nombres de filas ni modifican los nombres de columnas. 
+  
+* Reproducibilidad
+
+
+### Archivos *csv* 
+
+A la hora de importar conjuntos de datos en *R*, uno de los formatos más habituales en los que hallamos información es en archivos separados por comas (comma separated values), cuya extensión suele ser *.csv*. En ellos encontramos múltiples líneas que recogen la tabla de interés, y en las cuales los valores aparecen, de manera consecutiva, separados por el carácter *,*.
+
+Para importar este tipo de archivos en nuestra sesión de *R*, se utiliza la función `read_csv()`. Para acceder a su documentación utilizamos el comando `?read_csv`.
+
+El único argumento que debemos de pasar a esta función de manera obligatoria, es `file`, el nombre o  la ruta completa del archivo que pretendemos importar.
+
+```{r, warning=FALSE, message=FALSE}
+library(readr)
+library(dplyr)
+```
+
+Algunas de las ventajas de utilizar `read_csv()` son:
+
+* No convierte, automáticamente, las columnas con cadenas de caracteres a factores, como sí hacen por defecto las otras funciones base de *R*.
+
+* Reconoce ocho clases diferentes de datos (enteros, lógicos, etc.), dejando el resto como cadenas de caracteres.
+
+Veamos un ejemplo: 
+
+La tabla de datos llamada **proyecto_ames_train** contiene un conjunto de datos con información del precio de venta de casas y sus respectivas características. 
+
+```{r}
+tidy <- read_csv("data/proyecto_ames_train.csv")
+
+glimpse(tidy)
+```
+
+¿Y si el archivo que necesitamos leer esta en excel?
+
+
+### Archivos *xls* y *xlsx*
+
+La paquetería *readxl* facilita la obtención de datos tabulares de archivos de *Excel*. Admite tanto el formato *.xls* heredado como el formato *.xlsx* moderno basado en *XML*.
+
+Esta paqueteía pone a disposición las siguientes funciones:
+
+* `read_xlsx()` lee un archivo con extensión *xlsx*.
+
+* `read_excel()` determina si el archivo es de tipo *xls* o *xlsx* para después 
+llamar a una de las fuciones mencionadas anteriormente. 
+
+**EJERCICIO:** Leer archivos propios en formato de Excel
+
+## Tidyverse
+
+Ahora que ya sabemos como cargar datos, aprenderemos como manipularlos con *dplyr.* El paquete *dplyr* proporciona un conjunto de funciones muy útiles para manipular data frames y así reducir el número de repeticiones, la probabilidad de cometer errores y el número de caracteres que hay que escribir. Como valor extra, podemos encontrar que la gramática de *dplyr* es más fácil de entender.
+
+Revisaremos algunas de sus funciones **más usadas** (*verbos*), así como el uso de **pipes** (%>%) para combinarlas.
+
+- select()
+
+- filter()
+
+- arrange()
+
+- mutate()
+
+- summarise()
+
+- join()
+
+- group_by()
+
+Primero tenemos que instalar y cargar la paquetería (parte de tidyverse):
+
+```{r, eval=TRUE, warning=FALSE, message=FALSE}
+library(dplyr)
+```
+
+Usaremos el dataset *iris* que se encuentra en la paquetería *datasets* (el alumno puede hacer el ejercicio con la tabla de su elección)
+
+```{r}
+head(iris,10)
+```
+
+
+### select()
+
+Observamos que nuestros datos tienen 150 observaciones y 5 variables, con *select()* podemos seleccionar las variables que le indiquemos.
+
+```{r}
+select_ejemplo<-iris %>% select(Sepal.Length,Petal.Length,Species)
+head(select_ejemplo,10)
+```
+
+::: {.infobox .pin data-latex="{pin}"}
+**¡¡ RECORDAR !!**
+
+El operador pipe (%>%) se usa para **conectar múltiples acciones**
+:::
+
+En este caso solo le indicamos que en los datos de iris se seleccionan 3 varibles y se guarda este nuevo data frame en la variable *select_ejemplo*.
+
+Con *select()* y *contains* podemos seleccionar varibles con alguna cadena de texto. 
+
+```{r}
+select_ejemplo <- iris %>% select(contains("Sepal"))
+head(select_ejemplo, 5)
+```
+
+De igual manera, con *select()*, *ends_with* y *start_with()* podemos seleccionar que inicien o terminen con alguna cadena de texto.
+
+```{r}
+select_ejemplo <- iris %>% select(starts_with("Sepal"), ends_with("Length"))
+head(select_ejemplo, 5)
+```
+
+
+Funciones útiles para *select()*:
+
+- *contains()*: Selecciona variables cuyo nombre contiene la cadena de texto.
+
+- *ends_with()*: Selecciona variables cuyo nombre termina con la cadena de caracteres.
+
+- *everything()*: Selecciona todas las columnas.
+
+- *matches()*: Selecciona las variables cuyos nombres coinciden con una expresión regular.
+
+- *num_range()*: Selecciona las variables por posición.
+
+- *start_with()*: Selecciona variables cuyos nombres empiezan con la cadena de caracteres.
+
+- *any_of*: Selecciona cualquiera de estas variables, en caso de existir
+
+
+### filter()
+
+La función filter nos permite filtrar filas según una condición, primero notemos que la variable *Species* tiene tres categorías.
+
+```{r}
+iris %>% count(Species)
+```
+
+Ahora usaremos la función *filter* para quedarnos solo con las observaciones de la especie virginica.
+
+```{r}
+ejemplo_filter <- iris %>% filter(Species=="virginica")
+head(ejemplo_filter, 5)
+```
+
+
+También se puede usar para filtrar variables numéricas:
+
+```{r}
+ejemplo_filter<- iris %>% filter(Sepal.Length > 5 & Sepal.Width >= 3.5)
+head(ejemplo_filter, 5)
+```
+
+Notemos que en el ejemplo anterior usamos *&*, que nos ayuda a filtrar por dos condiciones.
+
+También podemos usar *|* para filtrar por alguna de las dos condiciones.
+
+```{r}
+ejemplo_filter<- iris %>% filter(Sepal.Length>5 | Sepal.Width>=3.5)
+head(ejemplo_filter,5)
+```
+
+
+Las condiciones pueden ser expresiones lógicas construidas mediante los operadores relacionales y lógicos: 
+
+- **<** : Menor que
+
+- **>** : Mayor que
+
+- **=** : Igual que
+
+- **<=** : Menor o igual que
+
+- **>=** : Mayor o igual que
+
+- **!=** : Diferente que
+
+- **%in%** : Pertenece al conjunto
+
+- **is.na** : Es NA
+
+- **!is.na** : No es NA
+
+
+###  arrange()
+
+La función arrange() se utiliza para ordenar las filas de un data frame de acuerdo a una o varias variables. 
+
+Por defecto arrange() ordena las filas por orden ascendente: 
+
+```{r}
+ejemplo_arrange <- iris %>% arrange(Sepal.Length)
+head(ejemplo_arrange, 10)
+```
+
+<br>
+<br>
+Si las queremos ordenar de forma ascendente lo haremos del siguiente modo: 
+
+```{r}
+ejemplo_arrange <- iris %>% arrange(desc(Sepal.Length))
+head(ejemplo_arrange, 10)
+```
+
+
+###  mutate()
+
+Con la función mutate() podemos computar tranformaciones de variables en un data frame. A menudo, tendremos la necesidad de crear nuevas variables que se calculan a partir de variables existentes,mutate() nos proporciona una interface clara para realizar este tipo de operaciones. 
+
+Por ejemplo haremos la suma de las variables *Sepal.Lenght* y *Sepal.Width*:
+
+```{r}
+ejemplo_mutate <- iris %>% 
+  select(Sepal.Length, Sepal.Width) %>%
+  mutate(Suma = Sepal.Length + Sepal.Width)
+
+head(ejemplo_mutate, 5)
+```
+
+::: {.infobox .pin data-latex="{pin}"}
+**¡¡ RECORDAR !!**
+
+Notemos que en el ejemplo anterior usamos dos *pipes* (%>%). Como habiamos mencionado se pueden usar los *pipes* necesarios para combinar tareas. 
+:::
+
+
+
+### summarise()
+
+La función summarise() funciona de forma análoga a la función mutate, excepto que en lugar de añadir nuevas columnas crea un nuevo data frame.
+
+Podemos usar el ejemplo anterior y calcular la media de la varible creada *Suma*:
+
+```{r}
+ejemplo_summarise <- iris %>% 
+  select(Sepal.Length, Sepal.Width) %>%
+  mutate(Suma = Sepal.Length + Sepal.Width) %>%
+  summarise(Media_Suma = mean(Suma))
+
+ejemplo_summarise
+```
+
+Solo fue necesario agregar un *pipe*, especificar el nombre de la varible creada y la operación a realizar.
+
+
+A continuación se muestran funciones que trabajando conjuntamente con la función summarise() facilitarán nuestro trabajo diario. Las primeras pertenecen al paquete base y las otras son del paquete dplyr. Todas ellas toman como argumento un vector y devuelven un único resultado:
+
+- *min(), max()* : Valores max y min.
+
+- *mean()* : Media.
+
+- *median()* : Mediana.
+
+- *sum()* : Suma de los valores.
+
+- *var(), sd()* : Varianza y desviación estandar.
+
+- *first()* : Primer valor en un vector.
+
+- *last()* : El último valor en un vector
+
+- *n()* : El número de valores en un vector.
+
+- *n_distinc()* : El número de valores distintos en un vector.
+
+- *nth()* : Extrar el valor que ocupa la posición n en un vector.
+
+
+Mas adelante veremos como combinar esta función con la función *group_by*.
+
+
+### group_by()
+
+La función group_by() agrupa un conjunto de filas seleccionado en un conjunto de filas de resumen de acuerdo con los valores de una o más columnas o expresiones.
+
+Usaremos el ejemplo anterior, primero creamos nuestra nueva variable *Suma*, despues agrupamos por especie y al final sacamos la media de la variable *Suma* pero esta vez, por la función *group_by*, nos regresara una media por cada grupo creado, es decir, nos regresara el promedio de la suma por especie.
+
+```{r,warning=FALSE,message=FALSE}
+ejemplo_groupby <- iris %>%
+  mutate(Suma = Sepal.Length + Sepal.Width) %>%
+  group_by(Species) %>%
+  summarise(Media_Suma = mean(Suma))
+
+ejemplo_groupby
+```
+
+### left_join()
+
+Una operación fundamental por agregar a nuestro flujo de trabajo es el cruce de tablas, las cuales pueden proceder de la misma o de distinta fuente. Comúnmente **este proceso se realiza para enriquecer y unificar la información** proveniente de distintas tablas de datos. 
+
+Para lograr esta tarea es indispensable que exista una variable **llave** en ambos conjuntos de datos que sirva como puente o identificador de cada caso o renglón. Si se cuenta con la columna llave entonces será posible cruzar las tablas y lograr su enriquecimiento.
+
+En el siguiente ejemplo se muestra el uso de la variable llave a través de la columna "ID". Se puede apreciar que en la tabla final se cuenta con información de la variable "Weight" para los elementos que existen en las tablas "A" y "B". 
+
+```{r echo=FALSE,fig.align='center', out.width='700pt'}
+knitr::include_graphics("img/02-intro2r/left_join3.png")
+```
+
+La función que hace posible el complemento de la información es llamada *left_join()*. El primer argumento de la función corresponde al conjunto de datos que se desea complementar, mientras que en el segundo argumento se ingresa el conjunto de datos con la información que enriquecerá al primer conjunto. Es necesario especificar en el argumento *"by"* el nombre de la columna llave.
+
+```{r}
+
+conjuntoX <- data.frame("Llave" = LETTERS[1:8], "C1" = 1:8)
+
+conjuntoY <- data.frame(
+  "Llave" = sample(LETTERS[11:3], size = 9, replace = T), 
+  "Ex1" = letters[2:10], 
+  "Ex2" = 1002:1010,
+  "Ex3" = paste0(letters[12:20],2:10)
+  )
+
+conjuntoX
+
+conjuntoY
+
+left_join(x = conjuntoX, y = conjuntoY, by = "Llave")
+
+```
+
+
+Es posible que no todas las observaciones de un conjunto de datos estén en el otro conjunto, cuando esto sucede un aviso aparece indicando que los factores o categorías de la variable llave son diferentes. En caso de no encontrarse uno o más de los valores, el resultado para esos casos será NA (no disponible, por su traducción del inglés "Not Available"), y aparecerá siempre que no se cuente con información en un registro, como se muestra en el ejemplo anterior.
+
+<div class="watermark"><img src="img/header.png" width="400"></div>

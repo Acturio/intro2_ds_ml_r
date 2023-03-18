@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning</title>
+  <meta name="description" content="Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning" />
+  
+  <meta name="twitter:description" content="Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conceptos-de-ciencia-de-datos.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li|
+|:-:|  
+<center>Introducción a Ciencia de Datos y Machine Learning</center>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>BIENVENIDA</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i>Objetivo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#instructores"><i class="fa fa-check"></i>Instructores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#alcances-del-curso"><i class="fa fa-check"></i>Alcances del curso</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i>Temario:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos"><i class="fa fa-check"></i>Definiendo conceptos:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a></li>
+<li class="chapter" data-level="1.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#requisitos"><i class="fa fa-check"></i><b>1.3</b> Requisitos</a></li>
+<li class="chapter" data-level="1.4" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aplicaciones"><i class="fa fa-check"></i><b>1.4</b> Aplicaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#cómo-obtener-r"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>R</em>?</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.3</b> Lectura de datos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-csv"><i class="fa fa-check"></i><b>2.3.1</b> Archivos <em>csv</em></a></li>
+<li class="chapter" data-level="2.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-xls-y-xlsx"><i class="fa fa-check"></i><b>2.3.2</b> Archivos <em>xls</em> y <em>xlsx</em></a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#tidyverse"><i class="fa fa-check"></i><b>2.4</b> Tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#select"><i class="fa fa-check"></i><b>2.4.1</b> select()</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#filter"><i class="fa fa-check"></i><b>2.4.2</b> filter()</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#arrange"><i class="fa fa-check"></i><b>2.4.3</b> arrange()</a></li>
+<li class="chapter" data-level="2.4.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#mutate"><i class="fa fa-check"></i><b>2.4.4</b> mutate()</a></li>
+<li class="chapter" data-level="2.4.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#summarise"><i class="fa fa-check"></i><b>2.4.5</b> summarise()</a></li>
+<li class="chapter" data-level="2.4.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#group_by"><i class="fa fa-check"></i><b>2.4.6</b> group_by()</a></li>
+<li class="chapter" data-level="2.4.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#left_join"><i class="fa fa-check"></i><b>2.4.7</b> left_join()</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a Ciencia de Datos y Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción-a-r" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Introducción a R<a href="introducción-a-r.html#introducción-a-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><em>R</em> (R Core Team) es un entorno y lenguaje de programación que permite el análisis estadístico de información y reportes gráficos. Es ampliamente usado en investigación por la comunidad estadística en campos como la biomedicina, minería de datos, matemáticas financieras, entre otros. Ha ganado mucha popularidad en los últimos años al ser un software libre que está en constante crecimiento por las aportaciones de otros usuarios y que permite la interacción con software estadísticos como STATA, SAS, SPSS, etc.. R permite la incorporación de librerías y paqueterías con funcionalidades específicas, por lo que es un lenguaje de programación muy completo y fácil de usar.</p>
+<div id="cómo-obtener-r" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> ¿Cómo obtener <em>R</em>?<a href="introducción-a-r.html#cómo-obtener-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R puede ser fácilmente descargado de forma gratuita desde el sitio oficial <a href="http://www.r-project.org/" class="uri">http://www.r-project.org/</a>. R está disponible para las plataformas Windows, Mac y Linux.</p>
+</div>
+<div id="qué-es-rstudio" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> ¿Qué es RStudio?<a href="introducción-a-r.html#qué-es-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>RStudio</em> es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) para R. Este permite y facilita el desarrollo y ejecución de sintaxis para código en <em>R</em>, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. <em>RStudio</em> está disponible para Windows, Mac y Linux o para navegadores conectados a <em>RStudio Server o RStudio Server Pro</em>.</p>
+<p>Algunas de las principales características de Rstudio que lo hacen una gran herramienta para trabajar en <em>R</em>, son:</p>
+<ul>
+<li>Auto completado de código</li>
+<li>Sangría inteligente</li>
+<li>Resaltado de sintaxis</li>
+<li>Facilidad para definir funciones</li>
+<li>Soporte integrado</li>
+<li>Documentación integrada</li>
+<li>Administración de directorios y proyectos</li>
+<li>Visor de datos</li>
+<li>Depurador interactivo para corregir errores</li>
+<li>Conección con Rmarkwon y Sweave</li>
+</ul>
+<p>La siguiente imagen muestra la forma en la que está estructurado RStudio. El orden de los páneles puede ser elegido por el usuario, así como las características de tipo de letra, tamaño y color de fondo, entre otras características.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-18"></span>
+<img src="img/02-intro2r/rstudio.png" alt="Páneles de trabajo de Rstudio"  />
+<p class="caption">
+Figure 2.1: Páneles de trabajo de Rstudio
+</p>
+</div>
+</div>
+<div id="lectura-de-datos" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Lectura de datos<a href="introducción-a-r.html#lectura-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El primer paso para analizar datos es incorporarlos a la sesión de R para que puedan ser manipulados y observados. Existen múltiples librerías y funciones en <em>R</em> que permiten leer la información proveniente de un archivo externo, el cual puede tener una de muchas posibles extensiones.</p>
+<p>Usualmente, no creamos los datos desde la sesión de <em>R</em>, sino que a través de un archivo externo se realiza la lectura de datos escritos en un archivo. Los más comúnes son:</p>
+<p><img src="img/02-intro2r/archivos.jpg" style="display: block; margin: auto;" /></p>
+<p>La paquetería <em>readr</em> fue desarrollada recientemente para lidiar con la lectura de archivos grandes rápidamente. Esta paquetería proporciona funciones que suelen ser mucho más rápidas que las funciones base que proporciona <em>R</em>.</p>
+<p><strong>Ventajas de readr:</strong></p>
+<ul>
+<li><p>Por lo general, son mucho más rápidos (~ 10x) que sus funciones equivalentes.</p></li>
+<li><p>Producen tibbles:</p>
+<ul>
+<li>No convierten vectores de caracteres en factores.</li>
+<li>No usan nombres de filas ni modifican los nombres de columnas.</li>
+</ul></li>
+<li><p>Reproducibilidad</p></li>
+</ul>
+<div id="archivos-csv" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Archivos <em>csv</em><a href="introducción-a-r.html#archivos-csv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A la hora de importar conjuntos de datos en <em>R</em>, uno de los formatos más habituales en los que hallamos información es en archivos separados por comas (comma separated values), cuya extensión suele ser <em>.csv</em>. En ellos encontramos múltiples líneas que recogen la tabla de interés, y en las cuales los valores aparecen, de manera consecutiva, separados por el carácter <em>,</em>.</p>
+<p>Para importar este tipo de archivos en nuestra sesión de <em>R</em>, se utiliza la función <code>read_csv()</code>. Para acceder a su documentación utilizamos el comando <code>?read_csv</code>.</p>
+<p>El único argumento que debemos de pasar a esta función de manera obligatoria, es <code>file</code>, el nombre o la ruta completa del archivo que pretendemos importar.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introducción-a-r.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="introducción-a-r.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p>Algunas de las ventajas de utilizar <code>read_csv()</code> son:</p>
+<ul>
+<li><p>No convierte, automáticamente, las columnas con cadenas de caracteres a factores, como sí hacen por defecto las otras funciones base de <em>R</em>.</p></li>
+<li><p>Reconoce ocho clases diferentes de datos (enteros, lógicos, etc.), dejando el resto como cadenas de caracteres.</p></li>
+</ul>
+<p>Veamos un ejemplo:</p>
+<p>La tabla de datos llamada <strong>proyecto_ames_train</strong> contiene un conjunto de datos con información del precio de venta de casas y sus respectivas características.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introducción-a-r.html#cb2-1" aria-hidden="true" tabindex="-1"></a>tidy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/proyecto_ames_train.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="introducción-a-r.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="introducción-a-r.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(tidy)</span></code></pre></div>
+<pre><code>## Rows: 1,393
+## Columns: 80
+## $ `MS SubClass`     &lt;dbl&gt; 60, 85, 90, 20, 20, 60, 20, 20, 60, 70, 20, 20, 20, …
+## $ `MS Zoning`       &lt;chr&gt; &quot;RL&quot;, &quot;RL&quot;, &quot;RL&quot;, &quot;RL&quot;, &quot;RL&quot;, &quot;RL&quot;, &quot;RL&quot;, &quot;RL&quot;, &quot;RL&quot;…
+## $ `Lot Frontage`    &lt;dbl&gt; 60, 66, 74, 65, NA, 46, 60, 80, 63, 60, NA, NA, 66, …
+## $ `Lot Area`        &lt;dbl&gt; 17433, 6760, 6882, 8769, 17600, 20544, 10950, 13384,…
+## $ Street            &lt;chr&gt; &quot;Pave&quot;, &quot;Pave&quot;, &quot;Pave&quot;, &quot;Pave&quot;, &quot;Pave&quot;, &quot;Pave&quot;, &quot;Pav…
+## $ Alley             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+## $ `Lot Shape`       &lt;chr&gt; &quot;IR2&quot;, &quot;Reg&quot;, &quot;Reg&quot;, &quot;Reg&quot;, &quot;IR1&quot;, &quot;IR1&quot;, &quot;Reg&quot;, &quot;Re…
+## $ `Land Contour`    &lt;chr&gt; &quot;Lvl&quot;, &quot;Lvl&quot;, &quot;Lvl&quot;, &quot;Lvl&quot;, &quot;Lvl&quot;, &quot;Lvl&quot;, &quot;Lvl&quot;, &quot;Lv…
+## $ Utilities         &lt;chr&gt; &quot;AllPub&quot;, &quot;AllPub&quot;, &quot;AllPub&quot;, &quot;AllPub&quot;, &quot;AllPub&quot;, &quot;A…
+## $ `Lot Config`      &lt;chr&gt; &quot;CulDSac&quot;, &quot;Inside&quot;, &quot;Corner&quot;, &quot;FR2&quot;, &quot;Inside&quot;, &quot;Cul…
+## $ `Land Slope`      &lt;chr&gt; &quot;Gtl&quot;, &quot;Gtl&quot;, &quot;Gtl&quot;, &quot;Gtl&quot;, &quot;Gtl&quot;, &quot;Gtl&quot;, &quot;Gtl&quot;, &quot;Mo…
+## $ Neighborhood      &lt;chr&gt; &quot;NoRidge&quot;, &quot;NAmes&quot;, &quot;Edwards&quot;, &quot;CollgCr&quot;, &quot;NAmes&quot;, &quot;…
+## $ `Condition 1`     &lt;chr&gt; &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Nor…
+## $ `Condition 2`     &lt;chr&gt; &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Norm&quot;, &quot;Nor…
+## $ `Bldg Type`       &lt;chr&gt; &quot;1Fam&quot;, &quot;1Fam&quot;, &quot;Duplex&quot;, &quot;1Fam&quot;, &quot;1Fam&quot;, &quot;1Fam&quot;, &quot;1…
+## $ `House Style`     &lt;chr&gt; &quot;2Story&quot;, &quot;SFoyer&quot;, &quot;1Story&quot;, &quot;1Story&quot;, &quot;1Story&quot;, &quot;2…
+## $ `Overall Qual`    &lt;dbl&gt; 8, 5, 4, 7, 6, 7, 6, 5, 7, 7, 6, 5, 8, 5, 6, 7, 5, 7…
+## $ `Overall Cond`    &lt;dbl&gt; 5, 5, 3, 5, 5, 6, 6, 5, 5, 7, 2, 6, 5, 8, 6, 5, 5, 7…
+## $ `Year Built`      &lt;dbl&gt; 1998, 1962, 1955, 2005, 1960, 1986, 1952, 1969, 1998…
+## $ `Year Remod/Add`  &lt;dbl&gt; 1998, 1962, 1955, 2005, 1960, 1991, 1952, 1979, 1998…
+## $ `Roof Style`      &lt;chr&gt; &quot;Hip&quot;, &quot;Gable&quot;, &quot;Gable&quot;, &quot;Gable&quot;, &quot;Gable&quot;, &quot;Gable&quot;, …
+## $ `Roof Matl`       &lt;chr&gt; &quot;CompShg&quot;, &quot;CompShg&quot;, &quot;CompShg&quot;, &quot;CompShg&quot;, &quot;CompShg…
+## $ `Exterior 1st`    &lt;chr&gt; &quot;VinylSd&quot;, &quot;HdBoard&quot;, &quot;AsbShng&quot;, &quot;VinylSd&quot;, &quot;Wd Sdng…
+## $ `Exterior 2nd`    &lt;chr&gt; &quot;VinylSd&quot;, &quot;HdBoard&quot;, &quot;Plywood&quot;, &quot;VinylSd&quot;, &quot;Wd Sdng…
+## $ `Mas Vnr Type`    &lt;chr&gt; &quot;BrkFace&quot;, &quot;None&quot;, &quot;BrkCmn&quot;, &quot;None&quot;, &quot;BrkFace&quot;, &quot;Brk…
+## $ `Mas Vnr Area`    &lt;dbl&gt; 114, 0, 128, 0, 30, 123, 0, 194, 0, 0, 0, 0, 306, 0,…
+## $ `Exter Qual`      &lt;chr&gt; &quot;Gd&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;Gd&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;…
+## $ `Exter Cond`      &lt;chr&gt; &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;Gd&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;…
+## $ Foundation        &lt;chr&gt; &quot;PConc&quot;, &quot;CBlock&quot;, &quot;PConc&quot;, &quot;PConc&quot;, &quot;CBlock&quot;, &quot;CBlo…
+## $ `Bsmt Qual`       &lt;chr&gt; &quot;Ex&quot;, &quot;TA&quot;, NA, &quot;Gd&quot;, &quot;TA&quot;, &quot;Gd&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;Gd&quot;, …
+## $ `Bsmt Cond`       &lt;chr&gt; &quot;TA&quot;, &quot;TA&quot;, NA, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, …
+## $ `Bsmt Exposure`   &lt;chr&gt; &quot;No&quot;, &quot;Av&quot;, NA, &quot;Av&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Av&quot;, &quot;No&quot;, …
+## $ `BsmtFin Type 1`  &lt;chr&gt; &quot;Unf&quot;, &quot;ALQ&quot;, NA, &quot;GLQ&quot;, &quot;BLQ&quot;, &quot;Unf&quot;, &quot;ALQ&quot;, &quot;Rec&quot;,…
+## $ `BsmtFin SF 1`    &lt;dbl&gt; 0, 734, 0, 709, 1270, 0, 441, 119, 0, 0, 0, 660, 0, …
+## $ `BsmtFin Type 2`  &lt;chr&gt; &quot;Unf&quot;, &quot;Unf&quot;, NA, &quot;Unf&quot;, &quot;Unf&quot;, &quot;Unf&quot;, &quot;Unf&quot;, &quot;BLQ&quot;,…
+## $ `BsmtFin SF 2`    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 344, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ `Bsmt Unf SF`     &lt;dbl&gt; 1629, 162, 0, 460, 208, 791, 507, 641, 935, 1313, 16…
+## $ `Total Bsmt SF`   &lt;dbl&gt; 1629, 896, 0, 1169, 1478, 791, 948, 1104, 935, 1313,…
+## $ Heating           &lt;chr&gt; &quot;GasA&quot;, &quot;GasA&quot;, &quot;GasA&quot;, &quot;GasA&quot;, &quot;GasA&quot;, &quot;GasA&quot;, &quot;Gas…
+## $ `Heating QC`      &lt;chr&gt; &quot;Ex&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;Ex&quot;, &quot;Ex&quot;, &quot;Gd&quot;, &quot;TA&quot;, &quot;Fa&quot;, &quot;Gd&quot;…
+## $ `Central Air`     &lt;chr&gt; &quot;Y&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y…
+## $ Electrical        &lt;chr&gt; &quot;SBrkr&quot;, &quot;SBrkr&quot;, &quot;SBrkr&quot;, &quot;SBrkr&quot;, &quot;FuseA&quot;, &quot;SBrkr&quot;…
+## $ `1st Flr SF`      &lt;dbl&gt; 1645, 936, 1152, 1190, 1478, 1236, 948, 1360, 955, 1…
+## $ `2nd Flr SF`      &lt;dbl&gt; 830, 0, 0, 0, 0, 857, 0, 0, 677, 1182, 0, 0, 0, 0, 9…
+## $ `Low Qual Fin SF` &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ `Gr Liv Area`     &lt;dbl&gt; 2475, 936, 1152, 1190, 1478, 2093, 948, 1360, 1632, …
+## $ `Bsmt Full Bath`  &lt;dbl&gt; 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1…
+## $ `Bsmt Half Bath`  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ `Full Bath`       &lt;dbl&gt; 2, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 1, 2, 2, 2, 2…
+## $ `Half Bath`       &lt;dbl&gt; 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1…
+## $ `Bedroom AbvGr`   &lt;dbl&gt; 4, 3, 2, 2, 3, 3, 2, 3, 3, 5, 3, 3, 3, 2, 4, 3, 3, 3…
+## $ `Kitchen AbvGr`   &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1…
+## $ `Kitchen Qual`    &lt;chr&gt; &quot;Gd&quot;, &quot;TA&quot;, &quot;Fa&quot;, &quot;Gd&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;…
+## $ `TotRms AbvGrd`   &lt;dbl&gt; 7, 6, 6, 5, 6, 7, 5, 8, 8, 10, 7, 5, 7, 4, 8, 6, 6, …
+## $ Functional        &lt;chr&gt; &quot;Typ&quot;, &quot;Typ&quot;, &quot;Typ&quot;, &quot;Typ&quot;, &quot;Typ&quot;, &quot;Typ&quot;, &quot;Typ&quot;, &quot;Ty…
+## $ Fireplaces        &lt;dbl&gt; 1, 1, 0, 0, 2, 1, 0, 1, 1, 1, 2, 0, 1, 0, 0, 0, 1, 2…
+## $ `Fireplace Qu`    &lt;chr&gt; &quot;TA&quot;, &quot;Po&quot;, NA, NA, &quot;Gd&quot;, &quot;TA&quot;, NA, &quot;TA&quot;, &quot;TA&quot;, &quot;Gd&quot;…
+## $ `Garage Type`     &lt;chr&gt; &quot;Attchd&quot;, &quot;Attchd&quot;, NA, &quot;Attchd&quot;, &quot;Attchd&quot;, &quot;Attchd&quot;…
+## $ `Garage Yr Blt`   &lt;dbl&gt; 1998, 1962, NA, 2005, 1960, 1986, 1952, 1969, 1998, …
+## $ `Garage Finish`   &lt;chr&gt; &quot;Fin&quot;, &quot;RFn&quot;, NA, &quot;RFn&quot;, &quot;Unf&quot;, &quot;Fin&quot;, &quot;Unf&quot;, &quot;RFn&quot;,…
+## $ `Garage Cars`     &lt;dbl&gt; 3, 1, 0, 2, 2, 2, 2, 1, 2, 2, 2, 2, 3, 1, 2, 2, 2, 2…
+## $ `Garage Area`     &lt;dbl&gt; 962, 288, 0, 578, 498, 542, 410, 336, 462, 342, 495,…
+## $ `Garage Qual`     &lt;chr&gt; &quot;TA&quot;, &quot;TA&quot;, NA, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, …
+## $ `Garage Cond`     &lt;chr&gt; &quot;TA&quot;, &quot;TA&quot;, NA, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, &quot;TA&quot;, …
+## $ `Paved Drive`     &lt;chr&gt; &quot;Y&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;Y…
+## $ `Wood Deck SF`    &lt;dbl&gt; 23, 24, 0, 100, 0, 364, 0, 160, 0, 0, 0, 0, 192, 144…
+## $ `Open Porch SF`   &lt;dbl&gt; 172, 90, 0, 41, 40, 63, 48, 0, 28, 299, 0, 312, 64, …
+## $ `Enclosed Porch`  &lt;dbl&gt; 0, 160, 0, 0, 0, 0, 0, 0, 0, 0, 144, 0, 0, 80, 0, 0,…
+## $ `3Ssn Porch`      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ `Screen Porch`    &lt;dbl&gt; 256, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ `Pool Area`       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ `Pool QC`         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+## $ Fence             &lt;chr&gt; NA, NA, NA, NA, NA, &quot;MnPrv&quot;, NA, NA, NA, NA, NA, NA,…
+## $ `Misc Feature`    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, &quot;Shed&quot;, NA, …
+## $ `Misc Val`        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 750, 0, 0, 0, 0, 0, 0,…
+## $ `Mo Sold`         &lt;dbl&gt; 1, 10, 9, 10, 12, 11, 4, 5, 6, 12, 5, 6, 9, 12, 8, 5…
+## $ `Yr Sold`         &lt;dbl&gt; 2010, 2007, 2007, 2007, 2009, 2008, 2007, 2006, 2006…
+## $ `Sale Type`       &lt;chr&gt; &quot;WD&quot;, &quot;WD&quot;, &quot;WD&quot;, &quot;WD&quot;, &quot;WD&quot;, &quot;WD&quot;, &quot;WD&quot;, &quot;WD&quot;, &quot;WD&quot;…
+## $ `Sale Condition`  &lt;chr&gt; &quot;Normal&quot;, &quot;Normal&quot;, &quot;Normal&quot;, &quot;Normal&quot;, &quot;Normal&quot;, &quot;N…
+## $ SalePrice         &lt;dbl&gt; 355000, 130000, 61500, 173500, 157500, 215000, 12500…</code></pre>
+<p>¿Y si el archivo que necesitamos leer esta en excel?</p>
+</div>
+<div id="archivos-xls-y-xlsx" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Archivos <em>xls</em> y <em>xlsx</em><a href="introducción-a-r.html#archivos-xls-y-xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La paquetería <em>readxl</em> facilita la obtención de datos tabulares de archivos de <em>Excel</em>. Admite tanto el formato <em>.xls</em> heredado como el formato <em>.xlsx</em> moderno basado en <em>XML</em>.</p>
+<p>Esta paqueteía pone a disposición las siguientes funciones:</p>
+<ul>
+<li><p><code>read_xlsx()</code> lee un archivo con extensión <em>xlsx</em>.</p></li>
+<li><p><code>read_excel()</code> determina si el archivo es de tipo <em>xls</em> o <em>xlsx</em> para después
+llamar a una de las fuciones mencionadas anteriormente.</p></li>
+</ul>
+<p><strong>EJERCICIO:</strong> Leer archivos propios en formato de Excel</p>
+</div>
+</div>
+<div id="tidyverse" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Tidyverse<a href="introducción-a-r.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ahora que ya sabemos como cargar datos, aprenderemos como manipularlos con <em>dplyr.</em> El paquete <em>dplyr</em> proporciona un conjunto de funciones muy útiles para manipular data frames y así reducir el número de repeticiones, la probabilidad de cometer errores y el número de caracteres que hay que escribir. Como valor extra, podemos encontrar que la gramática de <em>dplyr</em> es más fácil de entender.</p>
+<p>Revisaremos algunas de sus funciones <strong>más usadas</strong> (<em>verbos</em>), así como el uso de <strong>pipes</strong> (%&gt;%) para combinarlas.</p>
+<ul>
+<li><p>select()</p></li>
+<li><p>filter()</p></li>
+<li><p>arrange()</p></li>
+<li><p>mutate()</p></li>
+<li><p>summarise()</p></li>
+<li><p>join()</p></li>
+<li><p>group_by()</p></li>
+</ul>
+<p>Primero tenemos que instalar y cargar la paquetería (parte de tidyverse):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introducción-a-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p>Usaremos el dataset <em>iris</em> que se encuentra en la paquetería <em>datasets</em> (el alumno puede hacer el ejercicio con la tabla de su elección)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introducción-a-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+<div id="select" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> select()<a href="introducción-a-r.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Observamos que nuestros datos tienen 150 observaciones y 5 variables, con <em>select()</em> podemos seleccionar las variables que le indiquemos.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introducción-a-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a>select_ejemplo<span class="ot">&lt;-</span>iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sepal.Length,Petal.Length,Species)</span>
+<span id="cb7-2"><a href="introducción-a-r.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select_ejemplo,<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    Sepal.Length Petal.Length Species
+## 1           5.1          1.4  setosa
+## 2           4.9          1.4  setosa
+## 3           4.7          1.3  setosa
+## 4           4.6          1.5  setosa
+## 5           5.0          1.4  setosa
+## 6           5.4          1.7  setosa
+## 7           4.6          1.4  setosa
+## 8           5.0          1.5  setosa
+## 9           4.4          1.4  setosa
+## 10          4.9          1.5  setosa</code></pre>
+<div class="infobox pin">
+<p><strong>¡¡ RECORDAR !!</strong></p>
+<p>El operador pipe (%&gt;%) se usa para <strong>conectar múltiples acciones</strong></p>
+</div>
+<p>En este caso solo le indicamos que en los datos de iris se seleccionan 3 varibles y se guarda este nuevo data frame en la variable <em>select_ejemplo</em>.</p>
+<p>Con <em>select()</em> y <em>contains</em> podemos seleccionar varibles con alguna cadena de texto.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introducción-a-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a>select_ejemplo <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Sepal&quot;</span>))</span>
+<span id="cb9-2"><a href="introducción-a-r.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select_ejemplo, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width
+## 1          5.1         3.5
+## 2          4.9         3.0
+## 3          4.7         3.2
+## 4          4.6         3.1
+## 5          5.0         3.6</code></pre>
+<p>De igual manera, con <em>select()</em>, <em>ends_with</em> y <em>start_with()</em> podemos seleccionar que inicien o terminen con alguna cadena de texto.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introducción-a-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a>select_ejemplo <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Sepal&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;Length&quot;</span>))</span>
+<span id="cb11-2"><a href="introducción-a-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(select_ejemplo, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length
+## 1          5.1         3.5          1.4
+## 2          4.9         3.0          1.4
+## 3          4.7         3.2          1.3
+## 4          4.6         3.1          1.5
+## 5          5.0         3.6          1.4</code></pre>
+<p>Funciones útiles para <em>select()</em>:</p>
+<ul>
+<li><p><em>contains()</em>: Selecciona variables cuyo nombre contiene la cadena de texto.</p></li>
+<li><p><em>ends_with()</em>: Selecciona variables cuyo nombre termina con la cadena de caracteres.</p></li>
+<li><p><em>everything()</em>: Selecciona todas las columnas.</p></li>
+<li><p><em>matches()</em>: Selecciona las variables cuyos nombres coinciden con una expresión regular.</p></li>
+<li><p><em>num_range()</em>: Selecciona las variables por posición.</p></li>
+<li><p><em>start_with()</em>: Selecciona variables cuyos nombres empiezan con la cadena de caracteres.</p></li>
+<li><p><em>any_of</em>: Selecciona cualquiera de estas variables, en caso de existir</p></li>
+</ul>
+</div>
+<div id="filter" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> filter()<a href="introducción-a-r.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función filter nos permite filtrar filas según una condición, primero notemos que la variable <em>Species</em> tiene tres categorías.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introducción-a-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">count</span>(Species)</span></code></pre></div>
+<pre><code>##      Species  n
+## 1     setosa 50
+## 2 versicolor 50
+## 3  virginica 50</code></pre>
+<p>Ahora usaremos la función <em>filter</em> para quedarnos solo con las observaciones de la especie virginica.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introducción-a-r.html#cb15-1" aria-hidden="true" tabindex="-1"></a>ejemplo_filter <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Species<span class="sc">==</span><span class="st">&quot;virginica&quot;</span>)</span>
+<span id="cb15-2"><a href="introducción-a-r.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ejemplo_filter, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 1          6.3         3.3          6.0         2.5 virginica
+## 2          5.8         2.7          5.1         1.9 virginica
+## 3          7.1         3.0          5.9         2.1 virginica
+## 4          6.3         2.9          5.6         1.8 virginica
+## 5          6.5         3.0          5.8         2.2 virginica</code></pre>
+<p>También se puede usar para filtrar variables numéricas:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introducción-a-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a>ejemplo_filter<span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span> <span class="sc">&amp;</span> Sepal.Width <span class="sc">&gt;=</span> <span class="fl">3.5</span>)</span>
+<span id="cb17-2"><a href="introducción-a-r.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ejemplo_filter, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          5.4         3.9          1.7         0.4  setosa
+## 3          5.4         3.7          1.5         0.2  setosa
+## 4          5.8         4.0          1.2         0.2  setosa
+## 5          5.7         4.4          1.5         0.4  setosa</code></pre>
+<p>Notemos que en el ejemplo anterior usamos <em>&amp;</em>, que nos ayuda a filtrar por dos condiciones.</p>
+<p>También podemos usar <em>|</em> para filtrar por alguna de las dos condiciones.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introducción-a-r.html#cb19-1" aria-hidden="true" tabindex="-1"></a>ejemplo_filter<span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sepal.Length<span class="sc">&gt;</span><span class="dv">5</span> <span class="sc">|</span> Sepal.Width<span class="sc">&gt;=</span><span class="fl">3.5</span>)</span>
+<span id="cb19-2"><a href="introducción-a-r.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ejemplo_filter,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          5.0         3.6          1.4         0.2  setosa
+## 3          5.4         3.9          1.7         0.4  setosa
+## 4          5.4         3.7          1.5         0.2  setosa
+## 5          5.8         4.0          1.2         0.2  setosa</code></pre>
+<p>Las condiciones pueden ser expresiones lógicas construidas mediante los operadores relacionales y lógicos:</p>
+<ul>
+<li><p><strong>&lt;</strong> : Menor que</p></li>
+<li><p><strong>&gt;</strong> : Mayor que</p></li>
+<li><p><strong>=</strong> : Igual que</p></li>
+<li><p><strong>&lt;=</strong> : Menor o igual que</p></li>
+<li><p><strong>&gt;=</strong> : Mayor o igual que</p></li>
+<li><p><strong>!=</strong> : Diferente que</p></li>
+<li><p><strong>%in%</strong> : Pertenece al conjunto</p></li>
+<li><p><strong>is.na</strong> : Es NA</p></li>
+<li><p><strong>!is.na</strong> : No es NA</p></li>
+</ul>
+</div>
+<div id="arrange" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> arrange()<a href="introducción-a-r.html#arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función arrange() se utiliza para ordenar las filas de un data frame de acuerdo a una o varias variables.</p>
+<p>Por defecto arrange() ordena las filas por orden ascendente:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introducción-a-r.html#cb21-1" aria-hidden="true" tabindex="-1"></a>ejemplo_arrange <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Sepal.Length)</span>
+<span id="cb21-2"><a href="introducción-a-r.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ejemplo_arrange, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           4.3         3.0          1.1         0.1  setosa
+## 2           4.4         2.9          1.4         0.2  setosa
+## 3           4.4         3.0          1.3         0.2  setosa
+## 4           4.4         3.2          1.3         0.2  setosa
+## 5           4.5         2.3          1.3         0.3  setosa
+## 6           4.6         3.1          1.5         0.2  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           4.6         3.6          1.0         0.2  setosa
+## 9           4.6         3.2          1.4         0.2  setosa
+## 10          4.7         3.2          1.3         0.2  setosa</code></pre>
+<p><br>
+<br>
+Si las queremos ordenar de forma ascendente lo haremos del siguiente modo:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introducción-a-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ejemplo_arrange <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Sepal.Length))</span>
+<span id="cb23-2"><a href="introducción-a-r.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ejemplo_arrange, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 1           7.9         3.8          6.4         2.0 virginica
+## 2           7.7         3.8          6.7         2.2 virginica
+## 3           7.7         2.6          6.9         2.3 virginica
+## 4           7.7         2.8          6.7         2.0 virginica
+## 5           7.7         3.0          6.1         2.3 virginica
+## 6           7.6         3.0          6.6         2.1 virginica
+## 7           7.4         2.8          6.1         1.9 virginica
+## 8           7.3         2.9          6.3         1.8 virginica
+## 9           7.2         3.6          6.1         2.5 virginica
+## 10          7.2         3.2          6.0         1.8 virginica</code></pre>
+</div>
+<div id="mutate" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> mutate()<a href="introducción-a-r.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con la función mutate() podemos computar tranformaciones de variables en un data frame. A menudo, tendremos la necesidad de crear nuevas variables que se calculan a partir de variables existentes,mutate() nos proporciona una interface clara para realizar este tipo de operaciones.</p>
+<p>Por ejemplo haremos la suma de las variables <em>Sepal.Lenght</em> y <em>Sepal.Width</em>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introducción-a-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="introducción-a-r.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sepal.Length, Sepal.Width) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="introducción-a-r.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Suma =</span> Sepal.Length <span class="sc">+</span> Sepal.Width)</span>
+<span id="cb25-4"><a href="introducción-a-r.html#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="introducción-a-r.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ejemplo_mutate, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Suma
+## 1          5.1         3.5  8.6
+## 2          4.9         3.0  7.9
+## 3          4.7         3.2  7.9
+## 4          4.6         3.1  7.7
+## 5          5.0         3.6  8.6</code></pre>
+<div class="infobox pin">
+<p><strong>¡¡ RECORDAR !!</strong></p>
+<p>Notemos que en el ejemplo anterior usamos dos <em>pipes</em> (%&gt;%). Como habiamos mencionado se pueden usar los <em>pipes</em> necesarios para combinar tareas.</p>
+</div>
+</div>
+<div id="summarise" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> summarise()<a href="introducción-a-r.html#summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función summarise() funciona de forma análoga a la función mutate, excepto que en lugar de añadir nuevas columnas crea un nuevo data frame.</p>
+<p>Podemos usar el ejemplo anterior y calcular la media de la varible creada <em>Suma</em>:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="introducción-a-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a>ejemplo_summarise <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="introducción-a-r.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sepal.Length, Sepal.Width) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="introducción-a-r.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Suma =</span> Sepal.Length <span class="sc">+</span> Sepal.Width) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="introducción-a-r.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Media_Suma =</span> <span class="fu">mean</span>(Suma))</span>
+<span id="cb27-5"><a href="introducción-a-r.html#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="introducción-a-r.html#cb27-6" aria-hidden="true" tabindex="-1"></a>ejemplo_summarise</span></code></pre></div>
+<pre><code>##   Media_Suma
+## 1   8.900667</code></pre>
+<p>Solo fue necesario agregar un <em>pipe</em>, especificar el nombre de la varible creada y la operación a realizar.</p>
+<p>A continuación se muestran funciones que trabajando conjuntamente con la función summarise() facilitarán nuestro trabajo diario. Las primeras pertenecen al paquete base y las otras son del paquete dplyr. Todas ellas toman como argumento un vector y devuelven un único resultado:</p>
+<ul>
+<li><p><em>min(), max()</em> : Valores max y min.</p></li>
+<li><p><em>mean()</em> : Media.</p></li>
+<li><p><em>median()</em> : Mediana.</p></li>
+<li><p><em>sum()</em> : Suma de los valores.</p></li>
+<li><p><em>var(), sd()</em> : Varianza y desviación estandar.</p></li>
+<li><p><em>first()</em> : Primer valor en un vector.</p></li>
+<li><p><em>last()</em> : El último valor en un vector</p></li>
+<li><p><em>n()</em> : El número de valores en un vector.</p></li>
+<li><p><em>n_distinc()</em> : El número de valores distintos en un vector.</p></li>
+<li><p><em>nth()</em> : Extrar el valor que ocupa la posición n en un vector.</p></li>
+</ul>
+<p>Mas adelante veremos como combinar esta función con la función <em>group_by</em>.</p>
+</div>
+<div id="group_by" class="section level3 hasAnchor" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> group_by()<a href="introducción-a-r.html#group_by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función group_by() agrupa un conjunto de filas seleccionado en un conjunto de filas de resumen de acuerdo con los valores de una o más columnas o expresiones.</p>
+<p>Usaremos el ejemplo anterior, primero creamos nuestra nueva variable <em>Suma</em>, despues agrupamos por especie y al final sacamos la media de la variable <em>Suma</em> pero esta vez, por la función <em>group_by</em>, nos regresara una media por cada grupo creado, es decir, nos regresara el promedio de la suma por especie.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="introducción-a-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a>ejemplo_groupby <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="introducción-a-r.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Suma =</span> Sepal.Length <span class="sc">+</span> Sepal.Width) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="introducción-a-r.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="introducción-a-r.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Media_Suma =</span> <span class="fu">mean</span>(Suma))</span>
+<span id="cb29-5"><a href="introducción-a-r.html#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="introducción-a-r.html#cb29-6" aria-hidden="true" tabindex="-1"></a>ejemplo_groupby</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   Species    Media_Suma
+##   &lt;fct&gt;           &lt;dbl&gt;
+## 1 setosa           8.43
+## 2 versicolor       8.71
+## 3 virginica        9.56</code></pre>
+</div>
+<div id="left_join" class="section level3 hasAnchor" number="2.4.7">
+<h3><span class="header-section-number">2.4.7</span> left_join()<a href="introducción-a-r.html#left_join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una operación fundamental por agregar a nuestro flujo de trabajo es el cruce de tablas, las cuales pueden proceder de la misma o de distinta fuente. Comúnmente <strong>este proceso se realiza para enriquecer y unificar la información</strong> proveniente de distintas tablas de datos.</p>
+<p>Para lograr esta tarea es indispensable que exista una variable <strong>llave</strong> en ambos conjuntos de datos que sirva como puente o identificador de cada caso o renglón. Si se cuenta con la columna llave entonces será posible cruzar las tablas y lograr su enriquecimiento.</p>
+<p>En el siguiente ejemplo se muestra el uso de la variable llave a través de la columna “ID”. Se puede apreciar que en la tabla final se cuenta con información de la variable “Weight” para los elementos que existen en las tablas “A” y “B”.</p>
+<p><img src="img/02-intro2r/left_join3.png" width="700pt" style="display: block; margin: auto;" /></p>
+<p>La función que hace posible el complemento de la información es llamada <em>left_join()</em>. El primer argumento de la función corresponde al conjunto de datos que se desea complementar, mientras que en el segundo argumento se ingresa el conjunto de datos con la información que enriquecerá al primer conjunto. Es necesario especificar en el argumento <em>“by”</em> el nombre de la columna llave.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="introducción-a-r.html#cb31-1" aria-hidden="true" tabindex="-1"></a>conjuntoX <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;Llave&quot;</span> <span class="ot">=</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;C1&quot;</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>)</span>
+<span id="cb31-2"><a href="introducción-a-r.html#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="introducción-a-r.html#cb31-3" aria-hidden="true" tabindex="-1"></a>conjuntoY <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb31-4"><a href="introducción-a-r.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Llave&quot;</span> <span class="ot">=</span> <span class="fu">sample</span>(LETTERS[<span class="dv">11</span><span class="sc">:</span><span class="dv">3</span>], <span class="at">size =</span> <span class="dv">9</span>, <span class="at">replace =</span> T), </span>
+<span id="cb31-5"><a href="introducción-a-r.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Ex1&quot;</span> <span class="ot">=</span> letters[<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>], </span>
+<span id="cb31-6"><a href="introducción-a-r.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Ex2&quot;</span> <span class="ot">=</span> <span class="dv">1002</span><span class="sc">:</span><span class="dv">1010</span>,</span>
+<span id="cb31-7"><a href="introducción-a-r.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Ex3&quot;</span> <span class="ot">=</span> <span class="fu">paste0</span>(letters[<span class="dv">12</span><span class="sc">:</span><span class="dv">20</span>],<span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb31-8"><a href="introducción-a-r.html#cb31-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb31-9"><a href="introducción-a-r.html#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="introducción-a-r.html#cb31-10" aria-hidden="true" tabindex="-1"></a>conjuntoX</span></code></pre></div>
+<pre><code>##   Llave C1
+## 1     A  1
+## 2     B  2
+## 3     C  3
+## 4     D  4
+## 5     E  5
+## 6     F  6
+## 7     G  7
+## 8     H  8</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="introducción-a-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>conjuntoY</span></code></pre></div>
+<pre><code>##   Llave Ex1  Ex2 Ex3
+## 1     K   b 1002  l2
+## 2     K   c 1003  m3
+## 3     K   d 1004  n4
+## 4     C   e 1005  o5
+## 5     I   f 1006  p6
+## 6     H   g 1007  q7
+## 7     D   h 1008  r8
+## 8     I   i 1009  s9
+## 9     J   j 1010 t10</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="introducción-a-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> conjuntoX, <span class="at">y =</span> conjuntoY, <span class="at">by =</span> <span class="st">&quot;Llave&quot;</span>)</span></code></pre></div>
+<pre><code>##   Llave C1  Ex1  Ex2  Ex3
+## 1     A  1 &lt;NA&gt;   NA &lt;NA&gt;
+## 2     B  2 &lt;NA&gt;   NA &lt;NA&gt;
+## 3     C  3    e 1005   o5
+## 4     D  4    h 1008   r8
+## 5     E  5 &lt;NA&gt;   NA &lt;NA&gt;
+## 6     F  6 &lt;NA&gt;   NA &lt;NA&gt;
+## 7     G  7 &lt;NA&gt;   NA &lt;NA&gt;
+## 8     H  8    g 1007   q7</code></pre>
+<p>Es posible que no todas las observaciones de un conjunto de datos estén en el otro conjunto, cuando esto sucede un aviso aparece indicando que los factores o categorías de la variable llave son diferentes. En caso de no encontrarse uno o más de los valores, el resultado para esos casos será NA (no disponible, por su traducción del inglés “Not Available”), y aparecerá siempre que no se cuente con información en un registro, como se muestra en el ejemplo anterior.</p>
+<div class="watermark">
+<img src="img/header.png" width="400">
+</div>
+
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$('.pipehover_incremental tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).prevAll().addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+
+$('.pipehover_select_one_row tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conceptos-de-ciencia-de-datos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["intro2_ds_ml_r.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
