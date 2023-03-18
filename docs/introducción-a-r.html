@@ -612,24 +612,26 @@ Si las queremos ordenar de forma ascendente lo haremos del siguiente modo:</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="introducción-a-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>conjuntoY</span></code></pre></div>
 <pre><code>##   Llave Ex1  Ex2 Ex3
 ## 1     K   b 1002  l2
-## 2     K   c 1003  m3
-## 3     K   d 1004  n4
-## 4     C   e 1005  o5
+## 2     D   c 1003  m3
+## 3     G   d 1004  n4
+## 4     J   e 1005  o5
 ## 5     I   f 1006  p6
 ## 6     H   g 1007  q7
-## 7     D   h 1008  r8
-## 8     I   i 1009  s9
-## 9     J   j 1010 t10</code></pre>
+## 7     E   h 1008  r8
+## 8     E   i 1009  s9
+## 9     H   j 1010 t10</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="introducción-a-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> conjuntoX, <span class="at">y =</span> conjuntoY, <span class="at">by =</span> <span class="st">&quot;Llave&quot;</span>)</span></code></pre></div>
-<pre><code>##   Llave C1  Ex1  Ex2  Ex3
-## 1     A  1 &lt;NA&gt;   NA &lt;NA&gt;
-## 2     B  2 &lt;NA&gt;   NA &lt;NA&gt;
-## 3     C  3    e 1005   o5
-## 4     D  4    h 1008   r8
-## 5     E  5 &lt;NA&gt;   NA &lt;NA&gt;
-## 6     F  6 &lt;NA&gt;   NA &lt;NA&gt;
-## 7     G  7 &lt;NA&gt;   NA &lt;NA&gt;
-## 8     H  8    g 1007   q7</code></pre>
+<pre><code>##    Llave C1  Ex1  Ex2  Ex3
+## 1      A  1 &lt;NA&gt;   NA &lt;NA&gt;
+## 2      B  2 &lt;NA&gt;   NA &lt;NA&gt;
+## 3      C  3 &lt;NA&gt;   NA &lt;NA&gt;
+## 4      D  4    c 1003   m3
+## 5      E  5    h 1008   r8
+## 6      E  5    i 1009   s9
+## 7      F  6 &lt;NA&gt;   NA &lt;NA&gt;
+## 8      G  7    d 1004   n4
+## 9      H  8    g 1007   q7
+## 10     H  8    j 1010  t10</code></pre>
 <p>Es posible que no todas las observaciones de un conjunto de datos estén en el otro conjunto, cuando esto sucede un aviso aparece indicando que los factores o categorías de la variable llave son diferentes. En caso de no encontrarse uno o más de los valores, el resultado para esos casos será NA (no disponible, por su traducción del inglés “Not Available”), y aparecerá siempre que no se cuente con información en un registro, como se muestra en el ejemplo anterior.</p>
 <div class="watermark">
 <img src="img/header.png" width="400">

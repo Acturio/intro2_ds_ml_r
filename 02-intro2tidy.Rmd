@@ -140,7 +140,7 @@ head(iris,10)
 Observamos que nuestros datos tienen 150 observaciones y 5 variables, con *select()* podemos seleccionar las variables que le indiquemos.
 
 ```{r}
-select_ejemplo<-iris %>% select(Sepal.Length,Petal.Length,Species)
+select_ejemplo <- iris %>% select(Sepal.Length, Petal.Length, Species)
 head(select_ejemplo,10)
 ```
 
