@@ -173,3 +173,194 @@ Podemos pensar en una infinidad de aplicaciones comerciales basadas en el análi
 -   Detección de servicios fraudulentos
 -   Detección de zonas geográficas con actividades ilícitas
 
+## Tipos de algoritmos
+
+Los algoritmos de Machine Learning se dividen en tres categorías, siendo las dos primeras las más comunes:
+
+```{r, fig.align='center', echo=F, out.height='500pt', out.width='750pt'}
+knitr::include_graphics("img/01-intro2ds/13_tipo_aprendizaje.png")
+```
+
+La diferencia entre el análisis supervisado y el no supervisado es la etiqueta, es decir, en el análisis supervisado tenemos una etiqueta "correcta" y el objetivo de los algoritmos es predecir esta etiqueta.
+
+### Aprendizaje supervisado
+
+En el aprendizaje supervisado, la idea principal es **aprender bajo supervisión**, donde la señal de supervisión se nombra como valor objetivo o etiqueta. Estos algoritmos cuentan con un aprendizaje previo basado en un **sistema de etiquetas** asociadas a unos datos que les permiten tomar decisiones o hacer predicciones.
+
+-   Conocemos la respuesta correcta de antemano.
+
+-   Esta respuesta correcta fue "etiquetada" por un humano (la mayoría de las veces, en algunas circunstancias puede ser generada por otro algoritmo).
+
+-   Debido a que conocemos la respuesta correcta, existen muchas métricas de desempeño del modelo para verificar que nuestro algoritmo está haciendo las cosas "bien".
+
+Algunos ejemplos son:
+
+    - Un detector de spam que etiqueta un e-mail como spam o no.
+
+    - Predecir precios de casas
+
+    - Clasificación de imagenes
+
+    - Predecir el clima
+
+    - ¿Quiénes son los clientes descontentos?
+
+#### Tipos de aprendizaje supervisado (Regresión vs clasificación) {.unnumbered}
+
+Existen dos tipos principales de aprendizaje supervisado, esto depende del tipo de la variable respuesta:
+
+#### Clasificación {.unnumbered}
+
+En el aprendizaje supervisado, los algoritmos de clasificación se usan cuando el resultado es una **etiqueta discreta.** Esto quiere decir que se utilizan cuando la respuesta se fundamenta en conjunto finito de resultados.
+
+#### Regresión {.unnumbered}
+
+El análisis de regresión es un subcampo del aprendizaje automático supervisado cuyo objetivo es **establecer un método para la relación entre un cierto número de características y una variable objetivo continua.**
+
+<br/>
+
+```{r echo=FALSE,fig.align='center', out.height='450pt', out.width='700pt'}
+knitr::include_graphics("img/01-intro2ds/13_regresion_clasificacion.png")
+```
+
+### Aprendizaje no supervisado
+
+En el aprendizaje no supervisado, **carecemos de etiquetas**. Por lo tanto, necesitamos encontrar nuestro camino sin ninguna supervisión ni guía. Esto simplemente significa que necesitamos descubrir ¿qué es qué? por nosotros mismos.
+
+-   Aquí no tenemos la respuesta correcta de antemano ¿cómo podemos saber que el algoritmo está bien o mal?
+
+-   Estadísticamente podemos verificar que el algoritmo está bien
+
+-   Siempre tenemos que verificar con el cliente si los resultados que estamos obteniendo tienen sentido de negocio. Por ejemplo, número de grupos y características
+
+```{r echo=FALSE,fig.align='center'}
+knitr::include_graphics("img/01-intro2ds/14_nosupervisado_robo.png")
+```
+
+Algunos ejemplos son:
+
+    - Encontrar segmentos de clientes.
+
+    - Reducir la complejidad de un problema
+
+    - Selección de variables
+
+    - Encontrar grupos
+
+    - Reducción de dimensionalidad
+
+### Aprendizaje por refuerzo
+
+Su objetivo es que un algoritmo aprenda a partir de la propia experiencia. Esto es, que sea capaz de tomar la mejor decisión ante diferentes situaciones de acuerdo a un proceso de prueba y error en el que se recompensan las decisiones correctas.
+
+```{r echo=FALSE,fig.align='center', out.height='350pt', out.width='500pt'}
+knitr::include_graphics("img/01-intro2ds/14_reinforcement_robot.png")
+```
+
+Algunos ejemplos son:
+
+    - Optimización de campañas de marketing
+
+    - Reconocimiento facial
+
+    - Diagnósticos médicos
+
+    - Clasificar secuencias de ADN
+
+Ejemplo: [Mario Bros](https://www.youtube.com/watch?v=qv6UVOQ0F44&t=283s)
+
+
+## Ciclo de un proyecto
+
+```{r, fig.align='center', out.height='600pt', out.width='800pt', echo=F}
+knitr::include_graphics("img/01-intro2ds-ciclo/01-etapas.png")
+```
+
+1.  **Identificación del problema**
+
+    -   Debemos conocer si el problema es significativo, si el problema se puede resolver con ciencia de datos, y si habrá un compromiso real del lado de cliente/usuario/partner para implementar la solución con todas sus implicaciones: recursos físicos y humanos.
+
+```{r echo=FALSE,fig.align='center', out.width='200pt', out.height='200pt'}
+knitr::include_graphics("img/01-intro2ds-ciclo/02-identificacion.jpg")
+```
+
+2.  **Scoping**
+
+    -   El objetivo es definir el alcance del proyecto y por lo tanto definir claramente los objetivos.
+
+    -   Conocer las acciones que se llevarán a cabo para cada objetivo. Estas definirán las soluciones analíticas a hacer.
+
+    -   Queremos saber si los datos con los que contamos son relevantes y suficientes.
+
+    -   Hacer visible los posibles conflictos éticos que se pueden tener en esta fase.
+
+    -   Debemos definir el cómo evaluaremos que el análisis de esos datos será balanceada entre eficiencia, efectividad y equidad.
+
+```{r echo=FALSE,fig.align='center', out.width='200pt', out.height='200pt'}
+knitr::include_graphics("img/01-intro2ds-ciclo/03-alcance.png")
+```
+
+3.  **Adquisición de datos**
+
+    -   Adquisición, almacenamiento, entendimiento y preparación de los datos para después poder hacer analítica sober ellos.
+
+    -   Asegurar que en la transferencia estamos cumpliendo con el manejo adecuado de datos sensibles y privados.
+
+```{r echo=FALSE,fig.align='center', out.width='200pt', out.height='300pt'}
+knitr::include_graphics("img/01-intro2ds-ciclo/04-data-adquisition.webp")
+```
+
+4.  **EDA**
+
+    -   El objetivo en esta fase es conocer los datos con los que contamos y contexto de negocio explicado a través de los mismos.
+
+    -   Identificamos datos faltantes, sugerimos cómo imputarlos.
+
+    -   Altamente apoyado de visualización y procesos de adquisición y limpieza de datos.
+
+```{r echo=FALSE,fig.align='center', out.width='600pt', out.height='350pt'}
+knitr::include_graphics("img/01-intro2ds-ciclo/05-eda.jpg")
+```
+
+5.  **Formulación analítica**
+
+    -   Esta fase incluye empezar a formular nuestro problema como uno de ciencia de datos, el conocimiento adquirido en la fase de exploración nos permite conocer a mayor detalle del problema y por lo tanto de la solución adecuada.
+
+```{r echo=FALSE,fig.align='center', out.width='450pt', out.height='300pt'}
+knitr::include_graphics("img/01-intro2ds-ciclo/05-analytical-thinking.jpg")
+```
+
+6.  **Modelado**
+
+    -   Proceso iterativo para desarrollar diferentes "experimentos".
+
+        -   Mismo algoritmo/método diferentes hiperparámetros (grid search).
+        -   Diferentes algortimos.
+
+    -   Selección de un muy pequeño conjunto de modelos tomando en cuenta un balance entre interpretabilidad, complejidad, desempeño, fairness.
+
+    -   Correcta interpretación de los resultados de desempeño de cada modelo.
+
+```{r echo=FALSE,fig.align='center'}
+knitr::include_graphics("img/01-intro2ds-ciclo/06-formulacion.jpg")
+```
+
+7.  **Validación**
+
+    -   Es muy importante poner a prueba el/los modelo/modelos seleccionados en la fase anterior. Esta prueba es en campo con datos reales, le llamamos prueba piloto.
+
+    -   Debemos medir el impacto causal que nuestro modelo tuvo en un ambiente real.
+
+```{r echo=FALSE,fig.align='center', out.width='200pt', out.height='200pt'}
+knitr::include_graphics("img/01-intro2ds-ciclo/07-validacion.jpg")
+```
+
+8.  **Acciones a realizar**
+
+    -   Finalmente esta etapa corresponde a compartir con los tomadores de decisiones/stakeholders/creadores de política pública los resultados obtenidos y la recomendación de acciones a llevar a cabo -menú de opciones-.
+
+    -   Las implicaciones éticas de esta fase consisten en hacer conciente el impacto social de nuestro trabajo.
+
+```{r echo=FALSE,fig.align='center', out.width='200pt', out.height='200pt'}
+knitr::include_graphics("img/01-intro2ds-ciclo/08-action.jpg")
+```

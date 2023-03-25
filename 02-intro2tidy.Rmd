@@ -57,323 +57,665 @@ La paquetería *readr* fue desarrollada recientemente para lidiar con la lectura
 * Reproducibilidad
 
 
-### Archivos *csv* 
+
+### Archivos *csv*
 
 A la hora de importar conjuntos de datos en *R*, uno de los formatos más habituales en los que hallamos información es en archivos separados por comas (comma separated values), cuya extensión suele ser *.csv*. En ellos encontramos múltiples líneas que recogen la tabla de interés, y en las cuales los valores aparecen, de manera consecutiva, separados por el carácter *,*.
 
 Para importar este tipo de archivos en nuestra sesión de *R*, se utiliza la función `read_csv()`. Para acceder a su documentación utilizamos el comando `?read_csv`.
 
-El único argumento que debemos de pasar a esta función de manera obligatoria, es `file`, el nombre o  la ruta completa del archivo que pretendemos importar.
+El único argumento que debemos de pasar a esta función de manera obligatoria, es `file`, el nombre o la ruta completa del archivo que pretendemos importar.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, eval=TRUE, echo=FALSE}
 library(readr)
-library(dplyr)
 ```
 
-Algunas de las ventajas de utilizar `read_csv()` son:
+```{r, eval=FALSE}
+library(readr)
 
-* No convierte, automáticamente, las columnas con cadenas de caracteres a factores, como sí hacen por defecto las otras funciones base de *R*.
+read_csv(
+  file,
+  col_names = TRUE,
+  col_types = NULL,
+  locale = default_locale(),
+  na = c("", "NA"),
+  quoted_na = TRUE,
+  quote = "\"",
+  comment = "")
+```
 
-* Reconoce ocho clases diferentes de datos (enteros, lógicos, etc.), dejando el resto como cadenas de caracteres.
+La paquetería *readr* fue desarrollada recientemente para lidiar con la lectura de archivos grandes rápidamente. El paquete proporciona reemplazos para funciones como *read.table()*, *read.csv()* entre otras. Esta paquetería proporciona funciones que suelen ser mucho más rápidas que las funciones base que proporciona *R*.
 
-Veamos un ejemplo: 
+**Ventajas de readr:**
 
-La tabla de datos llamada **proyecto_ames_train** contiene un conjunto de datos con información del precio de venta de casas y sus respectivas características. 
+-   Por lo general, son mucho más rápidos (\~ 10x) que sus funciones equivalentes.
 
-```{r}
-tidy <- read_csv("data/proyecto_ames_train.csv")
+-   Producen tibbles:
 
-glimpse(tidy)
+    -   No convierten vectores de caracteres en factores.
+    -   No usan nombres de filas ni modifican los nombres de columnas.
+
+-   Reproducibilidad
+
+-   No convierte, automáticamente, las columnas con cadenas de caracteres a factores, como sí hacen por defecto las otras funciones base de *R*.
+
+-   Reconoce ocho clases diferentes de datos (enteros, lógicos, etc.), dejando el resto como cadenas de caracteres.
+
+Veamos un ejemplo:
+
+La base de datos llamada [AmesHousing](https://drive.google.com/file/d/1pCHFeF8rtQiUcip9zf4Xtk0pAQ-5Om-r/view?usp=sharing) contiene un conjunto de datos con información de la Oficina del Tasador de Ames utilizada para calcular los valores tasados para las propiedades residenciales individuales vendidas en Ames, Iowa, de 2006 a 2010. FUENTES: Ames, Oficina del Tasador de Iowa.
+
+Pueden descargar los datos para la clase [aquí](https://drive.google.com/drive/folders/1sNlUWIvKHOTt7qywhPIyl1X00do_Y6Zo?usp=sharing)
+
+```{r, eval=TRUE}
+
+base <- read.csv("data/ames.csv") 
+head(base, 2)
+
+tidy <- read_csv("data/ames.csv")
+head(tidy, 2)
 ```
 
 ¿Y si el archivo que necesitamos leer esta en excel?
 
+### Archivos txt
+
+Uno de los archivos más comunes es el *.txt*. La librería *readr* también cuenta con funciones que permiten leer fácilmente los datos contenidos en formato tabular.
+
+```{r}
+ames_txt <- read_delim("data/ames.txt", delim = ";", col_names = TRUE)
+head(ames_txt, 2)
+```
+
+La función *read_delim()* funciona para leer archivos con diferentes delimitadores posibles, es decir, es posible especificar si las columnas están separadas por espacios, comas, punto y coma, tabulador o algún otro delimitador ("",",",";","\t", "\@").
+
+Adicionalmente, se puede especificar si el archivo contiene encabezado, si existen renglones a saltar, codificación, tipo de variable y muchas más opciones. Todos estos detalles pueden consultarse en la documentación de ayuda.
 
 ### Archivos *xls* y *xlsx*
 
 La paquetería *readxl* facilita la obtención de datos tabulares de archivos de *Excel*. Admite tanto el formato *.xls* heredado como el formato *.xlsx* moderno basado en *XML*.
 
-Esta paqueteía pone a disposición las siguientes funciones:
+Esta paquetería pone a disposición las siguientes funciones:
 
-* `read_xlsx()` lee un archivo con extensión *xlsx*.
+-   `read_xlsx()` lee un archivo con extensión *xlsx*.
 
-* `read_excel()` determina si el archivo es de tipo *xls* o *xlsx* para después 
-llamar a una de las fuciones mencionadas anteriormente. 
+```{r, eval=FALSE}
 
-**EJERCICIO:** Leer archivos propios en formato de Excel
+read_xlsx(
+ path,
+ sheet = NULL,
+ range = NULL,
+ col_names = TRUE,
+ col_types = NULL,
+ na = "", 
+ trim_ws = TRUE,
+ skip = 0,
+ n_max = Inf,
+ guess_max = min(1000, n_max),
+ progress = readxl_progress(),
+ .name_repair = "unique"
+ )
+```
 
-## Tidyverse
+-   `read_xls()` lee un archivo con extensión *xls*.
 
-Ahora que ya sabemos como cargar datos, aprenderemos como manipularlos con *dplyr.* El paquete *dplyr* proporciona un conjunto de funciones muy útiles para manipular data frames y así reducir el número de repeticiones, la probabilidad de cometer errores y el número de caracteres que hay que escribir. Como valor extra, podemos encontrar que la gramática de *dplyr* es más fácil de entender.
+```{r, eval=FALSE}
+read_xls(
+ path,
+ sheet = NULL,
+ range = NULL,
+ col_names = TRUE,
+ col_types = NULL,
+ na = "", 
+ trim_ws = TRUE,
+ skip = 0,
+ n_max = Inf, 
+ guess_max = min(1000, n_max),
+ progress = readxl_progress(),
+ .name_repair = "unique"
+ )
+```
 
-Revisaremos algunas de sus funciones **más usadas** (*verbos*), así como el uso de **pipes** (%>%) para combinarlas.
+-   `read_excel()` determina si el archivo es de tipo *xls* o *xlsx* para después llamar a una de las funciones mencionadas anteriormente.
 
-- select()
+```{r, eval=FALSE}
+read_excel(
+ path,
+ sheet = NULL,
+ range = NULL,
+ col_names = TRUE,
+ col_types = NULL, 
+ na = "",
+ trim_ws = TRUE, 
+ skip = 0,
+ n_max = Inf,
+ guess_max = min(1000, n_max),
+ progress = readxl_progress(),
+ .name_repair = "unique"
+ )
+```
 
-- filter()
+**EJERCICIO:** Leer archivo excel de la carpeta del curso
 
-- arrange()
+### Archivos json
 
-- mutate()
+Se utiliza la función `fromJSON` de la paquetería *jsonlite*
 
-- summarise()
+```{r, eval=TRUE}
 
-- join()
+library(jsonlite)
 
-- group_by()
+base_json <- jsonlite::fromJSON("data/ames.json")
+head(base_json, 2)
+```
+
+### Archivos rds
+
+Un tipo de archivo que resulta de particular interés, es el *.RDS*. Este archivo comprime cualquier objeto o resultado que sea usado o producido en *R*. Uno puede almacenar el objeto de interés de la siguiente manera:
+
+```{r, eval=FALSE}
+saveRDS(base_json, "data/ames.rds")
+```
+
+Puede observarse que en el explorador de archivos se encuentra ahora el nuevo archivo con extensión *.rds*, el cual puede ser posteriormente incorporado a una sesión de *R* para seguir trabajando con él.
+
+```{r}
+base_rds <- readRDS("data/ames.rds")
+```
+
+Algunas de las grandes ventajas que tiene almacenar los archivos en formato rds, son las siguientes:
+
+-   No es necesario volver a ejecutar procesos largos cuando ya se ha logrado realizar una vez.
+
+-   El tiempo de lectura de la información es considerablemente más rápido.
+
+
+
+## Consultas de datos
+
+Ahora que ya se ha estudiado la manera de cargar datos, aprenderemos como manipularlos con *dplyr.* El paquete *dplyr* proporciona un conjunto de funciones muy útiles para manipular data-frames y así reducir el número de repeticiones, la probabilidad de cometer errores y el número de caracteres que hay que escribir. Como valor extra, podemos encontrar que la gramática de *dplyr* es más fácil de entender.
+
+Revisaremos algunas de sus funciones **más usadas** (*verbos*), así como el uso de **pipes** (%\>%) para combinarlas.
+
+-   select()
+
+-   filter()
+
+-   arrange()
+
+-   mutate()
+
+-   summarise()
+
+-   join()
+
+-   group_by()
 
 Primero tenemos que instalar y cargar la paquetería (parte de tidyverse):
 
-```{r, eval=TRUE, warning=FALSE, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
+# install.packages("dplyr")
+
 library(dplyr)
+library(readr)
 ```
 
-Usaremos el dataset *iris* que se encuentra en la paquetería *datasets* (el alumno puede hacer el ejercicio con la tabla de su elección)
+Usaremos el dataset *AmesHousing* que se proporcionó en el capítulo anterior (el alumno puede hacer el ejercicio con datos propios)
+
+```{r, warning=FALSE, message=FALSE}
+ames_housing <- read_csv("data/ames.csv")
+
+glimpse(ames_housing)
+```
+
+### Seleccionar columnas
+
+Observamos que nuestros datos tienen 2,930 observaciones y 74 variables, con *select()* podemos seleccionar las variables que se indiquen.
 
 ```{r}
-head(iris,10)
+ames_housing %>% select(Lot_Area, Neighborhood, Year_Sold, Sale_Price)
 ```
 
-
-### select()
-
-Observamos que nuestros datos tienen 150 observaciones y 5 variables, con *select()* podemos seleccionar las variables que le indiquemos.
-
-```{r}
-select_ejemplo <- iris %>% select(Sepal.Length, Petal.Length, Species)
-head(select_ejemplo,10)
-```
-
-::: {.infobox .pin data-latex="{pin}"}
+::: {.infobox .tip data-latex="{tip}"}
 **¡¡ RECORDAR !!**
 
-El operador pipe (%>%) se usa para **conectar múltiples acciones**
+El operador pipe (%\>%) se usa para conectar un elemento con una función o acción a realizar. En este caso solo se indica que en los datos de ames se seleccionan 4 variables.
 :::
 
-En este caso solo le indicamos que en los datos de iris se seleccionan 3 varibles y se guarda este nuevo data frame en la variable *select_ejemplo*.
-
-Con *select()* y *contains* podemos seleccionar varibles con alguna cadena de texto. 
+Con *select()* y *contains()* podemos seleccionar variables con alguna cadena de texto.
 
 ```{r}
-select_ejemplo <- iris %>% select(contains("Sepal"))
-head(select_ejemplo, 5)
+ames_housing %>% select(contains("Area"))
 ```
 
 De igual manera, con *select()*, *ends_with* y *start_with()* podemos seleccionar que inicien o terminen con alguna cadena de texto.
 
 ```{r}
-select_ejemplo <- iris %>% select(starts_with("Sepal"), ends_with("Length"))
-head(select_ejemplo, 5)
+ames_housing %>% select(starts_with("Garage"))
 ```
-
 
 Funciones útiles para *select()*:
 
-- *contains()*: Selecciona variables cuyo nombre contiene la cadena de texto.
+-   *contains()*: Selecciona variables cuyo nombre contiene la cadena de texto.
 
-- *ends_with()*: Selecciona variables cuyo nombre termina con la cadena de caracteres.
+-   *ends_with()*: Selecciona variables cuyo nombre termina con la cadena de caracteres.
 
-- *everything()*: Selecciona todas las columnas.
+-   *everything()*: Selecciona todas las columnas.
 
-- *matches()*: Selecciona las variables cuyos nombres coinciden con una expresión regular.
+-   *matches()*: Selecciona las variables cuyos nombres coinciden con una expresión regular.
 
-- *num_range()*: Selecciona las variables por posición.
+-   *num_range()*: Selecciona las variables por posición.
 
-- *start_with()*: Selecciona variables cuyos nombres empiezan con la cadena de caracteres.
+-   *start_with()*: Selecciona variables cuyos nombres empiezan con la cadena de caracteres.
 
-- *any_of*: Selecciona cualquiera de estas variables, en caso de existir
+-   *any_of*: Selecciona cualquiera de estas variables, en caso de existir
 
+**EJERCICIO:**
 
-### filter()
+-   Crear con datos propios una consulta de columnas usando como variable auxiliar cada una de las listadas anteriormente. Será suficiente con realizar un ejemplo de cada una.
 
-La función filter nos permite filtrar filas según una condición, primero notemos que la variable *Species* tiene tres categorías.
+### Filtrar observaciones
 
-```{r}
-iris %>% count(Species)
-```
-
-Ahora usaremos la función *filter* para quedarnos solo con las observaciones de la especie virginica.
+La función *filter()* nos permite filtrar filas según una condición, primero notemos que la variable *Sale_Condition* tiene distintas categorías.
 
 ```{r}
-ejemplo_filter <- iris %>% filter(Species=="virginica")
-head(ejemplo_filter, 5)
+table(ames_housing$Sale_Condition)
 ```
 
+::: {.infobox .important data-latex="{important}"}
+**¡¡ SPOILER !!**
+
+En un modelo predictivo de Machine Learning, **no es correcto** agregar columnas cuyo valor es conocido hasta el momento de la observación. Es decir, no deben agregarse variables que no se conozca su valor al momento de la predicción, como es el caso de *condición de venta*.
+:::
+
+Ahora usaremos la función *filter* para quedarnos solo con las observaciones con condición de venta "normal".
+
+```{r}
+ames_housing %>% filter(Sale_Condition == "Normal")
+```
 
 También se puede usar para filtrar variables numéricas:
 
 ```{r}
-ejemplo_filter<- iris %>% filter(Sepal.Length > 5 & Sepal.Width >= 3.5)
-head(ejemplo_filter, 5)
+ames_housing %>% filter(Lot_Area > 1000 & Sale_Price >= 150000)
 ```
 
-Notemos que en el ejemplo anterior usamos *&*, que nos ayuda a filtrar por dos condiciones.
+Notemos que en el ejemplo anterior se usa *&*, que ayuda a filtrar por dos condiciones.
 
-También podemos usar *|* para filtrar por alguna de las dos condiciones.
+También puede usarse *\|* para filtrar por alguna de las dos condiciones.
 
 ```{r}
-ejemplo_filter<- iris %>% filter(Sepal.Length>5 | Sepal.Width>=3.5)
-head(ejemplo_filter,5)
+ames_housing %>% filter(Lot_Area < 1000 | Sale_Price <= 150000)
 ```
 
+Las condiciones pueden ser expresiones lógicas construidas mediante los operadores relacionales y lógicos:
 
-Las condiciones pueden ser expresiones lógicas construidas mediante los operadores relacionales y lógicos: 
+-   **\<** : Menor que
 
-- **<** : Menor que
+-   **\>** : Mayor que
 
-- **>** : Mayor que
+-   **==** : Igual que
 
-- **=** : Igual que
+-   **\<=** : Menor o igual que
 
-- **<=** : Menor o igual que
+-   **\>=** : Mayor o igual que
 
-- **>=** : Mayor o igual que
+-   **!=** : Diferente que
 
-- **!=** : Diferente que
+-   **%in%** : Pertenece al conjunto
 
-- **%in%** : Pertenece al conjunto
+-   **is.na** : Es NA
 
-- **is.na** : Es NA
+-   **!is.na** : No es NA
 
-- **!is.na** : No es NA
+**EJERCICIO:**
 
+-   Practicar la función de filtro de observaciones usando los operadores auxiliares.
 
-###  arrange()
+-   Concatenar el resultado de seleccionar columnas y posteriormente filtrar columnas.
 
-La función arrange() se utiliza para ordenar las filas de un data frame de acuerdo a una o varias variables. 
+### Ordenar registros
 
-Por defecto arrange() ordena las filas por orden ascendente: 
+La función *arrange()* se utiliza para ordenar las filas de un data frame de acuerdo a una o varias variables. Este ordenamiento puede ser ascendente o descendente.
+
+Por defecto *arrange()* ordena las filas por orden ascendente:
 
 ```{r}
-ejemplo_arrange <- iris %>% arrange(Sepal.Length)
-head(ejemplo_arrange, 10)
+ames_housing %>% arrange(Sale_Price)
 ```
 
-<br>
-<br>
-Si las queremos ordenar de forma ascendente lo haremos del siguiente modo: 
+<br> <br>
+
+Si las queremos ordenar de forma ascendente, lo haremos del siguiente modo:
 
 ```{r}
-ejemplo_arrange <- iris %>% arrange(desc(Sepal.Length))
-head(ejemplo_arrange, 10)
+ames_housing %>% arrange(desc(Sale_Price))
 ```
 
-
-###  mutate()
-
-Con la función mutate() podemos computar tranformaciones de variables en un data frame. A menudo, tendremos la necesidad de crear nuevas variables que se calculan a partir de variables existentes,mutate() nos proporciona una interface clara para realizar este tipo de operaciones. 
-
-Por ejemplo haremos la suma de las variables *Sepal.Lenght* y *Sepal.Width*:
+Si se desea usar dos o más columnas para realizar el ordenamiento, deben separarse por comas cada una de las características
 
 ```{r}
-ejemplo_mutate <- iris %>% 
-  select(Sepal.Length, Sepal.Width) %>%
-  mutate(Suma = Sepal.Length + Sepal.Width)
-
-head(ejemplo_mutate, 5)
+ames_housing %>% 
+ arrange(Sale_Condition, desc(Sale_Price), Lot_Area) %>% 
+ select(Sale_Condition, Sale_Price, Lot_Area)
 ```
 
-::: {.infobox .pin data-latex="{pin}"}
-**¡¡ RECORDAR !!**
+Notemos que en el ejemplo anterior usamos dos *pipes* (%\>%), como habíamos mencionado se pueden usar los necesarios para combinar funciones.
 
-Notemos que en el ejemplo anterior usamos dos *pipes* (%>%). Como habiamos mencionado se pueden usar los *pipes* necesarios para combinar tareas. 
-:::
+### Agregar / Modificar
 
+Con la función *mutate()* podemos computar transformaciones de variables en un data frame. A menudo, tendremos la necesidad de crear nuevas variables que se calculan a partir de variables existentes. La función *mutate()* proporciona una interfaz clara para realizar este tipo de operaciones.
 
-
-### summarise()
-
-La función summarise() funciona de forma análoga a la función mutate, excepto que en lugar de añadir nuevas columnas crea un nuevo data frame.
-
-Podemos usar el ejemplo anterior y calcular la media de la varible creada *Suma*:
+Por ejemplo, haremos el cálculo de la antigüedad del inmueble a partir de las variables *Year_Sold* y *Year_Remod_Add*:
 
 ```{r}
-ejemplo_summarise <- iris %>% 
-  select(Sepal.Length, Sepal.Width) %>%
-  mutate(Suma = Sepal.Length + Sepal.Width) %>%
-  summarise(Media_Suma = mean(Suma))
+ejemplo_mutate <- ames_housing %>% 
+ select(Year_Sold, Year_Remod_Add) %>%
+ mutate(Antique = Year_Sold - Year_Remod_Add)
 
-ejemplo_summarise
+ejemplo_mutate
 ```
 
-Solo fue necesario agregar un *pipe*, especificar el nombre de la varible creada y la operación a realizar.
+El ejemplo anterior crea una nueva variable. Ahora se presenta otro ejemplo en donde se modifica una variable ya creada.
 
+```{r}
+ejemplo_mutate %>% 
+ mutate(Antique = Antique * 12)
+```
+
+En este segundo ejemplo, se modifica el número de años de antigüedad y se multiplica por un factor de 12 para modificar el tiempo en una escala de meses.
+
+### Resumen estadístico
+
+La función *summarise()* se comporta de forma análoga a la función *mutate()*, excepto que en lugar de añadir nuevas columnas crea un nuevo data frame.
+
+Podemos usar el ejemplo anterior y calcular la media de la variable creada *Antique*:
+
+```{r}
+ames_housing %>% 
+ select(Year_Sold, Year_Remod_Add) %>%
+ mutate(Antique = Year_Sold - Year_Remod_Add) %>%
+ summarise(Mean_Antique = mean(Antique))
+```
+
+Solo fue necesario agregar un *pipe*, especificar el nombre de la variable creada y la operación a realizar.
 
 A continuación se muestran funciones que trabajando conjuntamente con la función summarise() facilitarán nuestro trabajo diario. Las primeras pertenecen al paquete base y las otras son del paquete dplyr. Todas ellas toman como argumento un vector y devuelven un único resultado:
 
-- *min(), max()* : Valores max y min.
+-   *min(), max()* : Valores max y min.
 
-- *mean()* : Media.
+-   *mean()* : Media.
 
-- *median()* : Mediana.
+-   *median()* : Mediana.
 
-- *sum()* : Suma de los valores.
+-   *sum()* : Suma de los valores.
 
-- *var(), sd()* : Varianza y desviación estandar.
+-   *var(), sd()* : Varianza y desviación estándar.
 
-- *first()* : Primer valor en un vector.
+-   *first()* : Primer valor en un vector.
 
-- *last()* : El último valor en un vector
+-   *last()* : El último valor en un vector
 
-- *n()* : El número de valores en un vector.
+-   *n()* : El número de valores en un vector.
 
-- *n_distinc()* : El número de valores distintos en un vector.
+-   *n_distinct()* : El número de valores distintos en un vector.
 
-- *nth()* : Extrar el valor que ocupa la posición n en un vector.
+-   *nth()* : Extrae el valor que ocupa la posición n en un vector.
 
+Mas adelante veremos como combinar esta función con la función *group_by()* para calcular estadísticos agrupados por alguna característica de interés.
 
-Mas adelante veremos como combinar esta función con la función *group_by*.
+**EJERCICIO:**
 
+* Realizar una consulta usando *summarise()* y cada una de las funciones estadísticas listadas anteriormente.
 
-### group_by()
+### Agrupamiento
 
-La función group_by() agrupa un conjunto de filas seleccionado en un conjunto de filas de resumen de acuerdo con los valores de una o más columnas o expresiones.
+La función *group_by()* agrupa un conjunto de filas de acuerdo con los valores de una o más columnas o expresiones.
 
-Usaremos el ejemplo anterior, primero creamos nuestra nueva variable *Suma*, despues agrupamos por especie y al final sacamos la media de la variable *Suma* pero esta vez, por la función *group_by*, nos regresara una media por cada grupo creado, es decir, nos regresara el promedio de la suma por especie.
+Usaremos el ejemplo anterior. Primero creamos nuestra nueva variable *Antique*, después agrupamos por vecindario y al final calculamos la media de la variable *Antique*. Gracias al agrupamiento, nos regresara una media por cada grupo creado, es decir, nos regresara el promedio de la antigüedad por vecindario.
 
 ```{r,warning=FALSE,message=FALSE}
-ejemplo_groupby <- iris %>%
-  mutate(Suma = Sepal.Length + Sepal.Width) %>%
-  group_by(Species) %>%
-  summarise(Media_Suma = mean(Suma))
+ames_housing %>% 
+ mutate(Antique = Year_Sold - Year_Remod_Add) %>% 
+ group_by(Neighborhood) %>% 
+ summarise(Mean_Antique = round(mean(Antique), 0))
 
-ejemplo_groupby
 ```
 
-### left_join()
+::: {.infobox .tip data-latex="{tip}"}
+**¡¡ RECORDAR !!**
 
-Una operación fundamental por agregar a nuestro flujo de trabajo es el cruce de tablas, las cuales pueden proceder de la misma o de distinta fuente. Comúnmente **este proceso se realiza para enriquecer y unificar la información** proveniente de distintas tablas de datos. 
+En este [link](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) se encuentra un buen resumen de las funciones básicas de *dplyr*
+:::
 
-Para lograr esta tarea es indispensable que exista una variable **llave** en ambos conjuntos de datos que sirva como puente o identificador de cada caso o renglón. Si se cuenta con la columna llave entonces será posible cruzar las tablas y lograr su enriquecimiento.
 
-En el siguiente ejemplo se muestra el uso de la variable llave a través de la columna "ID". Se puede apreciar que en la tabla final se cuenta con información de la variable "Weight" para los elementos que existen en las tablas "A" y "B". 
+## Orden y estructura
+
+```{=tex}
+\begin{center}
+"Las familias felices son todas iguales, cada familia infeliz es infeliz  a su propio modo."
+\end{center}
+```
+```{=tex}
+\begin{flushright}
+\text{- Leo Tolstoy}
+\end{flushright}
+```
+Un conjunto de datos puede ser representado de muchas maneras distintas y contener en todos los casos la misma información. Sin embargo, no todos los modos en que se presenta la información resulta óptimo para su procesamiento y análisis. Los conjuntos de datos ordenados serán más fáciles de trabajar y analizar.
+
+Algunas de las características principales que presentan los conjuntos de datos ordenados son las siguientes:
+
+1.  Cada variable debe tener su propia columna.
+
+2.  Cada observación debe tener su propio renglón.
+
+3.  Cada valor debe tener su propia celda.
 
 ```{r echo=FALSE,fig.align='center', out.width='700pt'}
-knitr::include_graphics("img/02-intro2r/left_join3.png")
+knitr::include_graphics("img/04-tidyverse/tidy-1.png")
 ```
 
-La función que hace posible el complemento de la información es llamada *left_join()*. El primer argumento de la función corresponde al conjunto de datos que se desea complementar, mientras que en el segundo argumento se ingresa el conjunto de datos con la información que enriquecerá al primer conjunto. Es necesario especificar en el argumento *"by"* el nombre de la columna llave.
+La figura anterior muestra la estructura de orden que debe tener un conjunto de datos. A pesar de que pueda parecer intuitivo y sencillo, en la práctica es considerable el número de conjuntos de datos desordenados. La limpieza y ordenamiento debe ser trabajado de forma impecable a fin de que puedan realizarse buenas prácticas. El tiempo de limpieza y ordenamiento varía mucho dependiendo de la dimensión del conjunto de datos.
+
+Algunos de los principales problemas que pueden tener los conjuntos de datos no ordenados son:
+
+-   Una variable puede estar dispersa en múltiples columnas
+-   Una observación puede estar esparcida en múltiples renglones
+
+La paquetería *tidyr* cuenta con funciones para resolver dichos problemas. Entre las principales funciones que tiene la paquetería, se encuentran *pivot_longer()*, *pivot_wider()*, *separate()* y *unite()*, mismas que se analizarán a continuación.
+
+### Pivote horizontal
+
+La función *pivot_wider()* resulta muy útil a la hora de organizar los datos. Su función consiste en **dispersar una variable clave en múltiples columnas**.
+
+Lo primero que se debe hacer para poder hacer uso de dicha función es instalar y cargar la librería.
+
+El siguiente conjunto de datos contiene el número de localidades rurales y urbanas por municipio de la Ciudad de México. Como es posible observar, algunos municipios aparecen más de una vez en el marco de datos, esto se debe a que cada municipio puede tener ambos ámbitos, rural y urbano. Para hacer que el conjunto de datos sea ordenado, es necesario que cada observación aparezca una sola vez por renglón y cada una de las categorías (rural y urbano) de la variable "Ámbito" deberá ocupar el lugar de una columna.
+
+El siguiente código muestra cómo convertir los datos no ordenados en un conjunto ordenado.
 
 ```{r}
+library(tidyr)
 
-conjuntoX <- data.frame("Llave" = LETTERS[1:8], "C1" = 1:8)
+Resumen <- readRDS("data/loc_mun_cdmx.rds")
 
-conjuntoY <- data.frame(
-  "Llave" = sample(LETTERS[11:3], size = 9, replace = T), 
-  "Ex1" = letters[2:10], 
-  "Ex2" = 1002:1010,
-  "Ex3" = paste0(letters[12:20],2:10)
+Resumen %>% pivot_wider(
+  names_from = Ambito, 
+  values_from =  Total_localidades
   )
-
-conjuntoX
-
-conjuntoY
-
-left_join(x = conjuntoX, y = conjuntoY, by = "Llave")
-
 ```
 
+En la tabla actual existe ahora un y solo un registro por cada observación (nombre de municipio en este caso). El valor que le corresponde a cada una de las columnas creadas es la frecuencia absoluta de localidades que tienen la característica "Rural" y "Urbano" respectivamente.
 
-Es posible que no todas las observaciones de un conjunto de datos estén en el otro conjunto, cuando esto sucede un aviso aparece indicando que los factores o categorías de la variable llave son diferentes. En caso de no encontrarse uno o más de los valores, el resultado para esos casos será NA (no disponible, por su traducción del inglés "Not Available"), y aparecerá siempre que no se cuente con información en un registro, como se muestra en el ejemplo anterior.
+Pero... ¿qué pasa cuando no existen todos los valores en ambas columnas? Si no se especifica la manera de llenar los datos faltantes, estos contendrán NAs. Siempre se puede elegir el caracter o número con el cual se imputan los datos faltantes.
+
+```{r}
+fish_encounters %>%
+  pivot_wider(names_from = station, values_from = seen)
+```
+
+```{r}
+fish_encounters %>%
+  pivot_wider(names_from = station, values_from = seen, values_fill = 0)
+```
+
+**Ejercicio:**
+
+1) Realiza un pivote horizontal a través del ámbito y el total de localidades. 
+
+2) Rellena los datos faltantes con ceros.
+
+
+En caso de que existan múltiples columnas que se desean dispersar mediante el pivote de una columna con múltiples categorías, es posible especificar tal re estructuración a través del siguiente código.
+
+```{r}
+us_rent_income %>% arrange(NAME)
+us_rent_income %>%
+  pivot_wider(names_from = variable, values_from = c(estimate, moe))
+```
+
+**Ejercicio:**
+
+1) Agrupa los datos de localidades por ámbito
+
+2) Agrega una columna con el porcentaje de localidades por alcaldía
+
+3) Realiza un pivote horizontal sobre el ámbito y las variables numéricas de total de localidades y su respectivo porcentaje creado en el paso anterior
+
+4) Ordena los registros de forma descendente de acuerdo con el total de localidades rural y urbano.
+
+Adicionalmente, se puede especificar una función de agregación que operara antes de acomodar los datos en las respectivas columnas indicadas. Un ejemplo de funciones agregadas en la re estructuración de tabla se muestra a continuación, donde se muestra la media de los valores en las categorías *tension* y *breaks*.
+
+```{r}
+warpbreaks <- warpbreaks[c("wool", "tension", "breaks")] %>% as_tibble()
+warpbreaks
+
+warpbreaks %>%
+  pivot_wider(
+    names_from = wool,
+    values_from = breaks,
+    values_fn = ~mean(.x, na.rm = T)
+  )
+```
+
+**Ejercicio:**
+
+1) Sobre el conjunto de localidades crea una variable con 5 categorías numéricas creadas aleatoriamente.
+
+2) Elimina la columna con el nombre del municipio.
+
+3) Crea un pivote horizontal con el ámbito, sumando el total de localidades y rellenando con ceros los datos faltantes.
+
+4) Ordena las categorías numéricas de forma ascendente.
+
+
+
+### Pivote vertical
+
+*pivot_longer()* es podría ser la función inversa de la anterior, se necesita comúnmente para ordenar los conjuntos de datos capturados en crudo, ya que a menudo no son capturados acorde a las mejores estructuras para facilitar el análisis.
+
+El conjunto de datos *relig_income* almacena recuentos basados en una encuesta que (entre otras cosas) preguntó a las personas sobre su religión e ingresos anuales:
+
+```{r}
+relig_income
+```
+
+¿Crees que ésta es la mejor estructura para la tabla? ¿Cómo imaginas que podría modificarse?
+
+Este conjunto de datos contiene tres variables:
+
+1)  religión, almacenada en las filas
+
+2)  income repartidos entre los nombres de columna
+
+3)  count almacenado en los valores de las celdas.
+
+Para ordenarlo usamos *pivot_longer()*:
+
+```{r}
+relig_income %>% 
+  pivot_longer(cols = -religion, names_to = "income", values_to = "count")
+```
+
+-   El primer argumento es el conjunto de datos para remodelar, relig_income.
+
+-   El segundo argumento describe qué columnas necesitan ser reformadas. En este caso, es cada columna aparte de religion.
+
+-   El **names_to** da el nombre de la variable que se creará a partir de los datos almacenados en los nombres de columna, es decir, ingresos.
+
+-   Los **values_to** dan el nombre de la variable que se creará a partir de los datos almacenados en el valor de la celda, es decir, count. Ni la columna names_to ni la values_to existen en relig_income, por lo que las proporcionamos como cadenas de caracteres entre comillas.
+
+### Unión de columnas
+
+Es común que en los conjuntos de datos exista información esparcida en distintas columnas que sería deseable **(en muy pocas ocasiones)** tenerlas en una sola columna. Algunos ejemplos de esta situación deseable son las fechas y claves geoestadísticas. La función *unite()* sirve para **concatenar el contenido de columnas** mediante un separador elegible.
+
+Se usará la variable de la clave geoestadística de localidades del país como ejemplo.
+
+El formato para las claves geoestadísticas para estado, municipio y localidad son claves alfanuméricas que contienen 2, 3 y 4 caracteres respectivamente. Es indispensable que al trabajar con claves geoestadísticas, las claves estén en su formato original. A continuación se hará la homologación de las claves para usar la función *unite()*.
+
+```{R message=FALSE, warning=FALSE}
+library(magrittr)
+library(readxl)
+library(stringr)
+
+Datos <- read_excel("data/Margin CONAPO.xlsx", sheet = "Margin CONAPO")
+Datos
+```
+
+Como puede apreciarse en la tabla anterior, las claves de los campos *Ent*, *Mun* y *Loc* aparecen como numéricos. La estructura deseada para estos campos es de tipo alfanumérico y de longitud 2, 3 y 4 respectivamente. Para lograr esta estructura de datos, es necesario concatenar tantos ceros como sean necesarios antes del valor actual hasta lograr la longitud deseada.
+
+```{R}
+Datos2 <- Datos %>% select(ENT, MUN, LOC)
+Datos2$ENT %<>% str_pad(width = 2, side = "left", pad = "0")
+Datos2$MUN %<>% str_pad(width = 3, side = "left", pad = "0")
+Datos2$LOC %<>% str_pad(width = 4, side = "left", pad = "0")
+
+Datos2 %>% head(5)
+
+Datos2 %>% 
+ unite("CVE_GEO", c("ENT","MUN","LOC"), sep="", remove = F) %>% 
+ head(5)
+
+Datos2 %>% 
+ unite("CVE_GEO", c("ENT","MUN","LOC"), sep="/",remove = T) %>% 
+ head(5)
+```
+
+En el código anterior se carga la librería *magrittr* para poder hacer uso del operador pipe doble "%\<\>%", que permite al igual que el operador pipe simple "%\>%", usar como argumento al primer elemento y mandarlo hacia la función definida, además de guardar el resultado final de la cadena de pipes en el argumento original que fue usado como insumo para la función. Es importante tener en cuenta que el dato será reescrito y no se podrá tener acceso a su información almacenada antes de ser usado el operador.
+
+Es opción del programador poder eliminar las variables originales que crearon la nueva variable o mantenerlas en el conjunto de datos. Esta opción está disponible en el parámetro *remove* de la función *unite()*.
+
+### Separador de columnas
+
+Los procesos que se han visto hasta ahora han tenido cada uno una función inversa, este es también el caso de la función *unite* que tiene por objetivo unir dos o más columnas en una. La función *separate()* separará una columna en dos o más dependiendo de la longitud que tenga y de las especificaciones de separación.
+
+```{R}
+Datos_unite1 <- Datos2 %>% unite("CVE_GEO", c("ENT","MUN","LOC"), sep = "", remove = T) 
+Datos_unite1 %>% head(5) 
+
+Datos_unite1 %>% 
+  separate("CVE_GEO", c("EDO","MUNI","LOC"), sep = c(2, 5), remove=F) %>% 
+  head(5)
+```
+
+Ya sea que se le especifique el número de caracteres que debe de contar para hacer un corte o que se le indique qué caracter debe identificar para hacer la separación, la función *separate()* puede dividir la columna indicada y crear nuevas a partir de la original.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="watermark"><img src="img/header.png" width="400"></div>
