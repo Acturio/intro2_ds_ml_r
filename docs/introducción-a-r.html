@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="conceptos-de-ciencia-de-datos.html"/>
-
+<link rel="next" href="visualización.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,6 +50,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -192,6 +199,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#unión-de-columnas"><i class="fa fa-check"></i><b>2.5.3</b> Unión de columnas</a></li>
 <li class="chapter" data-level="2.5.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#separador-de-columnas"><i class="fa fa-check"></i><b>2.5.4</b> Separador de columnas</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3</b> Visualización</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualización.html"><a href="visualización.html#eda-análisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
+<li class="chapter" data-level="3.2" data-path="visualización.html"><a href="visualización.html#geda-análisis-exploratorio-de-datos-gráficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html#lo-que-no-se-debe-hacer"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
+<li class="chapter" data-level="3.2.2" data-path="visualización.html"><a href="visualización.html#principios-de-visualización"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="visualización.html"><a href="visualización.html#ggplot"><i class="fa fa-check"></i><b>3.3</b> Ggplot</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="visualización.html"><a href="visualización.html#estéticas"><i class="fa fa-check"></i><b>3.3.1</b> Estéticas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="visualización.html"><a href="visualización.html#objetos-geométricos-o-capas"><i class="fa fa-check"></i><b>3.3.2</b> Objetos geométricos o capas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="visualización.html"><a href="visualización.html#facetas"><i class="fa fa-check"></i><b>3.3.3</b> Facetas</a></li>
+<li class="chapter" data-level="3.3.4" data-path="visualización.html"><a href="visualización.html#más-sobre-estéticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
+<li class="chapter" data-level="3.3.5" data-path="visualización.html"><a href="visualización.html#quick-view"><i class="fa fa-check"></i><b>3.3.5</b> Quick View</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="visualización.html"><a href="visualización.html#análisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="visualización.html"><a href="visualización.html#variables-numéricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visualización.html"><a href="visualización.html#variables-nominalescategóricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visualización.html"><a href="visualización.html#análisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a></li>
+<li class="chapter" data-level="3.6" data-path="visualización.html"><a href="visualización.html#visualización-interactiva"><i class="fa fa-check"></i><b>3.6</b> Visualización interactiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#warning"><i class="fa fa-check"></i>¡ Warning !</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="visualización.html"><a href="visualización.html#reporte-interactivos"><i class="fa fa-check"></i><b>3.7</b> Reporte interactivos</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
@@ -339,17 +374,17 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introducción-a-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a>tidy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
 <span id="cb7-2"><a href="introducción-a-r.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tidy, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 74
-##   MS_SubC…¹ MS_Zo…² Lot_F…³ Lot_A…⁴ Street Alley Lot_S…⁵ Land_…⁶ Utili…⁷ Lot_C…⁸
-##   &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-## 1 One_Stor… Reside…     141   31770 Pave   No_A… Slight… Lvl     AllPub  Corner 
-## 2 One_Stor… Reside…      80   11622 Pave   No_A… Regular Lvl     AllPub  Inside 
-## # … with 64 more variables: Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;,
-## #   Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;, Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;,
-## #   Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;, Year_Remod_Add &lt;dbl&gt;,
-## #   Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;, Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;,
-## #   Mas_Vnr_Type &lt;chr&gt;, Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;,
-## #   Bsmt_Cond &lt;chr&gt;, Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;,
-## #   BsmtFin_SF_1 &lt;dbl&gt;, BsmtFin_Type_2 &lt;chr&gt;, BsmtFin_SF_2 &lt;dbl&gt;, …</code></pre>
+##   MS_SubClass             MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##   &lt;chr&gt;                   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+## 1 One_Story_1946_and_New… Resident…          141    31770 Pave   No_A… Slightly…
+## 2 One_Story_1946_and_New… Resident…           80    11622 Pave   No_A… Regular  
+## # ℹ 67 more variables: Land_Contour &lt;chr&gt;, Utilities &lt;chr&gt;, Lot_Config &lt;chr&gt;,
+## #   Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;,
+## #   Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
+## #   Year_Remod_Add &lt;dbl&gt;, Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;,
+## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;,
+## #   Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
 <p>¿Y si el archivo que necesitamos leer esta en excel?</p>
 </div>
 <div id="archivos-txt" class="section level3 hasAnchor" number="2.3.2">
@@ -358,17 +393,17 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introducción-a-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a>ames_txt <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/ames.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb9-2"><a href="introducción-a-r.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ames_txt, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 74
-##   MS_SubC…¹ MS_Zo…² Lot_F…³ Lot_A…⁴ Street Alley Lot_S…⁵ Land_…⁶ Utili…⁷ Lot_C…⁸
-##   &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-## 1 One_Stor… Reside…     141   31770 Pave   No_A… Slight… Lvl     AllPub  Corner 
-## 2 One_Stor… Reside…      80   11622 Pave   No_A… Regular Lvl     AllPub  Inside 
-## # … with 64 more variables: Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;,
-## #   Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;, Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;,
-## #   Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;, Year_Remod_Add &lt;dbl&gt;,
-## #   Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;, Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;,
-## #   Mas_Vnr_Type &lt;chr&gt;, Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;,
-## #   Bsmt_Cond &lt;chr&gt;, Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;,
-## #   BsmtFin_SF_1 &lt;dbl&gt;, BsmtFin_Type_2 &lt;chr&gt;, BsmtFin_SF_2 &lt;dbl&gt;, …</code></pre>
+##   MS_SubClass             MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##   &lt;chr&gt;                   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+## 1 One_Story_1946_and_New… Resident…          141    31770 Pave   No_A… Slightly…
+## 2 One_Story_1946_and_New… Resident…           80    11622 Pave   No_A… Regular  
+## # ℹ 67 more variables: Land_Contour &lt;chr&gt;, Utilities &lt;chr&gt;, Lot_Config &lt;chr&gt;,
+## #   Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;,
+## #   Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
+## #   Year_Remod_Add &lt;dbl&gt;, Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;,
+## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;,
+## #   Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
 <p>La función <em>read_delim()</em> funciona para leer archivos con diferentes delimitadores posibles, es decir, es posible especificar si las columnas están separadas por espacios, comas, punto y coma, tabulador o algún otro delimitador (““,”,“,”;“,”, “@”).</p>
 <p>Adicionalmente, se puede especificar si el archivo contiene encabezado, si existen renglones a saltar, codificación, tipo de variable y muchas más opciones. Todos estos detalles pueden consultarse en la documentación de ayuda.</p>
 </div>
@@ -607,7 +642,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8     5005 Stone_Brook       2010     191500
 ##  9     5389 Stone_Brook       2010     236500
 ## 10     7500 Gilbert           2010     189000
-## # … with 2,920 more rows</code></pre>
+## # ℹ 2,920 more rows</code></pre>
 <div class="infobox tip">
 <p><strong>¡¡ RECORDAR !!</strong></p>
 <p>El operador pipe (%&gt;%) se usa para conectar un elemento con una función o acción a realizar. En este caso solo se indica que en los datos de ames se seleccionan 4 variables.</p>
@@ -627,7 +662,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8     5005            0        1280         506         0
 ##  9     5389            0        1616         608         0
 ## 10     7500            0        1804         442         0
-## # … with 2,920 more rows</code></pre>
+## # ℹ 2,920 more rows</code></pre>
 <p>De igual manera, con <em>select()</em>, <em>ends_with</em> y <em>start_with()</em> podemos seleccionar que inicien o terminen con alguna cadena de texto.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introducción-a-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Garage&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 5
@@ -643,7 +678,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8 Attchd      RFn                     2         506 Typical    
 ##  9 Attchd      RFn                     2         608 Typical    
 ## 10 Attchd      Fin                     2         442 Typical    
-## # … with 2,920 more rows</code></pre>
+## # ℹ 2,920 more rows</code></pre>
 <p>Funciones útiles para <em>select()</em>:</p>
 <ul>
 <li><p><em>contains()</em>: Selecciona variables cuyo nombre contiene la cadena de texto.</p></li>
@@ -673,70 +708,70 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>Ahora usaremos la función <em>filter</em> para quedarnos solo con las observaciones con condición de venta “normal”.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="introducción-a-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sale_Condition <span class="sc">==</span> <span class="st">&quot;Normal&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2,413 × 74
-##    MS_Sub…¹ MS_Zo…² Lot_F…³ Lot_A…⁴ Street Alley Lot_S…⁵ Land_…⁶ Utili…⁷ Lot_C…⁸
-##    &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-##  1 One_Sto… Reside…     141   31770 Pave   No_A… Slight… Lvl     AllPub  Corner 
-##  2 One_Sto… Reside…      80   11622 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  3 One_Sto… Reside…      81   14267 Pave   No_A… Slight… Lvl     AllPub  Corner 
-##  4 One_Sto… Reside…      93   11160 Pave   No_A… Regular Lvl     AllPub  Corner 
-##  5 Two_Sto… Reside…      74   13830 Pave   No_A… Slight… Lvl     AllPub  Inside 
-##  6 Two_Sto… Reside…      78    9978 Pave   No_A… Slight… Lvl     AllPub  Inside 
-##  7 One_Sto… Reside…      41    4920 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  8 One_Sto… Reside…      43    5005 Pave   No_A… Slight… HLS     AllPub  Inside 
-##  9 One_Sto… Reside…      39    5389 Pave   No_A… Slight… Lvl     AllPub  Inside 
-## 10 Two_Sto… Reside…      60    7500 Pave   No_A… Regular Lvl     AllPub  Inside 
-## # … with 2,403 more rows, 64 more variables: Land_Slope &lt;chr&gt;,
-## #   Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;, Bldg_Type &lt;chr&gt;,
-## #   House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
+##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+##  1 One_Story_1946_and_Ne… Resident…          141    31770 Pave   No_A… Slightly…
+##  2 One_Story_1946_and_Ne… Resident…           80    11622 Pave   No_A… Regular  
+##  3 One_Story_1946_and_Ne… Resident…           81    14267 Pave   No_A… Slightly…
+##  4 One_Story_1946_and_Ne… Resident…           93    11160 Pave   No_A… Regular  
+##  5 Two_Story_1946_and_Ne… Resident…           74    13830 Pave   No_A… Slightly…
+##  6 Two_Story_1946_and_Ne… Resident…           78     9978 Pave   No_A… Slightly…
+##  7 One_Story_PUD_1946_an… Resident…           41     4920 Pave   No_A… Regular  
+##  8 One_Story_PUD_1946_an… Resident…           43     5005 Pave   No_A… Slightly…
+##  9 One_Story_PUD_1946_an… Resident…           39     5389 Pave   No_A… Slightly…
+## 10 Two_Story_1946_and_Ne… Resident…           60     7500 Pave   No_A… Regular  
+## # ℹ 2,403 more rows
+## # ℹ 67 more variables: Land_Contour &lt;chr&gt;, Utilities &lt;chr&gt;, Lot_Config &lt;chr&gt;,
+## #   Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;,
+## #   Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
 ## #   Year_Remod_Add &lt;dbl&gt;, Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;,
 ## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
-## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;,
-## #   Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p>También se puede usar para filtrar variables numéricas:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="introducción-a-r.html#cb31-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Lot_Area <span class="sc">&gt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> Sale_Price <span class="sc">&gt;=</span> <span class="dv">150000</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1,677 × 74
-##    MS_Sub…¹ MS_Zo…² Lot_F…³ Lot_A…⁴ Street Alley Lot_S…⁵ Land_…⁶ Utili…⁷ Lot_C…⁸
-##    &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-##  1 One_Sto… Reside…     141   31770 Pave   No_A… Slight… Lvl     AllPub  Corner 
-##  2 One_Sto… Reside…      81   14267 Pave   No_A… Slight… Lvl     AllPub  Corner 
-##  3 One_Sto… Reside…      93   11160 Pave   No_A… Regular Lvl     AllPub  Corner 
-##  4 Two_Sto… Reside…      74   13830 Pave   No_A… Slight… Lvl     AllPub  Inside 
-##  5 Two_Sto… Reside…      78    9978 Pave   No_A… Slight… Lvl     AllPub  Inside 
-##  6 One_Sto… Reside…      41    4920 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  7 One_Sto… Reside…      43    5005 Pave   No_A… Slight… HLS     AllPub  Inside 
-##  8 One_Sto… Reside…      39    5389 Pave   No_A… Slight… Lvl     AllPub  Inside 
-##  9 Two_Sto… Reside…      60    7500 Pave   No_A… Regular Lvl     AllPub  Inside 
-## 10 Two_Sto… Reside…      75   10000 Pave   No_A… Slight… Lvl     AllPub  Corner 
-## # … with 1,667 more rows, 64 more variables: Land_Slope &lt;chr&gt;,
-## #   Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;, Bldg_Type &lt;chr&gt;,
-## #   House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
+##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+##  1 One_Story_1946_and_Ne… Resident…          141    31770 Pave   No_A… Slightly…
+##  2 One_Story_1946_and_Ne… Resident…           81    14267 Pave   No_A… Slightly…
+##  3 One_Story_1946_and_Ne… Resident…           93    11160 Pave   No_A… Regular  
+##  4 Two_Story_1946_and_Ne… Resident…           74    13830 Pave   No_A… Slightly…
+##  5 Two_Story_1946_and_Ne… Resident…           78     9978 Pave   No_A… Slightly…
+##  6 One_Story_PUD_1946_an… Resident…           41     4920 Pave   No_A… Regular  
+##  7 One_Story_PUD_1946_an… Resident…           43     5005 Pave   No_A… Slightly…
+##  8 One_Story_PUD_1946_an… Resident…           39     5389 Pave   No_A… Slightly…
+##  9 Two_Story_1946_and_Ne… Resident…           60     7500 Pave   No_A… Regular  
+## 10 Two_Story_1946_and_Ne… Resident…           75    10000 Pave   No_A… Slightly…
+## # ℹ 1,667 more rows
+## # ℹ 67 more variables: Land_Contour &lt;chr&gt;, Utilities &lt;chr&gt;, Lot_Config &lt;chr&gt;,
+## #   Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;,
+## #   Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
 ## #   Year_Remod_Add &lt;dbl&gt;, Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;,
 ## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
-## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;,
-## #   Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p>Notemos que en el ejemplo anterior se usa <em>&amp;</em>, que ayuda a filtrar por dos condiciones.</p>
 <p>También puede usarse <em>|</em> para filtrar por alguna de las dos condiciones.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="introducción-a-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Lot_Area <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">|</span> Sale_Price <span class="sc">&lt;=</span> <span class="dv">150000</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1,271 × 74
-##    MS_Sub…¹ MS_Zo…² Lot_F…³ Lot_A…⁴ Street Alley Lot_S…⁵ Land_…⁶ Utili…⁷ Lot_C…⁸
-##    &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-##  1 One_Sto… Reside…      80   11622 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  2 One_Sto… Reside…     140   19138 Pave   No_A… Regular Lvl     AllPub  Corner 
-##  3 One_Sto… Reside…       0   11241 Pave   No_A… Slight… Lvl     AllPub  CulDSac
-##  4 One_Sto… Reside…       0   12537 Pave   No_A… Slight… Lvl     AllPub  CulDSac
-##  5 One_Sto… Reside…      65    8450 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  6 One_Sto… Reside…      70    8400 Pave   No_A… Regular Lvl     AllPub  Corner 
-##  7 One_Sto… Reside…      70   10500 Pave   No_A… Regular Lvl     AllPub  FR2    
-##  8 Two_Sto… Reside…      21    1680 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  9 Two_Sto… Reside…      21    1680 Pave   No_A… Regular Lvl     AllPub  Inside 
-## 10 Two_Sto… Reside…      21    1680 Pave   No_A… Regular Lvl     AllPub  Inside 
-## # … with 1,261 more rows, 64 more variables: Land_Slope &lt;chr&gt;,
-## #   Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;, Bldg_Type &lt;chr&gt;,
-## #   House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
+##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+##  1 One_Story_1946_and_Ne… Resident…           80    11622 Pave   No_A… Regular  
+##  2 One_Story_1946_and_Ne… Resident…          140    19138 Pave   No_A… Regular  
+##  3 One_Story_1946_and_Ne… Resident…            0    11241 Pave   No_A… Slightly…
+##  4 One_Story_1946_and_Ne… Resident…            0    12537 Pave   No_A… Slightly…
+##  5 One_Story_1946_and_Ne… Resident…           65     8450 Pave   No_A… Regular  
+##  6 One_Story_1946_and_Ne… Resident…           70     8400 Pave   No_A… Regular  
+##  7 One_Story_1946_and_Ne… Resident…           70    10500 Pave   No_A… Regular  
+##  8 Two_Story_PUD_1946_an… Resident…           21     1680 Pave   No_A… Regular  
+##  9 Two_Story_PUD_1946_an… Resident…           21     1680 Pave   No_A… Regular  
+## 10 Two_Story_PUD_1946_an… Resident…           21     1680 Pave   No_A… Regular  
+## # ℹ 1,261 more rows
+## # ℹ 67 more variables: Land_Contour &lt;chr&gt;, Utilities &lt;chr&gt;, Lot_Config &lt;chr&gt;,
+## #   Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;,
+## #   Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
 ## #   Year_Remod_Add &lt;dbl&gt;, Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;,
 ## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
-## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;,
-## #   Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p>Las condiciones pueden ser expresiones lógicas construidas mediante los operadores relacionales y lógicos:</p>
 <ul>
 <li><p><strong>&lt;</strong> : Menor que</p></li>
@@ -761,48 +796,48 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>Por defecto <em>arrange()</em> ordena las filas por orden ascendente:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="introducción-a-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Sale_Price)</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 74
-##    MS_Sub…¹ MS_Zo…² Lot_F…³ Lot_A…⁴ Street Alley Lot_S…⁵ Land_…⁶ Utili…⁷ Lot_C…⁸
-##    &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-##  1 One_Sto… Reside…      68    9656 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  2 One_Sto… A_agr        80   14584 Pave   No_A… Regular Low     AllPub  Inside 
-##  3 One_Sto… C_all        60    7879 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  4 One_Sto… Reside…      60    8088 Pave   Grav… Regular Lvl     AllPub  Inside 
-##  5 One_Sto… C_all        50    9000 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  6 One_and… Reside…      50    5925 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  7 One_Sto… Reside…      50    5000 Pave   No_A… Regular Low     AllPub  Inside 
-##  8 Two_Sto… C_all        50    8500 Pave   Paved Regular Lvl     AllPub  Inside 
-##  9 One_Sto… C_all        72    9392 Pave   No_A… Regular Lvl     AllPub  Corner 
-## 10 One_Sto… Reside…      50    5925 Pave   No_A… Regular Lvl     AllPub  Corner 
-## # … with 2,920 more rows, 64 more variables: Land_Slope &lt;chr&gt;,
-## #   Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;, Bldg_Type &lt;chr&gt;,
-## #   House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
+##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+##  1 One_Story_1945_and_Ol… Resident…           68     9656 Pave   No_A… Regular  
+##  2 One_Story_1946_and_Ne… A_agr               80    14584 Pave   No_A… Regular  
+##  3 One_Story_1945_and_Ol… C_all               60     7879 Pave   No_A… Regular  
+##  4 One_Story_1945_and_Ol… Resident…           60     8088 Pave   Grav… Regular  
+##  5 One_Story_1946_and_Ne… C_all               50     9000 Pave   No_A… Regular  
+##  6 One_and_Half_Story_Fi… Resident…           50     5925 Pave   No_A… Regular  
+##  7 One_Story_1946_and_Ne… Resident…           50     5000 Pave   No_A… Regular  
+##  8 Two_Story_1945_and_Ol… C_all               50     8500 Pave   Paved Regular  
+##  9 One_Story_1945_and_Ol… C_all               72     9392 Pave   No_A… Regular  
+## 10 One_Story_1945_and_Ol… Resident…           50     5925 Pave   No_A… Regular  
+## # ℹ 2,920 more rows
+## # ℹ 67 more variables: Land_Contour &lt;chr&gt;, Utilities &lt;chr&gt;, Lot_Config &lt;chr&gt;,
+## #   Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;,
+## #   Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
 ## #   Year_Remod_Add &lt;dbl&gt;, Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;,
 ## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
-## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;,
-## #   Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p><br> <br></p>
 <p>Si las queremos ordenar de forma ascendente, lo haremos del siguiente modo:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="introducción-a-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Sale_Price))</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 74
-##    MS_Sub…¹ MS_Zo…² Lot_F…³ Lot_A…⁴ Street Alley Lot_S…⁵ Land_…⁶ Utili…⁷ Lot_C…⁸
-##    &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
-##  1 Two_Sto… Reside…     104   21535 Pave   No_A… Slight… Lvl     AllPub  Corner 
-##  2 Two_Sto… Reside…     160   15623 Pave   No_A… Slight… Lvl     AllPub  Corner 
-##  3 Two_Sto… Reside…     118   35760 Pave   No_A… Slight… Lvl     AllPub  CulDSac
-##  4 One_Sto… Reside…     106   12720 Pave   No_A… Regular HLS     AllPub  Inside 
-##  5 One_Sto… Reside…     100   12919 Pave   No_A… Slight… Lvl     AllPub  Inside 
-##  6 One_Sto… Reside…     105   13693 Pave   No_A… Regular Lvl     AllPub  Inside 
-##  7 One_Sto… Reside…      52   51974 Pave   No_A… Slight… Lvl     AllPub  CulDSac
-##  8 Two_Sto… Reside…     114   17242 Pave   No_A… Slight… Lvl     AllPub  Inside 
-##  9 Two_Sto… Reside…     107   13891 Pave   No_A… Regular Lvl     AllPub  Inside 
-## 10 Two_Sto… Reside…      85   16056 Pave   No_A… Slight… Lvl     AllPub  Inside 
-## # … with 2,920 more rows, 64 more variables: Land_Slope &lt;chr&gt;,
-## #   Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;, Bldg_Type &lt;chr&gt;,
-## #   House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
+##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
+##  1 Two_Story_1946_and_Ne… Resident…          104    21535 Pave   No_A… Slightly…
+##  2 Two_Story_1946_and_Ne… Resident…          160    15623 Pave   No_A… Slightly…
+##  3 Two_Story_1946_and_Ne… Resident…          118    35760 Pave   No_A… Slightly…
+##  4 One_Story_1946_and_Ne… Resident…          106    12720 Pave   No_A… Regular  
+##  5 One_Story_1946_and_Ne… Resident…          100    12919 Pave   No_A… Slightly…
+##  6 One_Story_1946_and_Ne… Resident…          105    13693 Pave   No_A… Regular  
+##  7 One_Story_1946_and_Ne… Resident…           52    51974 Pave   No_A… Slightly…
+##  8 Two_Story_1946_and_Ne… Resident…          114    17242 Pave   No_A… Slightly…
+##  9 Two_Story_1946_and_Ne… Resident…          107    13891 Pave   No_A… Regular  
+## 10 Two_Story_1946_and_Ne… Resident…           85    16056 Pave   No_A… Slightly…
+## # ℹ 2,920 more rows
+## # ℹ 67 more variables: Land_Contour &lt;chr&gt;, Utilities &lt;chr&gt;, Lot_Config &lt;chr&gt;,
+## #   Land_Slope &lt;chr&gt;, Neighborhood &lt;chr&gt;, Condition_1 &lt;chr&gt;, Condition_2 &lt;chr&gt;,
+## #   Bldg_Type &lt;chr&gt;, House_Style &lt;chr&gt;, Overall_Cond &lt;chr&gt;, Year_Built &lt;dbl&gt;,
 ## #   Year_Remod_Add &lt;dbl&gt;, Roof_Style &lt;chr&gt;, Roof_Matl &lt;chr&gt;,
 ## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
-## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;,
-## #   Bsmt_Exposure &lt;chr&gt;, BsmtFin_Type_1 &lt;chr&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p>Si se desea usar dos o más columnas para realizar el ordenamiento, deben separarse por comas cada una de las características</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="introducción-a-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> </span>
 <span id="cb39-2"><a href="introducción-a-r.html#cb39-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">arrange</span>(Sale_Condition, <span class="fu">desc</span>(Sale_Price), Lot_Area) <span class="sc">%&gt;%</span> </span>
@@ -820,7 +855,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8 Abnorml            287000    15498
 ##  9 Abnorml            258000    12090
 ## 10 Abnorml            257000    10994
-## # … with 2,920 more rows</code></pre>
+## # ℹ 2,920 more rows</code></pre>
 <p>Notemos que en el ejemplo anterior usamos dos <em>pipes</em> (%&gt;%), como habíamos mencionado se pueden usar los necesarios para combinar funciones.</p>
 </div>
 <div id="agregar-modificar" class="section level3 hasAnchor" number="2.4.4">
@@ -845,7 +880,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8      2010           1992      18
 ##  9      2010           1996      14
 ## 10      2010           1999      11
-## # … with 2,920 more rows</code></pre>
+## # ℹ 2,920 more rows</code></pre>
 <p>El ejemplo anterior crea una nueva variable. Ahora se presenta otro ejemplo en donde se modifica una variable ya creada.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="introducción-a-r.html#cb43-1" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate <span class="sc">%&gt;%</span> </span>
 <span id="cb43-2"><a href="introducción-a-r.html#cb43-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Antique <span class="sc">*</span> <span class="dv">12</span>)</span></code></pre></div>
@@ -862,7 +897,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8      2010           1992     216
 ##  9      2010           1996     168
 ## 10      2010           1999     132
-## # … with 2,920 more rows</code></pre>
+## # ℹ 2,920 more rows</code></pre>
 <p>En este segundo ejemplo, se modifica el número de años de antigüedad y se multiplica por un factor de 12 para modificar el tiempo en una escala de meses.</p>
 </div>
 <div id="resumen-estadístico" class="section level3 hasAnchor" number="2.4.5">
@@ -918,7 +953,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8 Edwards                       33
 ##  9 Gilbert                        9
 ## 10 Green_Hills                   14
-## # … with 18 more rows</code></pre>
+## # ℹ 18 more rows</code></pre>
 <div class="infobox tip">
 <p><strong>¡¡ RECORDAR !!</strong></p>
 <p>En este <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">link</a> se encuentra un buen resumen de las funciones básicas de <em>dplyr</em></p>
@@ -1045,7 +1080,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8 05    Arkansas   rent          709     5
 ##  9 06    California income      29454   109
 ## 10 06    California rent         1358     3
-## # … with 94 more rows</code></pre>
+## # ℹ 94 more rows</code></pre>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introducción-a-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a>us_rent_income <span class="sc">%&gt;%</span></span>
 <span id="cb57-2"><a href="introducción-a-r.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe))</span></code></pre></div>
 <pre><code>## # A tibble: 52 × 6
@@ -1061,7 +1096,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8 10    Delaware                       31560          1076        247       10
 ##  9 11    District of Columbia           43198          1424        681       17
 ## 10 12    Florida                        25952          1077         70        3
-## # … with 42 more rows</code></pre>
+## # ℹ 42 more rows</code></pre>
 <p><strong>Ejercicio:</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>Agrupa los datos de localidades por ámbito</p></li>
@@ -1085,7 +1120,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8 A     L           26
 ##  9 A     L           67
 ## 10 A     M           18
-## # … with 44 more rows</code></pre>
+## # ℹ 44 more rows</code></pre>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introducción-a-r.html#cb61-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span></span>
 <span id="cb61-2"><a href="introducción-a-r.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
 <span id="cb61-3"><a href="introducción-a-r.html#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> wool,</span>
@@ -1112,29 +1147,28 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>El conjunto de datos <em>relig_income</em> almacena recuentos basados en una encuesta que (entre otras cosas) preguntó a las personas sobre su religión e ingresos anuales:</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="introducción-a-r.html#cb63-1" aria-hidden="true" tabindex="-1"></a>relig_income</span></code></pre></div>
 <pre><code>## # A tibble: 18 × 11
-##    religion      `&lt;$10k` $10-2…¹ $20-3…² $30-4…³ $40-5…⁴ $50-7…⁵ $75-1…⁶ $100-…⁷
-##    &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-##  1 Agnostic           27      34      60      81      76     137     122     109
-##  2 Atheist            12      27      37      52      35      70      73      59
-##  3 Buddhist           27      21      30      34      33      58      62      39
-##  4 Catholic          418     617     732     670     638    1116     949     792
-##  5 Don’t know/r…      15      14      15      11      10      35      21      17
-##  6 Evangelical …     575     869    1064     982     881    1486     949     723
-##  7 Hindu               1       9       7       9      11      34      47      48
-##  8 Historically…     228     244     236     238     197     223     131      81
-##  9 Jehovah&#39;s Wi…      20      27      24      24      21      30      15      11
-## 10 Jewish             19      19      25      25      30      95      69      87
-## 11 Mainline Prot     289     495     619     655     651    1107     939     753
-## 12 Mormon             29      40      48      51      56     112      85      49
-## 13 Muslim              6       7       9      10       9      23      16       8
-## 14 Orthodox           13      17      23      32      32      47      38      42
-## 15 Other Christ…       9       7      11      13      13      14      18      14
-## 16 Other Faiths       20      33      40      46      49      63      46      40
-## 17 Other World …       5       2       3       4       2       7       3       4
-## 18 Unaffiliated      217     299     374     365     341     528     407     321
-## # … with 2 more variables: `&gt;150k` &lt;dbl&gt;, `Don&#39;t know/refused` &lt;dbl&gt;, and
-## #   abbreviated variable names ¹​`$10-20k`, ²​`$20-30k`, ³​`$30-40k`, ⁴​`$40-50k`,
-## #   ⁵​`$50-75k`, ⁶​`$75-100k`, ⁷​`$100-150k`</code></pre>
+##    religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
+##    &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Agnostic      27        34        60        81        76       137        122
+##  2 Atheist       12        27        37        52        35        70         73
+##  3 Buddhist      27        21        30        34        33        58         62
+##  4 Catholic     418       617       732       670       638      1116        949
+##  5 Don’t k…      15        14        15        11        10        35         21
+##  6 Evangel…     575       869      1064       982       881      1486        949
+##  7 Hindu          1         9         7         9        11        34         47
+##  8 Histori…     228       244       236       238       197       223        131
+##  9 Jehovah…      20        27        24        24        21        30         15
+## 10 Jewish        19        19        25        25        30        95         69
+## 11 Mainlin…     289       495       619       655       651      1107        939
+## 12 Mormon        29        40        48        51        56       112         85
+## 13 Muslim         6         7         9        10         9        23         16
+## 14 Orthodox      13        17        23        32        32        47         38
+## 15 Other C…       9         7        11        13        13        14         18
+## 16 Other F…      20        33        40        46        49        63         46
+## 17 Other W…       5         2         3         4         2         7          3
+## 18 Unaffil…     217       299       374       365       341       528        407
+## # ℹ 3 more variables: `$100-150k` &lt;dbl&gt;, `&gt;150k` &lt;dbl&gt;,
+## #   `Don&#39;t know/refused` &lt;dbl&gt;</code></pre>
 <p>¿Crees que ésta es la mejor estructura para la tabla? ¿Cómo imaginas que podría modificarse?</p>
 <p>Este conjunto de datos contiene tres variables:</p>
 <ol style="list-style-type: decimal">
@@ -1158,7 +1192,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8 Agnostic $100-150k            109
 ##  9 Agnostic &gt;150k                 84
 ## 10 Agnostic Don&#39;t know/refused    96
-## # … with 170 more rows</code></pre>
+## # ℹ 170 more rows</code></pre>
 <ul>
 <li><p>El primer argumento es el conjunto de datos para remodelar, relig_income.</p></li>
 <li><p>El segundo argumento describe qué columnas necesitan ser reformadas. En este caso, es cada columna aparte de religion.</p></li>
@@ -1190,9 +1224,10 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  8     1 Aguascalient…     1 Aguasc…   121 Cabeci…     184     44   4.55   32.6 
 ##  9     1 Aguascalient…     1 Aguasc…   125 Cañada…     395     82   8.86   23.9 
 ## 10     1 Aguascalient…     1 Aguasc…   126 Cañada…     509    123   4.75   19.6 
-## # … with 107,448 more rows, and 11 more variables: SEXC10 &lt;dbl&gt;, SEE10 &lt;dbl&gt;,
-## #   SAGUAE10 &lt;dbl&gt;, PROM_OCC10 &lt;dbl&gt;, PISOTIE10 &lt;dbl&gt;, SREFRI10 &lt;dbl&gt;,
-## #   IM_2010 &lt;dbl&gt;, GM_2010 &lt;chr&gt;, IMC0A100 &lt;dbl&gt;, LUG_NAL &lt;dbl&gt;, LUG_EDO &lt;dbl&gt;</code></pre>
+## # ℹ 107,448 more rows
+## # ℹ 11 more variables: SEXC10 &lt;dbl&gt;, SEE10 &lt;dbl&gt;, SAGUAE10 &lt;dbl&gt;,
+## #   PROM_OCC10 &lt;dbl&gt;, PISOTIE10 &lt;dbl&gt;, SREFRI10 &lt;dbl&gt;, IM_2010 &lt;dbl&gt;,
+## #   GM_2010 &lt;chr&gt;, IMC0A100 &lt;dbl&gt;, LUG_NAL &lt;dbl&gt;, LUG_EDO &lt;dbl&gt;</code></pre>
 <p>Como puede apreciarse en la tabla anterior, las claves de los campos <em>Ent</em>, <em>Mun</em> y <em>Loc</em> aparecen como numéricos. La estructura deseada para estos campos es de tipo alfanumérico y de longitud 2, 3 y 4 respectivamente. Para lograr esta estructura de datos, es necesario concatenar tantos ceros como sean necesarios antes del valor actual hasta lograr la longitud deseada.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="introducción-a-r.html#cb69-1" aria-hidden="true" tabindex="-1"></a>Datos2 <span class="ot">&lt;-</span> Datos <span class="sc">%&gt;%</span> <span class="fu">select</span>(ENT, MUN, LOC)</span>
 <span id="cb69-2"><a href="introducción-a-r.html#cb69-2" aria-hidden="true" tabindex="-1"></a>Datos2<span class="sc">$</span>ENT <span class="sc">%&lt;&gt;%</span> <span class="fu">str_pad</span>(<span class="at">width =</span> <span class="dv">2</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>, <span class="at">pad =</span> <span class="st">&quot;0&quot;</span>)</span>
@@ -1262,6 +1297,9 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <img src="img/header.png" width="400">
 </div>
 
+<div class="watermark">
+<p><img src="img/header.png" width="400"/></p>
+</div>
 </div>
 </div>
 </div>
@@ -1292,8 +1330,8 @@ $('.pipehover_select_one_row tr').hover(function() {
           </div>
         </div>
       </div>
-<a href="conceptos-de-ciencia-de-datos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="conceptos-de-ciencia-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualización.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
