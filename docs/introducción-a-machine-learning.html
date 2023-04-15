@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning</title>
+  <meta name="description" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning" />
+  
+  <meta name="twitter:description" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualización.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li|
+|:-:|  
+<center>Introducción a Ciencia de Datos y Machine Learning</center>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>BIENVENIDA</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i>Objetivo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#instructores"><i class="fa fa-check"></i>Instructores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#alcances-del-curso"><i class="fa fa-check"></i>Alcances del curso</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i>Temario:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos"><i class="fa fa-check"></i>Definiendo conceptos:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a></li>
+<li class="chapter" data-level="1.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#requisitos"><i class="fa fa-check"></i><b>1.3</b> Requisitos</a></li>
+<li class="chapter" data-level="1.4" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aplicaciones"><i class="fa fa-check"></i><b>1.4</b> Aplicaciones</a></li>
+<li class="chapter" data-level="1.5" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#tipos-de-algoritmos"><i class="fa fa-check"></i><b>1.5</b> Tipos de algoritmos</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-supervisado"><i class="fa fa-check"></i><b>1.5.1</b> Aprendizaje supervisado</a></li>
+<li class="chapter" data-level="1.5.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-no-supervisado"><i class="fa fa-check"></i><b>1.5.2</b> Aprendizaje no supervisado</a></li>
+<li class="chapter" data-level="1.5.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-por-refuerzo"><i class="fa fa-check"></i><b>1.5.3</b> Aprendizaje por refuerzo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#ciclo-de-un-proyecto"><i class="fa fa-check"></i><b>1.6</b> Ciclo de un proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#cómo-obtener-r"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>R</em>?</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.3</b> Lectura de datos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-csv"><i class="fa fa-check"></i><b>2.3.1</b> Archivos <em>csv</em></a></li>
+<li class="chapter" data-level="2.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-txt"><i class="fa fa-check"></i><b>2.3.2</b> Archivos txt</a></li>
+<li class="chapter" data-level="2.3.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-xls-y-xlsx"><i class="fa fa-check"></i><b>2.3.3</b> Archivos <em>xls</em> y <em>xlsx</em></a></li>
+<li class="chapter" data-level="2.3.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-json"><i class="fa fa-check"></i><b>2.3.4</b> Archivos json</a></li>
+<li class="chapter" data-level="2.3.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-rds"><i class="fa fa-check"></i><b>2.3.5</b> Archivos rds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#consultas-de-datos"><i class="fa fa-check"></i><b>2.4</b> Consultas de datos</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#seleccionar-columnas"><i class="fa fa-check"></i><b>2.4.1</b> Seleccionar columnas</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#filtrar-observaciones"><i class="fa fa-check"></i><b>2.4.2</b> Filtrar observaciones</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ordenar-registros"><i class="fa fa-check"></i><b>2.4.3</b> Ordenar registros</a></li>
+<li class="chapter" data-level="2.4.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agregar-modificar"><i class="fa fa-check"></i><b>2.4.4</b> Agregar / Modificar</a></li>
+<li class="chapter" data-level="2.4.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>2.4.5</b> Resumen estadístico</a></li>
+<li class="chapter" data-level="2.4.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agrupamiento"><i class="fa fa-check"></i><b>2.4.6</b> Agrupamiento</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#orden-y-estructura"><i class="fa fa-check"></i><b>2.5</b> Orden y estructura</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-horizontal"><i class="fa fa-check"></i><b>2.5.1</b> Pivote horizontal</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-vertical"><i class="fa fa-check"></i><b>2.5.2</b> Pivote vertical</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#unión-de-columnas"><i class="fa fa-check"></i><b>2.5.3</b> Unión de columnas</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#separador-de-columnas"><i class="fa fa-check"></i><b>2.5.4</b> Separador de columnas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3</b> Visualización</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualización.html"><a href="visualización.html#eda-análisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
+<li class="chapter" data-level="3.2" data-path="visualización.html"><a href="visualización.html#geda-análisis-exploratorio-de-datos-gráficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html#lo-que-no-se-debe-hacer"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
+<li class="chapter" data-level="3.2.2" data-path="visualización.html"><a href="visualización.html#principios-de-visualización"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="visualización.html"><a href="visualización.html#ggplot"><i class="fa fa-check"></i><b>3.3</b> Ggplot</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="visualización.html"><a href="visualización.html#estéticas"><i class="fa fa-check"></i><b>3.3.1</b> Estéticas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="visualización.html"><a href="visualización.html#objetos-geométricos-o-capas"><i class="fa fa-check"></i><b>3.3.2</b> Objetos geométricos o capas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="visualización.html"><a href="visualización.html#facetas"><i class="fa fa-check"></i><b>3.3.3</b> Facetas</a></li>
+<li class="chapter" data-level="3.3.4" data-path="visualización.html"><a href="visualización.html#más-sobre-estéticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
+<li class="chapter" data-level="3.3.5" data-path="visualización.html"><a href="visualización.html#quick-view"><i class="fa fa-check"></i><b>3.3.5</b> Quick View</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="visualización.html"><a href="visualización.html#análisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="visualización.html"><a href="visualización.html#variables-numéricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visualización.html"><a href="visualización.html#variables-nominalescategóricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visualización.html"><a href="visualización.html#análisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a></li>
+<li class="chapter" data-level="3.6" data-path="visualización.html"><a href="visualización.html#visualización-interactiva"><i class="fa fa-check"></i><b>3.6</b> Visualización interactiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#warning"><i class="fa fa-check"></i>¡ Warning !</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="visualización.html"><a href="visualización.html#reporte-interactivos"><i class="fa fa-check"></i><b>3.7</b> Reporte interactivos</a></li>
+</ul></li>
+<li class="part"><span><b>Parte 2: Machine Learning</b></span></li>
+<li class="chapter" data-level="4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#regresión-vs-clasificación"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#sesgo-vs-varianza"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off"><i class="fa fa-check"></i><b>4.2.1</b> Balance entre sesgo y varianza o Trade-off</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-total"><i class="fa fa-check"></i><b>4.2.2</b> Error total</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#overfitting"><i class="fa fa-check"></i><b>4.2.3</b> Overfitting</a></li>
+<li class="chapter" data-level="4.2.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#underfitting"><i class="fa fa-check"></i><b>4.2.4</b> Underfitting</a></li>
+<li class="chapter" data-level="4.2.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-irreducible"><i class="fa fa-check"></i><b>4.2.5</b> Error irreducible</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#orden-y-estructura-de-proyecto"><i class="fa fa-check"></i><b>4.3</b> Orden y estructura de proyecto</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#plantilla-de-estructura-proyecto"><i class="fa fa-check"></i><b>4.3.1</b> Plantilla de estructura proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#partición-de-datos"><i class="fa fa-check"></i><b>4.4</b> Partición de datos</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.4.1</b> Métodos comunes para particionar datos</a></li>
+<li class="chapter" data-level="4.4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#conjunto-de-validación"><i class="fa fa-check"></i><b>4.4.2</b> Conjunto de validación</a></li>
+<li class="chapter" data-level="4.4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#leave-one-out-cross-validation"><i class="fa fa-check"></i><b>4.4.3</b> Leave-one-out cross-validation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#v-fold-cross-validation"><i class="fa fa-check"></i><b>4.4.4</b> V Fold Cross Validation</a></li>
+<li class="chapter" data-level="4.4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#medidas-de-ajuste"><i class="fa fa-check"></i><b>4.4.5</b> Medidas de ajuste</a></li>
+<li class="chapter" data-level="4.4.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.4.6</b> Validación cruzada para series de tiempo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pre-procesamiento-de-datos"><i class="fa fa-check"></i><b>4.5</b> Pre-procesamiento de datos</a></li>
+<li class="chapter" data-level="4.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#ingeniería-de-datos"><i class="fa fa-check"></i><b>4.6</b> Ingeniería de datos</a></li>
+<li class="chapter" data-level="4.7" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#recetas"><i class="fa fa-check"></i><b>4.7</b> Recetas</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pasos-y-estructura-de-recetas"><i class="fa fa-check"></i><b>4.7.1</b> Pasos y estructura de recetas</a></li>
+<li class="chapter" data-level="4.7.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#imputaciones"><i class="fa fa-check"></i><b>4.7.2</b> Imputaciones</a></li>
+<li class="chapter" data-level="4.7.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#agregar-o-modificar-columnas"><i class="fa fa-check"></i><b>4.7.3</b> Agregar o modificar columnas</a></li>
+<li class="chapter" data-level="4.7.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#interacciones"><i class="fa fa-check"></i><b>4.7.4</b> Interacciones</a></li>
+<li class="chapter" data-level="4.7.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#transformaciones-generales"><i class="fa fa-check"></i><b>4.7.5</b> Transformaciones generales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#datos-y-tipos-de-modelos"><i class="fa fa-check"></i><b>4.8</b> Datos y tipos de modelos</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#separación-de-los-datos"><i class="fa fa-check"></i><b>4.8.1</b> Separación de los datos</a></li>
+<li class="chapter" data-level="4.8.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta"><i class="fa fa-check"></i><b>4.8.2</b> Definición de la receta</a></li>
+<li class="chapter" data-level="4.8.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#separación-de-los-datos-1"><i class="fa fa-check"></i><b>4.8.3</b> Separación de los datos</a></li>
+<li class="chapter" data-level="4.8.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta-1"><i class="fa fa-check"></i><b>4.8.4</b> Definición de la receta</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a Ciencia de Datos y Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción-a-machine-learning" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Introducción a Machine Learning<a href="introducción-a-machine-learning.html#introducción-a-machine-learning" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Como se había mencionado, el Machine Learning es una disciplina del campo de la
+Inteligencia Artificial que, a través de algoritmos, dota a los ordenadores de
+la capacidad de identificar patrones en datos para hacer predicciones. Este
+aprendizaje permite a los computadores realizar tareas específicas de forma
+autónoma.</p>
+<p>El término se utilizó por primera vez en 1959. Sin embargo, ha ganado relevancia
+en los últimos años debido al aumento de la capacidad de computación y al <em>BOOM</em>
+de los datos.</p>
+<p>Un algoritmo para computadoras puede ser pensado como una receta. Describe
+exactamente qué pasos se realizan uno tras otro. Los ordenadores no entienden
+las recetas de cocina, sino los lenguajes de programación: En ellos, el
+algoritmo se descompone en pasos formales (comandos) que el ordenador puede
+entender.</p>
+<p><img src="img/06-ml/WebQuest.gif" width="400pt" style="display: block; margin: auto;" /></p>
+<p>La cuestión no es solo saber para qué sirve el Machine Learning, sino que saber
+cómo funciona y cómo poder implementarlo en la industria para aprovecharse de
+sus beneficios. Hay ciertos pasos que usualmente se siguen para crear un modelo
+de Machine Learning. Estos son típicamente realizados por científicos de los
+datos que trabajan en estrecha colaboración con los profesionales de los
+negocios para los que se está desarrollando el modelo.</p>
+<ul>
+<li><strong>Seleccionar y preparar un conjunto de datos de entrenamiento</strong></li>
+</ul>
+<p>Los <strong>datos de entrenamiento</strong> son un conjunto de datos representativos de los
+datos que el modelo de Machine Learning ingerirá para resolver el problema que
+está diseñado para resolver.</p>
+<p>Los datos de entrenamiento deben prepararse adecuadamente: aleatorizados y
+comprobados en busca de desequilibrios o sesgos que puedan afectar al
+entrenamiento. También deben dividirse en dos subconjuntos: el <strong>subconjunto de
+entrenamiento</strong>, que se utilizará para entrenar el algoritmo, y el <strong>subconjunto
+de validación</strong>, que se utilizará para probarlo y perfeccionarlo.</p>
+<p><img src="img/06-ml/train-and-test.png" width="600pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Elegir un algoritmo para ejecutarlo en el conjunto de datos de
+entrenamiento</strong></li>
+</ul>
+<p>Este es uno de los pasos más importantes, ya que se debe elegir qué algoritmo
+utilizar, siendo este un conjunto de pasos de procesamiento estadístico. El tipo
+de algoritmo depende del tipo (supervisado o no supervisado), la cantidad de
+datos del conjunto de datos de entrenamiento y del tipo de problema que se debe
+resolver.</p>
+<p><img src="img/06-ml/armas-modelos.jpg" width="600pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Entrenamiento del algoritmo para crear el modelo</strong></li>
+</ul>
+<p>El entrenamiento del algoritmo es un proceso iterativo: implica ejecutar las
+variables a través del algoritmo, comparar el resultado con los resultados que
+debería haber producido, ajustar los pesos y los sesgos dentro del algoritmo que
+podrían dar un resultado más exacto, y ejecutar las variables de nuevo hasta que
+el algoritmo devuelva el resultado correcto la mayoría de las veces. El
+algoritmo resultante, entrenado y preciso, es el modelo de Machine Learning.</p>
+<p><img src="img/06-ml/entrenamiento.jpg" width="600pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Usar y mejorar el modelo</strong></li>
+</ul>
+<p>El paso final es utilizar el modelo con nuevos datos y, en el mejor de los
+casos, para que mejore en precisión y eficacia con el tiempo. De dónde procedan
+los nuevos datos dependerá del problema que se resuelva. Por ejemplo, un modelo
+de Machine Learning diseñado para identificar el spam ingerirá mensajes de
+correo electrónico, mientras que un modelo de Machine Learning que maneja una
+aspiradora robot ingerirá datos que resulten de la interacción en el mundo real
+con muebles movidos o nuevos objetos en la habitación.</p>
+<p><img src="img/06-ml/competencia.jpg" width="600pt" style="display: block; margin: auto;" /></p>
+<div id="análisis-supervisado-vs-no-supervisado" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Análisis Supervisado vs No supervisado<a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los algoritmos de Machine Learning se dividen en tres categorías, siendo las dos
+primeras las más comunes:</p>
+<p><img src="img/06-ml/ml2.png" width="750pt" height="500pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Aprendizaje supervisado</strong>: estos algoritmos cuentan con un aprendizaje
+previo basado en un sistema de etiquetas asociadas a unos datos que les
+permiten tomar decisiones o hacer predicciones.</li>
+</ul>
+<p>Algunos ejemplos son:</p>
+<pre><code>- Un detector de spam que etiqueta un e-mail como spam o no.
+
+- Predecir precios de casas
+
+- Clasificación de imagenes
+
+- Predecir el clima
+
+- ¿Quiénes son los clientes descontentos?</code></pre>
+<ul>
+<li><strong>Aprendizaje no supervisado:</strong> en el aprendizaje supervisado, la idea
+principal es aprender bajo supervisión, donde la señal de supervisión se
+nombra como valor objetivo o etiqueta. En el aprendizaje no supervisado,
+carecemos de este tipo de etiqueta. Por lo tanto, necesitamos encontrar
+nuestro camino sin ninguna supervisión ni guía. Esto simplemente significa
+que necesitamos descubrir qué es qué por nosotros mismos.</li>
+</ul>
+<p>Algunos ejemplos son:</p>
+<pre><code>- Encontrar segmentos de clientes.
+
+- Reducir la complejidad de un problema
+
+- Selección de variables
+
+- Encontrar grupos
+
+- Reducción de dimensionalidad</code></pre>
+<ul>
+<li><strong>Aprendizaje por refuerzo:</strong> su objetivo es que un algoritmo aprenda a
+partir de la propia experiencia. Esto es, que sea capaz de tomar la mejor
+decisión ante diferentes situaciones de acuerdo a un proceso de prueba y
+error en el que se recompensan las decisiones correctas.</li>
+</ul>
+<p>Algunos ejemplos son:</p>
+<pre><code>- Reconocimiento facial
+
+- Diagnósticos médicos
+
+- Clasificar secuencias de ADN</code></pre>
+<div id="regresión-vs-clasificación" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Regresión vs clasificación<a href="introducción-a-machine-learning.html#regresión-vs-clasificación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Existen dos tipos principales de aprendizaje supervisado, esto depende del tipo
+de la variable respuesta:</p>
+<div id="clasificación-1" class="section level4 unnumbered hasAnchor">
+<h4>Clasificación<a href="introducción-a-machine-learning.html#clasificación-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>En el aprendizaje supervisado, los algoritmos de clasificación se usan cuando el
+resultado es una etiqueta discreta. Esto quiere decir que se utilizan cuando la
+respuesta se fundamenta en conjunto finito de resultados.</p>
+</div>
+<div id="regresión-1" class="section level4 unnumbered hasAnchor">
+<h4>Regresión<a href="introducción-a-machine-learning.html#regresión-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>El análisis de regresión es un subcampo del aprendizaje automático supervisado
+cuyo objetivo es establecer un método para la relación entre un cierto número de
+características y una variable objetivo continua.</p>
+<p><br/></p>
+<p><img src="img/06-ml/regresion_clasificacion.png" width="700pt" height="450pt" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div>
+<div id="sesgo-vs-varianza" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Sesgo vs varianza<a href="introducción-a-machine-learning.html#sesgo-vs-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el mundo de Machine Learning cuando desarrollamos un modelo nos esforzamos
+para hacer que sea lo más preciso, ajustando los parámetros, pero la realidad es
+que no se puede construir un modelo 100% preciso ya que nunca pueden estar
+libres de errores.</p>
+<p>Comprender cómo las diferentes fuentes de error generan sesgo y varianza nos
+ayudará a mejorar el proceso de ajuste de datos, lo que resulta en modelos más
+precisos, adicionalmente también evitará el error de sobre-ajuste y falta de
+ajuste.</p>
+<div id="balance-entre-sesgo-y-varianza-o-trade-off" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Balance entre sesgo y varianza o Trade-off<a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El objetivo de cualquier algoritmo supervisado de Machine Learning es lograr un
+sesgo bajo, una baja varianza y a su vez el algoritmo debe lograr un buen
+rendimiento de predicción.</p>
+<p><img src="img/06-ml/3-1-3-tradeoff.jpeg" width="650pt" height="450pt" style="display: block; margin: auto;" /></p>
+<p>El sesgo frente a la varianza se refiere a la precisión frente a la consistencia
+de los modelos entrenados por su algoritmo. Podemos diagnosticarlos de la
+siguiente manera:</p>
+<p><img src="img/06-ml/3-1-3-altobias.jpeg" width="650pt" height="350pt" style="display: block; margin: auto;" /></p>
+<p>Los algoritmos de baja varianza (alto sesgo) tienden a ser menos complejos, con
+una estructura subyacente simple o rígida.</p>
+<p><img src="img/06-ml/3-1-3-bajobias.jpeg" width="650pt" height="350pt" style="display: block; margin: auto;" /></p>
+<p>Los algoritmos de bajo sesgo (alta varianza) tienden a ser más complejos, con
+una estructura subyacente flexible.</p>
+<p>No hay escapatoria a la relación entre el sesgo y la varianza en Machine
+Learning, aumentar el sesgo disminuirá la varianza, aumentar la varianza
+disminuirá el sesgo.</p>
+</div>
+<div id="error-total" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Error total<a href="introducción-a-machine-learning.html#error-total" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Comprender el sesgo y la varianza es fundamental para comprender el
+comportamiento de los modelos de predicción, pero en general lo que realmente
+importa es el error general, no la descomposición específica. El punto ideal
+para cualquier modelo es el nivel de complejidad en el que el aumento en el
+sesgo es equivalente a la reducción en la varianza.</p>
+<p>Para construir un buen modelo, necesitamos encontrar un buen equilibrio entre el
+sesgo y la varianza de manera que minimice el error total.</p>
+<p><img src="img/06-ml/3-1-3-biasvar.png" width="650pt" height="350pt" style="display: block; margin: auto;" /></p>
+</div>
+<div id="overfitting" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Overfitting<a href="introducción-a-machine-learning.html#overfitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>El modelo es muy particular.</p></li>
+<li><p>Error debido a la varianza</p></li>
+<li><p>Durante el entrenamiento tiene un desempeño muy bueno, pero al pasar nuevos
+datos su desempeño es malo.</p></li>
+</ul>
+</div>
+<div id="underfitting" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Underfitting<a href="introducción-a-machine-learning.html#underfitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>El modelo es demasiado general.</p></li>
+<li><p>Error debido al sesgo.</p></li>
+<li><p>Durante el entrenamiento no tiene un buen desempeño.</p></li>
+</ul>
+<p><img src="img/06-ml/over-under.jpg" width="600pt" height="350pt" style="display: block; margin: auto;" /></p>
+</div>
+<div id="error-irreducible" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Error irreducible<a href="introducción-a-machine-learning.html#error-irreducible" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El error irreducible no se puede reducir, independientemente de qué algoritmo se
+usa. También se le conoce como ruido y, por lo general, proviene por factores
+como variables desconocidas que influyen en el mapeo de las variables de entrada
+a la variable de salida, un conjunto de características incompleto o un problema
+mal enmarcado. Acá es importante comprender que no importa cuán bueno hagamos
+nuestro modelo, nuestros datos tendrán cierta cantidad de ruido o un error
+irreductible que no se puede eliminar.</p>
+</div>
+</div>
+<div id="orden-y-estructura-de-proyecto" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Orden y estructura de proyecto<a href="introducción-a-machine-learning.html#orden-y-estructura-de-proyecto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Resulta elemental contar con una adecuada <strong>estructura de carpetas que permitan
+al analista mantener orden y control a lo largo de todo el proyecto</strong>. Gran
+parte del caos en los problemas de analítica de datos nace desde el momento en
+que no se sabe en donde ubicar cada uno de los archivos necesarios para el
+proyecto.</p>
+<div id="plantilla-de-estructura-proyecto" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Plantilla de estructura proyecto<a href="introducción-a-machine-learning.html#plantilla-de-estructura-proyecto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En esta sección, se presenta una introducción a la librería
+<a href="http://projecttemplate.net/"><strong>ProjectTemplate</strong></a>, la cual facilita una
+estructura predeterminada que ayudará como punto de partida para mantener orden
+y control en cada momento del proyecto.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="introducción-a-machine-learning.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ProjectTemplate)</span>
+<span id="cb103-2"><a href="introducción-a-machine-learning.html#cb103-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-3"><a href="introducción-a-machine-learning.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">create.project</span>(<span class="at">project.name =</span> <span class="st">&#39;intro2dsml&#39;</span>, <span class="at">rstudio.project =</span> T)</span></code></pre></div>
+<p><strong>create.project()</strong> creará toda la estructura de carpetas para un nuevo
+proyecto. Configurará todos los directorios relevantes y sus contenidos
+iniciales. Para aquellos que solo desean la funcionalidad mínima, el argumento
+de <em>template</em> se puede establecer en <em>minimal</em> para crear un subconjunto de
+directorios predeterminados de ProjectTemplate.</p>
+<p><img src="img/06-ml/18_folder_structure.png" width="600px" height="300px" style="display: block; margin: auto;" /></p>
+<ul>
+<li><p><strong>cache:</strong> En esta carpeta se almacenarán los datos que desear cargarse
+automáticamente cuando se cargue la sesión del proyecto.</p></li>
+<li><p><strong>config:</strong> Se realiza la configuración de <em>R</em> y su sesión, la cual será
+establecida cada que se abra el proyecto.</p></li>
+<li><p><strong>data:</strong> Se almacenan las fuentes de información crudas necesarias en el
+proyecto. En caso de encontrarse codificadas en algún formato de archivo
+soportado por la librería, automáticamente serán cargadas a la sesión con la
+función <code>load.project()</code></p></li>
+<li><p><strong>diagnostics:</strong> En este folder puedes almacenar cualquier script usado para
+realizar diagnósticos sobre los datos. Es particularmente útil para al
+análisis de elementos corruptos o problemáticos dentro del conjunto de
+datos.</p></li>
+<li><p><strong>doc:</strong> En este folder puede almacenarse cualquier documentación que haya
+escrito sobre el análisis. También se puede usar como directorio raíz para
+las páginas de <a href="https://github.com/"><strong>GitHub</strong></a> para crear un sitio web de
+proyecto.</p></li>
+<li><p><strong>graphs:</strong> Sirve para almacenar las gráficas producidas por el análisis</p></li>
+<li><p><strong>lib:</strong> Aquí se almacenarán todos los archivos que proporcionen una
+funcionalidad útil para su trabajo, pero que no constituyan un análisis
+estadístico per se. Específicamente, debe usar el script lib/helpers.R para
+organizar cualquier función que use en su proyecto que no sea lo
+suficientemente general como para pertenecer a un paquete. Si tiene una
+configuración específica del proyecto que le gustaría almacenar en el objeto
+de configuración, puede especificarla en lib/globals.R.</p></li>
+<li><p><strong>logs:</strong> Aquí puede almacenarse un archivo de registro de cualquier trabajo
+que haya realizado en este proyecto. Si va a registrar su trabajo, se
+recomienda utilizar el paquete <em>log4r</em>, que <em>ProjectTemplate</em> cargará
+automáticamente si activa la opción de configuración de registro. El nivel
+de registro se puede establecer a través de la configuración <em>logging_level</em>
+en la configuración, el valor predeterminado es “INFO”.</p></li>
+<li><p><strong>munge:</strong> En este <em>folder</em> puede almacenarse cualquier código de
+pre-procesamiento o manipulación de datos para el proyecto. Por ejemplo, si
+necesita agregar columnas en tiempo de ejecución, fusionar conjuntos de
+datos normalizados o censurar globalmente cualquier punto de datos, ese
+código debe almacenarse en el directorio <em>munge.</em> Los scripts de
+pre-procesamiento almacenados en munge se ejecutarán en orden alfabético
+cuando se llame a la función <em>load.project()</em>, por lo que debe anteponerse
+números a los nombres de archivo para indicar su orden secuencial.</p></li>
+<li><p><strong>profiling:</strong> Aquí puede almacenar cualquier script que use para comparar y
+cronometrar su código.</p></li>
+<li><p><strong>reports:</strong> Aquí puede almacenar cualquier informe de salida, como
+versiones de tablas HTML o LaTeX, que produzca. Los documentos de sweave o
+brew también deben ir en el directorio de informes.</p></li>
+<li><p><strong>src:</strong> Aquí se almacenarán los <strong>scripts de análisis estadístico</strong>
+finales. Debe agregar el siguiente fragmento de código al comienzo de cada
+secuencia de comandos de análisis:
+<code>library('ProjectTemplate); load.project()</code>. También debe hacer todo lo
+posible para asegurarse de que cualquier código compartido entre los
+análisis en src se mueva al directorio munge; si lo hace, puede ejecutar
+todos los análisis en el directorio src <strong>en paralelo</strong>. Una versión futura
+de ProjectTemplate proporcionará herramientas para ejecutar automáticamente
+cada análisis individual de src en paralelo.</p></li>
+<li><p><strong>tests:</strong> Aquí puede almacenarse cualquier caso de prueba para las
+funciones que ha escrito. Los archivos de prueba deben usar pruebas de
+estilo <em>testthat</em> para que pueda llamar a la función <code>test.project()</code> para
+ejecutar automáticamente todo su código de prueba.</p></li>
+<li><p><em>README:</em> En este archivo, debe escribir algunas notas para ayudar a
+orientar a los recién llegados a su proyecto.</p></li>
+<li><p><em>TODO:</em> En este archivo, debe escribir una lista de futuras mejoras y
+correcciones de errores que planea realizar en sus análisis.</p></li>
+</ul>
+<p>Si algunas o todas estas carpetas resultan innecesarias, puede comenzarse con
+una versión simplificada a través del comando:</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="introducción-a-machine-learning.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create.project</span>(<span class="at">project.name =</span> <span class="st">&#39;intro2dsml&#39;</span>, <span class="at">template=</span><span class="st">&#39;minimal&#39;</span>)</span></code></pre></div>
+<p><img src="img/06-ml/19_create_project_minimal.png" width="600px" height="300px" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="partición-de-datos" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Partición de datos<a href="introducción-a-machine-learning.html#partición-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="img/06-ml/3-5-particion-datos.jpg" width="150pt" height="150pt" style="display: block; margin: auto auto auto 0;" /></p>
+<p>Cuando hay una gran cantidad de datos disponibles, una estrategia inteligente es
+asignar subconjuntos específicos de datos para diferentes tareas, en lugar de
+asignar la mayor cantidad posible solo a la estimación de los parámetros del
+modelo.</p>
+<p>Si el conjunto inicial de datos no es lo suficientemente grande, habrá cierta
+superposición de cómo y cuándo se asignan nuestros datos, y es importante contar
+con una metodología sólida para la partición de datos.</p>
+<div id="métodos-comunes-para-particionar-datos" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Métodos comunes para particionar datos<a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El enfoque principal para la validación del modelo es dividir el conjunto de
+datos existente en dos conjuntos distintos:</p>
+<ul>
+<li><p><strong>Entrenamiento:</strong> Este conjunto suele contener la mayoría de los datos, los
+cuales sirven para la construcción de modelos donde se pueden ajustar
+diferentes modelos, se investigan estrategias de ingeniería de
+características, etc.</p>
+<p>La mayor parte del proceso de modelado se utiliza este conjunto.</p></li>
+<li><p><strong>Prueba:</strong> La otra parte de las observaciones se coloca en este conjunto.
+Estos datos se mantienen en reserva hasta que se elijan uno o dos modelos
+como los de mejor rendimiento.</p>
+<p>El conjunto de prueba se utiliza como árbitro final para determinar la
+eficiencia del modelo, por lo que es fundamental mirar el conjunto de prueba
+una sola vez.</p></li>
+</ul>
+<p>Supongamos que asignamos el <span class="math inline">\(80\%\)</span> de los datos al conjunto de entrenamiento y
+el <span class="math inline">\(20\%\)</span> restante a las pruebas. El método más común es utilizar un muestreo
+aleatorio simple. El paquete <em>rsample</em> tiene herramientas para realizar
+divisiones de datos como esta; la función <code>initial_split()</code> fue creada para este
+propósito.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="introducción-a-machine-learning.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb105-2"><a href="introducción-a-machine-learning.html#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="introducción-a-machine-learning.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb105-4"><a href="introducción-a-machine-learning.html#cb105-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-5"><a href="introducción-a-machine-learning.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fijar un número aleatorio con para que los resultados puedan ser reproducibles </span></span>
+<span id="cb105-6"><a href="introducción-a-machine-learning.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb105-7"><a href="introducción-a-machine-learning.html#cb105-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-8"><a href="introducción-a-machine-learning.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Partición 80/20 de los datos</span></span>
+<span id="cb105-9"><a href="introducción-a-machine-learning.html#cb105-9" aria-hidden="true" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.80</span>)</span>
+<span id="cb105-10"><a href="introducción-a-machine-learning.html#cb105-10" aria-hidden="true" tabindex="-1"></a>ames_split</span></code></pre></div>
+<pre><code>## &lt;Training/Testing/Total&gt;
+## &lt;2344/586/2930&gt;</code></pre>
+<p>La información impresa denota la cantidad de datos en el conjunto de
+entrenamiento <span class="math inline">\((n = 2,344)\)</span>, la cantidad en el conjunto de prueba <span class="math inline">\((n = 586)\)</span> y
+el tamaño del grupo original de muestras <span class="math inline">\((n = 2,930)\)</span>.</p>
+<p>El objeto <code>ames_split</code> es un objeto <em>rsplit</em> y solo contiene la información de
+partición; para obtener los conjuntos de datos resultantes, aplicamos dos
+funciones más:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="introducción-a-machine-learning.html#cb107-1" aria-hidden="true" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
+<span id="cb107-2"><a href="introducción-a-machine-learning.html#cb107-2" aria-hidden="true" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span>  <span class="fu">testing</span>(ames_split)</span>
+<span id="cb107-3"><a href="introducción-a-machine-learning.html#cb107-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-4"><a href="introducción-a-machine-learning.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ames_train)</span></code></pre></div>
+<pre><code>## [1] 2344   74</code></pre>
+<p>El muestreo aleatorio simple es apropiado en muchos casos, pero hay excepciones.</p>
+<p>Cuando hay un desbalance de clases en los problemas de clasificación, el uso de
+una muestra aleatoria simple puede asignar al azar estas muestras poco
+frecuentes de manera desproporcionada al conjunto de entrenamiento o prueba.</p>
+<p>Para evitar esto, se puede utilizar un muestreo estratificado. La división de
+entrenamiento/prueba se lleva a cabo por separado dentro de cada clase y luego
+estas submuestras se combinan en el conjunto general de entrenamiento y prueba.</p>
+<p>Para los problemas de regresión, los datos de los resultados se pueden agrupar
+artificialmente en cuartiles y luego realizar un muestreo estratificado cuatro
+veces por separado. Este es un método eficaz para mantener similares las
+distribuciones del resultado entre el conjunto de entrenamiento y prueba.</p>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<p>Observamos que la distribución del precio de venta está sesgada a la derecha.
+Las casas más caras no estarían bien representadas en el conjunto de
+entrenamiento con una simple partición; esto aumentaría el riesgo de que nuestro
+modelo sea ineficaz para predecir el precio de dichas propiedades.</p>
+<p>Las líneas verticales punteadas indican los cuatro cuartiles para estos datos.
+Una muestra aleatoria estratificada llevaría a cabo la división 80/20 dentro de
+cada uno de estos subconjuntos de datos y luego combinaría los resultados. En
+<em>rsample</em>, esto se logra usando el argumento de estratos:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="introducción-a-machine-learning.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb109-2"><a href="introducción-a-machine-learning.html#cb109-2" aria-hidden="true" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.80</span>, <span class="at">strata =</span> Sale_Price)</span>
+<span id="cb109-3"><a href="introducción-a-machine-learning.html#cb109-3" aria-hidden="true" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
+<span id="cb109-4"><a href="introducción-a-machine-learning.html#cb109-4" aria-hidden="true" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span>  <span class="fu">testing</span>(ames_split)</span></code></pre></div>
+<p><strong>Hay muy pocas desventajas en el uso de muestreo estratificado.</strong></p>
+<p>Un caso es cuando los datos tienen un componente de tiempo, como los datos de
+series de tiempo. Aquí, es más común utilizar los datos más recientes como
+conjunto de prueba.</p>
+<p>El paquete <em>rsample</em> contiene una función llamada <code>initial_time_split()</code> que es
+muy similar a <code>initial_split()</code>. En lugar de usar un muestreo aleatorio, el
+argumento <code>prop</code> denota qué proporción de la primera parte de los datos debe
+usarse como conjunto de entrenamiento; la función asume que los datos se han
+clasificado previamente en un orden apropiado.</p>
+<div id="qué-proporción-debería-ser-usada" class="section level4 unnumbered hasAnchor">
+<h4>¿Qué proporción debería ser usada?<a href="introducción-a-machine-learning.html#qué-proporción-debería-ser-usada" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>No hay un porcentaje de división óptimo para el conjunto de entrenamiento y
+prueba. Muy pocos datos en el conjunto de entrenamiento obstaculizan la
+capacidad del modelo para encontrar estimaciones de parámetros adecuadas y muy
+pocos datos en el conjunto de prueba reducen la calidad de las estimaciones de
+rendimiento.</p>
+<p>Se debe elegir un porcentaje que cumpla con los objetivos de nuestro proyecto
+con consideraciones que incluyen:</p>
+<ul>
+<li>Costo computacional en el entrenamiento del modelo.</li>
+<li>Costo computacional en la evaluación del modelo.</li>
+<li>Representatividad del conjunto de formación.</li>
+<li>Representatividad del conjunto de pruebas.</li>
+</ul>
+<p>Los porcentajes de división más comunes comunes son:</p>
+<ul>
+<li>Entrenamiento: <span class="math inline">\(80\%\)</span>, Prueba: <span class="math inline">\(20\%\)</span></li>
+<li>Entrenamiento: <span class="math inline">\(67\%\)</span>, Prueba: <span class="math inline">\(33\%\)</span></li>
+<li>Entrenamiento: <span class="math inline">\(50\%\)</span>, Prueba: <span class="math inline">\(50\%\)</span></li>
+</ul>
+</div>
+</div>
+<div id="conjunto-de-validación" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Conjunto de validación<a href="introducción-a-machine-learning.html#conjunto-de-validación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El conjunto de validación se definió originalmente cuando los investigadores se
+dieron cuenta de que medir el rendimiento del conjunto de entrenamiento conducía
+a resultados que eran demasiado optimistas.</p>
+<p>Esto llevó a modelos que se sobre-ajustaban, lo que significa que se
+desempeñaron muy bien en el conjunto de entrenamiento pero mal en el conjunto de
+prueba.</p>
+<p>Para combatir este problema, se retuvo un pequeño conjunto de datos de
+<em>validación</em> y se utilizó para medir el rendimiento del modelo mientras este
+está siendo entrenado. Una vez que la tasa de error del conjunto de validación
+comenzara a aumentar, la capacitación se detendría.</p>
+<p>En otras palabras, el conjunto de validación es un medio para tener una idea
+aproximada de qué tan bien se desempeñó el modelo antes del conjunto de prueba.</p>
+<p><img src="img/06-ml/3-5-3-conjunto-validacion.png" width="500pt" height="250pt" style="display: block; margin: auto;" /></p>
+<p>Los conjuntos de validación se utilizan a menudo cuando el conjunto de datos
+original es muy grande. En este caso, una sola partición grande puede ser
+adecuada para caracterizar el rendimiento del modelo sin tener que realizar
+múltiples iteraciones de remuestreo.</p>
+<p>Con <em>rsample</em>, un conjunto de validación es como cualquier otro objeto de
+remuestreo; este tipo es diferente solo en que tiene una sola iteración</p>
+<p><img src="img/06-ml/3-5-3-conjunto-validacion-2.png" width="500pt" height="350pt" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="introducción-a-machine-learning.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb110-2"><a href="introducción-a-machine-learning.html#cb110-2" aria-hidden="true" tabindex="-1"></a>val_set <span class="ot">&lt;-</span> <span class="fu">validation_split</span>(ames_train, <span class="at">prop =</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>, <span class="at">strata =</span> <span class="cn">NULL</span>)</span>
+<span id="cb110-3"><a href="introducción-a-machine-learning.html#cb110-3" aria-hidden="true" tabindex="-1"></a>val_set <span class="co">#val_set contiene el conjunto de entrenamiento y validación.</span></span></code></pre></div>
+<pre><code>## # Validation Set Split (0.75/0.25)  
+## # A tibble: 1 × 2
+##   splits             id        
+##   &lt;list&gt;             &lt;chr&gt;     
+## 1 &lt;split [1756/586]&gt; validation</code></pre>
+<p>Esta función regresa una columna para los objetos de división de datos y una
+columna llamada id que tiene una cadena de caracteres con el identificador de
+remuestreo.</p>
+<p>El argumento de estratos hace que el muestreo aleatorio se lleve a cabo dentro
+de la variable de estratificación. Esto puede ayudar a garantizar que el número
+de datos en los datos del análisis sea equivalente a las proporciones del
+conjunto de datos original. (Los estratos inferiores al 10% del total se
+agrupan).</p>
+<p>Otra opción de muestreo bastante común es la realizada mediante múltiples
+submuestras de los datos originales.</p>
+<p><img src="img/06-ml/18_1_cross_validation.png" width="500pt" height="350pt" style="display: block; margin: auto;" /></p>
+<p>Diversos métodos se revisarán a lo largo del curso.</p>
+</div>
+<div id="leave-one-out-cross-validation" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Leave-one-out cross-validation<a href="introducción-a-machine-learning.html#leave-one-out-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La validación cruzada es una manera de predecir el ajuste de un modelo a un
+hipotético conjunto de datos de prueba cuando no disponemos del conjunto
+explícito de datos de prueba.</p>
+<p>El método <em>LOOCV</em> en un método iterativo que se inicia empleando como conjunto
+de entrenamiento todas las observaciones disponibles excepto una, que se excluye
+para emplearla como validación.</p>
+<p>Si se emplea una única observación para calcular el error, este varía mucho
+dependiendo de qué observación se haya seleccionado. Para evitarlo, el proceso
+se repite tantas veces como observaciones disponibles se tengan, excluyendo en
+cada iteración una observación distinta, ajustando el modelo con el resto y
+calculando el error con dicha observación.</p>
+<p>Finalmente, el error estimado por el es el promedio de todos lo <span class="math inline">\(i\)</span> errores
+calculados.</p>
+<p>La principal desventaja de este método es su costo computacional. El proceso
+requiere que el modelo sea reajustado y validado tantas veces como observaciones
+disponibles se tengan lo que en algunos casos puede ser muy complicado.</p>
+<p><em>rsample</em> contiene la función <code>loo_cv()</code>.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="introducción-a-machine-learning.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
+<span id="cb112-2"><a href="introducción-a-machine-learning.html#cb112-2" aria-hidden="true" tabindex="-1"></a>ames_loo <span class="ot">&lt;-</span> <span class="fu">loo_cv</span>(ames_train)</span>
+<span id="cb112-3"><a href="introducción-a-machine-learning.html#cb112-3" aria-hidden="true" tabindex="-1"></a>ames_loo</span></code></pre></div>
+<pre><code>## # Leave-one-out cross-validation 
+## # A tibble: 2,342 × 2
+##    splits           id        
+##    &lt;list&gt;           &lt;chr&gt;     
+##  1 &lt;split [2341/1]&gt; Resample1 
+##  2 &lt;split [2341/1]&gt; Resample2 
+##  3 &lt;split [2341/1]&gt; Resample3 
+##  4 &lt;split [2341/1]&gt; Resample4 
+##  5 &lt;split [2341/1]&gt; Resample5 
+##  6 &lt;split [2341/1]&gt; Resample6 
+##  7 &lt;split [2341/1]&gt; Resample7 
+##  8 &lt;split [2341/1]&gt; Resample8 
+##  9 &lt;split [2341/1]&gt; Resample9 
+## 10 &lt;split [2341/1]&gt; Resample10
+## # ℹ 2,332 more rows</code></pre>
+<div id="cálculo-del-error" class="section level4 hasAnchor" number="4.4.3.1">
+<h4><span class="header-section-number">4.4.3.1</span> Cálculo del error<a href="introducción-a-machine-learning.html#cálculo-del-error" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>En la validación cruzada dejando uno fuera se realizan tantas iteraciones como
+muestras <span class="math inline">\((N)\)</span> tenga el conjunto de datos. De forma que para cada una de las <span class="math inline">\(N\)</span>
+iteraciones se realiza un cálculo de error.</p>
+<p>El resultado final se obtiene realizando la media de los <span class="math inline">\(N\)</span> errores obtenidos,
+según la fórmula:</p>
+<p><span class="math display">\[E = \frac{1}{N}\sum_{i = 1}^N E_i\]</span></p>
+</div>
+</div>
+<div id="v-fold-cross-validation" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> V Fold Cross Validation<a href="introducción-a-machine-learning.html#v-fold-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En la validación cruzada de V iteraciones (V Fold Cross Validation) los datos de
+muestra se dividen en V subconjuntos. Uno de los subconjuntos se utiliza como
+datos de prueba y el resto <span class="math inline">\((V-1)\)</span> como datos de entrenamiento. El proceso de
+validación cruzada es repetido durante <span class="math inline">\(v\)</span> iteraciones, con cada uno de los
+posibles subconjuntos de datos de prueba.</p>
+<p>Finalmente se obtiene el promedio de los rendimientos de cada iteración para
+obtener un único resultado. Lo más común es utilizar la validación cruzada de 10
+iteraciones.</p>
+<p><img src="img/06-ml/3-5-4-VFCV.jpg" width="550pt" height="250pt" style="display: block; margin: auto;" /></p>
+<p>Este método de validación cruzada se utiliza principalmente para:</p>
+<ul>
+<li><p>Estimar el error cuando nuestro conjunto de prueba es muy pequeño. Es decir,
+se tiene la misma configuración de parámetros y solamente cambia el conjunto
+de prueba y validación.</p></li>
+<li><p>Encontrar lo mejores hiperparámetros que ajusten mejor el modelo. Es decir,
+en cada bloque se tiene una configuración de hiperparámetros distinto y se
+seleccionará aquellos hiperparámetros que hayan producido el error más
+pequeño.</p></li>
+</ul>
+<p><img src="img/06-ml/3-5-4-VFCV-tune.png" width="550pt" height="250pt" style="display: block; margin: auto;" /></p>
+<p>En la función <code>vfold_cv()</code> la entrada principal es el conjunto de entrenamiento,
+así como el número de bloques:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="introducción-a-machine-learning.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
+<span id="cb114-2"><a href="introducción-a-machine-learning.html#cb114-2" aria-hidden="true" tabindex="-1"></a>ames_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb114-3"><a href="introducción-a-machine-learning.html#cb114-3" aria-hidden="true" tabindex="-1"></a>ames_folds</span></code></pre></div>
+<pre><code>## #  10-fold cross-validation 
+## # A tibble: 10 × 2
+##    splits             id    
+##    &lt;list&gt;             &lt;chr&gt; 
+##  1 &lt;split [2107/235]&gt; Fold01
+##  2 &lt;split [2107/235]&gt; Fold02
+##  3 &lt;split [2108/234]&gt; Fold03
+##  4 &lt;split [2108/234]&gt; Fold04
+##  5 &lt;split [2108/234]&gt; Fold05
+##  6 &lt;split [2108/234]&gt; Fold06
+##  7 &lt;split [2108/234]&gt; Fold07
+##  8 &lt;split [2108/234]&gt; Fold08
+##  9 &lt;split [2108/234]&gt; Fold09
+## 10 &lt;split [2108/234]&gt; Fold10</code></pre>
+<p>La columna denominada <code>splits</code> contiene la información sobre cómo dividir los
+datos (similar al objeto utilizado para crear la partición inicial de
+entrenamiento / prueba).</p>
+<p>Si bien cada fila de divisiones tiene una copia incrustada de todo el conjunto
+de entrenamiento, <em>R</em> es lo suficientemente inteligente como para no hacer
+copias de los datos en la memoria.</p>
+<p>El método de impresión dentro del tibble muestra la frecuencia de cada uno: [2K
+/ 230] indica que aproximadamente dos mil muestras están en el conjunto de
+análisis y 230 están en ese conjunto de evaluación en particular.</p>
+<p>Estos objetos <em>rsample</em> también contienen siempre una columna de caracteres
+llamada <em>id</em> que etiqueta la partición. Algunos métodos de remuestreo requieren
+varios campos de identificación.</p>
+<p>Para recuperar manualmente los datos particionados, las funciones de
+<code>analysis()</code> y <code>assessment()</code> devuelven los de datos de análisis y evaluación
+respectivamente.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="introducción-a-machine-learning.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primer bloque</span></span>
+<span id="cb116-2"><a href="introducción-a-machine-learning.html#cb116-2" aria-hidden="true" tabindex="-1"></a>ames_folds<span class="sc">$</span>splits[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
+<span id="cb116-3"><a href="introducción-a-machine-learning.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">analysis</span>() <span class="sc">%&gt;%</span> <span class="co"># O assessment()</span></span>
+<span id="cb116-4"><a href="introducción-a-machine-learning.html#cb116-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 74
+##   MS_SubClass             MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
+##   &lt;fct&gt;                   &lt;fct&gt;            &lt;dbl&gt;    &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    
+## 1 One_Story_1946_and_New… Resident…           70     8400 Pave   No_A… Regular  
+## 2 Two_Story_PUD_1946_and… Resident…           21     1680 Pave   No_A… Regular  
+## 3 Two_Story_PUD_1946_and… Resident…           21     1680 Pave   No_A… Regular  
+## 4 Two_Story_PUD_1946_and… Resident…           21     1680 Pave   No_A… Regular  
+## 5 One_Story_PUD_1946_and… Resident…           53     4043 Pave   No_A… Regular  
+## 6 One_Story_PUD_1946_and… Resident…           24     2280 Pave   No_A… Regular  
+## 7 One_Story_PUD_1946_and… Resident…           50     7175 Pave   No_A… Regular  
+## # ℹ 67 more variables: Land_Contour &lt;fct&gt;, Utilities &lt;fct&gt;, Lot_Config &lt;fct&gt;,
+## #   Land_Slope &lt;fct&gt;, Neighborhood &lt;fct&gt;, Condition_1 &lt;fct&gt;, Condition_2 &lt;fct&gt;,
+## #   Bldg_Type &lt;fct&gt;, House_Style &lt;fct&gt;, Overall_Cond &lt;fct&gt;, Year_Built &lt;int&gt;,
+## #   Year_Remod_Add &lt;int&gt;, Roof_Style &lt;fct&gt;, Roof_Matl &lt;fct&gt;,
+## #   Exterior_1st &lt;fct&gt;, Exterior_2nd &lt;fct&gt;, Mas_Vnr_Type &lt;fct&gt;,
+## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;fct&gt;, Foundation &lt;fct&gt;, Bsmt_Cond &lt;fct&gt;,
+## #   Bsmt_Exposure &lt;fct&gt;, BsmtFin_Type_1 &lt;fct&gt;, BsmtFin_SF_1 &lt;dbl&gt;, …</code></pre>
+</div>
+<div id="medidas-de-ajuste" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Medidas de ajuste<a href="introducción-a-machine-learning.html#medidas-de-ajuste" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las medidas de ajuste obtenidas pueden ser utilizadas para estimar cualquier
+medida cuantitativa de ajuste apropiada para los datos y el modelo.</p>
+<p>En un modelo basado en clasificación binaria, para resumir el ajuste del modelo
+se pueden usar las medidas:</p>
+<ul>
+<li>Tasa de error de clasificación (Accuracy)</li>
+<li>Precisión</li>
+<li>Sensibilidad o cobertura (Recall)</li>
+<li>Especificidad</li>
+</ul>
+<p>Cuando el valor a predecir se distribuye de forma continua se puede calcular el
+error utilizando medidas como:</p>
+<ul>
+<li>Error porcentual absoluto medio (MAPE)</li>
+<li>Error absoluto medio (MAE)</li>
+<li>Error cuadrático medio (MSE)</li>
+<li>Raíz del error cuadrático medio (RMSE)</li>
+<li>Raíz del error logarítmico cuadrático medio (RMLSE)</li>
+<li><span class="math inline">\(R^2\)</span> (Coeficiente de determinación)</li>
+<li><span class="math inline">\(R^2_a\)</span> (Coeficiente de determinación ajustado)</li>
+</ul>
+<div id="cálculo-del-error-1" class="section level4 hasAnchor" number="4.4.5.1">
+<h4><span class="header-section-number">4.4.5.1</span> Cálculo del error<a href="introducción-a-machine-learning.html#cálculo-del-error-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>En cada una de las <span class="math inline">\(v\)</span> iteraciones de este tipo de validación se realiza un
+cálculo de error. El resultado final lo obtenemos a partir de realizar la media
+de los <span class="math inline">\(V\)</span> valores de errores obtenidos, según la fórmula:</p>
+<p><span class="math display">\[E = \frac{1}{V}\sum_{i = 1}^vE_i\]</span></p>
+</div>
+</div>
+<div id="validación-cruzada-para-series-de-tiempo" class="section level3 hasAnchor" number="4.4.6">
+<h3><span class="header-section-number">4.4.6</span> Validación cruzada para series de tiempo<a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En este procedimiento, hay una serie de conjuntos de prueba, cada uno de los
+cuales consta de una única observación. El conjunto de entrenamiento
+correspondiente consta solo de observaciones que ocurrieron antes de la
+observación que forma el conjunto de prueba. Por lo tanto, no se pueden utilizar
+observaciones futuras para construir el pronóstico.</p>
+<p>El siguiente diagrama ilustra la serie de conjuntos de entrenamiento y prueba,
+donde las observaciones azules forman los conjuntos de entrenamiento y las
+observaciones rojas forman los conjuntos de prueba.</p>
+<p><img src="img/06-ml/3-5-6-validacion-cruzada-series-tiempo.png" width="550pt" height="300pt" style="display: block; margin: auto;" /></p>
+<p>La precisión del pronóstico se calcula promediando los conjuntos de prueba. Este
+procedimiento a veces se conoce como “evaluación en un origen de pronóstico
+continuo” porque el “origen” en el que se basa el pronóstico avanza en el
+tiempo.</p>
+<p>Con los pronósticos de series de tiempo, los pronósticos de un paso pueden no
+ser tan relevantes como los pronósticos de varios pasos. En este caso, el
+procedimiento de validación cruzada basado en un origen de pronóstico continuo
+se puede modificar para permitir el uso de errores de varios pasos.</p>
+<p>Suponga que estamos interesados en modelos que producen buenos pronósticos de 4
+pasos por delante. Entonces el diagrama correspondiente se muestra a
+continuación.</p>
+<p><img src="img/06-ml/3-5-6-validacion-cruzada-series-tiempo-2.png" width="550pt" height="300pt" style="display: block; margin: auto;" /></p>
+<p>La validación cruzada de series de tiempo se implementa con la función <code>tsCV()</code>
+del paquete <em>forecast</em>.</p>
+</div>
+</div>
+<div id="pre-procesamiento-de-datos" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Pre-procesamiento de datos<a href="introducción-a-machine-learning.html#pre-procesamiento-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hay varios pasos que se deben de seguir para crear un modelo útil:</p>
+<ul>
+<li>Recopilación de datos.</li>
+<li>Limpieza de datos.</li>
+<li>Creación de nuevas variables.</li>
+<li>Estimación de parámetros.</li>
+<li>Selección y ajuste del modelo.</li>
+<li>Evaluación del rendimiento.</li>
+</ul>
+<p>Al comienzo de un proyecto, generalmente hay un conjunto finito de datos
+disponibles para todas estas tareas.</p>
+<p><strong>OJO:</strong> A medida que los datos se reutilizan para múltiples tareas, aumentan
+los riesgos de agregar sesgos o grandes efectos de errores metodológicos.</p>
+<p><img src="img/06-ml/3-2-1-preprocesamiento.png" width="800pt" height="200pt" style="display: block; margin: auto;" /></p>
+<p>Como punto de partida para nuestro flujo de trabajo de aprendizaje automático,
+necesitaremos datos de entrada. En la mayoría de los casos, estos datos se
+cargarán y almacenarán en forma de <em>data frames</em> o <em>tibbles</em> en R. Incluirán una
+o varias variables predictivas y, en caso de aprendizaje supervisado, también
+incluirán un resultado conocido.</p>
+<p>Sin embargo, no todos los modelos pueden lidiar con diferentes problemas de
+datos y, a menudo, necesitamos transformar los datos para obtener el mejor
+rendimiento posible del modelo. Este proceso se denomina pre-procesamiento y
+puede incluir una amplia gama de pasos, como:</p>
+<ul>
+<li><strong>Dicotomización de variables:</strong> Variables cualitativas que solo pueden
+tomar el valor <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span> para indicar la ausencia o presencia de una
+condición específica. Estas variables se utilizan para clasificar los datos
+en categorías mutuamente excluyentes o para activar comandos de encendido /
+apagado</li>
+</ul>
+<p><img src="img/06-ml/hombre-mujer.jpg" width="400pt" height="200pt" style="display: block; margin: auto;" /><img src="img/06-ml/sino.jpg" width="400pt" height="200pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Near Zero Value (nzv) o Varianza Cero:</strong> En algunas situaciones, el
+mecanismo de generación de datos puede crear predictores que solo tienen un
+valor único (es decir, un “predictor de varianza cercando a cero”). Para
+muchos modelos (excluidos los modelos basados en árboles), esto puede hacer
+que el modelo se bloquee o que el ajuste sea inestable.</li>
+</ul>
+<p>De manera similar, los predictores pueden tener solo una pequeña cantidad de
+valores únicos que ocurren con frecuencias muy bajas.</p>
+<p><img src="img/06-ml/hombres.jpg" width="500pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Imputaciones:</strong> Si faltan algunos predictores, ¿deberían estimarse
+mediante imputación?</li>
+</ul>
+<p><img src="img/06-ml/imputar.jpg" width="400pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Des-correlacionar:</strong> Si hay predictores correlacionados, ¿debería
+mitigarse esta correlación? Esto podría significar filtrar predictores, usar
+análisis de componentes principales o una técnica basada en modelos (por
+ejemplo, regularización).</li>
+</ul>
+<p><img src="img/06-ml/descorrelaciones.jpg" width="400pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Normalizar:</strong> ¿Deben centrarse y escalar los predictores?</li>
+</ul>
+<p><img src="img/06-ml/estandarizar-reescalar.jpg" width="800pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Transformar:</strong> ¿Es útil transformar los predictores para que sean más
+simétricos? (por ejemplo, escala logarítmica).</li>
+</ul>
+<p>Dependiendo del caso de uso, algunos pasos de pre-procesamiento pueden ser
+indispensables para pasos posteriores, mientras que otros solo son opcionales.
+Sin embargo, dependiendo de los pasos de pre-procesamiento elegidos, el
+rendimiento del modelo puede cambiar significativamente en pasos posteriores.
+Por lo tanto, es muy común probar varias configuraciones.</p>
+</div>
+<div id="ingeniería-de-datos" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Ingeniería de datos<a href="introducción-a-machine-learning.html#ingeniería-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La ingeniería de datos abarca actividades que dan formato a los valores de los
+predictores para que se puedan utilizar de manera eficaz para nuestro modelo.
+Esto incluye transformaciones y codificaciones de los datos para representar
+mejor sus características importantes.</p>
+<p>Por ejemplo:</p>
+<blockquote>
+<p><strong>1.-</strong> Supongamos que un conjunto de datos tiene dos predictores que se
+pueden representar de manera más eficaz en nuestro modelo como una proporción,
+así, tendríamos un nuevo predictor a partir de la proporción de los dos
+predictores originales.</p>
+</blockquote>
+<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+X
+</th>
+<th style="text-align:right;">
+Proporción (X)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+691
+</td>
+<td style="text-align:right;">
+0.1836789
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+639
+</td>
+<td style="text-align:right;">
+0.1698565
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+969
+</td>
+<td style="text-align:right;">
+0.2575758
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+955
+</td>
+<td style="text-align:right;">
+0.2538543
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+508
+</td>
+<td style="text-align:right;">
+0.1350346
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>2.-</strong> Al elegir cómo codificar nuestros datos en el modelado, podríamos
+elegir una opción que creemos que está más asociada con el resultado. El
+formato original de los datos, por ejemplo numérico (edad) versus categórico
+(grupo).</p>
+</blockquote>
+<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Edad
+</th>
+<th style="text-align:left;">
+Grupo
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Niños
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+Adultos mayores
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Adolescentes
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Adultos
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Adultos mayores
+</td>
+</tr>
+</tbody>
+</table>
+<p>La ingeniería y el pre-procesamiento de datos también pueden implicar el cambio
+de formato requerido por el modelo. Algunos modelos utilizan métricas de
+distancia geométrica y, en consecuencia, los predictores numéricos deben
+centrarse y escalar para que estén todos en las mismas unidades. De lo
+contrario, los valores de distancia estarían sesgados por la escala de cada
+columna.</p>
+</div>
+<div id="recetas" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Recetas<a href="introducción-a-machine-learning.html#recetas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="img/06-ml/3-2-3-recetas.png" width="150pt" height="150pt" style="display: block; margin: auto auto auto 0;" /></p>
+<p>Una receta es una <strong>serie de pasos o instrucciones para el procesamiento de
+datos.</strong> A diferencia del método de fórmula dentro de una función de modelado,
+<strong>la receta define los pasos sin ejecutarlos</strong> inmediatamente; es sólo una
+especificación de lo que se debe hacer. La estructura de una receta sigue los
+siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li><p>Inicialización</p></li>
+<li><p>Transformación</p></li>
+<li><p>Preparación</p></li>
+<li><p>Aplicación</p></li>
+</ol>
+<p>La siguiente sección explica la estructura y flujo de transformaciones:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="introducción-a-machine-learning.html#cb118-1" aria-hidden="true" tabindex="-1"></a>receta <span class="ot">&lt;-</span> <span class="fu">recipe</span>(response <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3 <span class="sc">+</span> ... <span class="sc">+</span> Xn, <span class="at">data =</span> dataset ) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-2"><a href="introducción-a-machine-learning.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transformation_1</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-3"><a href="introducción-a-machine-learning.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transformation_2</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-4"><a href="introducción-a-machine-learning.html#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transformation_3</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-5"><a href="introducción-a-machine-learning.html#cb118-5" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb118-6"><a href="introducción-a-machine-learning.html#cb118-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">final_transformation</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-7"><a href="introducción-a-machine-learning.html#cb118-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb118-8"><a href="introducción-a-machine-learning.html#cb118-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-9"><a href="introducción-a-machine-learning.html#cb118-9" aria-hidden="true" tabindex="-1"></a><span class="fu">bake</span>(receta, <span class="at">new_data =</span> new_dataset)</span></code></pre></div>
+<p>A continuación se muestran distintos ejemplos de transformaciones realizadas
+comúnmente en el pre-procesamiento de modelos predictivos. Como ejemplo,
+utilizaremos el subconjunto de predictores disponibles en los datos de vivienda:
+<code>Ames</code></p>
+<ul>
+<li><p>Vecindario (29 vecindarios)</p></li>
+<li><p>Superficie habitable bruta sobre el nivel del suelo</p></li>
+<li><p>Año de constricción</p></li>
+<li><p>Tipo de edificio</p></li>
+</ul>
+<p><strong>ANTERIORMENTE…</strong> Un modelo de regresión lineal ordinario se ajustaba a los
+datos con la función estándar <code>lm()</code> de la siguiente manera:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="introducción-a-machine-learning.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> <span class="fu">log10</span>(Gr_Liv_Area) <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type, <span class="at">data =</span> ames)</span></code></pre></div>
+<p>Cuando se ejecuta esta función, los datos se convierten en a una matriz de
+diseño numérico (también llamada matriz de modelo) y luego se utiliza el método
+de mínimos cuadrados para estimar los parámetros. Lo que hace <strong>la fórmula
+anterior se puede descomponer en una serie de pasos:</strong></p>
+<blockquote>
+<p><strong>1.-</strong> El precio de venta se define como el resultado, mientras que las
+variables de vecindario, superficie habitable bruta, año de construcción y
+tipo de edificio se definen como predictores.</p>
+</blockquote>
+<blockquote>
+<p><strong>2.-</strong> Se aplica una transformación logarítmica al predictor de superficie
+habitable bruta.</p>
+</blockquote>
+<blockquote>
+<p><strong>3.-</strong> Las columnas de vecindad y tipo de edificio se convierten de un
+formato no numérico a un formato numérico (dado que los mínimos cuadrados
+requieren predictores numéricos).</p>
+</blockquote>
+<p>La siguiente receta es equivalente a la fórmula anterior:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="introducción-a-machine-learning.html#cb120-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb120-2"><a href="introducción-a-machine-learning.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
+<span id="cb120-3"><a href="introducción-a-machine-learning.html#cb120-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb120-4"><a href="introducción-a-machine-learning.html#cb120-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_log</span>(Gr_Liv_Area, <span class="at">base =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-5"><a href="introducción-a-machine-learning.html#cb120-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb120-6"><a href="introducción-a-machine-learning.html#cb120-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-7"><a href="introducción-a-machine-learning.html#cb120-7" aria-hidden="true" tabindex="-1"></a>simple_ames</span></code></pre></div>
+<pre><code>## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          4
+## 
+## Operations:
+## 
+## Log transformation on Gr_Liv_Area
+## Dummy variables from all_nominal_predictors()</code></pre>
+<p><strong>Ventajas de usar una receta:</strong></p>
+<ul>
+<li><p><strong>Los cálculos se pueden reciclar entre modelos</strong> ya que no están
+estrechamente acoplados a la función de modelado.</p></li>
+<li><p>Una receta permite un <strong>conjunto más amplio de opciones de procesamiento</strong>
+de datos que las que pueden ofrecer las fórmulas.</p></li>
+<li><p>La <strong>sintaxis puede ser muy compacta</strong>. Por ejemplo,
+<code>all_nominal_predictors()</code> se puede usar para capturar muchas variables para
+tipos específicos de procesamiento, mientras que una fórmula requeriría que
+cada una se enumere explícitamente.</p></li>
+<li><p>Todo el procesamiento de datos se puede capturar en un solo objeto en lugar
+de tener <em>scripts</em> que se repiten o incluso se distribuyen en diferentes
+archivos.</p></li>
+</ul>
+<div id="pasos-y-estructura-de-recetas" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Pasos y estructura de recetas<a href="introducción-a-machine-learning.html#pasos-y-estructura-de-recetas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como se mostró anteriormente, existen 4 pasos fundamentales para el
+procesamiento y transformación de conjuntos de datos. Estos pasos se describen
+de la siguiente manera:</p>
+<ul>
+<li><p><strong>Receta:</strong> Inicializa una receta y define los roles de las variables</p></li>
+<li><p><strong>Transformaciones:</strong> Mutaciones a los renglones y columnas hasta desear el
+resultado</p></li>
+<li><p><strong>Preparación:</strong> Se realizan las estimaciones estadísticas con los datos</p></li>
+</ul>
+<p>La función <strong><code>prep()</code></strong> estima las cantidades requeridas y las estadísticas
+necesarias para cualquier paso declarado en la receta.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="introducción-a-machine-learning.html#cb122-1" aria-hidden="true" tabindex="-1"></a>prep <span class="ot">&lt;-</span> <span class="fu">prep</span>(simple_ames) </span>
+<span id="cb122-2"><a href="introducción-a-machine-learning.html#cb122-2" aria-hidden="true" tabindex="-1"></a>prep</span></code></pre></div>
+<pre><code>## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          4
+## 
+## Training data contained 2930 data points and no missing data.
+## 
+## Operations:
+## 
+## Log transformation on Gr_Liv_Area [trained]
+## Dummy variables from Neighborhood, Bldg_Type [trained]</code></pre>
+<ul>
+<li><strong>Aplicación</strong> Se llevan a cabo las transformaciones especificadas en la
+receta preparada a un conjunto de datos.</li>
+</ul>
+<p>Finalmente, la función <strong><code>bake()</code></strong> lleva a cabo la transformación de un
+conjunto de datos a través de las estimaciones indicadas en una receta y
+<strong>aplica las operaciones a un conjunto de datos para crear una matriz de
+diseño</strong>. La función <code>bake(object, new_data = NULL)</code> devolverá los datos con los
+que se entrenó la receta.</p>
+<p><strong>Nota:</strong> La función <strong><code>juice()</code></strong> devolverá los resultados de una receta en la
+que se hayan aplicado todos los pasos a los datos. Similar a la función <code>bake()</code>
+con el comando <code>new_data = NULL</code>.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="introducción-a-machine-learning.html#cb124-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> </span>
+<span id="cb124-2"><a href="introducción-a-machine-learning.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb124-3"><a href="introducción-a-machine-learning.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb124-4"><a href="introducción-a-machine-learning.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>## Rows: 2,930
+## Columns: 35
+## $ Gr_Liv_Area                                          &lt;dbl&gt; 3.219060, 2.95230…
+## $ Year_Built                                           &lt;int&gt; 1960, 1961, 1958,…
+## $ Sale_Price                                           &lt;int&gt; 215000, 105000, 1…
+## $ Neighborhood_College_Creek                           &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Old_Town                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Edwards                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Somerset                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Northridge_Heights                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Gilbert                                 &lt;dbl&gt; 0, 0, 0, 0, 1, 1,…
+## $ Neighborhood_Sawyer                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Northwest_Ames                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Sawyer_West                             &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Mitchell                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Brookside                               &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Crawford                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Iowa_DOT_and_Rail_Road                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Timberland                              &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Northridge                              &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Stone_Brook                             &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_South_and_West_of_Iowa_State_University &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Clear_Creek                             &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Meadow_Village                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Briardale                               &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Bloomington_Heights                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Veenker                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Northpark_Villa                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Blueste                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Greens                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Green_Hills                             &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Landmark                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Neighborhood_Hayden_Lake                             &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Bldg_Type_TwoFmCon                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Bldg_Type_Duplex                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Bldg_Type_Twnhs                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…
+## $ Bldg_Type_TwnhsE                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0,…</code></pre>
+<p>En cuanto a las transformaciones posibles, existe una gran cantidad de funciones
+que soportan este proceso. En esta sección se muestran algunas de las
+transformación más comunes, entre ellas:</p>
+<ul>
+<li>Normalización</li>
+<li>Dicotomización</li>
+<li>Creación de nuevas columnas</li>
+<li>Datos faltantes</li>
+<li>Imputaciones</li>
+<li>Interacciones</li>
+<li>Etc.</li>
+</ul>
+<div id="normalizar-columnas-numéricas" class="section level4 hasAnchor" number="4.7.1.1">
+<h4><span class="header-section-number">4.7.1.1</span> Normalizar columnas numéricas<a href="introducción-a-machine-learning.html#normalizar-columnas-numéricas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Quizá la transformación numérica más usada en todos los modelos es la
+estandarización o normalización de variables numéricas. <strong>Este proceso se
+realiza para homologar la escala de las variables numéricas</strong>, de modo que no
+predomine una sobre otra debido a la diferencia de magnitudes o escalas. Este
+proceso se tiene de fondo el siguiente proceso estadístico:</p>
+<p><span class="math display">\[Z=\frac{X-\hat{\mu}_x}{\hat{\sigma}_x}\]</span></p>
+<p><strong>Donde:</strong></p>
+<ul>
+<li><p>X = Es una variable o columna numérica</p></li>
+<li><p><span class="math inline">\(\hat{\mu}_x\)</span> = Es la estimación de la media de la variable <em>X</em></p></li>
+<li><p><span class="math inline">\(\hat{\sigma}_x\)</span> = Es la estimación de la desviación estándar de la variable
+<em>X</em></p></li>
+</ul>
+<p>La librería <em>recipes</em> nos permite realizar este proceso ágilmente mediante la
+función: <code>step_normalize()</code>.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="introducción-a-machine-learning.html#cb126-1" aria-hidden="true" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price, Neighborhood, Gr_Liv_Area, Year_Built, Bldg_Type) <span class="sc">%&gt;%</span> </span>
+<span id="cb126-2"><a href="introducción-a-machine-learning.html#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 5
+##   Sale_Price Neighborhood Gr_Liv_Area Year_Built Bldg_Type
+##        &lt;int&gt; &lt;fct&gt;              &lt;int&gt;      &lt;int&gt; &lt;fct&gt;    
+## 1     215000 North_Ames          1656       1960 OneFam   
+## 2     105000 North_Ames           896       1961 OneFam   
+## 3     172000 North_Ames          1329       1958 OneFam   
+## 4     244000 North_Ames          2110       1968 OneFam   
+## 5     189900 Gilbert             1629       1997 OneFam</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="introducción-a-machine-learning.html#cb128-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> ., <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb128-2"><a href="introducción-a-machine-learning.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb128-3"><a href="introducción-a-machine-learning.html#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="introducción-a-machine-learning.html#cb128-4" aria-hidden="true" tabindex="-1"></a>simple_ames</span></code></pre></div>
+<pre><code>## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor         73
+## 
+## Operations:
+## 
+## Centering and scaling for all_numeric_predictors()</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="introducción-a-machine-learning.html#cb130-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> </span>
+<span id="cb130-2"><a href="introducción-a-machine-learning.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb130-3"><a href="introducción-a-machine-learning.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-4"><a href="introducción-a-machine-learning.html#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Neighborhood, Gr_Liv_Area, Year_Built, Bldg_Type) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-5"><a href="introducción-a-machine-learning.html#cb130-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 5
+##   Sale_Price Neighborhood Gr_Liv_Area Year_Built Bldg_Type
+##        &lt;int&gt; &lt;fct&gt;              &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt;    
+## 1     215000 North_Ames         0.309     -0.375 OneFam   
+## 2     105000 North_Ames        -1.19      -0.342 OneFam   
+## 3     172000 North_Ames        -0.338     -0.442 OneFam   
+## 4     244000 North_Ames         1.21      -0.111 OneFam   
+## 5     189900 Gilbert            0.256      0.848 OneFam</code></pre>
+</div>
+<div id="dicotomización-de-categorías" class="section level4 hasAnchor" number="4.7.1.2">
+<h4><span class="header-section-number">4.7.1.2</span> Dicotomización de categorías<a href="introducción-a-machine-learning.html#dicotomización-de-categorías" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Otra transformación necesaria en la mayoría de los modelos predictivos en la
+creación de las variables <em>dummy</em>. Se mencionó anteriormente que los modelos
+requieren de una matriz numérica de características explicativas que permita
+calcular patrones estadísticos para predecir la variable de respuesta. El
+proceso de dicotomización consiste en <strong>crear una variable dicotómica por cada
+categoría de una columna con valores nominales</strong>.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="introducción-a-machine-learning.html#cb132-1" aria-hidden="true" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price, Bldg_Type) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   Sale_Price Bldg_Type
+##        &lt;int&gt; &lt;fct&gt;    
+## 1     215000 OneFam   
+## 2     105000 OneFam   
+## 3     172000 OneFam   
+## 4     244000 OneFam   
+## 5     189900 OneFam</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="introducción-a-machine-learning.html#cb134-1" aria-hidden="true" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Bldg_Type) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span></code></pre></div>
+<pre><code>## [1] OneFam   TwnhsE   Twnhs    Duplex   TwoFmCon
+## Levels: OneFam TwoFmCon Duplex Twnhs TwnhsE</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="introducción-a-machine-learning.html#cb136-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Bldg_Type, <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb136-2"><a href="introducción-a-machine-learning.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb136-3"><a href="introducción-a-machine-learning.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb136-4"><a href="introducción-a-machine-learning.html#cb136-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-5"><a href="introducción-a-machine-learning.html#cb136-5" aria-hidden="true" tabindex="-1"></a>simple_ames</span></code></pre></div>
+<pre><code>## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          1
+## 
+## Training data contained 2930 data points and no missing data.
+## 
+## Operations:
+## 
+## Dummy variables from Bldg_Type [trained]</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="introducción-a-machine-learning.html#cb138-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 5
+##   Sale_Price Bldg_Type_TwoFmCon Bldg_Type_Duplex Bldg_Type_Twnhs
+##        &lt;int&gt;              &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;
+## 1     215000                  0                0               0
+## 2     105000                  0                0               0
+## 3     172000                  0                0               0
+## 4     244000                  0                0               0
+## 5     189900                  0                0               0
+## # ℹ 1 more variable: Bldg_Type_TwnhsE &lt;dbl&gt;</code></pre>
+<p>El proceso de dicotomización demanda que únicamente <code>(n-1)</code> categorías sean
+expresadas, mientras que la restante será considerada la <strong>categoría default o
+basal</strong>. Esta última categoría es la usada en el modelo cuando todas las demás
+se encuentran ausentes.</p>
+</div>
+<div id="codificación-de-datos-cualitativos-nuevos-o-faltantes" class="section level4 hasAnchor" number="4.7.1.3">
+<h4><span class="header-section-number">4.7.1.3</span> Codificación de datos cualitativos nuevos o faltantes<a href="introducción-a-machine-learning.html#codificación-de-datos-cualitativos-nuevos-o-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Una de las tareas de ingeniería de datos más comunes es el tratamiento de datos
+faltantes, datos no antes vistos y datos con poca frecuencia. <strong>El problema
+principal con estos casos es que los modelos no saben cómo relacionar estos
+eventos con futuras predicciones</strong>. Es conveniente realizar las transformaciones
+necesarias de tratamiento de estos datos antes de pasar a la etapa de modelado.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li><p><code>step_unknown()</code> cambia los valores perdidos en un nivel de factor
+“desconocido”.</p></li>
+<li><p><code>step_other()</code> analiza las frecuencias de los niveles de los factores en el
+conjunto de datos y convierte los valores que ocurren con poca frecuencia a
+un nivel general de “otro”, con un umbral que se puede especificar.</p></li>
+<li><p><code>step_novel()</code> puede asignar un nuevo nivel si anticipamos que se puede
+encontrar un nuevo factor en datos futuros.</p></li>
+</ul>
+<p>Un buen ejemplo es el predictor de <strong>vecindad</strong> en nuestros datos. Aquí hay dos
+vecindarios que tienen menos de cinco propiedades.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="introducción-a-machine-learning.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> ames, <span class="fu">aes</span>(<span class="at">y =</span> Neighborhood)) <span class="sc">+</span> </span>
+<span id="cb140-2"><a href="introducción-a-machine-learning.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb140-3"><a href="introducción-a-machine-learning.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<p>Para algunos modelos, puede resultar problemático tener variables dummy con una
+sola entrada distinta de cero en la columna. Como mínimo, es muy improbable que
+estas características sean importantes para un modelo.</p>
+<p>Si agregamos <code>step_other (Neighborhood, threshold = 0.01)</code> a nuestra receta, el
+último <span class="math inline">\(1\%\)</span> de los vecindarios se agrupará en un nuevo nivel llamado “otro”,
+esto atrapará a 8 vecindarios.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="introducción-a-machine-learning.html#cb141-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb141-2"><a href="introducción-a-machine-learning.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
+<span id="cb141-3"><a href="introducción-a-machine-learning.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb141-4"><a href="introducción-a-machine-learning.html#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_other</span>(Neighborhood, <span class="at">threshold =</span> <span class="fl">0.01</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb141-5"><a href="introducción-a-machine-learning.html#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb141-6"><a href="introducción-a-machine-learning.html#cb141-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-7"><a href="introducción-a-machine-learning.html#cb141-7" aria-hidden="true" tabindex="-1"></a>ejemplo <span class="ot">&lt;-</span> <span class="fu">juice</span>(simple_ames)</span>
+<span id="cb141-8"><a href="introducción-a-machine-learning.html#cb141-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb141-9"><a href="introducción-a-machine-learning.html#cb141-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ejemplo, <span class="fu">aes</span>(<span class="at">y =</span> Neighborhood)) <span class="sc">+</span> </span>
+<span id="cb141-10"><a href="introducción-a-machine-learning.html#cb141-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb141-11"><a href="introducción-a-machine-learning.html#cb141-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+</div>
+</div>
+<div id="imputaciones" class="section level3 hasAnchor" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Imputaciones<a href="introducción-a-machine-learning.html#imputaciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función <code>step_unknown</code> crea una categoría nombrada <code>unknown</code>, la cual sirve
+como reemplazo de datos categóricos faltantes, sin embargo, para imputar datos
+numéricos se requiere de otra estrategia. Las imputaciones o sustituciones más
+comunes son realizadas a través de medidas de tendencia central tales como la
+media y mediana. A continuación se muestra un ejemplo:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="introducción-a-machine-learning.html#cb142-1" aria-hidden="true" tabindex="-1"></a>ames_na <span class="ot">&lt;-</span> ames</span>
+<span id="cb142-2"><a href="introducción-a-machine-learning.html#cb142-2" aria-hidden="true" tabindex="-1"></a>ames_na[<span class="fu">sample</span>(<span class="fu">nrow</span>(ames), <span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&quot;Gr_Liv_Area&quot;</span>, <span class="st">&quot;Lot_Area&quot;</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb142-3"><a href="introducción-a-machine-learning.html#cb142-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-4"><a href="introducción-a-machine-learning.html#cb142-4" aria-hidden="true" tabindex="-1"></a>ames_na <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(Gr_Liv_Area) <span class="sc">|</span> <span class="fu">is.na</span>(Lot_Area)) <span class="sc">%&gt;%</span> </span>
+<span id="cb142-5"><a href="introducción-a-machine-learning.html#cb142-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Gr_Liv_Area, Lot_Area)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   Sale_Price Gr_Liv_Area Lot_Area
+##        &lt;int&gt;       &lt;int&gt;    &lt;int&gt;
+## 1     130000          NA       NA
+## 2     143000          NA       NA
+## 3     189000          NA       NA
+## 4     302000          NA       NA
+## 5     111500          NA       NA</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="introducción-a-machine-learning.html#cb144-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Lot_Area, <span class="at">data =</span> ames_na) <span class="sc">%&gt;%</span></span>
+<span id="cb144-2"><a href="introducción-a-machine-learning.html#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_mean</span>(Gr_Liv_Area) <span class="sc">%&gt;%</span> </span>
+<span id="cb144-3"><a href="introducción-a-machine-learning.html#cb144-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(Lot_Area) <span class="sc">%&gt;%</span> </span>
+<span id="cb144-4"><a href="introducción-a-machine-learning.html#cb144-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb144-5"><a href="introducción-a-machine-learning.html#cb144-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-6"><a href="introducción-a-machine-learning.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bake</span>(simple_ames, <span class="at">new_data =</span> ames_na) <span class="sc">%&gt;%</span> </span>
+<span id="cb144-7"><a href="introducción-a-machine-learning.html#cb144-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Gr_Liv_Area) <span class="sc">|</span> <span class="fu">is.na</span>(Lot_Area))</span></code></pre></div>
+<pre><code>## # A tibble: 0 × 3
+## # ℹ 3 variables: Gr_Liv_Area &lt;int&gt;, Lot_Area &lt;int&gt;, Sale_Price &lt;int&gt;</code></pre>
+<p>Forzamos algunos renglones a que sean omitidos aleatoriamente. Posteriormente,
+estos valores son imputados mediante su media y mediana.</p>
+</div>
+<div id="agregar-o-modificar-columnas" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> Agregar o modificar columnas<a href="introducción-a-machine-learning.html#agregar-o-modificar-columnas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Quizá la transformación más usada sea la agregación o mutación de columnas
+existentes. Similar a la función <code>mutate()</code> de <em>dplyr</em>, la función
+<code>step_mutate()</code> se encarga de realizar esta tarea dentro de un <em>pipeline</em> o
+receta.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="introducción-a-machine-learning.html#cb146-1" aria-hidden="true" tabindex="-1"></a>ejemplo <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb146-2"><a href="introducción-a-machine-learning.html#cb146-2" aria-hidden="true" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type <span class="sc">+</span> Year_Remod_Add,</span>
+<span id="cb146-3"><a href="introducción-a-machine-learning.html#cb146-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb146-4"><a href="introducción-a-machine-learning.html#cb146-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
+<span id="cb146-5"><a href="introducción-a-machine-learning.html#cb146-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sale_Price_Peso =</span> Sale_Price <span class="sc">*</span> <span class="fl">19.87</span>,</span>
+<span id="cb146-6"><a href="introducción-a-machine-learning.html#cb146-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Last_Inversion =</span> Year_Remod_Add <span class="sc">-</span> Year_Built</span>
+<span id="cb146-7"><a href="introducción-a-machine-learning.html#cb146-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb146-8"><a href="introducción-a-machine-learning.html#cb146-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_arrange</span>(<span class="fu">desc</span>(Last_Inversion)) <span class="sc">%&gt;%</span> </span>
+<span id="cb146-9"><a href="introducción-a-machine-learning.html#cb146-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb146-10"><a href="introducción-a-machine-learning.html#cb146-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-11"><a href="introducción-a-machine-learning.html#cb146-11" aria-hidden="true" tabindex="-1"></a>ejemplo</span></code></pre></div>
+<pre><code>## Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor          5
+## 
+## Training data contained 2930 data points and no missing data.
+## 
+## Operations:
+## 
+## Variable mutation for ~Sale_Price * 19.87, ~Year_Remod_Add - Yea... [trained]
+## Row arrangement using ~desc(Last_Inversion) [trained]</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="introducción-a-machine-learning.html#cb148-1" aria-hidden="true" tabindex="-1"></a>ejemplo <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb148-2"><a href="introducción-a-machine-learning.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Sale_Price_Peso, Year_Remod_Add, Year_Built, Last_Inversion)</span></code></pre></div>
+<pre><code>## # A tibble: 2,930 × 5
+##    Sale_Price Sale_Price_Peso Year_Remod_Add Year_Built Last_Inversion
+##         &lt;int&gt;           &lt;dbl&gt;          &lt;int&gt;      &lt;int&gt;          &lt;int&gt;
+##  1     131000        2602970            2007       1880            127
+##  2     265979        5285003.           2003       1880            123
+##  3     295000        5861650            2002       1880            122
+##  4      94000        1867780            1996       1875            121
+##  5     138000        2742060            2006       1890            116
+##  6     122000        2424140            1987       1872            115
+##  7     240000        4768800            2002       1890            112
+##  8     119600        2376452            2006       1895            111
+##  9     124000        2463880            1991       1880            111
+## 10     100000        1987000            1995       1885            110
+## # ℹ 2,920 more rows</code></pre>
+<p>En este ejemplo se realiza la creación de una nueva variable y la modificación
+de una ya existente.</p>
+</div>
+<div id="interacciones" class="section level3 hasAnchor" number="4.7.4">
+<h3><span class="header-section-number">4.7.4</span> Interacciones<a href="introducción-a-machine-learning.html#interacciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los efectos de interacción involucran dos o más predictores. Tal efecto <strong>ocurre
+cuando un predictor tiene un efecto sobre el resultado que depende de uno o más
+predictores.</strong></p>
+<p>Numéricamente, un término de interacción entre predictores se codifica como su
+producto. Las interacciones solo se definen en términos de su efecto sobre el
+resultado y pueden ser combinaciones de diferentes tipos de datos (por ejemplo,
+numéricos, categóricos, etc.).</p>
+<p>Después de explorar el conjunto de datos de Ames, podríamos encontrar que las
+pendientes de regresión para el área habitable bruta difieren para los
+diferentes tipos de edificios:</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="introducción-a-machine-learning.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ames, <span class="fu">aes</span>(<span class="at">x =</span> Gr_Liv_Area, <span class="at">y =</span> Sale_Price)) <span class="sc">+</span> </span>
+<span id="cb150-2"><a href="introducción-a-machine-learning.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb150-3"><a href="introducción-a-machine-learning.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Bldg_Type) <span class="sc">+</span> </span>
+<span id="cb150-4"><a href="introducción-a-machine-learning.html#cb150-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb150-5"><a href="introducción-a-machine-learning.html#cb150-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
+<span id="cb150-6"><a href="introducción-a-machine-learning.html#cb150-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
+<span id="cb150-7"><a href="introducción-a-machine-learning.html#cb150-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Gross Living Area&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sale Price (USD)&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
+<p>Con la receta actual, <code>step_dummy()</code> ya ha creado variables ficticias. ¿Cómo
+combinaríamos estos para una interacción? El paso adicional se vería como
+<code>step_interact(~ términos de interacción)</code> donde los términos en el lado derecho
+de la tilde son las interacciones. Estos pueden incluir selectores, por lo que
+sería apropiado usar:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="introducción-a-machine-learning.html#cb151-1" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
+<span id="cb151-2"><a href="introducción-a-machine-learning.html#cb151-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb151-3"><a href="introducción-a-machine-learning.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_other</span>(Neighborhood, <span class="at">threshold =</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-4"><a href="introducción-a-machine-learning.html#cb151-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-5"><a href="introducción-a-machine-learning.html#cb151-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_interact</span>( <span class="sc">~</span> Gr_Liv_Area<span class="sc">:</span><span class="fu">starts_with</span>(<span class="st">&quot;Bldg_Type_&quot;</span>) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb151-6"><a href="introducción-a-machine-learning.html#cb151-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb151-7"><a href="introducción-a-machine-learning.html#cb151-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-8"><a href="introducción-a-machine-learning.html#cb151-8" aria-hidden="true" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>## Rows: 2,930
+## Columns: 19
+## $ Gr_Liv_Area                      &lt;int&gt; 1656, 896, 1329, 2110, 1629, 1604, 13…
+## $ Year_Built                       &lt;int&gt; 1960, 1961, 1958, 1968, 1997, 1998, 2…
+## $ Sale_Price                       &lt;int&gt; 215000, 105000, 172000, 244000, 18990…
+## $ Neighborhood_College_Creek       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Old_Town            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Edwards             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Somerset            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Northridge_Heights  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Gilbert             &lt;dbl&gt; 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1…
+## $ Neighborhood_Sawyer              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_other               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0…
+## $ Bldg_Type_TwoFmCon               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Bldg_Type_Duplex                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Bldg_Type_Twnhs                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Bldg_Type_TwnhsE                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0…
+## $ Gr_Liv_Area_x_Bldg_Type_TwoFmCon &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Gr_Liv_Area_x_Bldg_Type_Duplex   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Gr_Liv_Area_x_Bldg_Type_Twnhs    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Gr_Liv_Area_x_Bldg_Type_TwnhsE   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1338, 1280, 1616, 0…</code></pre>
+<p>Se pueden especificar interacciones adicionales en esta fórmula separándolas con
+el signo <span class="math inline">\(*\)</span>.</p>
+</div>
+<div id="transformaciones-generales" class="section level3 hasAnchor" number="4.7.5">
+<h3><span class="header-section-number">4.7.5</span> Transformaciones generales<a href="introducción-a-machine-learning.html#transformaciones-generales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Reflejando las operaciones originales de dplyr, los siguientes pasos se pueden
+usar para realizar una variedad de operaciones básicas a los datos.</p>
+<ul>
+<li><p><code>step_select()</code>: Selecciona un subconjunto de variables específicas en el
+conjunto de datos.</p></li>
+<li><p><code>step_mutate()</code>: Crea una nueva variable o modifica una existente usando
+<code>dplyr::mutate()</code>.</p></li>
+<li><p><code>step_mutate_at()</code>: Lee una especificación de un paso de receta que
+modificará las variables seleccionadas usando una función común a través de
+<code>dplyr::mutate_at()</code>.</p></li>
+<li><p><code>step_filter()</code>: Crea una especificación de un paso de receta que eliminará
+filas usando <code>dplyr::filter()</code>.</p></li>
+<li><p><code>step_arrange()</code>: Ordena el conjunto de datos de acuerdo con una o más
+variables.</p></li>
+<li><p><code>step_rm()</code>: Crea una especificación de un paso de receta que eliminará las
+variables según su nombre, tipo o función.</p></li>
+<li><p><code>step_nzv()</code>: Realiza una selección de variables eliminando todas aquellas
+cuya varianza se encuentre cercana a cero.</p></li>
+<li><p><code>step_naomit()</code>: Elimina todos los renglones que tengan alguna variable con
+valores perdidos.</p></li>
+<li><p><code>step_normalize()</code>: Centra y escala las variables numéricas especificadas,
+generando una transformación a una distribución normal estándar.</p></li>
+<li><p><code>step_range()</code>: Transforma el rango de un conjunto de variables numéricas al
+especificado.</p></li>
+<li><p><code>step_interact()</code>: Crea un nuevo conjunto de variables basadas en la
+interacción entre dos variables.</p></li>
+<li><p><code>step_ratio()</code>: Crea una nueva variable a partir del cociente entre dos
+variables.</p></li>
+<li><p><code>all_predictors()</code>: Selecciona a todos los predictores del conjunto de
+entrenamiento para aplicarles alguna de las funciones mencionadas.</p></li>
+<li><p><code>all_numeric_predictors()</code>: Selecciona a todos los predictores numéricos del
+conjunto de entrenamiento para aplicarles alguna de las funciones
+mencionadas.</p></li>
+<li><p><code>all_nominal_predictors()</code>: Selecciona a todos los predictores nominales del
+conjunto de entrenamiento para aplicarles alguna de las funciones
+mencionadas.</p></li>
+</ul>
+<p>La guía completa de las familia de funciones <strong>step</strong> puede consultarse en la
+<a href="https://recipes.tidymodels.org/reference/index.html">documentación oficial</a></p>
+</div>
+</div>
+<div id="datos-y-tipos-de-modelos" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Datos y tipos de modelos<a href="introducción-a-machine-learning.html#datos-y-tipos-de-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En este curso se realizarán ejemplos tanto de regresión como de clasificación. Cada uno de los modelos a estudiar se implementarán tanto para respuestas continuas como variables categóricas</p>
+<div id="regresión-preparación-de-datos" class="section level4 unnumbered hasAnchor">
+<h4>Regresión: Preparación de datos<a href="introducción-a-machine-learning.html#regresión-preparación-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>En esta sección, prepararemos datos para ajustar modelos de regresión y de clasificación, usando la paquetería <em>recipes</em>. Primero ajustaremos la receta, después obtendremos la receta actualizada con las estimaciones y al final el conjunto de datos listo para el modelo.</p>
+<p><strong>Datos de regresión: Ames Housing Data</strong></p>
+<p>Los datos que usaremos son los de <em>Ames Housing Data</em>, el conjunto de datos contiene información de la <em>Ames Assessor’s Office</em> utilizada para calcular valuaciones para propiedades residenciales individuales vendidas en Ames, IA, de 2006 a 2010. Podemos encontrar más información en el siguiente link <a href="http://jse.amstat.org/v19n3/decock/DataDocumentation.txt"><em>Ames Housing Data</em></a>.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="introducción-a-machine-learning.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb153-2"><a href="introducción-a-machine-learning.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb153-3"><a href="introducción-a-machine-learning.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb153-4"><a href="introducción-a-machine-learning.html#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-5"><a href="introducción-a-machine-learning.html#cb153-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ames)</span>
+<span id="cb153-6"><a href="introducción-a-machine-learning.html#cb153-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ames)</span></code></pre></div>
+<pre><code>## Rows: 2,930
+## Columns: 74
+## $ MS_SubClass        &lt;fct&gt; One_Story_1946_and_Newer_All_Styles, One_Story_1946…
+## $ MS_Zoning          &lt;fct&gt; Residential_Low_Density, Residential_High_Density, …
+## $ Lot_Frontage       &lt;dbl&gt; 141, 80, 81, 93, 74, 78, 41, 43, 39, 60, 75, 0, 63,…
+## $ Lot_Area           &lt;int&gt; 31770, 11622, 14267, 11160, 13830, 9978, 4920, 5005…
+## $ Street             &lt;fct&gt; Pave, Pave, Pave, Pave, Pave, Pave, Pave, Pave, Pav…
+## $ Alley              &lt;fct&gt; No_Alley_Access, No_Alley_Access, No_Alley_Access, …
+## $ Lot_Shape          &lt;fct&gt; Slightly_Irregular, Regular, Slightly_Irregular, Re…
+## $ Land_Contour       &lt;fct&gt; Lvl, Lvl, Lvl, Lvl, Lvl, Lvl, Lvl, HLS, Lvl, Lvl, L…
+## $ Utilities          &lt;fct&gt; AllPub, AllPub, AllPub, AllPub, AllPub, AllPub, All…
+## $ Lot_Config         &lt;fct&gt; Corner, Inside, Corner, Corner, Inside, Inside, Ins…
+## $ Land_Slope         &lt;fct&gt; Gtl, Gtl, Gtl, Gtl, Gtl, Gtl, Gtl, Gtl, Gtl, Gtl, G…
+## $ Neighborhood       &lt;fct&gt; North_Ames, North_Ames, North_Ames, North_Ames, Gil…
+## $ Condition_1        &lt;fct&gt; Norm, Feedr, Norm, Norm, Norm, Norm, Norm, Norm, No…
+## $ Condition_2        &lt;fct&gt; Norm, Norm, Norm, Norm, Norm, Norm, Norm, Norm, Nor…
+## $ Bldg_Type          &lt;fct&gt; OneFam, OneFam, OneFam, OneFam, OneFam, OneFam, Twn…
+## $ House_Style        &lt;fct&gt; One_Story, One_Story, One_Story, One_Story, Two_Sto…
+## $ Overall_Cond       &lt;fct&gt; Average, Above_Average, Above_Average, Average, Ave…
+## $ Year_Built         &lt;int&gt; 1960, 1961, 1958, 1968, 1997, 1998, 2001, 1992, 199…
+## $ Year_Remod_Add     &lt;int&gt; 1960, 1961, 1958, 1968, 1998, 1998, 2001, 1992, 199…
+## $ Roof_Style         &lt;fct&gt; Hip, Gable, Hip, Hip, Gable, Gable, Gable, Gable, G…
+## $ Roof_Matl          &lt;fct&gt; CompShg, CompShg, CompShg, CompShg, CompShg, CompSh…
+## $ Exterior_1st       &lt;fct&gt; BrkFace, VinylSd, Wd Sdng, BrkFace, VinylSd, VinylS…
+## $ Exterior_2nd       &lt;fct&gt; Plywood, VinylSd, Wd Sdng, BrkFace, VinylSd, VinylS…
+## $ Mas_Vnr_Type       &lt;fct&gt; Stone, None, BrkFace, None, None, BrkFace, None, No…
+## $ Mas_Vnr_Area       &lt;dbl&gt; 112, 0, 108, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6…
+## $ Exter_Cond         &lt;fct&gt; Typical, Typical, Typical, Typical, Typical, Typica…
+## $ Foundation         &lt;fct&gt; CBlock, CBlock, CBlock, CBlock, PConc, PConc, PConc…
+## $ Bsmt_Cond          &lt;fct&gt; Good, Typical, Typical, Typical, Typical, Typical, …
+## $ Bsmt_Exposure      &lt;fct&gt; Gd, No, No, No, No, No, Mn, No, No, No, No, No, No,…
+## $ BsmtFin_Type_1     &lt;fct&gt; BLQ, Rec, ALQ, ALQ, GLQ, GLQ, GLQ, ALQ, GLQ, Unf, U…
+## $ BsmtFin_SF_1       &lt;dbl&gt; 2, 6, 1, 1, 3, 3, 3, 1, 3, 7, 7, 1, 7, 3, 3, 1, 3, …
+## $ BsmtFin_Type_2     &lt;fct&gt; Unf, LwQ, Unf, Unf, Unf, Unf, Unf, Unf, Unf, Unf, U…
+## $ BsmtFin_SF_2       &lt;dbl&gt; 0, 144, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1120, 0…
+## $ Bsmt_Unf_SF        &lt;dbl&gt; 441, 270, 406, 1045, 137, 324, 722, 1017, 415, 994,…
+## $ Total_Bsmt_SF      &lt;dbl&gt; 1080, 882, 1329, 2110, 928, 926, 1338, 1280, 1595, …
+## $ Heating            &lt;fct&gt; GasA, GasA, GasA, GasA, GasA, GasA, GasA, GasA, Gas…
+## $ Heating_QC         &lt;fct&gt; Fair, Typical, Typical, Excellent, Good, Excellent,…
+## $ Central_Air        &lt;fct&gt; Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, Y, …
+## $ Electrical         &lt;fct&gt; SBrkr, SBrkr, SBrkr, SBrkr, SBrkr, SBrkr, SBrkr, SB…
+## $ First_Flr_SF       &lt;int&gt; 1656, 896, 1329, 2110, 928, 926, 1338, 1280, 1616, …
+## $ Second_Flr_SF      &lt;int&gt; 0, 0, 0, 0, 701, 678, 0, 0, 0, 776, 892, 0, 676, 0,…
+## $ Gr_Liv_Area        &lt;int&gt; 1656, 896, 1329, 2110, 1629, 1604, 1338, 1280, 1616…
+## $ Bsmt_Full_Bath     &lt;dbl&gt; 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, …
+## $ Bsmt_Half_Bath     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ Full_Bath          &lt;int&gt; 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 3, 2, …
+## $ Half_Bath          &lt;int&gt; 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, …
+## $ Bedroom_AbvGr      &lt;int&gt; 3, 2, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 2, 1, 4, 4, …
+## $ Kitchen_AbvGr      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ TotRms_AbvGrd      &lt;int&gt; 7, 5, 6, 8, 6, 7, 6, 5, 5, 7, 7, 6, 7, 5, 4, 12, 8,…
+## $ Functional         &lt;fct&gt; Typ, Typ, Typ, Typ, Typ, Typ, Typ, Typ, Typ, Typ, T…
+## $ Fireplaces         &lt;int&gt; 2, 0, 0, 2, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, …
+## $ Garage_Type        &lt;fct&gt; Attchd, Attchd, Attchd, Attchd, Attchd, Attchd, Att…
+## $ Garage_Finish      &lt;fct&gt; Fin, Unf, Unf, Fin, Fin, Fin, Fin, RFn, RFn, Fin, F…
+## $ Garage_Cars        &lt;dbl&gt; 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, …
+## $ Garage_Area        &lt;dbl&gt; 528, 730, 312, 522, 482, 470, 582, 506, 608, 442, 4…
+## $ Garage_Cond        &lt;fct&gt; Typical, Typical, Typical, Typical, Typical, Typica…
+## $ Paved_Drive        &lt;fct&gt; Partial_Pavement, Paved, Paved, Paved, Paved, Paved…
+## $ Wood_Deck_SF       &lt;int&gt; 210, 140, 393, 0, 212, 360, 0, 0, 237, 140, 157, 48…
+## $ Open_Porch_SF      &lt;int&gt; 62, 0, 36, 0, 34, 36, 0, 82, 152, 60, 84, 21, 75, 0…
+## $ Enclosed_Porch     &lt;int&gt; 0, 0, 0, 0, 0, 0, 170, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ Three_season_porch &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ Screen_Porch       &lt;int&gt; 0, 120, 0, 0, 0, 0, 0, 144, 0, 0, 0, 0, 0, 0, 140, …
+## $ Pool_Area          &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ Pool_QC            &lt;fct&gt; No_Pool, No_Pool, No_Pool, No_Pool, No_Pool, No_Poo…
+## $ Fence              &lt;fct&gt; No_Fence, Minimum_Privacy, No_Fence, No_Fence, Mini…
+## $ Misc_Feature       &lt;fct&gt; None, None, Gar2, None, None, None, None, None, Non…
+## $ Misc_Val           &lt;int&gt; 0, 0, 12500, 0, 0, 0, 0, 0, 0, 0, 0, 500, 0, 0, 0, …
+## $ Mo_Sold            &lt;int&gt; 5, 6, 6, 4, 3, 6, 4, 1, 3, 6, 4, 3, 5, 2, 6, 6, 6, …
+## $ Year_Sold          &lt;int&gt; 2010, 2010, 2010, 2010, 2010, 2010, 2010, 2010, 201…
+## $ Sale_Type          &lt;fct&gt; WD , WD , WD , WD , WD , WD , WD , WD , WD , WD , W…
+## $ Sale_Condition     &lt;fct&gt; Normal, Normal, Normal, Normal, Normal, Normal, Nor…
+## $ Sale_Price         &lt;int&gt; 215000, 105000, 172000, 244000, 189900, 195500, 213…
+## $ Longitude          &lt;dbl&gt; -93.61975, -93.61976, -93.61939, -93.61732, -93.638…
+## $ Latitude           &lt;dbl&gt; 42.05403, 42.05301, 42.05266, 42.05125, 42.06090, 4…</code></pre>
+</div>
+<div id="separación-de-los-datos" class="section level3 hasAnchor" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> Separación de los datos<a href="introducción-a-machine-learning.html#separación-de-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El primer paso para crear un modelo de regresión es dividir nuestros datos originales en un conjunto de entrenamiento y prueba.</p>
+<p>No hay que olvidar usar siempre una semilla con la función <em>set.seed()</em> para que sus resultados sean reproducibles.</p>
+<p>Primero usaremos la función <strong>initial_split()</strong> de <em>rsample</em> para dividir los datos <em>ames</em> en conjuntos de entrenamiento y prueba. Usamos el parámetro <em>prop</em> para indicar la proporción de los conjuntos <em>train</em> y <em>test</em>.</p>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="introducción-a-machine-learning.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4595</span>)</span>
+<span id="cb155-2"><a href="introducción-a-machine-learning.html#cb155-2" aria-hidden="true" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.75</span>)</span></code></pre></div>
+<p>El objeto <em>ames_split</em> es un objeto <em>rsplit</em> y solo contiene la información de partición, para obtener los conjuntos de datos resultantes, aplicamos dos funciones adicionales, <strong>training</strong> y <strong>testing</strong>.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="introducción-a-machine-learning.html#cb156-1" aria-hidden="true" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
+<span id="cb156-2"><a href="introducción-a-machine-learning.html#cb156-2" aria-hidden="true" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(ames_split)</span></code></pre></div>
+<p>Estos objetos son <em>data frames</em> con las mismas columnas que los datos originales, pero solo las filas apropiadas para cada conjunto.</p>
+<p>También existe la función <strong>vfold_cv</strong> que se usa para crear <em><strong>v</strong></em> particiones del conjunto de entrenamiento.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="introducción-a-machine-learning.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2453</span>)</span>
+<span id="cb157-2"><a href="introducción-a-machine-learning.html#cb157-2" aria-hidden="true" tabindex="-1"></a>ames_folds<span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train, <span class="at">v =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p>Ya con los conjuntos de entrenamiento y prueba definidos, iniciaremos con <em>feature engineering</em> sobre el conjunto de entrenamiento.</p>
+</div>
+<div id="definición-de-la-receta" class="section level3 hasAnchor" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> Definición de la receta<a href="introducción-a-machine-learning.html#definición-de-la-receta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ahora usaremos la función vista en la sección anterior, <em>recipe()</em>, para definir los pasos de preprocesamiento antes de usar los datos para modelado.</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="introducción-a-machine-learning.html#cb158-1" aria-hidden="true" tabindex="-1"></a>receta_casas <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> . , <span class="at">data =</span> ames_train) <span class="sc">%&gt;%</span></span>
+<span id="cb158-2"><a href="introducción-a-machine-learning.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_unknown</span>(Alley) <span class="sc">%&gt;%</span></span>
+<span id="cb158-3"><a href="introducción-a-machine-learning.html#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_rename</span>(<span class="at">Year_Remod =</span> Year_Remod_Add) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-4"><a href="introducción-a-machine-learning.html#cb158-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_rename</span>(<span class="at">ThirdSsn_Porch =</span> Three_season_porch) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-5"><a href="introducción-a-machine-learning.html#cb158-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_ratio</span>(Bedroom_AbvGr, <span class="at">denom =</span> <span class="fu">denom_vars</span>(Gr_Liv_Area)) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-6"><a href="introducción-a-machine-learning.html#cb158-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
+<span id="cb158-7"><a href="introducción-a-machine-learning.html#cb158-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Age_House =</span> Year_Sold <span class="sc">-</span> Year_Remod,</span>
+<span id="cb158-8"><a href="introducción-a-machine-learning.html#cb158-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">TotalSF   =</span> Gr_Liv_Area <span class="sc">+</span> Total_Bsmt_SF,</span>
+<span id="cb158-9"><a href="introducción-a-machine-learning.html#cb158-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">AvgRoomSF   =</span> Gr_Liv_Area <span class="sc">/</span> TotRms_AbvGrd,</span>
+<span id="cb158-10"><a href="introducción-a-machine-learning.html#cb158-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Pool =</span> <span class="fu">if_else</span>(Pool_Area <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb158-11"><a href="introducción-a-machine-learning.html#cb158-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Exter_Cond =</span> forcats<span class="sc">::</span><span class="fu">fct_collapse</span>(Exter_Cond, <span class="at">Good =</span> <span class="fu">c</span>(<span class="st">&quot;Typical&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Excellent&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-12"><a href="introducción-a-machine-learning.html#cb158-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_relevel</span>(Exter_Cond, <span class="at">ref_level =</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-13"><a href="introducción-a-machine-learning.html#cb158-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>(), <span class="sc">-</span><span class="fu">all_nominal</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb158-14"><a href="introducción-a-machine-learning.html#cb158-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-15"><a href="introducción-a-machine-learning.html#cb158-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> Second_Flr_SF<span class="sc">:</span>First_Flr_SF) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-16"><a href="introducción-a-machine-learning.html#cb158-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> <span class="fu">matches</span>(<span class="st">&quot;Bsmt_Cond&quot;</span>)<span class="sc">:</span>TotRms_AbvGrd) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-17"><a href="introducción-a-machine-learning.html#cb158-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_rm</span>(</span>
+<span id="cb158-18"><a href="introducción-a-machine-learning.html#cb158-18" aria-hidden="true" tabindex="-1"></a>    First_Flr_SF, Second_Flr_SF, Year_Remod,</span>
+<span id="cb158-19"><a href="introducción-a-machine-learning.html#cb158-19" aria-hidden="true" tabindex="-1"></a>    Bsmt_Full_Bath, Bsmt_Half_Bath, </span>
+<span id="cb158-20"><a href="introducción-a-machine-learning.html#cb158-20" aria-hidden="true" tabindex="-1"></a>    Kitchen_AbvGr, BsmtFin_Type_1_Unf, </span>
+<span id="cb158-21"><a href="introducción-a-machine-learning.html#cb158-21" aria-hidden="true" tabindex="-1"></a>    Total_Bsmt_SF, Kitchen_AbvGr, Pool_Area, </span>
+<span id="cb158-22"><a href="introducción-a-machine-learning.html#cb158-22" aria-hidden="true" tabindex="-1"></a>    Gr_Liv_Area, Sale_Type_Oth, Sale_Type_VWD</span>
+<span id="cb158-23"><a href="introducción-a-machine-learning.html#cb158-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-24"><a href="introducción-a-machine-learning.html#cb158-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span></code></pre></div>
+<ul>
+<li><p>Usamos la función <em><strong>step_mutate()</strong></em> para generar nuevas variables dentro de la receta.</p></li>
+<li><p>La función <em><strong>step_interact()</strong></em> nos ayuda a crear nuevas variables que son interacciones entre las variables especificadas.</p></li>
+<li><p>Con la función <em><strong>step_ratio()</strong></em> creamos proporciones con las variables especificadas.</p></li>
+<li><p><em><strong>forcats::fct_collapse()</strong></em> se usa para recategorizar variables, colapsando categorías de la variable.</p></li>
+<li><p><em><strong>step_relevel</strong></em> nos ayuda a asignar la categoria deseada de una variable como referencia.</p></li>
+<li><p><em><strong>step_normalize()</strong></em> es de gran utilidad ya que sirve para normalizar las variables que se le indiquen.</p></li>
+<li><p><em><strong>step_dummy()</strong></em> Nos ayuda a crear variables <em>One Hot Encoding</em>.</p></li>
+<li><p>Por último usamos la función <em><strong>step_rm()</strong></em> para eliminar variables que no son de utilidad para el modelo.</p></li>
+</ul>
+<p>Ahora crearemos algunas variables auxiliares que podrían ser de utilidad para el ajuste de un modelo de regresión. Recordemos que la función <strong>recipe()</strong> solo son los pasos a seguir, necesitamos usar la función <strong>prep()</strong> que nos devuelve una receta actualizada con las estimaciones y la función <strong>juice()</strong> que nos devuelve la matriz de diseño.</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="introducción-a-machine-learning.html#cb159-1" aria-hidden="true" tabindex="-1"></a>casa_juiced <span class="ot">&lt;-</span> <span class="fu">juice</span>(receta_casas)</span>
+<span id="cb159-2"><a href="introducción-a-machine-learning.html#cb159-2" aria-hidden="true" tabindex="-1"></a>casa_juiced</span></code></pre></div>
+<pre><code>## # A tibble: 2,197 × 275
+##    Lot_Frontage Lot_Area Year_Built Mas_Vnr_Area BsmtFin_SF_1 BsmtFin_SF_2
+##           &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+##  1       0.214    0.604       0.848       -0.572       -0.512       -0.293
+##  2       0.363   -0.216      -0.114       -0.572       -0.512       -0.293
+##  3       1.05    -0.0159      1.08        -0.572        1.26        -0.293
+##  4      -0.173    4.87        1.15         3.49        -0.512       -0.293
+##  5       0.512    0.256       1.11         0.526        1.26        -0.293
+##  6      -0.233   -0.696      -0.844       -0.572        1.26        -0.293
+##  7       0.125   -0.261      -0.446       -0.572       -0.512       -0.293
+##  8       0.571   -0.193      -0.479       -0.572        0.819       -0.293
+##  9       0.274    0.704       0.981       -0.572        1.26        -0.293
+## 10       0.0651  -0.356      -0.712       -0.572        0.375       -0.293
+## # ℹ 2,187 more rows
+## # ℹ 269 more variables: Bsmt_Unf_SF &lt;dbl&gt;, Full_Bath &lt;dbl&gt;, Half_Bath &lt;dbl&gt;,
+## #   Bedroom_AbvGr &lt;dbl&gt;, TotRms_AbvGrd &lt;dbl&gt;, Fireplaces &lt;dbl&gt;,
+## #   Garage_Cars &lt;dbl&gt;, Garage_Area &lt;dbl&gt;, Wood_Deck_SF &lt;dbl&gt;,
+## #   Open_Porch_SF &lt;dbl&gt;, Enclosed_Porch &lt;dbl&gt;, ThirdSsn_Porch &lt;dbl&gt;,
+## #   Screen_Porch &lt;dbl&gt;, Misc_Val &lt;dbl&gt;, Mo_Sold &lt;dbl&gt;, Year_Sold &lt;dbl&gt;,
+## #   Longitude &lt;dbl&gt;, Latitude &lt;dbl&gt;, Sale_Price &lt;int&gt;, …</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="introducción-a-machine-learning.html#cb161-1" aria-hidden="true" tabindex="-1"></a>casa_test_bake <span class="ot">&lt;-</span> <span class="fu">bake</span>(receta_casas, <span class="at">new_data =</span> ames_test)</span>
+<span id="cb161-2"><a href="introducción-a-machine-learning.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(casa_test_bake)</span></code></pre></div>
+<pre><code>## Rows: 733
+## Columns: 275
+## $ Lot_Frontage                                          &lt;dbl&gt; 0.6607556, -1.72…
+## $ Lot_Area                                              &lt;dbl&gt; 0.15995167, -0.2…
+## $ Year_Built                                            &lt;dbl&gt; -0.34660802, 0.6…
+## $ Mas_Vnr_Area                                          &lt;dbl&gt; -0.5721904, -0.5…
+## $ BsmtFin_SF_1                                          &lt;dbl&gt; 0.81885215, -1.3…
+## $ BsmtFin_SF_2                                          &lt;dbl&gt; 0.5851851, -0.29…
+## $ Bsmt_Unf_SF                                           &lt;dbl&gt; -0.65580176, -0.…
+## $ Full_Bath                                             &lt;dbl&gt; -1.0284858, 0.79…
+## $ Half_Bath                                             &lt;dbl&gt; -0.7465678, -0.7…
+## $ Bedroom_AbvGr                                         &lt;dbl&gt; -1.0749072, 0.15…
+## $ TotRms_AbvGrd                                         &lt;dbl&gt; -0.9221672, -0.2…
+## $ Fireplaces                                            &lt;dbl&gt; -0.9297733, -0.9…
+## $ Garage_Cars                                           &lt;dbl&gt; -1.0124349, 0.29…
+## $ Garage_Area                                           &lt;dbl&gt; 1.19047388, -0.2…
+## $ Wood_Deck_SF                                          &lt;dbl&gt; 0.3353735, 3.013…
+## $ Open_Porch_SF                                         &lt;dbl&gt; -0.70298891, -0.…
+## $ Enclosed_Porch                                        &lt;dbl&gt; -0.3536614, -0.3…
+## $ ThirdSsn_Porch                                        &lt;dbl&gt; -0.1029207, -0.1…
+## $ Screen_Porch                                          &lt;dbl&gt; 1.9128593, -0.28…
+## $ Misc_Val                                              &lt;dbl&gt; -0.09569659, 0.6…
+## $ Mo_Sold                                               &lt;dbl&gt; -0.09320608, -1.…
+## $ Year_Sold                                             &lt;dbl&gt; 1.672416, 1.6724…
+## $ Longitude                                             &lt;dbl&gt; 0.90531385, 0.27…
+## $ Latitude                                              &lt;dbl&gt; 1.00647452, 1.24…
+## $ Sale_Price                                            &lt;int&gt; 105000, 185000, …
+## $ Bedroom_AbvGr_o_Gr_Liv_Area                           &lt;dbl&gt; 0.34141287, 0.83…
+## $ Age_House                                             &lt;dbl&gt; 1.21786294, -0.9…
+## $ TotalSF                                               &lt;dbl&gt; -0.94110413, -0.…
+## $ AvgRoomSF                                             &lt;dbl&gt; -1.11699593, -0.…
+## $ Pool                                                  &lt;dbl&gt; -0.0709206, -0.0…
+## $ MS_SubClass_One_Story_1945_and_Older                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_One_Story_with_Finished_Attic_All_Ages    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_One_and_Half_Story_Unfinished_All_Ages    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_One_and_Half_Story_Finished_All_Ages      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_Two_Story_1946_and_Newer                  &lt;dbl&gt; 0, 0, 1, 0, 0, 1…
+## $ MS_SubClass_Two_Story_1945_and_Older                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_Two_and_Half_Story_All_Ages               &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_Split_or_Multilevel                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_Split_Foyer                               &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_Duplex_All_Styles_and_Ages                &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_One_Story_PUD_1946_and_Newer              &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_One_and_Half_Story_PUD_All_Ages           &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_Two_Story_PUD_1946_and_Newer              &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_PUD_Multilevel_Split_Level_Foyer          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_SubClass_Two_Family_conversion_All_Styles_and_Ages &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_Zoning_Residential_High_Density                    &lt;dbl&gt; 1, 0, 0, 0, 0, 0…
+## $ MS_Zoning_Residential_Low_Density                     &lt;dbl&gt; 0, 1, 1, 1, 1, 0…
+## $ MS_Zoning_Residential_Medium_Density                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_Zoning_A_agr                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_Zoning_C_all                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ MS_Zoning_I_all                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Street_Pave                                           &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Alley_No_Alley_Access                                 &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Alley_Paved                                           &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Alley_unknown                                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Lot_Shape_Slightly_Irregular                          &lt;dbl&gt; 0, 1, 1, 0, 0, 0…
+## $ Lot_Shape_Moderately_Irregular                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Lot_Shape_Irregular                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Land_Contour_HLS                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Land_Contour_Low                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Land_Contour_Lvl                                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Utilities_NoSeWa                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Utilities_NoSewr                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Lot_Config_CulDSac                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Lot_Config_FR2                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Lot_Config_FR3                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Lot_Config_Inside                                     &lt;dbl&gt; 1, 1, 1, 0, 1, 1…
+## $ Land_Slope_Mod                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Land_Slope_Sev                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_College_Creek                            &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Old_Town                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Edwards                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Somerset                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 1…
+## $ Neighborhood_Northridge_Heights                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Gilbert                                  &lt;dbl&gt; 0, 1, 1, 1, 0, 0…
+## $ Neighborhood_Sawyer                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Northwest_Ames                           &lt;dbl&gt; 0, 0, 0, 0, 1, 0…
+## $ Neighborhood_Sawyer_West                              &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Mitchell                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Brookside                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Crawford                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Iowa_DOT_and_Rail_Road                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Timberland                               &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Northridge                               &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Stone_Brook                              &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_South_and_West_of_Iowa_State_University  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Clear_Creek                              &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Meadow_Village                           &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Briardale                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Bloomington_Heights                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Veenker                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Northpark_Villa                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Blueste                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Greens                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Green_Hills                              &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Landmark                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Neighborhood_Hayden_Lake                              &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_1_Feedr                                     &lt;dbl&gt; 1, 0, 0, 0, 0, 0…
+## $ Condition_1_Norm                                      &lt;dbl&gt; 0, 1, 1, 1, 1, 1…
+## $ Condition_1_PosA                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_1_PosN                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_1_RRAe                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_1_RRAn                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_1_RRNe                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_1_RRNn                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_2_Feedr                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_2_Norm                                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Condition_2_PosA                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_2_PosN                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_2_RRAe                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_2_RRAn                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Condition_2_RRNn                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bldg_Type_TwoFmCon                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bldg_Type_Duplex                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bldg_Type_Twnhs                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bldg_Type_TwnhsE                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ House_Style_One_and_Half_Unf                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ House_Style_One_Story                                 &lt;dbl&gt; 1, 1, 0, 1, 1, 0…
+## $ House_Style_SFoyer                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ House_Style_SLvl                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ House_Style_Two_and_Half_Fin                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ House_Style_Two_and_Half_Unf                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ House_Style_Two_Story                                 &lt;dbl&gt; 0, 0, 1, 0, 0, 1…
+## $ Overall_Cond_Poor                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Overall_Cond_Fair                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Overall_Cond_Below_Average                            &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Overall_Cond_Average                                  &lt;dbl&gt; 0, 0, 1, 1, 0, 1…
+## $ Overall_Cond_Above_Average                            &lt;dbl&gt; 1, 0, 0, 0, 1, 0…
+## $ Overall_Cond_Good                                     &lt;dbl&gt; 0, 1, 0, 0, 0, 0…
+## $ Overall_Cond_Very_Good                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Overall_Cond_Excellent                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Overall_Cond_Very_Excellent                           &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Style_Gable                                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Roof_Style_Gambrel                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Style_Hip                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Style_Mansard                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Style_Shed                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Matl_CompShg                                     &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Roof_Matl_Membran                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Matl_Metal                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Matl_Roll                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Matl_Tar.Grv                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Matl_WdShake                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Roof_Matl_WdShngl                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_AsphShn                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_BrkComm                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_BrkFace                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_CBlock                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_CemntBd                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_HdBoard                                  &lt;dbl&gt; 0, 1, 0, 0, 0, 0…
+## $ Exterior_1st_ImStucc                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_MetalSd                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_Plywood                                  &lt;dbl&gt; 0, 0, 0, 0, 1, 0…
+## $ Exterior_1st_PreCast                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_Stone                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_Stucco                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_VinylSd                                  &lt;dbl&gt; 1, 0, 1, 1, 0, 1…
+## $ Exterior_1st_Wd.Sdng                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_1st_WdShing                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_AsphShn                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_Brk.Cmn                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_BrkFace                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_CBlock                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_CmentBd                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_HdBoard                                  &lt;dbl&gt; 0, 1, 0, 0, 0, 0…
+## $ Exterior_2nd_ImStucc                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_MetalSd                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_Other                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_Plywood                                  &lt;dbl&gt; 0, 0, 0, 0, 1, 0…
+## $ Exterior_2nd_PreCast                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_Stone                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_Stucco                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_VinylSd                                  &lt;dbl&gt; 1, 0, 1, 1, 0, 1…
+## $ Exterior_2nd_Wd.Sdng                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exterior_2nd_Wd.Shng                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Mas_Vnr_Type_BrkFace                                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Mas_Vnr_Type_CBlock                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Mas_Vnr_Type_None                                     &lt;dbl&gt; 1, 1, 1, 1, 0, 1…
+## $ Mas_Vnr_Type_Stone                                    &lt;dbl&gt; 0, 0, 0, 0, 1, 0…
+## $ Exter_Cond_Fair                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Exter_Cond_Poor                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Foundation_CBlock                                     &lt;dbl&gt; 1, 0, 0, 1, 1, 0…
+## $ Foundation_PConc                                      &lt;dbl&gt; 0, 1, 1, 0, 0, 1…
+## $ Foundation_Slab                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Foundation_Stone                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Foundation_Wood                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_Fair                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_Good                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_No_Basement                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_Poor                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_Typical                                     &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Bsmt_Exposure_Gd                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Exposure_Mn                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Exposure_No                                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Bsmt_Exposure_No_Basement                             &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_1_BLQ                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_1_GLQ                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 1…
+## $ BsmtFin_Type_1_LwQ                                    &lt;dbl&gt; 0, 0, 0, 1, 0, 0…
+## $ BsmtFin_Type_1_No_Basement                            &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_1_Rec                                    &lt;dbl&gt; 1, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_2_BLQ                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_2_GLQ                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_2_LwQ                                    &lt;dbl&gt; 1, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_2_No_Basement                            &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ BsmtFin_Type_2_Rec                                    &lt;dbl&gt; 0, 0, 0, 0, 1, 0…
+## $ BsmtFin_Type_2_Unf                                    &lt;dbl&gt; 0, 1, 1, 1, 0, 1…
+## $ Heating_GasA                                          &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Heating_GasW                                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Heating_Grav                                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Heating_OthW                                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Heating_Wall                                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Heating_QC_Fair                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Heating_QC_Good                                       &lt;dbl&gt; 0, 0, 1, 0, 0, 0…
+## $ Heating_QC_Poor                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Heating_QC_Typical                                    &lt;dbl&gt; 1, 0, 0, 0, 1, 0…
+## $ Central_Air_Y                                         &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Electrical_FuseF                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Electrical_FuseP                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Electrical_Mix                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Electrical_SBrkr                                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Electrical_Unknown                                    &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Functional_Maj2                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Functional_Min1                                       &lt;dbl&gt; 0, 0, 0, 0, 1, 0…
+## $ Functional_Min2                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Functional_Mod                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Functional_Sal                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Functional_Sev                                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Functional_Typ                                        &lt;dbl&gt; 1, 1, 1, 1, 0, 1…
+## $ Garage_Type_Basment                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Type_BuiltIn                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Type_CarPort                                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Type_Detchd                                    &lt;dbl&gt; 0, 0, 0, 1, 0, 0…
+## $ Garage_Type_More_Than_Two_Types                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Type_No_Garage                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Finish_No_Garage                               &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Finish_RFn                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 1…
+## $ Garage_Finish_Unf                                     &lt;dbl&gt; 1, 0, 0, 1, 1, 0…
+## $ Garage_Cond_Fair                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Cond_Good                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Cond_No_Garage                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Cond_Poor                                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Garage_Cond_Typical                                   &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Paved_Drive_Partial_Pavement                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Paved_Drive_Paved                                     &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Pool_QC_Fair                                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Pool_QC_Good                                          &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Pool_QC_No_Pool                                       &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Pool_QC_Typical                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Fence_Good_Wood                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Fence_Minimum_Privacy                                 &lt;dbl&gt; 1, 0, 0, 0, 1, 0…
+## $ Fence_Minimum_Wood_Wire                               &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Fence_No_Fence                                        &lt;dbl&gt; 0, 0, 1, 1, 0, 1…
+## $ Misc_Feature_Gar2                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Misc_Feature_None                                     &lt;dbl&gt; 1, 0, 1, 1, 1, 1…
+## $ Misc_Feature_Othr                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Misc_Feature_Shed                                     &lt;dbl&gt; 0, 1, 0, 0, 0, 0…
+## $ Misc_Feature_TenC                                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Type_Con                                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Type_ConLD                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Type_ConLI                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Type_ConLw                                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Type_CWD                                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Type_New                                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Type_WD.                                         &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Sale_Condition_AdjLand                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Condition_Alloca                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Condition_Family                                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Sale_Condition_Normal                                 &lt;dbl&gt; 1, 1, 1, 1, 1, 1…
+## $ Sale_Condition_Partial                                &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Second_Flr_SF_x_First_Flr_SF                          &lt;dbl&gt; 0.52453728, -0.0…
+## $ Bsmt_Cond_Fair_x_TotRms_AbvGrd                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_Good_x_TotRms_AbvGrd                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_No_Basement_x_TotRms_AbvGrd                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_Poor_x_TotRms_AbvGrd                        &lt;dbl&gt; 0, 0, 0, 0, 0, 0…
+## $ Bsmt_Cond_Typical_x_TotRms_AbvGrd                     &lt;dbl&gt; -0.9221672, -0.2…</code></pre>
+<div id="clasificación-preparación-de-datos" class="section level4 unnumbered hasAnchor">
+<h4>Clasificación: Preparación de Datos<a href="introducción-a-machine-learning.html#clasificación-preparación-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Ahora prepararemos los datos para un ejemplo de <em>churn</em>, es decir, la <strong>tasa de cancelación de clientes</strong>. Usaremos datos de <a href="https://www.kaggle.com/blastchar/telco-customer-churn">Telco</a>.</p>
+<p>En este conjunto de datos, la variable a predecir será la cancelación por parte del cliente de los servicios de telecomunicaciones contratados.</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="introducción-a-machine-learning.html#cb163-1" aria-hidden="true" tabindex="-1"></a>telco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Churn.csv&quot;</span>)</span>
+<span id="cb163-2"><a href="introducción-a-machine-learning.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(telco)</span></code></pre></div>
+<pre><code>## Rows: 7,043
+## Columns: 21
+## $ customerID       &lt;chr&gt; &quot;7590-VHVEG&quot;, &quot;5575-GNVDE&quot;, &quot;3668-QPYBK&quot;, &quot;7795-CFOCW…
+## $ gender           &lt;chr&gt; &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;,…
+## $ SeniorCitizen    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ Partner          &lt;chr&gt; &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes…
+## $ Dependents       &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;…
+## $ tenure           &lt;dbl&gt; 1, 34, 2, 45, 2, 8, 22, 10, 28, 62, 13, 16, 58, 49, 2…
+## $ PhoneService     &lt;chr&gt; &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, …
+## $ MultipleLines    &lt;chr&gt; &quot;No phone service&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No phone service&quot;, &quot;…
+## $ InternetService  &lt;chr&gt; &quot;DSL&quot;, &quot;DSL&quot;, &quot;DSL&quot;, &quot;DSL&quot;, &quot;Fiber optic&quot;, &quot;Fiber opt…
+## $ OnlineSecurity   &lt;chr&gt; &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;…
+## $ OnlineBackup     &lt;chr&gt; &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;N…
+## $ DeviceProtection &lt;chr&gt; &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Y…
+## $ TechSupport      &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes…
+## $ StreamingTV      &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Ye…
+## $ StreamingMovies  &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes…
+## $ Contract         &lt;chr&gt; &quot;Month-to-month&quot;, &quot;One year&quot;, &quot;Month-to-month&quot;, &quot;One …
+## $ PaperlessBilling &lt;chr&gt; &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, …
+## $ PaymentMethod    &lt;chr&gt; &quot;Electronic check&quot;, &quot;Mailed check&quot;, &quot;Mailed check&quot;, &quot;…
+## $ MonthlyCharges   &lt;dbl&gt; 29.85, 56.95, 53.85, 42.30, 70.70, 99.65, 89.10, 29.7…
+## $ TotalCharges     &lt;dbl&gt; 29.85, 1889.50, 108.15, 1840.75, 151.65, 820.50, 1949…
+## $ Churn            &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Y…</code></pre>
+</div>
+</div>
+<div id="separación-de-los-datos-1" class="section level3 hasAnchor" number="4.8.3">
+<h3><span class="header-section-number">4.8.3</span> Separación de los datos<a href="introducción-a-machine-learning.html#separación-de-los-datos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como en el ejemplo de regresión, primero crearemos los conjuntos de entrenamiento y de prueba.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="introducción-a-machine-learning.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb165-2"><a href="introducción-a-machine-learning.html#cb165-2" aria-hidden="true" tabindex="-1"></a>telco_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(telco, <span class="at">prop =</span> .<span class="dv">7</span>)</span>
+<span id="cb165-3"><a href="introducción-a-machine-learning.html#cb165-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-4"><a href="introducción-a-machine-learning.html#cb165-4" aria-hidden="true" tabindex="-1"></a>telco_train <span class="ot">&lt;-</span> <span class="fu">training</span>(telco_split)</span>
+<span id="cb165-5"><a href="introducción-a-machine-learning.html#cb165-5" aria-hidden="true" tabindex="-1"></a>telco_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(telco_split)</span></code></pre></div>
+</div>
+<div id="definición-de-la-receta-1" class="section level3 hasAnchor" number="4.8.4">
+<h3><span class="header-section-number">4.8.4</span> Definición de la receta<a href="introducción-a-machine-learning.html#definición-de-la-receta-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A continuación, se presenta el desarrollo de una receta para el conjunto de datos de <em>Telco</em>:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="introducción-a-machine-learning.html#cb166-1" aria-hidden="true" tabindex="-1"></a>telco_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Churn <span class="sc">~</span> ., <span class="at">data =</span> telco_train) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-2"><a href="introducción-a-machine-learning.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(customerID, <span class="at">new_role =</span> <span class="st">&quot;id variable&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-3"><a href="introducción-a-machine-learning.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-4"><a href="introducción-a-machine-learning.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-5"><a href="introducción-a-machine-learning.html#cb166-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-6"><a href="introducción-a-machine-learning.html#cb166-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_rm</span>(customerID, <span class="at">skip=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-7"><a href="introducción-a-machine-learning.html#cb166-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span></code></pre></div>
+<p>Ahora recuperamos la matriz de diseño con las funciones <em>prep()</em> y <em>juice()</em>.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="introducción-a-machine-learning.html#cb167-1" aria-hidden="true" tabindex="-1"></a>telco_juiced <span class="ot">&lt;-</span> <span class="fu">juice</span>(telco_rec)</span>
+<span id="cb167-2"><a href="introducción-a-machine-learning.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(telco_juiced)</span></code></pre></div>
+<pre><code>## Rows: 4,930
+## Columns: 31
+## $ SeniorCitizen                         &lt;dbl&gt; -0.4417148, -0.4417148, -0.44171…
+## $ tenure                                &lt;dbl&gt; 0.1915835, 0.3140505, -0.4207516…
+## $ MonthlyCharges                        &lt;dbl&gt; -1.50429475, 0.66367718, -0.5084…
+## $ TotalCharges                          &lt;dbl&gt; -0.66321610, 0.47214217, -0.5462…
+## $ Churn                                 &lt;fct&gt; No, No, No, Yes, Yes, No, No, No…
+## $ gender_Male                           &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0,…
+## $ Partner_Yes                           &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1,…
+## $ Dependents_Yes                        &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,…
+## $ PhoneService_Yes                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1,…
+## $ MultipleLines_No.phone.service        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,…
+## $ MultipleLines_Yes                     &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,…
+## $ InternetService_Fiber.optic           &lt;dbl&gt; 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,…
+## $ InternetService_No                    &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ OnlineSecurity_No.internet.service    &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ OnlineSecurity_Yes                    &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0,…
+## $ OnlineBackup_No.internet.service      &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ OnlineBackup_Yes                      &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,…
+## $ DeviceProtection_No.internet.service  &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ DeviceProtection_Yes                  &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0,…
+## $ TechSupport_No.internet.service       &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ TechSupport_Yes                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ StreamingTV_No.internet.service       &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ StreamingTV_Yes                       &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0,…
+## $ StreamingMovies_No.internet.service   &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ StreamingMovies_Yes                   &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,…
+## $ Contract_One.year                     &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1,…
+## $ Contract_Two.year                     &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,…
+## $ PaperlessBilling_Yes                  &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1,…
+## $ PaymentMethod_Credit.card..automatic. &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1,…
+## $ PaymentMethod_Electronic.check        &lt;dbl&gt; 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0,…
+## $ PaymentMethod_Mailed.check            &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="introducción-a-machine-learning.html#cb169-1" aria-hidden="true" tabindex="-1"></a>telco_test_bake <span class="ot">&lt;-</span>  <span class="fu">bake</span>(telco_rec, <span class="at">new_data =</span> telco_test)</span>
+<span id="cb169-2"><a href="introducción-a-machine-learning.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(telco_test_bake)</span></code></pre></div>
+<pre><code>## Rows: 2,113
+## Columns: 32
+## $ customerID                            &lt;chr&gt; &quot;5575-GNVDE&quot;, &quot;9305-CDSKC&quot;, &quot;671…
+## $ SeniorCitizen                         &lt;dbl&gt; -0.4417148, -0.4417148, -0.44171…
+## $ tenure                                &lt;dbl&gt; 0.06911644, -0.99226439, -0.9106…
+## $ MonthlyCharges                        &lt;dbl&gt; -0.27067882, 1.14914329, -1.1751…
+## $ TotalCharges                          &lt;dbl&gt; -0.1752116, -0.6472105, -0.87618…
+## $ Churn                                 &lt;fct&gt; No, Yes, No, No, No, No, No, No,…
+## $ gender_Male                           &lt;dbl&gt; 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0,…
+## $ Partner_Yes                           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,…
+## $ Dependents_Yes                        &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0,…
+## $ PhoneService_Yes                      &lt;dbl&gt; 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1,…
+## $ MultipleLines_No.phone.service        &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,…
+## $ MultipleLines_Yes                     &lt;dbl&gt; 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1,…
+## $ InternetService_Fiber.optic           &lt;dbl&gt; 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1,…
+## $ InternetService_No                    &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ OnlineSecurity_No.internet.service    &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ OnlineSecurity_Yes                    &lt;dbl&gt; 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1,…
+## $ OnlineBackup_No.internet.service      &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ OnlineBackup_Yes                      &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1,…
+## $ DeviceProtection_No.internet.service  &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ DeviceProtection_Yes                  &lt;dbl&gt; 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1,…
+## $ TechSupport_No.internet.service       &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ TechSupport_Yes                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1,…
+## $ StreamingTV_No.internet.service       &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ StreamingTV_Yes                       &lt;dbl&gt; 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0,…
+## $ StreamingMovies_No.internet.service   &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ StreamingMovies_Yes                   &lt;dbl&gt; 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0,…
+## $ Contract_One.year                     &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,…
+## $ Contract_Two.year                     &lt;dbl&gt; 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1,…
+## $ PaperlessBilling_Yes                  &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1,…
+## $ PaymentMethod_Credit.card..automatic. &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1,…
+## $ PaymentMethod_Electronic.check        &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0,…
+## $ PaymentMethod_Mailed.check            &lt;dbl&gt; 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+<p>Estos fueron dos ejemplos aplicados de la paquetería <em>recipies</em>, existen distintas funciones <em>step</em> que pueden implementarse en recetas para usarse con <em>tidymodels</em>, en las secciones siguientes les daremos su uso para ajustar un modelo completo.</p>
+
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$('.pipehover_incremental tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).prevAll().addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+
+$('.pipehover_select_one_row tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualización.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["intro2_ds_ml_r.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
