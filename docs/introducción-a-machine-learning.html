@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="visualización.html"/>
-
+<link rel="next" href="regresión-lineal.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -274,6 +274,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.8.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta"><i class="fa fa-check"></i><b>4.8.2</b> Definición de la receta</a></li>
 <li class="chapter" data-level="4.8.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#separación-de-los-datos-1"><i class="fa fa-check"></i><b>4.8.3</b> Separación de los datos</a></li>
 <li class="chapter" data-level="4.8.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta-1"><i class="fa fa-check"></i><b>4.8.4</b> Definición de la receta</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ajuste-de-modelo"><i class="fa fa-check"></i><b>5.1</b> Ajuste de modelo</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-simple"><i class="fa fa-check"></i><b>5.1.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
+<li class="chapter" data-level="5.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.1.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#residuos-del-modelo"><i class="fa fa-check"></i><b>5.2</b> Residuos del modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones-para-el-ajuste-de-una-regresión-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>5.3</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-en-r"><i class="fa fa-check"></i><b>5.4</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#coeficientes-del-modelo"><i class="fa fa-check"></i><b>5.4.1</b> Coeficientes del modelo</a></li>
+<li class="chapter" data-level="5.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño-1"><i class="fa fa-check"></i><b>5.4.2</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="5.4.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#gráfica-de-ajuste"><i class="fa fa-check"></i><b>5.4.3</b> Gráfica de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métodos-se-selección-de-variables"><i class="fa fa-check"></i><b>5.5</b> Métodos se selección de variables</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#forward-selection-selección-hacia-adelante"><i class="fa fa-check"></i><b>5.5.1</b> Forward selection (selección hacia adelante)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#backward-selection-selección-hacia-atrás"><i class="fa fa-check"></i><b>5.5.2</b> Backward selection (selección hacia atrás)</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -2217,6 +2241,9 @@ mencionadas.</p></li>
 ## $ PaymentMethod_Mailed.check            &lt;dbl&gt; 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
 <p>Estos fueron dos ejemplos aplicados de la paquetería <em>recipies</em>, existen distintas funciones <em>step</em> que pueden implementarse en recetas para usarse con <em>tidymodels</em>, en las secciones siguientes les daremos su uso para ajustar un modelo completo.</p>
 
+<div class="watermark">
+<p><img src="img/header.png" width="400"/></p>
+</div>
 </div>
 </div>
 </div>
@@ -2247,8 +2274,8 @@ $('.pipehover_select_one_row tr').hover(function() {
           </div>
         </div>
       </div>
-<a href="visualización.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="visualización.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regresión-lineal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

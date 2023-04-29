@@ -83,3 +83,16 @@ separación-de-los-datos
 definición-de-la-receta
 separación-de-los-datos-1
 definición-de-la-receta-1
+regresión-lineal
+ajuste-de-modelo
+estimación-de-parámetros-regresión-lineal-simple
+estimación-de-parámetros-regresión-lineal-múltiple
+residuos-del-modelo
+métricas-de-desempeño
+implementación-en-r
+coeficientes-del-modelo
+métricas-de-desempeño-1
+gráfica-de-ajuste
+métodos-se-selección-de-variables
+forward-selection-selección-hacia-adelante
+backward-selection-selección-hacia-atrás
