@@ -96,3 +96,10 @@ gráfica-de-ajuste
 métodos-se-selección-de-variables
 forward-selection-selección-hacia-adelante
 backward-selection-selección-hacia-atrás
+regresión-logística
+función-sigmoide
+ajuste-del-modelo
+clasificación-2
+métricas-de-desempeño-2
+implementación-en-r-1
+matriz-de-confusión

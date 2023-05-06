@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 6 Regresión Logística | Introducción a Ciencia de Datos y Machine Learning</title>
+  <meta name="description" content="Capítulo 6 Regresión Logística | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 6 Regresión Logística | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Capítulo 6 Regresión Logística | Introducción a Ciencia de Datos y Machine Learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 6 Regresión Logística | Introducción a Ciencia de Datos y Machine Learning" />
+  
+  <meta name="twitter:description" content="Capítulo 6 Regresión Logística | Introducción a Ciencia de Datos y Machine Learning" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regresión-lineal.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li|
+|:-:|  
+<center>Introducción a Ciencia de Datos y Machine Learning</center>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>BIENVENIDA</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i>Objetivo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#instructores"><i class="fa fa-check"></i>Instructores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#alcances-del-curso"><i class="fa fa-check"></i>Alcances del curso</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i>Temario:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos"><i class="fa fa-check"></i>Definiendo conceptos:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a></li>
+<li class="chapter" data-level="1.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#requisitos"><i class="fa fa-check"></i><b>1.3</b> Requisitos</a></li>
+<li class="chapter" data-level="1.4" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aplicaciones"><i class="fa fa-check"></i><b>1.4</b> Aplicaciones</a></li>
+<li class="chapter" data-level="1.5" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#tipos-de-algoritmos"><i class="fa fa-check"></i><b>1.5</b> Tipos de algoritmos</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-supervisado"><i class="fa fa-check"></i><b>1.5.1</b> Aprendizaje supervisado</a></li>
+<li class="chapter" data-level="1.5.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-no-supervisado"><i class="fa fa-check"></i><b>1.5.2</b> Aprendizaje no supervisado</a></li>
+<li class="chapter" data-level="1.5.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-por-refuerzo"><i class="fa fa-check"></i><b>1.5.3</b> Aprendizaje por refuerzo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#ciclo-de-un-proyecto"><i class="fa fa-check"></i><b>1.6</b> Ciclo de un proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#cómo-obtener-r"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>R</em>?</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.3</b> Lectura de datos</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-csv"><i class="fa fa-check"></i><b>2.3.1</b> Archivos <em>csv</em></a></li>
+<li class="chapter" data-level="2.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-txt"><i class="fa fa-check"></i><b>2.3.2</b> Archivos txt</a></li>
+<li class="chapter" data-level="2.3.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-xls-y-xlsx"><i class="fa fa-check"></i><b>2.3.3</b> Archivos <em>xls</em> y <em>xlsx</em></a></li>
+<li class="chapter" data-level="2.3.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-json"><i class="fa fa-check"></i><b>2.3.4</b> Archivos json</a></li>
+<li class="chapter" data-level="2.3.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-rds"><i class="fa fa-check"></i><b>2.3.5</b> Archivos rds</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#consultas-de-datos"><i class="fa fa-check"></i><b>2.4</b> Consultas de datos</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#seleccionar-columnas"><i class="fa fa-check"></i><b>2.4.1</b> Seleccionar columnas</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#filtrar-observaciones"><i class="fa fa-check"></i><b>2.4.2</b> Filtrar observaciones</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ordenar-registros"><i class="fa fa-check"></i><b>2.4.3</b> Ordenar registros</a></li>
+<li class="chapter" data-level="2.4.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agregar-modificar"><i class="fa fa-check"></i><b>2.4.4</b> Agregar / Modificar</a></li>
+<li class="chapter" data-level="2.4.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>2.4.5</b> Resumen estadístico</a></li>
+<li class="chapter" data-level="2.4.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agrupamiento"><i class="fa fa-check"></i><b>2.4.6</b> Agrupamiento</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#orden-y-estructura"><i class="fa fa-check"></i><b>2.5</b> Orden y estructura</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-horizontal"><i class="fa fa-check"></i><b>2.5.1</b> Pivote horizontal</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-vertical"><i class="fa fa-check"></i><b>2.5.2</b> Pivote vertical</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#unión-de-columnas"><i class="fa fa-check"></i><b>2.5.3</b> Unión de columnas</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#separador-de-columnas"><i class="fa fa-check"></i><b>2.5.4</b> Separador de columnas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3</b> Visualización</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualización.html"><a href="visualización.html#eda-análisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
+<li class="chapter" data-level="3.2" data-path="visualización.html"><a href="visualización.html#geda-análisis-exploratorio-de-datos-gráficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html#lo-que-no-se-debe-hacer"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
+<li class="chapter" data-level="3.2.2" data-path="visualización.html"><a href="visualización.html#principios-de-visualización"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="visualización.html"><a href="visualización.html#ggplot"><i class="fa fa-check"></i><b>3.3</b> Ggplot</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="visualización.html"><a href="visualización.html#estéticas"><i class="fa fa-check"></i><b>3.3.1</b> Estéticas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="visualización.html"><a href="visualización.html#objetos-geométricos-o-capas"><i class="fa fa-check"></i><b>3.3.2</b> Objetos geométricos o capas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="visualización.html"><a href="visualización.html#facetas"><i class="fa fa-check"></i><b>3.3.3</b> Facetas</a></li>
+<li class="chapter" data-level="3.3.4" data-path="visualización.html"><a href="visualización.html#más-sobre-estéticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
+<li class="chapter" data-level="3.3.5" data-path="visualización.html"><a href="visualización.html#quick-view"><i class="fa fa-check"></i><b>3.3.5</b> Quick View</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="visualización.html"><a href="visualización.html#análisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="visualización.html"><a href="visualización.html#variables-numéricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visualización.html"><a href="visualización.html#variables-nominalescategóricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visualización.html"><a href="visualización.html#análisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a></li>
+<li class="chapter" data-level="3.6" data-path="visualización.html"><a href="visualización.html#visualización-interactiva"><i class="fa fa-check"></i><b>3.6</b> Visualización interactiva</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#warning"><i class="fa fa-check"></i>¡ Warning !</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="visualización.html"><a href="visualización.html#reporte-interactivos"><i class="fa fa-check"></i><b>3.7</b> Reporte interactivos</a></li>
+</ul></li>
+<li class="part"><span><b>Parte 2: Machine Learning</b></span></li>
+<li class="chapter" data-level="4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#regresión-vs-clasificación"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#sesgo-vs-varianza"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off"><i class="fa fa-check"></i><b>4.2.1</b> Balance entre sesgo y varianza o Trade-off</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-total"><i class="fa fa-check"></i><b>4.2.2</b> Error total</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#overfitting"><i class="fa fa-check"></i><b>4.2.3</b> Overfitting</a></li>
+<li class="chapter" data-level="4.2.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#underfitting"><i class="fa fa-check"></i><b>4.2.4</b> Underfitting</a></li>
+<li class="chapter" data-level="4.2.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-irreducible"><i class="fa fa-check"></i><b>4.2.5</b> Error irreducible</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#orden-y-estructura-de-proyecto"><i class="fa fa-check"></i><b>4.3</b> Orden y estructura de proyecto</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#plantilla-de-estructura-proyecto"><i class="fa fa-check"></i><b>4.3.1</b> Plantilla de estructura proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#partición-de-datos"><i class="fa fa-check"></i><b>4.4</b> Partición de datos</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.4.1</b> Métodos comunes para particionar datos</a></li>
+<li class="chapter" data-level="4.4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#conjunto-de-validación"><i class="fa fa-check"></i><b>4.4.2</b> Conjunto de validación</a></li>
+<li class="chapter" data-level="4.4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#leave-one-out-cross-validation"><i class="fa fa-check"></i><b>4.4.3</b> Leave-one-out cross-validation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#v-fold-cross-validation"><i class="fa fa-check"></i><b>4.4.4</b> V Fold Cross Validation</a></li>
+<li class="chapter" data-level="4.4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#medidas-de-ajuste"><i class="fa fa-check"></i><b>4.4.5</b> Medidas de ajuste</a></li>
+<li class="chapter" data-level="4.4.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.4.6</b> Validación cruzada para series de tiempo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pre-procesamiento-de-datos"><i class="fa fa-check"></i><b>4.5</b> Pre-procesamiento de datos</a></li>
+<li class="chapter" data-level="4.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#ingeniería-de-datos"><i class="fa fa-check"></i><b>4.6</b> Ingeniería de datos</a></li>
+<li class="chapter" data-level="4.7" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#recetas"><i class="fa fa-check"></i><b>4.7</b> Recetas</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pasos-y-estructura-de-recetas"><i class="fa fa-check"></i><b>4.7.1</b> Pasos y estructura de recetas</a></li>
+<li class="chapter" data-level="4.7.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#imputaciones"><i class="fa fa-check"></i><b>4.7.2</b> Imputaciones</a></li>
+<li class="chapter" data-level="4.7.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#agregar-o-modificar-columnas"><i class="fa fa-check"></i><b>4.7.3</b> Agregar o modificar columnas</a></li>
+<li class="chapter" data-level="4.7.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#interacciones"><i class="fa fa-check"></i><b>4.7.4</b> Interacciones</a></li>
+<li class="chapter" data-level="4.7.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#transformaciones-generales"><i class="fa fa-check"></i><b>4.7.5</b> Transformaciones generales</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#datos-y-tipos-de-modelos"><i class="fa fa-check"></i><b>4.8</b> Datos y tipos de modelos</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#separación-de-los-datos"><i class="fa fa-check"></i><b>4.8.1</b> Separación de los datos</a></li>
+<li class="chapter" data-level="4.8.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta"><i class="fa fa-check"></i><b>4.8.2</b> Definición de la receta</a></li>
+<li class="chapter" data-level="4.8.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#separación-de-los-datos-1"><i class="fa fa-check"></i><b>4.8.3</b> Separación de los datos</a></li>
+<li class="chapter" data-level="4.8.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta-1"><i class="fa fa-check"></i><b>4.8.4</b> Definición de la receta</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ajuste-de-modelo"><i class="fa fa-check"></i><b>5.1</b> Ajuste de modelo</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-simple"><i class="fa fa-check"></i><b>5.1.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
+<li class="chapter" data-level="5.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.1.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#residuos-del-modelo"><i class="fa fa-check"></i><b>5.2</b> Residuos del modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones-para-el-ajuste-de-una-regresión-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>5.3</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-en-r"><i class="fa fa-check"></i><b>5.4</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#coeficientes-del-modelo"><i class="fa fa-check"></i><b>5.4.1</b> Coeficientes del modelo</a></li>
+<li class="chapter" data-level="5.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño-1"><i class="fa fa-check"></i><b>5.4.2</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="5.4.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#gráfica-de-ajuste"><i class="fa fa-check"></i><b>5.4.3</b> Gráfica de ajuste</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métodos-se-selección-de-variables"><i class="fa fa-check"></i><b>5.5</b> Métodos se selección de variables</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#forward-selection-selección-hacia-adelante"><i class="fa fa-check"></i><b>5.5.1</b> Forward selection (selección hacia adelante)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#backward-selection-selección-hacia-atrás"><i class="fa fa-check"></i><b>5.5.2</b> Backward selection (selección hacia atrás)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regresión-logística.html"><a href="regresión-logística.html#función-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
+<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html#ajuste-del-modelo"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
+<li class="chapter" data-level="6.3" data-path="regresión-logística.html"><a href="regresión-logística.html#clasificación-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
+<li class="chapter" data-level="6.4" data-path="regresión-logística.html"><a href="regresión-logística.html#métricas-de-desempeño-2"><i class="fa fa-check"></i><b>6.4</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.5" data-path="regresión-logística.html"><a href="regresión-logística.html#implementación-en-r-1"><i class="fa fa-check"></i><b>6.5</b> Implementación en R</a></li>
+<li class="chapter" data-level="6.6" data-path="regresión-logística.html"><a href="regresión-logística.html#matriz-de-confusión"><i class="fa fa-check"></i><b>6.6</b> Matriz de Confusión</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a Ciencia de Datos y Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresión-logística" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> Regresión Logística<a href="regresión-logística.html#regresión-logística" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<blockquote>
+<p>El nombre de este modelo es: <strong>Regresión Bernoulli con liga logit</strong>, pero todo mundo la conoce solo por regresión logística. Es importante saber que la liga puede ser elegida dentro de un conjunto de ligas comunes, por lo que puede dejar de ser logit y seguir siendo regresión Bernoulli, pero ya no podría ser llamada “logística”.</p>
+</blockquote>
+<p>Al igual que en regresión lineal, existe la regresión simple y regresión múltiple. La regresión logística simple se utiliza una variable independiente, mientras que cuando se utiliza más de una variable independiente, el proceso se denomina regresión logística múltiple.</p>
+<p><strong>Objetivo:</strong> Estimar la <strong>probabilidad de pertenecer a la categoría <em>positiva</em> de una variable de respuesta categórica</strong>. Posteriormente, se determina el umbral de probabilidad a partir del cual se clasifica a una observación como positiva o negativa.</p>
+<div id="función-sigmoide" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Función sigmoide<a href="regresión-logística.html#función-sigmoide" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Si una variable cualitativa con dos categorías se codifica como 1 y 0, matemáticamente es posible ajustar un modelo de regresión lineal por mínimos cuadrados. El problema de esta aproximación es que, al tratarse de una recta, para valores extremos del predictor, se obtienen valores de <span class="math inline">\(Y\)</span> menores que 0 o mayores que 1, lo que entra en contradicción con el hecho de que las probabilidades siempre están dentro del rango [0,1].</p>
+<p>Para evitar estos problemas, la regresión logística transforma el valor devuelto por la regresión lineal empleando una función cuyo resultado está siempre comprendido entre 0 y 1. Existen varias funciones que cumplen esta descripción, una de las más utilizadas es la función logística (también conocida como función <strong>sigmoide</strong>):</p>
+<p><span class="math display">\[\sigma(Z)=\frac{e^{Z}}{1+e^{Z}}\]</span>
+Función sigmoide:</p>
+<iframe src="rlogit.html" width="800px" height="400px" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
+<p>Para valores de <span class="math inline">\(Z\)</span> muy grandes, el valor de <span class="math inline">\(e^{Z}\)</span> tiende a <em>infinito</em> por lo que el valor de la función sigmoide es 1. Para valores de <span class="math inline">\(Z\)</span> muy negativos, el valor <span class="math inline">\(e^{Z}\)</span> tiende a <em>cero</em>, por lo que el valor de la función sigmoide es 0.</p>
+<p>Sustituyendo la <span class="math inline">\(Z\)</span> de la función sigmoide por la función lineal <span class="math inline">\(\beta_0+\beta_1X\)</span> se obtiene que:</p>
+<p><span class="math display">\[\pi=P(Y=k|X=x)=\frac{e^{\beta_0+\beta_1X}}{1+e^{\beta_0+\beta_1X}}\]</span></p>
+<p>donde <span class="math inline">\(P(Y=k|X=x)\)</span> puede interpretarse como: la probabilidad de que la variable cualitativa <span class="math inline">\(Y\)</span> adquiera el valor <span class="math inline">\(k\)</span>, dado que el predictor <span class="math inline">\(X\)</span> tiene el valor <span class="math inline">\(x\)</span>.</p>
+</div>
+<div id="ajuste-del-modelo" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Ajuste del modelo<a href="regresión-logística.html#ajuste-del-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Esta función, puede ajustarse de forma sencilla con métodos de regresión lineal si se emplea su versión logarítmica:</p>
+<p><span class="math display">\[logit(\pi)= ln(\frac{\pi}{1-\pi}) = ln(\frac{p(Y=k|X=x)}{1−p(Y=k|X=x)})=\beta_0+\beta_1X\]</span></p>
+<p><span class="math display">\[P(Y=k|X=x)=\frac{e^{\beta_0+\beta_1x_1+\beta_2x_2+...+\beta_ix_i}}{1+e^{\beta_0+\beta_1x_1+\beta_2x_2+...+\beta_ix_i}}\]</span></p>
+<p>La combinación óptima de coeficientes <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> será aquella que tenga la máxima verosimilitud (maximum likelihood), es decir el valor de los parámetros <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> con los que se maximiza la probabilidad de obtener los datos observados.</p>
+<p>El método de maximum likelihood está ampliamente extendido en la estadística aunque su implementación no siempre es trivial.</p>
+<p>Otra forma para ajustar un modelo de regresión logística es empleando descenso de gradiente. Si bien este no es el método de optimización más adecuado para resolver la regresión logística, está muy extendido en el ámbito de machine learning para ajustar otros modelos.</p>
+</div>
+<div id="clasificación-2" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Clasificación<a href="regresión-logística.html#clasificación-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Una de las principales aplicaciones de un modelo de regresión logística es clasificar la variable cualitativa en función de valor que tome el predictor. Para conseguir esta clasificación, es necesario establecer un <strong>threshold</strong> de probabilidad a partir de la cual se considera que la variable pertenece a uno de los niveles. Por ejemplo, se puede asignar una observación al grupo 1 si <span class="math inline">\(p̂ (Y=1|X)&gt;0.3\)</span> y al grupo 0 si ocurre lo contrario.</p>
+<p>Es importante mencionar que el punto de corte <strong>no necesariamente tiene que ser 0.5</strong>, este puede ser seleccionado a conveniencia de la métrica a optimizar.</p>
+</div>
+<div id="métricas-de-desempeño-2" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Métricas de desempeño<a href="regresión-logística.html#métricas-de-desempeño-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Existen distintas métricas de desempeño para problemas de clasificación, debido a que contamos con la respuesta correcta podemos contar cuántos aciertos tuvimos y cuántos fallos tuvimos.</p>
+<p>Primero, por simplicidad ocuparemos un ejemplo de clasificación binaria, Cancelación (1) o No Cancelación (0).</p>
+<p>En este tipo de algoritmos definimos cuál de las categorías será nuestra etiqueta positiva y cuál será la negativa. La positiva será la categoría que queremos predecir -en nuestro ejemplo, Cancelación- y la negativa lo opuesto -en el caso binario- en nuestro ejemplo, no cancelación.</p>
+<p>Dadas estas definiciones tenemos 4 posibilidades:</p>
+<ul>
+<li><p><strong>True positives</strong>: Nuestra predicción dijo que la transacción es fraude y la etiqueta real dice que es fraude.</p></li>
+<li><p><strong>False positives</strong>: Nuestra predicción dijo que la transacción es fraude y la etiqueta real dice que no es fraude.</p></li>
+<li><p><strong>True negatives</strong>: Nuestra predicción dijo que la transacción es no fraude y la etiqueta real dice que no es fraude.</p></li>
+<li><p><strong>False negatives</strong>: Nuestra predicción dijo que la transacción es no fraude y la etiqueta real dice que es fraude.</p></li>
+<li><p><strong>Matriz de confusión</strong></p></li>
+</ul>
+<p><img src="img/07-ml-logit/5-3-4-1_confusion_matrix.png" width="700pt" height="350pt" style="display: block; margin: auto;" /></p>
+<p>Esta métrica corresponde a una matriz en donde se plasma el conteo de los aciertos y los errores que haya hecho el modelo, esto es: los verdaderos positivos (TP), los verdaderos negativos (TN), los falsos positivos (FP) y los falsos negativos (FN).</p>
+<p>Normalmente los renglones representan las etiquetas predichas, ya sean positivas o negativas, y las columnas a las etiquetas reales, aunque esto puede cambiar en cualquier software.</p>
+<hr />
+<ul>
+<li><strong>Accuracy</strong></li>
+</ul>
+<p>Número de aciertos totales entre todas las predicciones.</p>
+<p><span class="math display">\[accuracy = \frac{TP + TN}{ TP+FP+TN+FN}\]</span></p>
+<p>La métrica más utilizada, en conjuntos de datos no balanceados esta métrica no nos sirve, al contrario, nos engaña. Adicionalmente, cuando la identificación de una categoría es más importante que otra es mejor recurrir a otras métricas.</p>
+<hr />
+<ul>
+<li><strong>Precision</strong>: Eficiencia</li>
+</ul>
+<p>De los que identificamos como clase positiva, cuántos identificamos correctamente. ¿Qué tan eficientes somos en la predicción?</p>
+<p><span class="math display">\[precision = \frac{TP}{TP + FP}\]</span></p>
+<p>¿Cuándo utilizar precisión?</p>
+<p>Esta es la métrica que ocuparás más, pues en un contexto de negocio, donde los recursos son finitos y tiene un costo asociado, ya sea monetario o de tiempo o de recursos, necesitarás que las predicciones de tu etiqueta positiva sean muy eficientes.</p>
+<p>Al utilizar esta métrica estaremos optimizando el modelo para minimizar el número de falsos positivos.</p>
+<hr />
+<ul>
+<li><strong>Recall o Sensibilidad</strong>: Cobertura</li>
+</ul>
+<p>Del universo posible de nuestra clase positiva, cuántos identificamos correctamente.</p>
+<p><span class="math display">\[recall = \frac{TP}{TP + FN }\]</span></p>
+<p>Esta métrica la ocuparás cuando en el contexto de negocio de tu problema sea más conveniente aumentar la cantidad de positivos o disminuir los falsos negativos. Esto se realiza debido al impacto que estos pueden tener en las personas en quienes se implementará la predicción.</p>
+<hr />
+<ul>
+<li><strong>Especificidad</strong></li>
+</ul>
+<p>Es el número de observaciones correctamente identificados como negativos fuera del total de negativos.</p>
+<p><span class="math display">\[Specificity = \frac{TN}{TN+FP}\]</span></p>
+<hr />
+<ul>
+<li><strong>F1-score</strong></li>
+</ul>
+<p>Combina <strong>precision</strong> y <strong>recall</strong> para optimizar ambos.</p>
+<p><span class="math display">\[F = 2 *\frac{precision * recall}{precision + recall} \]</span></p>
+<p>Se recomienda utilizar esta métrica de desempeño cuando quieres balancear tanto los falsos positivos como los falsos negativos. Aunque es una buena solución para tomar en cuenta ambos errores, pocas veces hay problemas reales que permiten ocuparla, esto es porque en más del 90% de los casos tenemos una restricción en recursos.</p>
+<p>Ahora con esto en mente podemos definir las siguientes métricas:</p>
+<hr />
+<ul>
+<li><strong>AUC y ROC</strong>: <em>Area Under the Curve y Receiver operator characteristic</em></li>
+</ul>
+<p><img src="img/07-ml-logit/5-3-4-2_roc.png" width="700pt" height="400pt" style="display: block; margin: auto;" /></p>
+<p>Una curva <strong>ROC</strong> es un gráfico que muestra el desempeño de un modelo de clasificación en todos los puntos de corte.</p>
+<p><strong>AUC</strong> significa “Área bajo la curva ROC”. Es decir, <strong>AUC</strong> mide el área debajo de la curva ROC.</p>
+</div>
+<div id="implementación-en-r-1" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Implementación en R<a href="regresión-logística.html#implementación-en-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ajustaremos un modelo de regresión logística usando la receta antes vista.</p>
+<p><strong>Lectura de datos</strong></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="regresión-logística.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb186-2"><a href="regresión-logística.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb186-3"><a href="regresión-logística.html#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-4"><a href="regresión-logística.html#cb186-4" aria-hidden="true" tabindex="-1"></a>telco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Churn.csv&quot;</span>)</span></code></pre></div>
+<p><strong>Segmentación de datos</strong></p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="regresión-logística.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb187-2"><a href="regresión-logística.html#cb187-2" aria-hidden="true" tabindex="-1"></a>telco_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(telco, <span class="at">prop =</span> .<span class="dv">7</span>)</span>
+<span id="cb187-3"><a href="regresión-logística.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-4"><a href="regresión-logística.html#cb187-4" aria-hidden="true" tabindex="-1"></a>telco_train <span class="ot">&lt;-</span> <span class="fu">training</span>(telco_split)</span>
+<span id="cb187-5"><a href="regresión-logística.html#cb187-5" aria-hidden="true" tabindex="-1"></a>telco_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(telco_split)</span></code></pre></div>
+<p><strong>Pre-procesamiento de datos</strong></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="regresión-logística.html#cb188-1" aria-hidden="true" tabindex="-1"></a>telco_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Churn <span class="sc">~</span> ., <span class="at">data =</span> telco_train) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-2"><a href="regresión-logística.html#cb188-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(customerID, <span class="at">new_role =</span> <span class="st">&quot;id variable&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-3"><a href="regresión-logística.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-4"><a href="regresión-logística.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-5"><a href="regresión-logística.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-6"><a href="regresión-logística.html#cb188-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_rm</span>(customerID, <span class="at">skip=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-7"><a href="regresión-logística.html#cb188-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb188-8"><a href="regresión-logística.html#cb188-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-9"><a href="regresión-logística.html#cb188-9" aria-hidden="true" tabindex="-1"></a>telco_juiced <span class="ot">&lt;-</span> <span class="fu">juice</span>(telco_rec)</span>
+<span id="cb188-10"><a href="regresión-logística.html#cb188-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(telco_juiced)</span></code></pre></div>
+<pre><code>## Rows: 4,930
+## Columns: 31
+## $ SeniorCitizen                         &lt;dbl&gt; -0.4417148, -0.4417148, -0.44171…
+## $ tenure                                &lt;dbl&gt; 0.1915835, 0.3140505, -0.4207516…
+## $ MonthlyCharges                        &lt;dbl&gt; -1.50429475, 0.66367718, -0.5084…
+## $ TotalCharges                          &lt;dbl&gt; -0.66321610, 0.47214217, -0.5462…
+## $ Churn                                 &lt;fct&gt; No, No, No, Yes, Yes, No, No, No…
+## $ gender_Male                           &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0,…
+## $ Partner_Yes                           &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1,…
+## $ Dependents_Yes                        &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,…
+## $ PhoneService_Yes                      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1,…
+## $ MultipleLines_No.phone.service        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,…
+## $ MultipleLines_Yes                     &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,…
+## $ InternetService_Fiber.optic           &lt;dbl&gt; 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,…
+## $ InternetService_No                    &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ OnlineSecurity_No.internet.service    &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ OnlineSecurity_Yes                    &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0,…
+## $ OnlineBackup_No.internet.service      &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ OnlineBackup_Yes                      &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,…
+## $ DeviceProtection_No.internet.service  &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ DeviceProtection_Yes                  &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0,…
+## $ TechSupport_No.internet.service       &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ TechSupport_Yes                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ StreamingTV_No.internet.service       &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ StreamingTV_Yes                       &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0,…
+## $ StreamingMovies_No.internet.service   &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ StreamingMovies_Yes                   &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,…
+## $ Contract_One.year                     &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1,…
+## $ Contract_Two.year                     &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,…
+## $ PaperlessBilling_Yes                  &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1,…
+## $ PaymentMethod_Credit.card..automatic. &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1,…
+## $ PaymentMethod_Electronic.check        &lt;dbl&gt; 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0,…
+## $ PaymentMethod_Mailed.check            &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="regresión-logística.html#cb190-1" aria-hidden="true" tabindex="-1"></a>telco_test_bake <span class="ot">&lt;-</span>  <span class="fu">bake</span>(telco_rec, <span class="at">new_data =</span> telco_test)</span>
+<span id="cb190-2"><a href="regresión-logística.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(telco_test_bake)</span></code></pre></div>
+<pre><code>## Rows: 2,113
+## Columns: 32
+## $ customerID                            &lt;chr&gt; &quot;5575-GNVDE&quot;, &quot;9305-CDSKC&quot;, &quot;671…
+## $ SeniorCitizen                         &lt;dbl&gt; -0.4417148, -0.4417148, -0.44171…
+## $ tenure                                &lt;dbl&gt; 0.06911644, -0.99226439, -0.9106…
+## $ MonthlyCharges                        &lt;dbl&gt; -0.27067882, 1.14914329, -1.1751…
+## $ TotalCharges                          &lt;dbl&gt; -0.1752116, -0.6472105, -0.87618…
+## $ Churn                                 &lt;fct&gt; No, Yes, No, No, No, No, No, No,…
+## $ gender_Male                           &lt;dbl&gt; 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0,…
+## $ Partner_Yes                           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,…
+## $ Dependents_Yes                        &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0,…
+## $ PhoneService_Yes                      &lt;dbl&gt; 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1,…
+## $ MultipleLines_No.phone.service        &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,…
+## $ MultipleLines_Yes                     &lt;dbl&gt; 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1,…
+## $ InternetService_Fiber.optic           &lt;dbl&gt; 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1,…
+## $ InternetService_No                    &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ OnlineSecurity_No.internet.service    &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ OnlineSecurity_Yes                    &lt;dbl&gt; 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1,…
+## $ OnlineBackup_No.internet.service      &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ OnlineBackup_Yes                      &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1,…
+## $ DeviceProtection_No.internet.service  &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ DeviceProtection_Yes                  &lt;dbl&gt; 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1,…
+## $ TechSupport_No.internet.service       &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ TechSupport_Yes                       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1,…
+## $ StreamingTV_No.internet.service       &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ StreamingTV_Yes                       &lt;dbl&gt; 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0,…
+## $ StreamingMovies_No.internet.service   &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,…
+## $ StreamingMovies_Yes                   &lt;dbl&gt; 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0,…
+## $ Contract_One.year                     &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,…
+## $ Contract_Two.year                     &lt;dbl&gt; 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1,…
+## $ PaperlessBilling_Yes                  &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1,…
+## $ PaymentMethod_Credit.card..automatic. &lt;dbl&gt; 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1,…
+## $ PaymentMethod_Electronic.check        &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0,…
+## $ PaymentMethod_Mailed.check            &lt;dbl&gt; 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
+<p><strong>Creación y ajuste de modelo</strong></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="regresión-logística.html#cb192-1" aria-hidden="true" tabindex="-1"></a>logistic_model <span class="ot">&lt;-</span>  <span class="fu">logistic_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb192-2"><a href="regresión-logística.html#cb192-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;glm&quot;</span>)</span>
+<span id="cb192-3"><a href="regresión-logística.html#cb192-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-4"><a href="regresión-logística.html#cb192-4" aria-hidden="true" tabindex="-1"></a>logistic_fit1 <span class="ot">&lt;-</span> parsnip<span class="sc">::</span><span class="fu">fit</span>(logistic_model, Churn <span class="sc">~</span> ., telco_juiced)</span></code></pre></div>
+<p><strong>Predicción de respuesta con nuevos datos</strong></p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="regresión-logística.html#cb193-1" aria-hidden="true" tabindex="-1"></a>logistic_p_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(logistic_fit1, telco_test_bake) <span class="sc">%&gt;%</span></span>
+<span id="cb193-2"><a href="regresión-logística.html#cb193-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(telco_test_bake) <span class="sc">%&gt;%</span> </span>
+<span id="cb193-3"><a href="regresión-logística.html#cb193-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(.pred_class, Churn)</span>
+<span id="cb193-4"><a href="regresión-logística.html#cb193-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-5"><a href="regresión-logística.html#cb193-5" aria-hidden="true" tabindex="-1"></a>logistic_p_test</span></code></pre></div>
+<pre><code>## # A tibble: 2,113 × 2
+##    .pred_class Churn
+##    &lt;fct&gt;       &lt;fct&gt;
+##  1 No          No   
+##  2 Yes         Yes  
+##  3 No          No   
+##  4 No          No   
+##  5 No          No   
+##  6 Yes         No   
+##  7 No          No   
+##  8 No          No   
+##  9 Yes         Yes  
+## 10 No          No   
+## # ℹ 2,103 more rows</code></pre>
+</div>
+<div id="matriz-de-confusión" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Matriz de Confusión<a href="regresión-logística.html#matriz-de-confusión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="regresión-logística.html#cb195-1" aria-hidden="true" tabindex="-1"></a>logistic_p_test <span class="sc">%&gt;%</span> </span>
+<span id="cb195-2"><a href="regresión-logística.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  yardstick<span class="sc">::</span><span class="fu">conf_mat</span>(<span class="at">truth =</span> Churn, <span class="at">estimate =</span> .pred_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-3"><a href="regresión-logística.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">type =</span> <span class="st">&quot;heatmap&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="regresión-logística.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
+<span id="cb196-2"><a href="regresión-logística.html#cb196-2" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">accuracy</span>(logistic_p_test, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb196-3"><a href="regresión-logística.html#cb196-3" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">precision</span>(logistic_p_test, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb196-4"><a href="regresión-logística.html#cb196-4" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">recall</span>(logistic_p_test, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb196-5"><a href="regresión-logística.html#cb196-5" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">specificity</span>(logistic_p_test, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb196-6"><a href="regresión-logística.html#cb196-6" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">f_meas</span>(logistic_p_test, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>)</span>
+<span id="cb196-7"><a href="regresión-logística.html#cb196-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   .metric     .estimator .estimate
+##   &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt;
+## 1 accuracy    binary         0.808
+## 2 precision   binary         0.678
+## 3 recall      binary         0.542
+## 4 specificity binary         0.906
+## 5 f_meas      binary         0.603</code></pre>
+<p><strong>¿Y si se quiere un corte diferente? ¿el negocio qué necesita?</strong></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="regresión-logística.html#cb198-1" aria-hidden="true" tabindex="-1"></a>logistic_p_test_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(logistic_fit1, telco_test_bake, <span class="at">type =</span> <span class="st">&quot;prob&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb198-2"><a href="regresión-logística.html#cb198-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(telco_test_bake) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-3"><a href="regresión-logística.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(.pred_Yes, .pred_No, Churn)</span>
+<span id="cb198-4"><a href="regresión-logística.html#cb198-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-5"><a href="regresión-logística.html#cb198-5" aria-hidden="true" tabindex="-1"></a>logistic_p_test_prob</span></code></pre></div>
+<pre><code>## # A tibble: 2,113 × 3
+##    .pred_Yes .pred_No Churn
+##        &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;
+##  1    0.0382    0.962 No   
+##  2    0.769     0.231 Yes  
+##  3    0.309     0.691 No   
+##  4    0.0227    0.977 No   
+##  5    0.0372    0.963 No   
+##  6    0.551     0.449 No   
+##  7    0.0635    0.937 No   
+##  8    0.0270    0.973 No   
+##  9    0.520     0.480 Yes  
+## 10    0.0136    0.986 No   
+## # ℹ 2,103 more rows</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="regresión-logística.html#cb200-1" aria-hidden="true" tabindex="-1"></a>logistic_p_test_prob <span class="ot">&lt;-</span> logistic_p_test_prob <span class="sc">%&gt;%</span> </span>
+<span id="cb200-2"><a href="regresión-logística.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">.pred_class  =</span> <span class="fu">as.factor</span>(<span class="fu">if_else</span> ( .pred_Yes <span class="sc">&gt;=</span> <span class="fl">0.30</span>, <span class="st">&#39;Yes&#39;</span>, <span class="st">&#39;No&#39;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb200-3"><a href="regresión-logística.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(.pred_class , <span class="at">.after =</span> .pred_No)</span>
+<span id="cb200-4"><a href="regresión-logística.html#cb200-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-5"><a href="regresión-logística.html#cb200-5" aria-hidden="true" tabindex="-1"></a>logistic_p_test_prob</span></code></pre></div>
+<pre><code>## # A tibble: 2,113 × 4
+##    .pred_Yes .pred_No .pred_class Churn
+##        &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;       &lt;fct&gt;
+##  1    0.0382    0.962 No          No   
+##  2    0.769     0.231 Yes         Yes  
+##  3    0.309     0.691 Yes         No   
+##  4    0.0227    0.977 No          No   
+##  5    0.0372    0.963 No          No   
+##  6    0.551     0.449 Yes         No   
+##  7    0.0635    0.937 No          No   
+##  8    0.0270    0.973 No          No   
+##  9    0.520     0.480 Yes         Yes  
+## 10    0.0136    0.986 No          No   
+## # ℹ 2,103 more rows</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="regresión-logística.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
+<span id="cb202-2"><a href="regresión-logística.html#cb202-2" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">accuracy</span>(logistic_p_test_prob, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb202-3"><a href="regresión-logística.html#cb202-3" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">precision</span>(logistic_p_test_prob, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb202-4"><a href="regresión-logística.html#cb202-4" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">recall</span>(logistic_p_test_prob, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb202-5"><a href="regresión-logística.html#cb202-5" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">specificity</span>(logistic_p_test_prob, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>),</span>
+<span id="cb202-6"><a href="regresión-logística.html#cb202-6" aria-hidden="true" tabindex="-1"></a>    yardstick<span class="sc">::</span><span class="fu">f_meas</span>(logistic_p_test_prob, Churn, .pred_class, <span class="at">event_level =</span> <span class="st">&quot;second&quot;</span>)</span>
+<span id="cb202-7"><a href="regresión-logística.html#cb202-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   .metric     .estimator .estimate
+##   &lt;chr&gt;       &lt;chr&gt;          &lt;dbl&gt;
+## 1 accuracy    binary         0.769
+## 2 precision   binary         0.548
+## 3 recall      binary         0.777
+## 4 specificity binary         0.765
+## 5 f_meas      binary         0.643</code></pre>
+<p>Para poder determinar cual es el mejor punto de corte, es indispensable conocer el comportamiento y efecto de los diferentes puntos de corte.</p>
+<p>Veamos un ejemplo visual en nuestra aplicación de Shiny: <a href="https://acturio.shinyapps.io/confusion_matrix/">ConfusionMatrixShiny</a></p>
+
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$('.pipehover_incremental tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).prevAll().addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+
+$('.pipehover_select_one_row tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regresión-lineal.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["intro2_ds_ml_r.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
