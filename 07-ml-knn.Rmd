@@ -416,7 +416,7 @@ results_reg %>%
 
 ### Clasificación
 
-Es turno de revisar la implementación de SVM con nuestro bien conocido problema de predicción de cancelación de servicios de telecomunicaciones. Los datos se encuentran disponibles en el siguiente [enlace](https://drive.google.com/drive/folders/1mlDGHvUy-81qfvQi_iB7tqMb9yhy3vyh?usp=sharing):
+Es turno de revisar la implementación de SVM con nuestro bien conocido problema de predicción de cancelación de servicios de telecomunicaciones. 
 
 Los pasos para implementar en *R* este modelo predictivo son los mismos, cambiando únicamente las especificaciones del tipo de modelo, pre-procesamiento e hiper-parámetros.
 

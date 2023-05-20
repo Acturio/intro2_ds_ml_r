@@ -103,16 +103,6 @@ Podríamos preguntarnos cuándo dejar de crecer un árbol. Pueden existir proble
 
 2) Otra forma, es establecer la profundidad máxima del modelo. La profundidad máxima se refiere a la longitud del camino más largo desde el nodo raíz hasta un nodo hoja (max_depth).
 
-### Poda de árbol
-
-El rendimiento de un árbol se puede aumentar aún más mediante la poda del árbol. Esto se refiere a eliminar las ramas que hacen uso de variables de poca importancia. De esta manera, reducimos la complejidad del árbol y, por lo tanto, **aumentamos su poder predictivo al reducir el sobre-ajuste.**
-
-```{r, fig.align='center', out.height='300pt', out.width='500pt', echo=F}
-knitr::include_graphics("img/09-ml-tree/6-podar.jpg")
-```
-
-La poda puede comenzar en la raíz o en las hojas. El método más simple de poda comienza en las hojas y elimina cada nodo con la clase más popular en esa hoja, este cambio se mantiene si no deteriora la precisión.  Se pueden usar métodos de poda más sofisticados, como la poda de complejidad de costos, donde se usa un parámetro de aprendizaje (alfa) para observar si los nodos se pueden eliminar en función del tamaño del sub-árbol. 
-
 <!-- ### Implementación en R -->
 
 <!-- Usaremos las recetas antes implementadas para ajustar tanto el modelo de regresión como el de clasificación. Exploraremos un conjunto de hiperparámetros para elegir el mejor modelo. En esta ocasión usamos la función *grid_random()* donde el parámetro *size* indica el número total de combinaciones a implementar. En caso de que haya duplicados, un número menor de combinaciones a las establecidas será devuelto como resultado. -->

@@ -333,7 +333,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regularización-de-árboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#nivel-de-profundidad-de-árbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
-<li class="chapter" data-level="8.2.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#poda-de-árbol"><i class="fa fa-check"></i><b>8.2.2</b> Poda de árbol</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aprendizaje-conjunto"><i class="fa fa-check"></i><b>8.3</b> Aprendizaje conjunto</a></li>
 <li class="chapter" data-level="8.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#bagging"><i class="fa fa-check"></i><b>8.4</b> Bagging</a></li>
@@ -741,7 +740,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="clasificación-4" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> Clasificación<a href="k-nearest-neighbor.html#clasificación-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Es turno de revisar la implementación de SVM con nuestro bien conocido problema de predicción de cancelación de servicios de telecomunicaciones. Los datos se encuentran disponibles en el siguiente <a href="https://drive.google.com/drive/folders/1mlDGHvUy-81qfvQi_iB7tqMb9yhy3vyh?usp=sharing">enlace</a>:</p>
+<p>Es turno de revisar la implementación de SVM con nuestro bien conocido problema de predicción de cancelación de servicios de telecomunicaciones.</p>
 <p>Los pasos para implementar en <em>R</em> este modelo predictivo son los mismos, cambiando únicamente las especificaciones del tipo de modelo, pre-procesamiento e hiper-parámetros.</p>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="k-nearest-neighbor.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb235-2"><a href="k-nearest-neighbor.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -847,11 +846,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb243-3"><a href="k-nearest-neighbor.html#cb243-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_model)</span>
 <span id="cb243-4"><a href="k-nearest-neighbor.html#cb243-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb243-5"><a href="k-nearest-neighbor.html#cb243-5" aria-hidden="true" tabindex="-1"></a>knn_workflow</span></code></pre></div>
-<pre><code>## ══ Workflow ════════════════════════════════════════════════════════════════════════════
+<pre><code>## ══ Workflow ══════════════════
 ## Preprocessor: Recipe
 ## Model: nearest_neighbor()
 ## 
-## ── Preprocessor ────────────────────────────────────────────────────────────────────────
+## ── Preprocessor ──────────────
 ## 4 Recipe Steps
 ## 
 ## • step_mutate()
@@ -859,7 +858,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## • step_normalize()
 ## • step_dummy()
 ## 
-## ── Model ───────────────────────────────────────────────────────────────────────────────
+## ── Model ─────────────────────
 ## K-Nearest Neighbor Model Specification (classification)
 ## 
 ## Main Arguments:

@@ -117,7 +117,6 @@ ajuste-del-modelo-2
 attribute-selective-measure-asm
 regularización-de-árboles
 nivel-de-profundidad-de-árbol
-poda-de-árbol
 aprendizaje-conjunto
 bagging
 random-forest
