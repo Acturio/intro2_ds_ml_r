@@ -1,0 +1,331 @@
+<div class="watermark"><img src="img/header.png" width="400"></div>
+
+# Clustering Jerárquico
+
+En esta sección se analizarán diferentes metodologías que tienen como propósito realizar segmentaciones de unidades de manera jerárquica, es decir, a partir de un único grupo se van agrupando o separando los individuos dependiendo de qué tan lejanos o cercanos se encuentran unos de otros. A diferencia del clustering por partición (no jerárquico), este no requiere de la pre-especificación del número de clusters a producir. 
+
+El clustering jerárquico se divide en dos tipos:
+
+ **1) Clustering aglomerativo.**
+
+ **2) Clustering divisivo.**
+
+Las principales metodologías a revisar serán:
+
+* Liga simple o vecino más cercano
+
+* Liga compleja o vecino más lejano
+
+* Liga promedio
+
+* Liga centroide
+
+* Varianza mínima de Ward
+
+```{r, echo=FALSE, out.width='350pt'}
+knitr::include_graphics("img/10-hclus/01-clusters.jpeg")
+knitr::include_graphics("img/10-hclus/02-clusters.jpeg")
+knitr::include_graphics("img/10-hclus/03-clusters.jpeg")
+knitr::include_graphics("img/10-hclus/04-clusters.jpeg")
+
+```
+
+
+A partir del concepto de distancia entre puntos en un espacio de *N* dimensiones (variables), se realiza la agrupación de elementos para posteriormente calcular cuántos **grupos** es conveniente usar. Este proceso puede ser graficado de múltiples formas, sin embargo, la visualización más usada corresponde al **dendograma**, el cual es un gráfico como el presentado a continuación:
+
+```{r, echo=FALSE, fig.align='center', out.width='400pt'}
+knitr::include_graphics("img/10-hclus/06-Hierarchical-Clustering.webp")
+```
+
+
+* El eje horizontal representa los **puntos de datos**. 
+
+* La altura a lo largo del eje vertical representa la **distancia entre los grupos**. 
+
+* Las líneas verticales en el gráfico representan grupos. 
+
+* La altura de estas líneas representa la distancia desde el grupo más cercano. 
+
+Podemos encontrar el número de conglomerados que mejor representan los grupos en los datos usando el dendrograma. 
+
+```{r, echo=FALSE, fig.align='center', out.width='400pt'}
+
+knitr::include_graphics("img/10-hclus/07-Hierarchical-Clustering-1.webp")
+```
+
+Las líneas verticales con las mayores distancias entre ellas, es decir, la mayor altura en el mismo nivel, dan el número de grupos que mejor representan los datos. 
+
+
+## Agglomerative & Divise Clustering
+
+El cluster aglomerativo es el tipo de clustering jerárquico más comúnmente usado para agrupar objetos en clusters basados en su similitud. También es conocido como **AGNES** (Agglomerative Nesting). El inverso del agrupamiento aglomerativo es el agrupamiento divisivo, en cual es conocido también como **DIANA** (*Divise Analysis*).
+
+```{r, echo=FALSE, fig.align='center', out.width='600pt'}
+
+knitr::include_graphics("img/10-hclus/08-agnes_diana_clustering.png")
+```
+
+### Algoritmo
+
+Este algoritmo AGNES funciona de la manera **"bottom-up"**. Esto es:
+
+1. cada objeto es **inicialmente considerado como un cluster de único elemento** (hoja). 
+
+2. En cada paso del algoritmo, los 2 clusters que son más **similares** son combinados en uno nuevo más grande.
+
+3. El paso anterior es repetido hasta que todos los puntos son miembros de un **único** y gran cluster.
+
+
+Mientras que el algoritmo DIANA es del tipo **top-down**, funcionando de la siguiente manera: 
+
+1. Comienza con una raíz, en la que todos los elementos están incluidos en el mismo grupo.
+
+2. En cada paso del algoritmo, los 2 clusters que son más **disimilares** son divididos en dos nuevos grupos.
+
+3. El paso anterior es repetido hasta que todos los puntos son un cluster de elemento único en sí mismos.
+
+::: {.infobox .quicktip data-latex="{quicktip}"}
+**¡¡ TIP !!**
+
+* Clustering aglomerativo es bueno en identificar pequeños clusters
+
+* Clustering divisivo es bueno para detectar los clusters grandes. 
+:::
+
+## Implementación en R
+
+En esta sección se revisan las librerías y funciones que hacen posible estos algoritmos. Como metodología general, tenemos los siguientes pasos:
+
+1. Preparación de datos
+
+2. Cálculo de (di)similitudes entre pares de objetos en el conjunto de datos
+
+3. Uso de **función liga** para agrupar los objetos en un árbol jerárquico basado en la distancia generada en los pasos anteriores.
+
+4. Determinar el umbral de corte del árbol jerárquico para la creación de grupos.
+
+
+### Preparación y estructuración de datos
+
+Los datos deben ser presentados en un formato matricial, en donde  los renglones representan a las observaciones y las columnas a las variables.
+
+```{r}
+data("USArrests")
+
+df <- scale(USArrests)
+
+head(df)
+```
+
+### Medidas de (di)similaridad
+
+Con el fin de decidir qué elementos deben ser combinados o divididos, se requieren métodos para medir la similaridad entre objetos. Existen muchos métodos para calcular la (di)similaridad de la información. Estas métricas ya se han considerados en capítulos anteriores.
+
+En *R*, se puede usar la función *dist()* para calcular la distancia entre cada par de objetos en un conjunto de datos. El resultado de este cálculo es conocido como **matriz de distancia de similitud**.
+
+```{r}
+res_dist <- dist(df, method = "euclidian")
+as.matrix(res_dist)[1:6, 1:6]
+
+```
+
+Esta función usa los métodos de distancia:
+
+* Euclidiana
+
+* Máxima
+
+* Manhattan
+
+* Canberra
+
+* Binaria
+
+* Minkowski
+
+Es importante mencionar que existen otras distancias como la geodésica que pueden implementarse a partir de otras librerías. Para distancias cortas y en general, la distancia euclidiana funciona muy bien.
+
+### Función Liga
+
+La función liga toma la información de la distancia que regresa de la función *dist()* y agrupa pares de objetos en clusters basados en su similaridad. Posteriormente, estos clusters nuevos son ligados a otros para crear clusters más grandes. Este proceso es iterativo hasta que todos los objetos en el conjunto original de datos son ligados juntos en un árbol jerárquico. Este proceso se lleva a cabo con la función: *hclust()*.
+
+```{r}
+res_hc <- hclust(d = res_dist, method = "complete")
+res_hc
+```
+
+**Donde:**
+
+ > **d:** Es la estructura de disimilaridad producida por la función *dist()*
+ >
+ > **method:** El método de liga de aglomeración a ser usado para el cálculo de distancia entre clusters. Los siguientes valores están permitidos: "single", "complete", "average", "median", "centroid", "ward.D", "ward.D2".
+
+
+Existen múltiples métodos de aglomeración (i.e. métodos liga). Los más comunes se describen a continuación:
+
+* **Liga máxima o completa:** La distancia entre dos clusters es definida como el valor máximo de todos los pares de distancia entre los elementos dentro del cluster 1 y los elementos en el cluster 2. Tiende a producir clusters compactos.
+
+```{r, echo=FALSE, fig.align='center', out.width='600pt'}
+knitr::include_graphics("img/10-hclus/09-complete_linkage.png")
+```
+
+
+* **Liga mínima o simple:** La distancia entre dos clusters es definida como el valor mínimo de todas las parejas de distancias entre los elementos en el cluster 1 y los elementos en el cluster 2. Tiende a producir clusters largos o pobres.
+
+```{r, echo=FALSE, fig.align='center', out.width='600pt'}
+knitr::include_graphics("img/10-hclus/10-single_linkage.png")
+```
+
+* **Liga promedio o media:** La distancia entre dos clusters es definida como la distancia promedio entre los elementos en el cluster 1 y los elementos en el cluster 2.
+
+$$Dist(C_1, C_2)= \frac{1}{n_1+n_2}\sum_{i=1}^{n_1}{\sum_{j=1}^{n_2}{D(i,j)}}$$
+
+```{r, echo=FALSE, fig.align='center', out.width='600pt'}
+knitr::include_graphics("img/10-hclus/11-average_linkage2.png")
+```
+
+
+* **Liga centroide:** La distancia entre dos clusters está definida como la distancia del centroide del cluster 1 (un vector de medias con tamaño de *p* variables) y el centroide del cluster 2.
+
+```{r, echo=FALSE, fig.align='center', out.width='600pt'}
+knitr::include_graphics("img/10-hclus/12-centroid_linkage.png")
+```
+
+* **Método de varianza mínima de Ward:** Este método en vez de analizar la distancia entre grupos, analiza la varianza, por lo que se encarga de minimizar el total de la varianza intra-cluster (inercia). En cada paso, el par de clusters con distancia mínima entre clusters son unidos. Este método dice que **la distancia entre dos clusters A y B, es qué tanto la varianza respecto del centroide incrementará cuando sean unidos.**
+
+
+```{r, echo=FALSE, fig.align='center', out.width='600pt'}
+knitr::include_graphics("img/10-hclus/13-wards_linkage.png")
+```
+
+Sin importar el método usado, en cada etapa del proceso de clustering, los 2 elementos con la distancia liga más corta son unidos en un solo cluster.
+
+::: {.infobox .quicktip data-latex="{quicktip}"}
+**¡¡ TIP !!**
+
+Las ligas: completa y Ward´s son preferidas generalmente
+:::
+
+
+## Dendogramas
+
+La manera gráfica de representar el proceso de clustering jerárquico es mediante un dendograma. Los dendogramas pueden ser creados en *R* a partir de la función genérica *plot()*, sin embargo, se mostrarán otras funciones más novedosas para crear gráficos de mayor calidad.
+
+```{r, message=FALSE, warning=FALSE}
+library(factoextra)
+
+fviz_dend(res_hc, cex = 0.5)
+```
+
+En el dendograma superior cada hoja corresponde a un objeto. En la medida en que nos movemos hacia arriba en el árbol, los objetos que son similar a otros están combinados en ramas, las cuales se fusionan a mayor altura. 
+
+La altura de la fusión, proveída en el eje vertical, indica la (di)similaridad/distancia entre dos objetos/clusters. Entre más alta sea la altura de la fusión, menos similares son los objetos/clusters. Esta altura es conocida como **la distancia de cophenetic** entre dos objetos.
+
+A fin de identificar sub-grupos, se puede cortar el dendograma en cierta altura, como se describe en las siguientes secciones.
+
+Para validar que las distancias en la altura reflejen las distancias originales de manera precisa, se hace uso de la correlación entre las distancias originales y la distancia de cophenetic:
+
+```{r}
+res_coph <- cophenetic(res_hc)
+as.matrix(res_coph)[1:6, 1:6]
+
+cor(res_coph, res_dist)
+```
+
+**Ejercicio**
+
+* Usar las distintas ligas y determinar cuál de ellas funciona mejor 
+ (*Hint:* La que muestre correlación más alta entre las distancias originales y la distancia cophenetica)
+
+
+### Selección de grupos
+
+Uno de los problemas del clustering jerárquico es que, NO dice cuántos clusters hay o dónde cortar el dendograma para formar los clusters.
+
+Es posible cortar el árbol jerárquico a una altura dada con el fin de particionar los datos en clusters. La función *cutree()* puede ser usada para cortar el árbol en varios grupos al especificar ya el número deseado de grupos o la altura a cortar. Esta función regresa un vector que contiene el número de cluster de cada observación.
+
+```{r}
+groups_1 <- cutree(res_hc, k = 4)
+head(groups_1)
+
+table(groups_1)
+```
+
+```{r, warning=FALSE}
+fviz_dend(
+ res_hc,
+ k = 4,
+ cex = 0.5,
+ k_colors = c("red", "blue", "green", "purple"),
+ color_labels_by_k = TRUE,
+ rect = TRUE
+)
+```
+
+
+Algunas variaciones estéticas sobre un dendograma se pueden realizar al cambiar determinados parámetros. Por ejemplo:
+
+```{r, warning=FALSE}
+fviz_dend(
+ res_hc,
+ k = 4,
+ cex = 0.5,
+ k_colors = "jco",
+ type = "circular",
+ show_labels = TRUE
+)
+```
+
+```{r, warning=FALSE}
+fviz_dend(
+ res_hc,
+ k = 4,
+ cex = 0.5,
+ k_colors = "jco",
+ type = "phylogenic",
+ phylo_layout = "layout.gem",
+ repel = T,
+ show_labels = TRUE
+)
+```
+
+Usando la función *f_viz_cluster()* también es posible visualizar los clusters a través de un gráfico de dispersión. Las observaciones son presentadas en puntos usando el análisis de componentes principales.
+
+```{r}
+fviz_cluster(
+ list(data = df, cluster = groups_1),
+ palette = c("red", "blue", "green", "purple"),
+ ellipse.type = "convex",
+ repel = T,
+ show.clust.cent = F
+)
+```
+
+Finalmente, es importante mencionar que la librería *cluster* ofrece un par de funciones que resumen todo el proceso anterior (scale, dist y hclus). Las funciones se usan de la siguiente forma:
+
+```{r, warning=FALSE, message=FALSE}
+library(cluster)
+
+res_agnes <- agnes(
+ x = USArrests,
+ stand = T,
+ metric = "euclidian",
+ method = "ward"
+)
+
+res_diana <- diana(
+ x = USArrests,
+ stand = T,
+ metric = "euclidian"
+)
+
+fviz_dend(
+ res_diana, 
+ cex = 0.6, 
+ k = 4,
+ color_labels_by_k = TRUE,
+ rect = TRUE
+ )
+```
+
+
