@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 1 Conceptos de Ciencia de Datos | Introducción a Ciencia de Datos y Machine Learning</title>
-  <meta name="description" content="Capítulo 1 Conceptos de Ciencia de Datos | Introducción a Ciencia de Datos y Machine Learning" />
+  <title>Capítulo 10 Clustering Jerárquico | Introducción a Ciencia de Datos y Machine Learning</title>
+  <meta name="description" content="Capítulo 10 Clustering Jerárquico | Introducción a Ciencia de Datos y Machine Learning" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 1 Conceptos de Ciencia de Datos | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta property="og:title" content="Capítulo 10 Clustering Jerárquico | Introducción a Ciencia de Datos y Machine Learning" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Capítulo 1 Conceptos de Ciencia de Datos | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta property="og:description" content="Capítulo 10 Clustering Jerárquico | Introducción a Ciencia de Datos y Machine Learning" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 1 Conceptos de Ciencia de Datos | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta name="twitter:title" content="Capítulo 10 Clustering Jerárquico | Introducción a Ciencia de Datos y Machine Learning" />
   
-  <meta name="twitter:description" content="Capítulo 1 Conceptos de Ciencia de Datos | Introducción a Ciencia de Datos y Machine Learning" />
+  <meta name="twitter:description" content="Capítulo 10 Clustering Jerárquico | Introducción a Ciencia de Datos y Machine Learning" />
   
 
 
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="introducción-a-r.html"/>
+<link rel="prev" href="clustering-no-jerárquico.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -373,6 +373,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#comparación-de-algoritmos"><i class="fa fa-check"></i><b>9.5</b> Comparación de algoritmos</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html"><i class="fa fa-check"></i><b>10</b> Clustering Jerárquico</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#agglomerative-divise-clustering"><i class="fa fa-check"></i><b>10.1</b> Agglomerative &amp; Divise Clustering</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#algoritmo"><i class="fa fa-check"></i><b>10.1.1</b> Algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#implementación-en-r-5"><i class="fa fa-check"></i><b>10.2</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#preparación-y-estructuración-de-datos"><i class="fa fa-check"></i><b>10.2.1</b> Preparación y estructuración de datos</a></li>
+<li class="chapter" data-level="10.2.2" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#medidas-de-disimilaridad"><i class="fa fa-check"></i><b>10.2.2</b> Medidas de (di)similaridad</a></li>
+<li class="chapter" data-level="10.2.3" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#función-liga"><i class="fa fa-check"></i><b>10.2.3</b> Función Liga</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#dendogramas"><i class="fa fa-check"></i><b>10.3</b> Dendogramas</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#selección-de-grupos"><i class="fa fa-check"></i><b>10.3.1</b> Selección de grupos</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
 
@@ -393,279 +410,257 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conceptos-de-ciencia-de-datos" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Capítulo 1</span> Conceptos de Ciencia de Datos<a href="conceptos-de-ciencia-de-datos.html#conceptos-de-ciencia-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="qué-es-ciencia-de-datos" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> ¿Qué es Ciencia de Datos?<a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><img src="img/01-intro2ds/01_data-science-applications.jpeg" width="500pt" height="500pt" style="display: block; margin: auto;" /></p>
-<div id="definiendo-conceptos" class="section level3 unnumbered hasAnchor">
-<h3>Definiendo conceptos:<a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Estadística</strong> Disciplina que recolecta, organiza, analiza e interpreta datos. Lo hace a través de una población muestral generando estadística descriptiva y estadística inferencial.</p>
+<div id="clustering-jerárquico" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Capítulo 10</span> Clustering Jerárquico<a href="clustering-jerárquico.html#clustering-jerárquico" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>En esta sección se analizarán diferentes metodologías que tienen como propósito realizar segmentaciones de unidades de manera jerárquica, es decir, a partir de un único grupo se van agrupando o separando los individuos dependiendo de qué tan lejanos o cercanos se encuentran unos de otros. A diferencia del clustering por partición (no jerárquico), este no requiere de la pre-especificación del número de clusters a producir.</p>
+<p>El clustering jerárquico se divide en dos tipos:</p>
+<p><strong>1) Clustering aglomerativo.</strong></p>
+<p><strong>2) Clustering divisivo.</strong></p>
+<p>Las principales metodologías a revisar serán:</p>
 <ul>
-<li><p>La <a href="">estadística descriptiva</a>, como su nombre lo indica, se encarga de describir datos y obtener conclusiones. Se utilizan números (media, mediana, moda, mínimo, máximo, etc) para analizar datos y llegar a conclusiones de acuerdo a ellos.</p></li>
-<li><p>La <a href="">estadística inferencial</a> argumenta o infiere sus resultados a partir de las muestras de una población. Se intenta conseguir información al utilizar un procedimiento ordenado en el manejo de los datos de la muestra.</p></li>
-<li><p>La <a href="">estadística predictiva</a> busca estimar valores y escenarios futuros más probables de ocurrir a partir de referencias históricas previas. Se suelen ocupar como apoyo características y factores áltamente asociados al fenómeno que se desea predecir.</p></li>
+<li><p>Liga simple o vecino más cercano</p></li>
+<li><p>Liga compleja o vecino más lejano</p></li>
+<li><p>Liga promedio</p></li>
+<li><p>Liga centroide</p></li>
+<li><p>Varianza mínima de Ward</p></li>
 </ul>
-<p><img src="img/01-intro2ds/02_muestra.jpg" style="display: block; margin: auto;" /></p>
-<p><strong>Business Intelligence</strong>: BI aprovecha el software y los servicios para transformar los datos en conocimientos prácticos que informan las decisiones empresariales estratégicas y tácticas de una organización. Las herramientas de BI acceden y analizan conjuntos de datos y presentan hallazgos analíticos en informes, resúmenes, tableros, gráficos, cuadros, -indicadores- o KPI’s y mapas para proporcionar a los usuarios <strong>inteligencia detallada sobre el estado del negocio</strong>. BI esta enfocado en analizar la historia pasada para tomar decisiones hacia el futuro.</p>
-<p>¿Qué características tiene un KPI?</p>
+<p><img src="img/10-hclus/01-clusters.jpeg" width="350pt" /><img src="img/10-hclus/02-clusters.jpeg" width="350pt" /><img src="img/10-hclus/03-clusters.jpeg" width="350pt" /><img src="img/10-hclus/04-clusters.jpeg" width="350pt" /></p>
+<p>A partir del concepto de distancia entre puntos en un espacio de <em>N</em> dimensiones (variables), se realiza la agrupación de elementos para posteriormente calcular cuántos <strong>grupos</strong> es conveniente usar. Este proceso puede ser graficado de múltiples formas, sin embargo, la visualización más usada corresponde al <strong>dendograma</strong>, el cual es un gráfico como el presentado a continuación:</p>
+<p><img src="img/10-hclus/06-Hierarchical-Clustering.webp" width="400pt" style="display: block; margin: auto;" /></p>
 <ul>
-<li>Específicos</li>
-<li>Continuos y periódicos</li>
-<li>Objetivos</li>
-<li>Cuantificables</li>
-<li>Medibles</li>
-<li>Realistas</li>
-<li>Concisos</li>
-<li>Coherentes</li>
-<li>Relevantes</li>
+<li><p>El eje horizontal representa los <strong>puntos de datos</strong>.</p></li>
+<li><p>La altura a lo largo del eje vertical representa la <strong>distancia entre los grupos</strong>.</p></li>
+<li><p>Las líneas verticales en el gráfico representan grupos.</p></li>
+<li><p>La altura de estas líneas representa la distancia desde el grupo más cercano.</p></li>
 </ul>
-<p><img src="img/01-intro2ds/03_bi.png" width="440" style="display: block; margin: auto;" /></p>
-<p><strong>Machine Learning</strong>: Machine learning –aprendizaje de máquina– es una <strong>rama de la inteligencia artificial</strong> que permite que las máquinas aprendan de los patrones existentes en los datos. Se usan métodos computacionales para aprender de datos con el fin de producir reglas para mejorar el desempeño en alguna tarea o toma de decisión. (Está enfocado en la programación de máquinas para aprender de los patrones existentes en datos principalmente estructurados y anticiparse al futuro)</p>
-<p><img src="img/01-intro2ds/04_ml.png" width="600pt" style="display: block; margin: auto;" /></p>
-<p><img src="img/01-intro2ds/05_supervisado_robo.png" width="413" style="display: block; margin: auto;" /></p>
-<p><strong>Deep Learning</strong>: El aprendizaje profundo es un subcampo del aprendizaje automático que se ocupa de los algoritmos <strong>inspirados en la estructura y función del cerebro llamados redes neuronales artificiales.</strong></p>
-<p>En <em>Deep Learning</em>, un modelo de computadora aprende a realizar tareas de clasificación directamente a partir de imágenes, texto o sonido. Los modelos de aprendizaje profundo pueden lograr una precisión de vanguardia, a veces superando el rendimiento a nivel humano. Los modelos se entrenan mediante el uso de un gran conjunto de datos etiquetados y arquitecturas de redes neuronales que contienen muchas capas. (Está enfocado en la programación de máquinas para el reconocimiento de imágenes y audio (datos no estructurados))</p>
-<p><img src="img/01-intro2ds/06_reconocimiento.png" width="325" style="display: block; margin: auto;" /></p>
-<p><img src="img/01-intro2ds/07_ml1.png" width="408" style="display: block; margin: auto;" /></p>
-<p><strong>Big data</strong> se refiere a los grandes y diversos conjuntos de información que crecen a un ritmo cada vez mayor. Abarca el volumen de información, la velocidad a la que se crea y recopila, y la variedad o alcance de los puntos de datos que se cubren. Los macrodatos a menudo provienen de la minería de datos y llegan en múltiples formatos.</p>
-<p><img src="img/01-intro2ds/08_big-data-8vs.jpg" width="600pt" style="display: block; margin: auto;" /></p>
-<p>Es común que se confunda los conceptos de <em>Big Data</em> y <em>Big Compute</em>, como se mencionó, <em>Big Data</em> se refiere al procesamiento de conjuntos de datos que son más voluminosos y complejos que los tradicionales y <em>Big Compute</em> a herramientas y enfoques que utilizan una gran cantidad de recursos de CPU y memoria de forma coordinada para resolver problemas que usan algoritmos muy complejos.</p>
-<p><img src="img/01-intro2ds/09_bigdata.jpg" width="600pt" style="display: block; margin: auto;" /></p>
-<p>Curiosidad: <a href="https://www.xatakawindows.com/actualidad-en-redmond/servidores-liquido-hirviendo-esta-idea-microsoft-para-evitar-calentamiento-sus-equipos#:~:text=Con%20este%20sistema%2C%20el%20dispositivo,fr%C3%ADo%2C%20emplea%20uno%20en%20ebullici%C3%B3n.">Servidores en líquido para ser enfriados</a></p>
-<p>Curiosidad 2: <a href="https://www.bbc.com/mundo/noticias/2016/02/160202_microsoft_centro_datos_debajo_agua_mar_subamino_all">Centro de datos en el océano</a></p>
-<p></br> <strong>Entonces, ¿qué NO es ciencia de datos?</strong></p>
-<ul>
-<li>No es una tecnología</li>
-<li>No es una herramienta</li>
-<li>No es desarrollo de software</li>
-<li>No es Business Intelligence*</li>
-<li>No es Big Data*</li>
-<li>No es Inteligencia Artificial*</li>
-<li>No es (solo) machine learning</li>
-<li>No es (solo) deep learning</li>
-<li>No es (solo) visualización</li>
-<li>No es (solo) hacer modelos</li>
-</ul>
-</div>
-</div>
-<div id="objetivos" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Objetivos<a href="conceptos-de-ciencia-de-datos.html#objetivos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Los científicos de datos analizan qué preguntas necesitan respuesta y dónde encontrar los datos relacionados. Tienen conocimiento de negocio y habilidades analíticas, así como la capacidad de extraer, limpiar y presentar datos. Las empresas utilizan científicos de datos para obtener, administrar y analizar grandes cantidades de datos no estructurados. Luego, los resultados se sintetizan y comunican a las partes interesadas clave para impulsar la toma de decisiones estratégicas en la organización.</li>
-</ul>
-<p><img src="img/01-intro2ds/10_data_science_vd.png" width="600pt" height="500pt" style="display: block; margin: auto;" /></p>
-<p>Fuente: <a href="http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram">Blog post de Drew Conway</a></p>
-<p>Más sobre Conway: <a href="https://www.forbes.com/sites/joshwolfe/2016/03/03/using-data-science-for-the-physical-world/?sh=614ac5b0150e">Forbes 2016</a></p>
-</div>
-<div id="requisitos" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Requisitos<a href="conceptos-de-ciencia-de-datos.html#requisitos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><p><strong>Background científico:</strong> Conocimientos generales de probabilidad, estadística, álgebra lineal, cálculo, geometría analítica, programación, conocimientos computacionales… etc</p></li>
-<li><p><strong>Datos relevantes y suficientes:</strong> Es indispensable saber si los datos con los que se trabajará son relevantes y suficientes, debemos evaluar qué preguntas podemos responder con los datos con los que contamos.</p>
-<ul>
-<li><p><strong>Suficiencia:</strong> Los datos con los que trabajamos tienen que ser representativos de la población en general, necesitamos que las características representadas en la información sean suficientes para aproximar a la población objetivo.</p></li>
-<li><p><strong>Relevancia:</strong> De igual manera los datos tienen que tener relevancia para la tarea que queremos resolver, por ejemplo, es probable que información sobre gusto en alimentos sea irrelevante para predecir número de hijos.</p></li>
-</ul></li>
-</ul>
-<p><img src="img/01-intro2ds/11_relevancia_suficiencia.png" width="880" style="display: block; margin: auto;" /></p>
-<ul>
-<li><strong>Etiquetas:</strong> Se necesita la intervención humana para etiquetar, clasificar e introducir los datos en el algoritmo.</li>
-</ul>
-<p><img src="img/01-intro2ds/12_etiquetas.png" width="600pt" height="400pt" style="display: block; margin: auto;" /></p>
-<ul>
-<li><strong>Software:</strong> Existen distintos lenguajes de programación para realizar ciencia de datos</li>
-</ul>
-<p><img src="img/01-intro2ds/13_lenguajes.png" width="600pt" height="300pt" style="display: block; margin: auto;" /></p>
-</div>
-<div id="aplicaciones" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Aplicaciones<a href="conceptos-de-ciencia-de-datos.html#aplicaciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Dependiendo de la industria en la que se quiera aplicar Machine Learning, podemos pensar en distintos enfoques, en la siguiente imagen se muestran algunos ejemplos:</p>
-<p><img src="img/01-intro2ds/14_aplicaciones.jpg" width="600pt" height="600pt" style="display: block; margin: auto;" /></p>
-<p>Podemos pensar en una infinidad de aplicaciones comerciales basadas en el análisis de datos. Con la intención de estructurar las posibles aplicaciones, se ofrece a continuación una categorización que, aunque no es suficiente para englobar todos los posibles casos de uso, sí es sorprendente la cantidad de aplicaciones que abarca.</p>
-<p><strong>1. Aplicaciones centradas en los clientes</strong></p>
-<ul>
-<li>Incrementar beneficio al mejorar recomendaciones de productos</li>
-<li>Up-selling</li>
-<li>Cross-selling</li>
-<li>Reducir tasas de cancelación y mejorar tasas de retención</li>
-<li>Personalizar experiencia de usuario</li>
-<li>Mejorar el marketing dirigido</li>
-<li>Análisis de sentimientos</li>
-<li>Personalización de productos o servicios</li>
-</ul>
-<p><strong>2. Optimización de problemas</strong></p>
-<ul>
-<li>Optimización de precios</li>
-<li>Ubicación de nuevas sucursales</li>
-<li>Maximización de ganancias mediante producción de materias primas</li>
-<li>Construcción de portafolios de inversión</li>
-</ul>
-<p><strong>3. Predicción de demanda</strong></p>
-<ul>
-<li>Número futuro de clientes</li>
-<li>Número esperado de viajes en avión / camión / bicis</li>
-<li>Número de contagios por un virus (demanda médica / medicamentos / etc)</li>
-<li>Predicción de uso de recursos (luz / agua / gas)</li>
-</ul>
-<p><strong>4. Análisis de detección de fraudes</strong></p>
-<ul>
-<li>Detección de robo de identidad</li>
-<li>Detección de transacciones ilícitas</li>
-<li>Detección de servicios fraudulentos</li>
-<li>Detección de zonas geográficas con actividades ilícitas</li>
-</ul>
-</div>
-<div id="tipos-de-algoritmos" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Tipos de algoritmos<a href="conceptos-de-ciencia-de-datos.html#tipos-de-algoritmos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Los algoritmos de Machine Learning se dividen en tres categorías, siendo las dos primeras las más comunes:</p>
-<p><img src="img/01-intro2ds/13_tipo_aprendizaje.png" width="750pt" height="500pt" style="display: block; margin: auto;" /></p>
-<p>La diferencia entre el análisis supervisado y el no supervisado es la etiqueta, es decir, en el análisis supervisado tenemos una etiqueta “correcta” y el objetivo de los algoritmos es predecir esta etiqueta.</p>
-<div id="aprendizaje-supervisado" class="section level3 hasAnchor" number="1.5.1">
-<h3><span class="header-section-number">1.5.1</span> Aprendizaje supervisado<a href="conceptos-de-ciencia-de-datos.html#aprendizaje-supervisado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En el aprendizaje supervisado, la idea principal es <strong>aprender bajo supervisión</strong>, donde la señal de supervisión se nombra como valor objetivo o etiqueta. Estos algoritmos cuentan con un aprendizaje previo basado en un <strong>sistema de etiquetas</strong> asociadas a unos datos que les permiten tomar decisiones o hacer predicciones.</p>
-<ul>
-<li><p>Conocemos la respuesta correcta de antemano.</p></li>
-<li><p>Esta respuesta correcta fue “etiquetada” por un humano (la mayoría de las veces, en algunas circunstancias puede ser generada por otro algoritmo).</p></li>
-<li><p>Debido a que conocemos la respuesta correcta, existen muchas métricas de desempeño del modelo para verificar que nuestro algoritmo está haciendo las cosas “bien”.</p></li>
-</ul>
-<p>Algunos ejemplos son:</p>
-<pre><code>- Un detector de spam que etiqueta un e-mail como spam o no.
-
-- Predecir precios de casas
-
-- Clasificación de imagenes
-
-- Predecir el clima
-
-- ¿Quiénes son los clientes descontentos?</code></pre>
-<div id="tipos-de-aprendizaje-supervisado-regresión-vs-clasificación" class="section level4 unnumbered hasAnchor">
-<h4>Tipos de aprendizaje supervisado (Regresión vs clasificación)<a href="conceptos-de-ciencia-de-datos.html#tipos-de-aprendizaje-supervisado-regresión-vs-clasificación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Existen dos tipos principales de aprendizaje supervisado, esto depende del tipo de la variable respuesta:</p>
-</div>
-<div id="clasificación" class="section level4 unnumbered hasAnchor">
-<h4>Clasificación<a href="conceptos-de-ciencia-de-datos.html#clasificación" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>En el aprendizaje supervisado, los algoritmos de clasificación se usan cuando el resultado es una <strong>etiqueta discreta.</strong> Esto quiere decir que se utilizan cuando la respuesta se fundamenta en conjunto finito de resultados.</p>
-</div>
-<div id="regresión" class="section level4 unnumbered hasAnchor">
-<h4>Regresión<a href="conceptos-de-ciencia-de-datos.html#regresión" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>El análisis de regresión es un subcampo del aprendizaje automático supervisado cuyo objetivo es <strong>establecer un método para la relación entre un cierto número de características y una variable objetivo continua.</strong></p>
-<p><br/></p>
-<p><img src="img/01-intro2ds/13_regresion_clasificacion.png" width="700pt" height="450pt" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="aprendizaje-no-supervisado" class="section level3 hasAnchor" number="1.5.2">
-<h3><span class="header-section-number">1.5.2</span> Aprendizaje no supervisado<a href="conceptos-de-ciencia-de-datos.html#aprendizaje-no-supervisado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En el aprendizaje no supervisado, <strong>carecemos de etiquetas</strong>. Por lo tanto, necesitamos encontrar nuestro camino sin ninguna supervisión ni guía. Esto simplemente significa que necesitamos descubrir ¿qué es qué? por nosotros mismos.</p>
-<ul>
-<li><p>Aquí no tenemos la respuesta correcta de antemano ¿cómo podemos saber que el algoritmo está bien o mal?</p></li>
-<li><p>Estadísticamente podemos verificar que el algoritmo está bien</p></li>
-<li><p>Siempre tenemos que verificar con el cliente si los resultados que estamos obteniendo tienen sentido de negocio. Por ejemplo, número de grupos y características</p></li>
-</ul>
-<p><img src="img/01-intro2ds/14_nosupervisado_robo.png" width="473" style="display: block; margin: auto;" /></p>
-<p>Algunos ejemplos son:</p>
-<pre><code>- Encontrar segmentos de clientes.
-
-- Reducir la complejidad de un problema
-
-- Selección de variables
-
-- Encontrar grupos
-
-- Reducción de dimensionalidad</code></pre>
-</div>
-<div id="aprendizaje-por-refuerzo" class="section level3 hasAnchor" number="1.5.3">
-<h3><span class="header-section-number">1.5.3</span> Aprendizaje por refuerzo<a href="conceptos-de-ciencia-de-datos.html#aprendizaje-por-refuerzo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Su objetivo es que un algoritmo aprenda a partir de la propia experiencia. Esto es, que sea capaz de tomar la mejor decisión ante diferentes situaciones de acuerdo a un proceso de prueba y error en el que se recompensan las decisiones correctas.</p>
-<p><img src="img/01-intro2ds/14_reinforcement_robot.png" width="500pt" height="350pt" style="display: block; margin: auto;" /></p>
-<p>Algunos ejemplos son:</p>
-<pre><code>- Optimización de campañas de marketing
-
-- Reconocimiento facial
-
-- Diagnósticos médicos
-
-- Clasificar secuencias de ADN</code></pre>
-<p>Ejemplo: <a href="https://www.youtube.com/watch?v=qv6UVOQ0F44&amp;t=283s">Mario Bros</a></p>
-</div>
-</div>
-<div id="ciclo-de-un-proyecto" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> Ciclo de un proyecto<a href="conceptos-de-ciencia-de-datos.html#ciclo-de-un-proyecto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><img src="img/01-intro2ds-ciclo/01-etapas.png" width="800pt" height="600pt" style="display: block; margin: auto;" /></p>
+<p>Podemos encontrar el número de conglomerados que mejor representan los grupos en los datos usando el dendrograma.</p>
+<p><img src="img/10-hclus/07-Hierarchical-Clustering-1.webp" width="400pt" style="display: block; margin: auto;" /></p>
+<p>Las líneas verticales con las mayores distancias entre ellas, es decir, la mayor altura en el mismo nivel, dan el número de grupos que mejor representan los datos.</p>
+<div id="agglomerative-divise-clustering" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Agglomerative &amp; Divise Clustering<a href="clustering-jerárquico.html#agglomerative-divise-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El cluster aglomerativo es el tipo de clustering jerárquico más comúnmente usado para agrupar objetos en clusters basados en su similitud. También es conocido como <strong>AGNES</strong> (Agglomerative Nesting). El inverso del agrupamiento aglomerativo es el agrupamiento divisivo, en cual es conocido también como <strong>DIANA</strong> (<em>Divise Analysis</em>).</p>
+<p><img src="img/10-hclus/08-agnes_diana_clustering.png" width="600pt" style="display: block; margin: auto;" /></p>
+<div id="algoritmo" class="section level3 hasAnchor" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Algoritmo<a href="clustering-jerárquico.html#algoritmo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Este algoritmo AGNES funciona de la manera <strong>“bottom-up”</strong>. Esto es:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Identificación del problema</strong></p>
-<ul>
-<li>Debemos conocer si el problema es significativo, si el problema se puede resolver con ciencia de datos, y si habrá un compromiso real del lado de cliente/usuario/partner para implementar la solución con todas sus implicaciones: recursos físicos y humanos.</li>
-</ul></li>
+<li><p>cada objeto es <strong>inicialmente considerado como un cluster de único elemento</strong> (hoja).</p></li>
+<li><p>En cada paso del algoritmo, los 2 clusters que son más <strong>similares</strong> son combinados en uno nuevo más grande.</p></li>
+<li><p>El paso anterior es repetido hasta que todos los puntos son miembros de un <strong>único</strong> y gran cluster.</p></li>
 </ol>
-<p><img src="img/01-intro2ds-ciclo/02-identificacion.jpg" width="200pt" height="200pt" style="display: block; margin: auto;" /></p>
-<ol start="2" style="list-style-type: decimal">
-<li><p><strong>Scoping</strong></p>
-<ul>
-<li><p>El objetivo es definir el alcance del proyecto y por lo tanto definir claramente los objetivos.</p></li>
-<li><p>Conocer las acciones que se llevarán a cabo para cada objetivo. Estas definirán las soluciones analíticas a hacer.</p></li>
-<li><p>Queremos saber si los datos con los que contamos son relevantes y suficientes.</p></li>
-<li><p>Hacer visible los posibles conflictos éticos que se pueden tener en esta fase.</p></li>
-<li><p>Debemos definir el cómo evaluaremos que el análisis de esos datos será balanceada entre eficiencia, efectividad y equidad.</p></li>
-</ul></li>
+<p>Mientras que el algoritmo DIANA es del tipo <strong>top-down</strong>, funcionando de la siguiente manera:</p>
+<ol style="list-style-type: decimal">
+<li><p>Comienza con una raíz, en la que todos los elementos están incluidos en el mismo grupo.</p></li>
+<li><p>En cada paso del algoritmo, los 2 clusters que son más <strong>disimilares</strong> son divididos en dos nuevos grupos.</p></li>
+<li><p>El paso anterior es repetido hasta que todos los puntos son un cluster de elemento único en sí mismos.</p></li>
 </ol>
-<p><img src="img/01-intro2ds-ciclo/03-alcance.png" width="200pt" height="200pt" style="display: block; margin: auto;" /></p>
-<ol start="3" style="list-style-type: decimal">
-<li><p><strong>Adquisición de datos</strong></p>
+<div class="infobox quicktip">
+<p><strong>¡¡ TIP !!</strong></p>
 <ul>
-<li><p>Adquisición, almacenamiento, entendimiento y preparación de los datos para después poder hacer analítica sober ellos.</p></li>
-<li><p>Asegurar que en la transferencia estamos cumpliendo con el manejo adecuado de datos sensibles y privados.</p></li>
-</ul></li>
+<li><p>Clustering aglomerativo es bueno en identificar pequeños clusters</p></li>
+<li><p>Clustering divisivo es bueno para detectar los clusters grandes.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="implementación-en-r-5" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Implementación en R<a href="clustering-jerárquico.html#implementación-en-r-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección se revisan las librerías y funciones que hacen posible estos algoritmos. Como metodología general, tenemos los siguientes pasos:</p>
+<ol style="list-style-type: decimal">
+<li><p>Preparación de datos</p></li>
+<li><p>Cálculo de (di)similitudes entre pares de objetos en el conjunto de datos</p></li>
+<li><p>Uso de <strong>función liga</strong> para agrupar los objetos en un árbol jerárquico basado en la distancia generada en los pasos anteriores.</p></li>
+<li><p>Determinar el umbral de corte del árbol jerárquico para la creación de grupos.</p></li>
 </ol>
-<p><img src="img/01-intro2ds-ciclo/04-data-adquisition.webp" width="200pt" height="300pt" style="display: block; margin: auto;" /></p>
-<ol start="4" style="list-style-type: decimal">
-<li><p><strong>EDA</strong></p>
+<div id="preparación-y-estructuración-de-datos" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Preparación y estructuración de datos<a href="clustering-jerárquico.html#preparación-y-estructuración-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los datos deben ser presentados en un formato matricial, en donde los renglones representan a las observaciones y las columnas a las variables.</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="clustering-jerárquico.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;USArrests&quot;</span>)</span>
+<span id="cb362-2"><a href="clustering-jerárquico.html#cb362-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-3"><a href="clustering-jerárquico.html#cb362-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">scale</span>(USArrests)</span>
+<span id="cb362-4"><a href="clustering-jerárquico.html#cb362-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-5"><a href="clustering-jerárquico.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>##                Murder   Assault   UrbanPop         Rape
+## Alabama    1.24256408 0.7828393 -0.5209066 -0.003416473
+## Alaska     0.50786248 1.1068225 -1.2117642  2.484202941
+## Arizona    0.07163341 1.4788032  0.9989801  1.042878388
+## Arkansas   0.23234938 0.2308680 -1.0735927 -0.184916602
+## California 0.27826823 1.2628144  1.7589234  2.067820292
+## Colorado   0.02571456 0.3988593  0.8608085  1.864967207</code></pre>
+</div>
+<div id="medidas-de-disimilaridad" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Medidas de (di)similaridad<a href="clustering-jerárquico.html#medidas-de-disimilaridad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con el fin de decidir qué elementos deben ser combinados o divididos, se requieren métodos para medir la similaridad entre objetos. Existen muchos métodos para calcular la (di)similaridad de la información. Estas métricas ya se han considerados en capítulos anteriores.</p>
+<p>En <em>R</em>, se puede usar la función <em>dist()</em> para calcular la distancia entre cada par de objetos en un conjunto de datos. El resultado de este cálculo es conocido como <strong>matriz de distancia de similitud</strong>.</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="clustering-jerárquico.html#cb364-1" aria-hidden="true" tabindex="-1"></a>res_dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(df, <span class="at">method =</span> <span class="st">&quot;euclidian&quot;</span>)</span>
+<span id="cb364-2"><a href="clustering-jerárquico.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.matrix</span>(res_dist)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>##             Alabama   Alaska  Arizona Arkansas California Colorado
+## Alabama    0.000000 2.703754 2.293520 1.289810   3.263110 2.651067
+## Alaska     2.703754 0.000000 2.700643 2.826039   3.012541 2.326519
+## Arizona    2.293520 2.700643 0.000000 2.717758   1.310484 1.365031
+## Arkansas   1.289810 2.826039 2.717758 0.000000   3.763641 2.831051
+## California 3.263110 3.012541 1.310484 3.763641   0.000000 1.287619
+## Colorado   2.651067 2.326519 1.365031 2.831051   1.287619 0.000000</code></pre>
+<p>Esta función usa los métodos de distancia:</p>
 <ul>
-<li><p>El objetivo en esta fase es conocer los datos con los que contamos y contexto de negocio explicado a través de los mismos.</p></li>
-<li><p>Identificamos datos faltantes, sugerimos cómo imputarlos.</p></li>
-<li><p>Altamente apoyado de visualización y procesos de adquisición y limpieza de datos.</p></li>
-</ul></li>
-</ol>
-<p><img src="img/01-intro2ds-ciclo/05-eda.jpg" width="600pt" height="350pt" style="display: block; margin: auto;" /></p>
-<ol start="5" style="list-style-type: decimal">
-<li><p><strong>Formulación analítica</strong></p>
+<li><p>Euclidiana</p></li>
+<li><p>Máxima</p></li>
+<li><p>Manhattan</p></li>
+<li><p>Canberra</p></li>
+<li><p>Binaria</p></li>
+<li><p>Minkowski</p></li>
+</ul>
+<p>Es importante mencionar que existen otras distancias como la geodésica que pueden implementarse a partir de otras librerías. Para distancias cortas y en general, la distancia euclidiana funciona muy bien.</p>
+</div>
+<div id="función-liga" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Función Liga<a href="clustering-jerárquico.html#función-liga" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función liga toma la información de la distancia que regresa de la función <em>dist()</em> y agrupa pares de objetos en clusters basados en su similaridad. Posteriormente, estos clusters nuevos son ligados a otros para crear clusters más grandes. Este proceso es iterativo hasta que todos los objetos en el conjunto original de datos son ligados juntos en un árbol jerárquico. Este proceso se lleva a cabo con la función: <em>hclust()</em>.</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="clustering-jerárquico.html#cb366-1" aria-hidden="true" tabindex="-1"></a>res_hc <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="at">d =</span> res_dist, <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span>
+<span id="cb366-2"><a href="clustering-jerárquico.html#cb366-2" aria-hidden="true" tabindex="-1"></a>res_hc</span></code></pre></div>
+<pre><code>## 
+## Call:
+## hclust(d = res_dist, method = &quot;complete&quot;)
+## 
+## Cluster method   : complete 
+## Distance         : euclidean 
+## Number of objects: 50</code></pre>
+<p><strong>Donde:</strong></p>
+<blockquote>
+<p><strong>d:</strong> Es la estructura de disimilaridad producida por la función <em>dist()</em></p>
+<p><strong>method:</strong> El método de liga de aglomeración a ser usado para el cálculo de distancia entre clusters. Los siguientes valores están permitidos: “single”, “complete”, “average”, “median”, “centroid”, “ward.D”, “ward.D2”.</p>
+</blockquote>
+<p>Existen múltiples métodos de aglomeración (i.e. métodos liga). Los más comunes se describen a continuación:</p>
 <ul>
-<li>Esta fase incluye empezar a formular nuestro problema como uno de ciencia de datos, el conocimiento adquirido en la fase de exploración nos permite conocer a mayor detalle del problema y por lo tanto de la solución adecuada.</li>
-</ul></li>
-</ol>
-<p><img src="img/01-intro2ds-ciclo/05-analytical-thinking.jpg" width="450pt" height="300pt" style="display: block; margin: auto;" /></p>
-<ol start="6" style="list-style-type: decimal">
-<li><p><strong>Modelado</strong></p>
+<li><strong>Liga máxima o completa:</strong> La distancia entre dos clusters es definida como el valor máximo de todos los pares de distancia entre los elementos dentro del cluster 1 y los elementos en el cluster 2. Tiende a producir clusters compactos.</li>
+</ul>
+<p><img src="img/10-hclus/09-complete_linkage.png" width="600pt" style="display: block; margin: auto;" /></p>
 <ul>
-<li><p>Proceso iterativo para desarrollar diferentes “experimentos”.</p>
+<li><strong>Liga mínima o simple:</strong> La distancia entre dos clusters es definida como el valor mínimo de todas las parejas de distancias entre los elementos en el cluster 1 y los elementos en el cluster 2. Tiende a producir clusters largos o pobres.</li>
+</ul>
+<p><img src="img/10-hclus/10-single_linkage.png" width="600pt" style="display: block; margin: auto;" /></p>
 <ul>
-<li>Mismo algoritmo/método diferentes hiperparámetros (grid search).</li>
-<li>Diferentes algortimos.</li>
-</ul></li>
-<li><p>Selección de un muy pequeño conjunto de modelos tomando en cuenta un balance entre interpretabilidad, complejidad, desempeño, fairness.</p></li>
-<li><p>Correcta interpretación de los resultados de desempeño de cada modelo.</p></li>
-</ul></li>
-</ol>
-<p><img src="img/01-intro2ds-ciclo/06-formulacion.jpg" style="display: block; margin: auto;" /></p>
-<ol start="7" style="list-style-type: decimal">
-<li><p><strong>Validación</strong></p>
+<li><strong>Liga promedio o media:</strong> La distancia entre dos clusters es definida como la distancia promedio entre los elementos en el cluster 1 y los elementos en el cluster 2.</li>
+</ul>
+<p><span class="math display">\[Dist(C_1, C_2)= \frac{1}{n_1+n_2}\sum_{i=1}^{n_1}{\sum_{j=1}^{n_2}{D(i,j)}}\]</span></p>
+<p><img src="img/10-hclus/11-average_linkage2.png" width="600pt" style="display: block; margin: auto;" /></p>
 <ul>
-<li><p>Es muy importante poner a prueba el/los modelo/modelos seleccionados en la fase anterior. Esta prueba es en campo con datos reales, le llamamos prueba piloto.</p></li>
-<li><p>Debemos medir el impacto causal que nuestro modelo tuvo en un ambiente real.</p></li>
-</ul></li>
-</ol>
-<p><img src="img/01-intro2ds-ciclo/07-validacion.jpg" width="200pt" height="200pt" style="display: block; margin: auto;" /></p>
-<ol start="8" style="list-style-type: decimal">
-<li><p><strong>Acciones a realizar</strong></p>
+<li><strong>Liga centroide:</strong> La distancia entre dos clusters está definida como la distancia del centroide del cluster 1 (un vector de medias con tamaño de <em>p</em> variables) y el centroide del cluster 2.</li>
+</ul>
+<p><img src="img/10-hclus/12-centroid_linkage.png" width="600pt" style="display: block; margin: auto;" /></p>
 <ul>
-<li><p>Finalmente esta etapa corresponde a compartir con los tomadores de decisiones/stakeholders/creadores de política pública los resultados obtenidos y la recomendación de acciones a llevar a cabo -menú de opciones-.</p></li>
-<li><p>Las implicaciones éticas de esta fase consisten en hacer conciente el impacto social de nuestro trabajo.</p></li>
-</ul></li>
-</ol>
-<p><img src="img/01-intro2ds-ciclo/08-action.jpg" width="200pt" height="200pt" style="display: block; margin: auto;" /></p>
+<li><strong>Método de varianza mínima de Ward:</strong> Este método en vez de analizar la distancia entre grupos, analiza la varianza, por lo que se encarga de minimizar el total de la varianza intra-cluster (inercia). En cada paso, el par de clusters con distancia mínima entre clusters son unidos. Este método dice que <strong>la distancia entre dos clusters A y B, es qué tanto la varianza respecto del centroide incrementará cuando sean unidos.</strong></li>
+</ul>
+<p><img src="img/10-hclus/13-wards_linkage.png" width="600pt" style="display: block; margin: auto;" /></p>
+<p>Sin importar el método usado, en cada etapa del proceso de clustering, los 2 elementos con la distancia liga más corta son unidos en un solo cluster.</p>
+<div class="infobox quicktip">
+<p><strong>¡¡ TIP !!</strong></p>
+<p>Las ligas: completa y Ward´s son preferidas generalmente</p>
+</div>
+</div>
+</div>
+<div id="dendogramas" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Dendogramas<a href="clustering-jerárquico.html#dendogramas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La manera gráfica de representar el proceso de clustering jerárquico es mediante un dendograma. Los dendogramas pueden ser creados en <em>R</em> a partir de la función genérica <em>plot()</em>, sin embargo, se mostrarán otras funciones más novedosas para crear gráficos de mayor calidad.</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="clustering-jerárquico.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb368-2"><a href="clustering-jerárquico.html#cb368-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-3"><a href="clustering-jerárquico.html#cb368-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(res_hc, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-344-1.png" width="672" /></p>
+<p>En el dendograma superior cada hoja corresponde a un objeto. En la medida en que nos movemos hacia arriba en el árbol, los objetos que son similar a otros están combinados en ramas, las cuales se fusionan a mayor altura.</p>
+<p>La altura de la fusión, proveída en el eje vertical, indica la (di)similaridad/distancia entre dos objetos/clusters. Entre más alta sea la altura de la fusión, menos similares son los objetos/clusters. Esta altura es conocida como <strong>la distancia de cophenetic</strong> entre dos objetos.</p>
+<p>A fin de identificar sub-grupos, se puede cortar el dendograma en cierta altura, como se describe en las siguientes secciones.</p>
+<p>Para validar que las distancias en la altura reflejen las distancias originales de manera precisa, se hace uso de la correlación entre las distancias originales y la distancia de cophenetic:</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="clustering-jerárquico.html#cb369-1" aria-hidden="true" tabindex="-1"></a>res_coph <span class="ot">&lt;-</span> <span class="fu">cophenetic</span>(res_hc)</span>
+<span id="cb369-2"><a href="clustering-jerárquico.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.matrix</span>(res_coph)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div>
+<pre><code>##             Alabama   Alaska  Arizona Arkansas California Colorado
+## Alabama    0.000000 3.255433 4.420074 6.076642   4.420074 4.420074
+## Alaska     3.255433 0.000000 4.420074 6.076642   4.420074 4.420074
+## Arizona    4.420074 4.420074 0.000000 6.076642   2.445860 2.445860
+## Arkansas   6.076642 6.076642 6.076642 0.000000   6.076642 6.076642
+## California 4.420074 4.420074 2.445860 6.076642   0.000000 1.398859
+## Colorado   4.420074 4.420074 2.445860 6.076642   1.398859 0.000000</code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="clustering-jerárquico.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(res_coph, res_dist)</span></code></pre></div>
+<pre><code>## [1] 0.6979437</code></pre>
+<p><strong>Ejercicio</strong></p>
+<ul>
+<li>Usar las distintas ligas y determinar cuál de ellas funciona mejor
+(<em>Hint:</em> La que muestre correlación más alta entre las distancias originales y la distancia cophenetica)</li>
+</ul>
+<div id="selección-de-grupos" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Selección de grupos<a href="clustering-jerárquico.html#selección-de-grupos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uno de los problemas del clustering jerárquico es que, NO dice cuántos clusters hay o dónde cortar el dendograma para formar los clusters.</p>
+<p>Es posible cortar el árbol jerárquico a una altura dada con el fin de particionar los datos en clusters. La función <em>cutree()</em> puede ser usada para cortar el árbol en varios grupos al especificar ya el número deseado de grupos o la altura a cortar. Esta función regresa un vector que contiene el número de cluster de cada observación.</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="clustering-jerárquico.html#cb373-1" aria-hidden="true" tabindex="-1"></a>groups_1 <span class="ot">&lt;-</span> <span class="fu">cutree</span>(res_hc, <span class="at">k =</span> <span class="dv">4</span>)</span>
+<span id="cb373-2"><a href="clustering-jerárquico.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(groups_1)</span></code></pre></div>
+<pre><code>##    Alabama     Alaska    Arizona   Arkansas California   Colorado 
+##          1          1          2          3          2          2</code></pre>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="clustering-jerárquico.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(groups_1)</span></code></pre></div>
+<pre><code>## groups_1
+##  1  2  3  4 
+##  8 11 21 10</code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="clustering-jerárquico.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(</span>
+<span id="cb377-2"><a href="clustering-jerárquico.html#cb377-2" aria-hidden="true" tabindex="-1"></a> res_hc,</span>
+<span id="cb377-3"><a href="clustering-jerárquico.html#cb377-3" aria-hidden="true" tabindex="-1"></a> <span class="at">k =</span> <span class="dv">4</span>,</span>
+<span id="cb377-4"><a href="clustering-jerárquico.html#cb377-4" aria-hidden="true" tabindex="-1"></a> <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb377-5"><a href="clustering-jerárquico.html#cb377-5" aria-hidden="true" tabindex="-1"></a> <span class="at">k_colors =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;purple&quot;</span>),</span>
+<span id="cb377-6"><a href="clustering-jerárquico.html#cb377-6" aria-hidden="true" tabindex="-1"></a> <span class="at">color_labels_by_k =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb377-7"><a href="clustering-jerárquico.html#cb377-7" aria-hidden="true" tabindex="-1"></a> <span class="at">rect =</span> <span class="cn">TRUE</span></span>
+<span id="cb377-8"><a href="clustering-jerárquico.html#cb377-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-347-1.png" width="672" /></p>
+<p>Algunas variaciones estéticas sobre un dendograma se pueden realizar al cambiar determinados parámetros. Por ejemplo:</p>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="clustering-jerárquico.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(</span>
+<span id="cb378-2"><a href="clustering-jerárquico.html#cb378-2" aria-hidden="true" tabindex="-1"></a> res_hc,</span>
+<span id="cb378-3"><a href="clustering-jerárquico.html#cb378-3" aria-hidden="true" tabindex="-1"></a> <span class="at">k =</span> <span class="dv">4</span>,</span>
+<span id="cb378-4"><a href="clustering-jerárquico.html#cb378-4" aria-hidden="true" tabindex="-1"></a> <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb378-5"><a href="clustering-jerárquico.html#cb378-5" aria-hidden="true" tabindex="-1"></a> <span class="at">k_colors =</span> <span class="st">&quot;jco&quot;</span>,</span>
+<span id="cb378-6"><a href="clustering-jerárquico.html#cb378-6" aria-hidden="true" tabindex="-1"></a> <span class="at">type =</span> <span class="st">&quot;circular&quot;</span>,</span>
+<span id="cb378-7"><a href="clustering-jerárquico.html#cb378-7" aria-hidden="true" tabindex="-1"></a> <span class="at">show_labels =</span> <span class="cn">TRUE</span></span>
+<span id="cb378-8"><a href="clustering-jerárquico.html#cb378-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-348-1.png" width="672" /></p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="clustering-jerárquico.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(</span>
+<span id="cb379-2"><a href="clustering-jerárquico.html#cb379-2" aria-hidden="true" tabindex="-1"></a> res_hc,</span>
+<span id="cb379-3"><a href="clustering-jerárquico.html#cb379-3" aria-hidden="true" tabindex="-1"></a> <span class="at">k =</span> <span class="dv">4</span>,</span>
+<span id="cb379-4"><a href="clustering-jerárquico.html#cb379-4" aria-hidden="true" tabindex="-1"></a> <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb379-5"><a href="clustering-jerárquico.html#cb379-5" aria-hidden="true" tabindex="-1"></a> <span class="at">k_colors =</span> <span class="st">&quot;jco&quot;</span>,</span>
+<span id="cb379-6"><a href="clustering-jerárquico.html#cb379-6" aria-hidden="true" tabindex="-1"></a> <span class="at">type =</span> <span class="st">&quot;phylogenic&quot;</span>,</span>
+<span id="cb379-7"><a href="clustering-jerárquico.html#cb379-7" aria-hidden="true" tabindex="-1"></a> <span class="at">phylo_layout =</span> <span class="st">&quot;layout.gem&quot;</span>,</span>
+<span id="cb379-8"><a href="clustering-jerárquico.html#cb379-8" aria-hidden="true" tabindex="-1"></a> <span class="at">repel =</span> T,</span>
+<span id="cb379-9"><a href="clustering-jerárquico.html#cb379-9" aria-hidden="true" tabindex="-1"></a> <span class="at">show_labels =</span> <span class="cn">TRUE</span></span>
+<span id="cb379-10"><a href="clustering-jerárquico.html#cb379-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
+<p>Usando la función <em>f_viz_cluster()</em> también es posible visualizar los clusters a través de un gráfico de dispersión. Las observaciones son presentadas en puntos usando el análisis de componentes principales.</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="clustering-jerárquico.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_cluster</span>(</span>
+<span id="cb380-2"><a href="clustering-jerárquico.html#cb380-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">list</span>(<span class="at">data =</span> df, <span class="at">cluster =</span> groups_1),</span>
+<span id="cb380-3"><a href="clustering-jerárquico.html#cb380-3" aria-hidden="true" tabindex="-1"></a> <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;purple&quot;</span>),</span>
+<span id="cb380-4"><a href="clustering-jerárquico.html#cb380-4" aria-hidden="true" tabindex="-1"></a> <span class="at">ellipse.type =</span> <span class="st">&quot;convex&quot;</span>,</span>
+<span id="cb380-5"><a href="clustering-jerárquico.html#cb380-5" aria-hidden="true" tabindex="-1"></a> <span class="at">repel =</span> T,</span>
+<span id="cb380-6"><a href="clustering-jerárquico.html#cb380-6" aria-hidden="true" tabindex="-1"></a> <span class="at">show.clust.cent =</span> F</span>
+<span id="cb380-7"><a href="clustering-jerárquico.html#cb380-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-350-1.png" width="672" /></p>
+<p>Finalmente, es importante mencionar que la librería <em>cluster</em> ofrece un par de funciones que resumen todo el proceso anterior (scale, dist y hclus). Las funciones se usan de la siguiente forma:</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="clustering-jerárquico.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cluster)</span>
+<span id="cb381-2"><a href="clustering-jerárquico.html#cb381-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-3"><a href="clustering-jerárquico.html#cb381-3" aria-hidden="true" tabindex="-1"></a>res_agnes <span class="ot">&lt;-</span> <span class="fu">agnes</span>(</span>
+<span id="cb381-4"><a href="clustering-jerárquico.html#cb381-4" aria-hidden="true" tabindex="-1"></a> <span class="at">x =</span> USArrests,</span>
+<span id="cb381-5"><a href="clustering-jerárquico.html#cb381-5" aria-hidden="true" tabindex="-1"></a> <span class="at">stand =</span> T,</span>
+<span id="cb381-6"><a href="clustering-jerárquico.html#cb381-6" aria-hidden="true" tabindex="-1"></a> <span class="at">metric =</span> <span class="st">&quot;euclidian&quot;</span>,</span>
+<span id="cb381-7"><a href="clustering-jerárquico.html#cb381-7" aria-hidden="true" tabindex="-1"></a> <span class="at">method =</span> <span class="st">&quot;ward&quot;</span></span>
+<span id="cb381-8"><a href="clustering-jerárquico.html#cb381-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb381-9"><a href="clustering-jerárquico.html#cb381-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-10"><a href="clustering-jerárquico.html#cb381-10" aria-hidden="true" tabindex="-1"></a>res_diana <span class="ot">&lt;-</span> <span class="fu">diana</span>(</span>
+<span id="cb381-11"><a href="clustering-jerárquico.html#cb381-11" aria-hidden="true" tabindex="-1"></a> <span class="at">x =</span> USArrests,</span>
+<span id="cb381-12"><a href="clustering-jerárquico.html#cb381-12" aria-hidden="true" tabindex="-1"></a> <span class="at">stand =</span> T,</span>
+<span id="cb381-13"><a href="clustering-jerárquico.html#cb381-13" aria-hidden="true" tabindex="-1"></a> <span class="at">metric =</span> <span class="st">&quot;euclidian&quot;</span></span>
+<span id="cb381-14"><a href="clustering-jerárquico.html#cb381-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb381-15"><a href="clustering-jerárquico.html#cb381-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-16"><a href="clustering-jerárquico.html#cb381-16" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_dend</span>(</span>
+<span id="cb381-17"><a href="clustering-jerárquico.html#cb381-17" aria-hidden="true" tabindex="-1"></a> res_diana, </span>
+<span id="cb381-18"><a href="clustering-jerárquico.html#cb381-18" aria-hidden="true" tabindex="-1"></a> <span class="at">cex =</span> <span class="fl">0.6</span>, </span>
+<span id="cb381-19"><a href="clustering-jerárquico.html#cb381-19" aria-hidden="true" tabindex="-1"></a> <span class="at">k =</span> <span class="dv">4</span>,</span>
+<span id="cb381-20"><a href="clustering-jerárquico.html#cb381-20" aria-hidden="true" tabindex="-1"></a> <span class="at">color_labels_by_k =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb381-21"><a href="clustering-jerárquico.html#cb381-21" aria-hidden="true" tabindex="-1"></a> <span class="at">rect =</span> <span class="cn">TRUE</span></span>
+<span id="cb381-22"><a href="clustering-jerárquico.html#cb381-22" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-351-1.png" width="672" /></p>
 
-<div class="watermark">
-<p><img src="img/header.png" width="400"/></p>
 </div>
 </div>
 </div>
@@ -696,8 +691,8 @@ $('.pipehover_select_one_row tr').hover(function() {
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-a-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="clustering-no-jerárquico.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
