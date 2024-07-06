@@ -38,7 +38,14 @@ knitr::include_graphics("img/00-presentacion/machine-learning2.png")
 **Email:** act.arturo.b@ciencias.unam.mx
 
 Actuario egresado de la Facultad de Ciencias con maestría en Ciencia de Datos por el ITAM. 
-Se especializa en modelos predictivos y de clasificación de *machine learning* aplicado a seguros, banca, marketing, deportes, e-commerce y movilidad internacional. Ha sido consultor *Senior Data Scientist* para empresas y organizaciones como GNP, El Universal, UNAM, la Organización de las Naciones Unidas Contra la Droga y el Delito (UNODC), entre otros. Actualmente es profesor de *Ciencia de datos y Machine Learning* en AMAT y *Data Scientist Expert* en BBVA, en donde implementa soluciones de analítica avanzada con impacto global. 
+
+Se especializa en modelos predictivos y de clasificación de *machine learning* aplicado a seguros, banca, marketing, deportes, e-commerce y movilidad. Ha sido consultor *Senior Data Scientist* para empresas y organizaciones como GNP, El Universal, UNAM, la Organización de las Naciones Unidas Contra la Droga y el Delito (UNODC), Comisión Nacional de los Derechos Humanos (CNDH), Sinia, Geek-end, Invesmark, entre otros. 
+
+Ha contribuido en más de 30 proyectos de impacto nacional con diferentes institutos de investigación de la UNAM como el Instituto de Investigaciones Sociales, Instituto de Geografía, Instituto de Investigaciones Jurídicas, Programa Universitario de Estudios sobre la Ciudad, Fundación UNAM y Rectoría.
+
+Actualmente es *Data Scientist Expert* en la fábrica de inteligencia artifical en BBVA (AI Factory), es profesor de *Ciencia de datos y Machine Learning* en AMAT, y consultor estadístico de encuestas nacionales de investigación social realizadas por la UNAM.
+
+Adicionalmente, participa en el Laboratorio Nacional de Observación de la Tierra (LANOT) en la detección en tiempo real de contaminación del mar por sargazo a través de algoritmos de IA y percepción remota aplicados a los datos proveidos por el satélite Landsat9.
 
 ```{r echo=FALSE,fig.align='center',  out.width='250pt'}
 knitr::include_graphics("img/00-presentacion/arturo.png")
@@ -49,21 +56,16 @@ knitr::include_graphics("img/00-presentacion/arturo.png")
 **LinkedIn:** [KaLizzyGam ](https://www.linkedin.com/in/kalizzygam/)
 **Email:**  lizzygamboa@ciencias.unam.mx
 
-Actuaria egresada de la Facultad de Ciencias y candidata a Maestra en
-Ciencia de Datos por el ITAM.
+Actuaria egresada de la Facultad de Ciencias y candidata a Maestra en Ciencia de Datos por el ITAM, con una amplia experiencia en áreas de analítica predictiva e inteligencia empresarial. Ha ocupado roles de Manager y Senior Data Scientist en consultoría, trabajando en diversos sectores como tecnología, seguros, finanzas y banca.
 
-Experiencia en áreas de analítica predictiva e inteligencia del negocio. Lead y Senior
-Data Scientist en consultoría en diferentes sectores como tecnología, asegurador,
-financiero y bancario. Es experta en entendimiento de negocio para la correcta
-implementación de algoritmos de inteligencia y explotación de datos.
-Actualmente se desarrolla como lead data specialist en Merama,
-startup mexicana clasificada como uno de los nuevos unicornios de Latinoamérica.
-Senior Data Scientist en CLOSTER y como profesora del diplomado de Metodología
-de la Investigación Social por la UNAM así como instructora de cursos de Ciencia de
-Datos en AMAT.
+Su especialidad radica en comprender las necesidades del negocio para implementar algoritmos de análisis de datos de manera efectiva, abarcando desde la ingeniería y arquitectura de datos hasta Business Intelligence y modelos de Machine Learning.
 
-Empresas anteriores: GNP, Actinver Banco y Casa de Bolsa, PlayCity Casinos,
-RakenDataGroup Consulting, entre otros.
+Cuenta con basta experiencia liderando equipos tecnológicos, incluyendo su papel más reciente como Data Analytics Manager para México, Chile y Colombia en Merama, una startup mexicana clasificada como uno de los nuevos unicornios de Latinoamérica. Actualmente, ocupa el cargo de Senior Manager Data Scientist en BBVA, centrado en banca corporativa.
+
+Además, participa en proyectos de consultoría como Senior Data Scientist, es profesora del diplomado de Metodología de la Investigación Social por la UNAM y ejerce como instructora de cursos de Ciencia de Datos en AMAT.
+
+Entre sus experiencias anteriores se encuentran empresas como GNP, Actinver Banco y Casa de Bolsa, PlayCity Casinos, RakenDataGroup Consulting, Closter, Merama, entre otras.
+
 
 ```{r echo=FALSE,fig.align='center',  out.width='250pt'}
 knitr::include_graphics("img/00-presentacion/lizzy.png")
