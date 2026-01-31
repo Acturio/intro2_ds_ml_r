@@ -51,12 +51,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -155,6 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asesorías"><i class="fa fa-check"></i>Asesorías</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
 <ul>
@@ -373,6 +374,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#comparación-de-algoritmos"><i class="fa fa-check"></i><b>9.5</b> Comparación de algoritmos</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html"><i class="fa fa-check"></i><b>10</b> Clustering Jerárquico</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#agglomerative-divise-clustering"><i class="fa fa-check"></i><b>10.1</b> Agglomerative &amp; Divise Clustering</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#algoritmo"><i class="fa fa-check"></i><b>10.1.1</b> Algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#implementación-en-r-5"><i class="fa fa-check"></i><b>10.2</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#preparación-y-estructuración-de-datos"><i class="fa fa-check"></i><b>10.2.1</b> Preparación y estructuración de datos</a></li>
+<li class="chapter" data-level="10.2.2" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#medidas-de-disimilaridad"><i class="fa fa-check"></i><b>10.2.2</b> Medidas de (di)similaridad</a></li>
+<li class="chapter" data-level="10.2.3" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#función-liga"><i class="fa fa-check"></i><b>10.2.3</b> Función Liga</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#dendogramas"><i class="fa fa-check"></i><b>10.3</b> Dendogramas</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#selección-de-grupos"><i class="fa fa-check"></i><b>10.3.1</b> Selección de grupos</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
 
@@ -409,29 +427,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/arturo-bringas/">arturo-bringas</a>
 <strong>Email:</strong> <a href="mailto:act.arturo.b@ciencias.unam.mx" class="email">act.arturo.b@ciencias.unam.mx</a></p>
 <p>Actuario egresado de la Facultad de Ciencias con maestría en Ciencia de Datos por el ITAM.</p>
-
-<p>Se especializa en modelos predictivos y de clasificación de *machine learning* aplicado a seguros, banca, marketing, deportes, e-commerce y movilidad. Ha sido consultor *Senior Data Scientist* para empresas y organizaciones como GNP, El Universal, UNAM, la Organización de las Naciones Unidas Contra la Droga y el Delito (UNODC), Comisión Nacional de los Derechos Humanos (CNDH), Sinia, Geek-end, Invesmark, entre otros.</p>
-
+<p>Se especializa en modelos predictivos y de clasificación de <em>machine learning</em> aplicado a seguros, banca, marketing, deportes, e-commerce y movilidad. Ha sido consultor <em>Senior Data Scientist</em> para empresas y organizaciones como GNP, El Universal, UNAM, la Organización de las Naciones Unidas Contra la Droga y el Delito (UNODC), Comisión Nacional de los Derechos Humanos (CNDH), Sinia, Geek-end, Invesmark, entre otros.</p>
 <p>Ha contribuido en más de 30 proyectos de impacto nacional con diferentes institutos de investigación de la UNAM como el Instituto de Investigaciones Sociales, Instituto de Geografía, Instituto de Investigaciones Jurídicas, Programa Universitario de Estudios sobre la Ciudad, Fundación UNAM y Rectoría.</p>
-
-<p>Actualmente es *Data Scientist Expert* en la fábrica de inteligencia artifical en BBVA (AI Factory), es profesor de *Ciencia de datos y Machine Learning* en AMAT, y consultor estadístico de encuestas nacionales de investigación social realizadas por la UNAM.</p>
-
+<p>Actualmente es <em>Data Scientist Expert</em> en la fábrica de inteligencia artifical en BBVA (AI Factory), es profesor de <em>Ciencia de datos y Machine Learning</em> en AMAT, y consultor estadístico de encuestas nacionales de investigación social realizadas por la UNAM.</p>
 <p>Adicionalmente, participa en el Laboratorio Nacional de Observación de la Tierra (LANOT) en la detección en tiempo real de contaminación del mar por sargazo a través de algoritmos de IA y percepción remota aplicados a los datos proveidos por el satélite Landsat9.</p>
 <p><img src="img/00-presentacion/arturo.png" width="250pt" style="display: block; margin: auto;" /></p>
 <p><strong>ACT. KARINA LIZETTE GAMBOA</strong></p>
 <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kalizzygam/">KaLizzyGam</a>
 <strong>Email:</strong> <a href="mailto:lizzygamboa@ciencias.unam.mx" class="email">lizzygamboa@ciencias.unam.mx</a></p>
-<p>Actuaria egresada de la Facultad de Ciencias y candidata a Maestra en Ciencia de Datos por el ITAM, con una amplia experiencia en áreas de analítica predictiva e inteligencia empresarial. 
-  Ha ocupado roles de Manager y Senior Data Scientist en consultoría, trabajando en diversos sectores como tecnología, seguros, finanzas y banca.</p>
-
+<p>Actuaria egresada de la Facultad de Ciencias y candidata a Maestra en Ciencia de Datos por el ITAM, con una amplia experiencia en áreas de analítica predictiva e inteligencia empresarial. Ha ocupado roles de Manager y Senior Data Scientist en consultoría, trabajando en diversos sectores como tecnología, seguros, finanzas y banca.</p>
 <p>Su especialidad radica en comprender las necesidades del negocio para implementar algoritmos de análisis de datos de manera efectiva, abarcando desde la ingeniería y arquitectura de datos hasta Business Intelligence y modelos de Machine Learning.</p>
-
 <p>Cuenta con basta experiencia liderando equipos tecnológicos, incluyendo su papel más reciente como Data Analytics Manager para México, Chile y Colombia en Merama, una startup mexicana clasificada como uno de los nuevos unicornios de Latinoamérica. Actualmente, ocupa el cargo de Senior Manager Data Scientist en BBVA, centrado en banca corporativa.</p>
-
-<p>Además, participa en proyectos de consultoría como Senior Data Scientist, es profesora del diplomado de Metodología de la Investigación Social por la UNAM y ejerce como instructora de cursos de Ciencia de Datos en AMAT.
-</p>
-<p>Empresas anteriores: GNP, Actinver Banco y Casa de Bolsa, PlayCity Casinos,
-RakenDataGroup Consulting, entre otros.</p>
+<p>Además, participa en proyectos de consultoría como Senior Data Scientist, es profesora del diplomado de Metodología de la Investigación Social por la UNAM y ejerce como instructora de cursos de Ciencia de Datos en AMAT.</p>
+<p>Entre sus experiencias anteriores se encuentran empresas como GNP, Actinver Banco y Casa de Bolsa, PlayCity Casinos, RakenDataGroup Consulting, Closter, Merama, entre otras.</p>
 <p><img src="img/00-presentacion/lizzy.png" width="250pt" style="display: block; margin: auto;" /></p>
 </div>
 <div id="alcances-del-curso" class="section level2 unnumbered hasAnchor">
@@ -485,8 +493,8 @@ RakenDataGroup Consulting, entre otros.</p>
 <div id="duración-y-evaluación-del-curso" class="section level2 unnumbered hasAnchor">
 <h2>Duración y evaluación del curso<a href="index.html#duración-y-evaluación-del-curso" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>El programa tiene una duración de 40 hrs.</p></li>
-<li><p>Las clases serán impartidas los días sábado, de 9:00 am a 1:00 pm</p></li>
+<li><p>El programa tiene una duración de 42 hrs.</p></li>
+<li><p>Las clases serán impartidas los días sábado, de 9:00 am a 12:00 pm</p></li>
 <li><p>Serán asignados ejercicios que el participante deberá resolver entre una semana y otra.</p></li>
 <li><p>Al final del curso se solicitará un proyecto final, el cual deberá ser entregado para ser acreedor a la constancia de participación.</p></li>
 </ul>
@@ -496,16 +504,196 @@ RakenDataGroup Consulting, entre otros.</p>
 <p>En esta clase estaremos usando:</p>
 <ul>
 <li>R <a href="https://cran.r-project.org/">da click aquí si aún no lo descargas</a></li>
-<li>RStudio <a href="https://www.rstudio.com/products/rstudio/download/">da click aquí también</a></li>
-<li>Zoom <a href="https://us02web.zoom.us/j/5155440751?pwd=YzJCOGF0VnlZdlZlS0Fpc3MvZEhadz09">Clases</a>
-<ul>
-<li>Pulgar arriba: Voy bien, estoy entendiendo!</li>
-<li>Pulgar abajo: Eso no quedó muy claro</li>
-<li>Mano arriba: Quiero participar/preguntar ó Ya estoy listo para iniciar</li>
-</ul></li>
+<li>Python <a href="https://www.python.org/downloads/">da click aquí si aún no lo descargas</a></li>
+<li>Positron <a href="https://positron.posit.co/">da click aquí si quieres descargar</a></li>
+<li>VSCode <a href="https://code.visualstudio.com/download">da click aquí si quieres descargar</a></li>
 <li><a href="https://drive.google.com/drive/u/0/folders/1Rse6rBgNHe2veyD-xArGLOgRnT6-NLEe">Google Drive</a></li>
 <li>Notas de clase <a href="https://acturio.github.io/intro2_ds_ml_r/">Revisame si quieres aprender</a></li>
 </ul>
+</div>
+<div id="asesorías" class="section level2 unnumbered hasAnchor">
+<h2>Asesorías<a href="index.html#asesorías" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los profesores se encuentran en la mejor disposición de asistir las dudas de clase de todos los alumnos. El grupo de whatsapp ha sido creado para compartir información relevante al curso y exponer dudas y soluciones que puedan ser de interés de todo el grupo.</p>
+<p>Los alumnos podrán hacer uso del canal de comunicación para externar sus dudas de clase durante el tiempo que dure el curso. Los profesores se comprometen a responder en el transcurso del día las preguntas realizadas que sean relevantes con la clase. Las respuestas se realizarán de lunes a viernes en un horario de 10:00am a 8:00pm.</p>
+<div class="infobox important">
+<p><strong>¡¡ AVISO !!</strong></p>
+<ul>
+<li><p>No se atenderán dudas que tengan que ver con otros proyectos o asignaciones laborales de los estudiantes en sus respectivos ambientes de trabajo.</p></li>
+<li><p>Se invita a los estudiantes a que las dudas realizadas en clase sean relevantes a la clase y los ejemplos a resolver sean de interés para todo el alumnado.</p></li>
+</ul>
+</div>
+<p><strong>Nota:</strong> En caso de requerir consultoría especializada o particular a un tema de interés, se deberá contactar al área administrativa para solicitar la cotización por el servicio correspondiente.
+<a href="https://es.r4ds.hadley.nz/" class="uri">https://es.r4ds.hadley.nz/</a>
+## Bibliografía {-}</p>
+<table>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.clc.hcmus.edu.vn/wp-content/uploads/2017/11/Hands_On_Machine_Learning_with_Scikit_Learn_and_TensorFlow.pdf" target="_blank">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPovM-lxZnunzU7uUslndFIQpQmt0EIFSFeg&s" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Hands On Machine Learning with Scikit-Learn, Keras and TensorFlow</strong><br />
+Autor: Aurélien Géron<br />
+Editorial: O´REILLY<br />
+Año: 2019<br />
+ISBN: 978-1-492-03264-9
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.statlearning.com/" target="_blank">
+<img src="https://images.squarespace-cdn.com/content/v1/5ff2adbe3fe4fe33db902812/8b373fbe-d1b4-4351-b803-0d3cd5bba1b0/ISLP_cover.png?format=1000w" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<p><strong>An Introduction to Statistical Learning</strong><br />
+Autor: Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, Jonathan Taylor<br />
+Editorial: Springer<br />
+Año: 2023</p>
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.sas.upenn.edu/~fdiebold/NoHesitations/BookAdvanced.pdf" target="_blank">
+<img src="https://m.media-amazon.com/images/I/517TrzchOML.jpg" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>The Elements of Statistical Learning</strong><br />
+Autor: Trevor Hastie, Robert Tibshirani, Jerome Friedman<br />
+Editorial: Springer<br />
+Año: 2008<br />
+ISBN: 978-0-387-84857-0
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.google.com.mx/books/edition/Mastering_Machine_Learning_Algorithms/M0vODwAAQBAJ?hl=en&gbpv=1&pg=PP2&printsec=frontcover" target="_blank">
+<img src="https://m.media-amazon.com/images/I/7165DyKirEL._UF1000,1000_QL80_.jpg" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Mastering Machine Learning Algorithms</strong><br />
+Autor: Trevor Hastie, Robert Tibshirani, Jerome Friedman<br />
+Editorial: Packt<br />
+Año: 2018<br />
+ISBN: 978-1-83882-029-9
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="http://bobzhang.dscloud.me/Calibre%20Library/Foster%20Provost/Data%20Science%20for%20Business%20%28282%29/Data%20Science%20for%20Business%20-%20Foster%20Provost.pdf" target="_blank">
+<img src="http://bobzhang.dscloud.me/Calibre%20Library/Foster%20Provost/Data%20Science%20for%20Business%20%28282%29/Data%20Science%20for%20Business%20-%20Foster%20Provost_resizedcover.jpg" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Data Science for Business</strong><br />
+Autor: Foster Provost, Tom Fawcett<br />
+Editorial: O´REILLY<br />
+Año: 2013<br />
+ISBN: 978-1-449-36132-7
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="http://103.203.175.90:81/fdScript/RootOfEBooks/E%20Book%20collection%20-%202024%20-%20B/CSE%20%20IT%20AIDS%20ML/Estad%C3%ADstica%20Pr%C3%A1ctica%20para%20Ciencia%20de%20Datos%20con%20R%20y%20Python.pdf" target="_blank">
+<img src="https://covers.storytel.com/jpg-640/9788426734549.39ea10ea-ca73-46d6-8f6e-3d671fb765d4?optimize=high&quality=70&width=600" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Estadística práctica para ciencia de datos con R y Python</strong><br />
+Autor: Peter Bruce, Andrew Bruce y Peter Gedeck<br />
+Editorial: O´REILLY<br />
+Año: 2022<br />
+ISBN: 978-84-267-3443-3
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://es.r4ds.hadley.nz/" target="_blank">
+<img src="https://r4ds.had.co.nz/cover.png" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>R para Ciencia de Datos</strong><br />
+Autor: Hadley Wickham &amp; Garrett Grolemound<br />
+Editorial: O´REILLY<br />
+Año: 2023<br />
+
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.google.com.mx/books/edition/Practical_Nonparametric_Statistics/n_39DwAAQBAJ?hl=en&gbpv=1&printsec=frontcover" target="_blank">
+<img src="https://http2.mlstatic.com/D_NQ_NP_613738-MLM70363081512_072023-O.webp" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Practical NonParametric Statistics</strong><br />
+Autor: W. J. Conover<br />
+Editorial: Wiley<br />
+Año: 1999<br />
+ISBN: 978-0-471-16068-7
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.kwcsangli.in/uploads/3--Introduction_to_Linear_Regression_Analysis__5th_ed._Douglas_C._Montgomery__Elizabeth_A._Peck__and_G._.pdf" target="_blank">
+<img src="https://m.media-amazon.com/images/I/6156d0AbAoL._UF1000,1000_QL80_.jpg" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Introduction to Linear Regression Analysis</strong><br />
+Autor: Douglas C. Montgomery, Elizabeth A. Peck, G. Geoffrey Vining<br />
+Editorial: Wiley<br />
+Año: 2012<br />
+ISBN: 978-0-470-54281-1
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://D2L.ai" target="_blank">
+<img src="https://d2l.ai/_images/front-cup.jpg" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Dive into Deep Learning</strong><br />
+Autor: Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J.
+Editorial: Cambridge University Press<br />
+Año: 2023<br />
+
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.andrew.cmu.edu/course/10-703/textbook/BartoSutton.pdf" target="_blank">
+<img src="https://m.media-amazon.com/images/I/71nk3rOK3jL._UF1000,1000_QL80_.jpg" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Reinforcement Learning</strong><br />
+Autor: Richard S. Sutton, Andrew G. Barto<br />
+Editorial: The MIT Press<br />
+Año: 2018<br />
+ISBN: 978-0-262-19398-6
+</td>
+</tr>
+<tr>
+<td style="width:150px; vertical-align:top;">
+<a href="https://www.google.com.mx/books/edition/Learning_Python/4pgQfXQvekcC?hl=en&gbpv=1&printsec=frontcover" target="_blank">
+<img src="https://m.media-amazon.com/images/I/91RcdlPx1CL._UF894,1000_QL80_.jpg" width="120"/>
+</a>
+</td>
+<td style="vertical-align:top; padding-left:15px;">
+<strong>Learning Python</strong><br />
+Autor: Mark Lutz<br />
+Editorial: O´REILLY<br />
+Año: 2013<br />
+ISBN: 978-1-449-35573-9
+</td>
+</tr>
+</table>
 <div class="watermark">
 <img src="img/header.png" width="400">
 </div>

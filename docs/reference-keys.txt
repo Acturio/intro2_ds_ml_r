@@ -144,3 +144,12 @@ partitioning-around-medoids-pam
 algoritmo-pam
 implementación-en-r-4
 comparación-de-algoritmos
+clustering-jerárquico
+agglomerative-divise-clustering
+algoritmo
+implementación-en-r-5
+preparación-y-estructuración-de-datos
+medidas-de-disimilaridad
+función-liga
+dendogramas
+selección-de-grupos

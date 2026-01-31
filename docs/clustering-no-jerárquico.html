@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="árboles-de-decisión.html"/>
-
+<link rel="next" href="clustering-jerárquico.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,12 +51,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -155,6 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asesorías"><i class="fa fa-check"></i>Asesorías</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
 <ul>
@@ -372,6 +373,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4.2" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#implementación-en-r-4"><i class="fa fa-check"></i><b>9.4.2</b> Implementación en R</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#comparación-de-algoritmos"><i class="fa fa-check"></i><b>9.5</b> Comparación de algoritmos</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html"><i class="fa fa-check"></i><b>10</b> Clustering Jerárquico</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#agglomerative-divise-clustering"><i class="fa fa-check"></i><b>10.1</b> Agglomerative &amp; Divise Clustering</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#algoritmo"><i class="fa fa-check"></i><b>10.1.1</b> Algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#implementación-en-r-5"><i class="fa fa-check"></i><b>10.2</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#preparación-y-estructuración-de-datos"><i class="fa fa-check"></i><b>10.2.1</b> Preparación y estructuración de datos</a></li>
+<li class="chapter" data-level="10.2.2" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#medidas-de-disimilaridad"><i class="fa fa-check"></i><b>10.2.2</b> Medidas de (di)similaridad</a></li>
+<li class="chapter" data-level="10.2.3" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#función-liga"><i class="fa fa-check"></i><b>10.2.3</b> Función Liga</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#dendogramas"><i class="fa fa-check"></i><b>10.3</b> Dendogramas</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#selección-de-grupos"><i class="fa fa-check"></i><b>10.3.1</b> Selección de grupos</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
@@ -879,6 +897,9 @@ Cuando la distancia es cero, el color es rojo puro y cuando la distancia es ampl
 <p><strong>Ejercicio</strong></p>
 <p>Comparar el grado de marginación original de CONAPO con los distintos algoritmos de clustering revisados hasta el momento.</p>
 
+<div class="watermark">
+<img src="img/header.png" width="400">
+</div>
 </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -908,8 +929,8 @@ $('.pipehover_select_one_row tr').hover(function() {
           </div>
         </div>
       </div>
-<a href="árboles-de-decisión.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="árboles-de-decisión.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="clustering-jerárquico.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -172,7 +172,7 @@ $$RSS=\sum_{i=1}^{n}{e_i^2}=\sum_{i=1}^{n}{(y_i-\hat{y}_i)^2}$$
 
 Los residuos son muy importantes puesto que en ellos se basan las diferentes métricas de desempeño del modelo.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 library(ggplot2)
 library(ggimage)
 
@@ -188,6 +188,8 @@ ggplot(iris2, aes(x = Sepal.Length, y = Petal.Length)) +
               slope = model$coefficients[2]) +
     geom_emoji(aes(image = ifelse(abs(Petal.Length-fitted) > 0.5, '1f622', '1f600')))
 ```
+
+![](img/05-ml-lineal/reg_lineal_errores.png)
 
 
 ### Condiciones para el ajuste de una regresión lineal: {-}
