@@ -134,7 +134,6 @@ dadas por:
 
 $$min(\epsilon) \Rightarrow min(y-\hat{y}) = min\{y -(\hat{\beta}_0 + \hat{\beta}_1x)\}$$
 
-```{=tex}
 \begin{aligned}
 
 \hat{\beta}_0 &= \overline{y} - \hat{\beta}_1\overline{x} \\
@@ -142,7 +141,7 @@ $$min(\epsilon) \Rightarrow min(y-\hat{y}) = min\{y -(\hat{\beta}_0 + \hat{\beta
 \hat{\beta}_1 &= \frac{\sum^n_{i=1}(x_i - \overline{x})(y_i - \overline{y})}{\sum^n_{i=1}(x_i - \overline{x})^2} =\frac{S_{xy}}{S^2_x}
 
 \end{aligned}
-```
+
 **Donde:**
 
 > -   $S_{xy}$ es la covarianza entre $x$ y $y$.
