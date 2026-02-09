@@ -1,4 +1,4 @@
-fig:unnamed-chunk-31
+fig:unnamed-chunk-22
 conceptos-de-ciencia-de-datos
 qué-es-ciencia-de-datos
 objetivos
@@ -8,10 +8,9 @@ tipos-de-algoritmos
 aprendizaje-supervisado
 aprendizaje-no-supervisado
 aprendizaje-por-refuerzo
-ciclo-de-un-proyecto
 introducción-a-r
 cómo-obtener-r
-qué-es-rstudio
+qué-es-positron
 lectura-de-datos
 archivos-csv
 archivos-txt
@@ -144,3 +143,12 @@ partitioning-around-medoids-pam
 algoritmo-pam
 implementación-en-r-4
 comparación-de-algoritmos
+clustering-jerárquico
+agglomerative-divise-clustering
+algoritmo
+implementación-en-r-5
+preparación-y-estructuración-de-datos
+medidas-de-disimilaridad
+función-liga
+dendogramas
+selección-de-grupos

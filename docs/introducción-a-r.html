@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning</title>
   <meta name="description" content="Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Introducción a R | Introducción a Ciencia de Datos y Machine Learning" />
   <meta property="og:type" content="book" />
@@ -50,11 +50,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -62,6 +63,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -99,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -112,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -126,6 +128,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -153,12 +159,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i>Temario:</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#duraci%C3%B3n-y-evaluaci%C3%B3n-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#recursos-y-din%C3%A1mica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
+<li class="chapter" data-level="1.1" data-path="02-intro2tidy.html"><a href="#qu%C3%A9-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
 <ul>
 <li class="chapter" data-level="" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos"><i class="fa fa-check"></i>Definiendo conceptos:</a></li>
 </ul></li>
@@ -171,13 +177,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-no-supervisado"><i class="fa fa-check"></i><b>1.5.2</b> Aprendizaje no supervisado</a></li>
 <li class="chapter" data-level="1.5.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-por-refuerzo"><i class="fa fa-check"></i><b>1.5.3</b> Aprendizaje por refuerzo</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#ciclo-de-un-proyecto"><i class="fa fa-check"></i><b>1.6</b> Ciclo de un proyecto</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
+<li class="chapter" data-level="2" data-path="02-intro2tidy.html"><a href="#introducci%C3%B3n-a-r"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#cómo-obtener-r"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>R</em>?</a></li>
-<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
-<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.3</b> Lectura de datos</a>
+<li class="chapter" data-level="2.1" data-path="02-intro2tidy.html"><a href="#c%C3%B3mo-obtener-r"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>R</em>?</a></li>
+<li class="chapter" data-level="2.2" data-path="02-intro2tidy.html"><a href="#qu%C3%A9-es-positron"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es Positron?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2.3</b> Lectura de datos</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-csv"><i class="fa fa-check"></i><b>2.3.1</b> Archivos <em>csv</em></a></li>
 <li class="chapter" data-level="2.3.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#archivos-txt"><i class="fa fa-check"></i><b>2.3.2</b> Archivos txt</a></li>
@@ -191,53 +196,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#filtrar-observaciones"><i class="fa fa-check"></i><b>2.4.2</b> Filtrar observaciones</a></li>
 <li class="chapter" data-level="2.4.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ordenar-registros"><i class="fa fa-check"></i><b>2.4.3</b> Ordenar registros</a></li>
 <li class="chapter" data-level="2.4.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agregar-modificar"><i class="fa fa-check"></i><b>2.4.4</b> Agregar / Modificar</a></li>
-<li class="chapter" data-level="2.4.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>2.4.5</b> Resumen estadístico</a></li>
+<li class="chapter" data-level="2.4.5" data-path="02-intro2tidy.html"><a href="#resumen-estad%C3%ADstico"><i class="fa fa-check"></i><b>2.4.5</b> Resumen estadístico</a></li>
 <li class="chapter" data-level="2.4.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agrupamiento"><i class="fa fa-check"></i><b>2.4.6</b> Agrupamiento</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#orden-y-estructura"><i class="fa fa-check"></i><b>2.5</b> Orden y estructura</a>
 <ul>
 <li class="chapter" data-level="2.5.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-horizontal"><i class="fa fa-check"></i><b>2.5.1</b> Pivote horizontal</a></li>
 <li class="chapter" data-level="2.5.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-vertical"><i class="fa fa-check"></i><b>2.5.2</b> Pivote vertical</a></li>
-<li class="chapter" data-level="2.5.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#unión-de-columnas"><i class="fa fa-check"></i><b>2.5.3</b> Unión de columnas</a></li>
+<li class="chapter" data-level="2.5.3" data-path="02-intro2tidy.html"><a href="#uni%C3%B3n-de-columnas"><i class="fa fa-check"></i><b>2.5.3</b> Unión de columnas</a></li>
 <li class="chapter" data-level="2.5.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#separador-de-columnas"><i class="fa fa-check"></i><b>2.5.4</b> Separador de columnas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3</b> Visualización</a>
+<li class="chapter" data-level="3" data-path="02-intro2tidy.html"><a href="#visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3</b> Visualización</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="visualización.html"><a href="visualización.html#eda-análisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
-<li class="chapter" data-level="3.2" data-path="visualización.html"><a href="visualización.html#geda-análisis-exploratorio-de-datos-gráficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
+<li class="chapter" data-level="3.1" data-path="02-intro2tidy.html"><a href="#eda-an%C3%A1lisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
+<li class="chapter" data-level="3.2" data-path="02-intro2tidy.html"><a href="#geda-an%C3%A1lisis-exploratorio-de-datos-gr%C3%A1ficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html#lo-que-no-se-debe-hacer"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
-<li class="chapter" data-level="3.2.2" data-path="visualización.html"><a href="visualización.html#principios-de-visualización"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
+<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
+<li class="chapter" data-level="3.2.2" data-path="02-intro2tidy.html"><a href="#principios-de-visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="visualización.html"><a href="visualización.html#ggplot"><i class="fa fa-check"></i><b>3.3</b> Ggplot</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="visualización.html"><a href="visualización.html#estéticas"><i class="fa fa-check"></i><b>3.3.1</b> Estéticas</a></li>
-<li class="chapter" data-level="3.3.2" data-path="visualización.html"><a href="visualización.html#objetos-geométricos-o-capas"><i class="fa fa-check"></i><b>3.3.2</b> Objetos geométricos o capas</a></li>
+<li class="chapter" data-level="3.3.1" data-path="02-intro2tidy.html"><a href="#est%C3%A9ticas"><i class="fa fa-check"></i><b>3.3.1</b> Estéticas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="02-intro2tidy.html"><a href="#objetos-geom%C3%A9tricos-o-capas"><i class="fa fa-check"></i><b>3.3.2</b> Objetos geométricos o capas</a></li>
 <li class="chapter" data-level="3.3.3" data-path="visualización.html"><a href="visualización.html#facetas"><i class="fa fa-check"></i><b>3.3.3</b> Facetas</a></li>
-<li class="chapter" data-level="3.3.4" data-path="visualización.html"><a href="visualización.html#más-sobre-estéticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
+<li class="chapter" data-level="3.3.4" data-path="02-intro2tidy.html"><a href="#m%C3%A1s-sobre-est%C3%A9ticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
 <li class="chapter" data-level="3.3.5" data-path="visualización.html"><a href="visualización.html#quick-view"><i class="fa fa-check"></i><b>3.3.5</b> Quick View</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="visualización.html"><a href="visualización.html#análisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
+<li class="chapter" data-level="3.4" data-path="02-intro2tidy.html"><a href="#an%C3%A1lisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="visualización.html"><a href="visualización.html#variables-numéricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
-<li class="chapter" data-level="3.4.2" data-path="visualización.html"><a href="visualización.html#variables-nominalescategóricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
+<li class="chapter" data-level="3.4.1" data-path="02-intro2tidy.html"><a href="#variables-num%C3%A9ricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
+<li class="chapter" data-level="3.4.2" data-path="02-intro2tidy.html"><a href="#variables-nominalescateg%C3%B3ricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="visualización.html"><a href="visualización.html#análisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a></li>
-<li class="chapter" data-level="3.6" data-path="visualización.html"><a href="visualización.html#visualización-interactiva"><i class="fa fa-check"></i><b>3.6</b> Visualización interactiva</a>
+<li class="chapter" data-level="3.5" data-path="02-intro2tidy.html"><a href="#an%C3%A1lisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a></li>
+<li class="chapter" data-level="3.6" data-path="02-intro2tidy.html"><a href="#visualizaci%C3%B3n-interactiva"><i class="fa fa-check"></i><b>3.6</b> Visualización interactiva</a>
 <ul>
 <li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#warning"><i class="fa fa-check"></i>¡ Warning !</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="visualización.html"><a href="visualización.html#reporte-interactivos"><i class="fa fa-check"></i><b>3.7</b> Reporte interactivos</a></li>
 </ul></li>
 <li class="part"><span><b>Parte 2: Machine Learning</b></span></li>
-<li class="chapter" data-level="4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
+<li class="chapter" data-level="4" data-path="02-intro2tidy.html"><a href="#introducci%C3%B3n-a-machine-learning"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
+<li class="chapter" data-level="4.1" data-path="02-intro2tidy.html"><a href="#an%C3%A1lisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#regresión-vs-clasificación"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
+<li class="chapter" data-level="4.1.1" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-vs-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#sesgo-vs-varianza"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
+<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off"><i class="fa fa-check"></i><b>4.2.1</b> Balance entre sesgo y varianza o Trade-off</a></li>
 <li class="chapter" data-level="4.2.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-total"><i class="fa fa-check"></i><b>4.2.2</b> Error total</a></li>
@@ -249,17 +254,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#plantilla-de-estructura-proyecto"><i class="fa fa-check"></i><b>4.3.1</b> Plantilla de estructura proyecto</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#partición-de-datos"><i class="fa fa-check"></i><b>4.4</b> Partición de datos</a>
+<li class="chapter" data-level="4.4" data-path="02-intro2tidy.html"><a href="#partici%C3%B3n-de-datos"><i class="fa fa-check"></i><b>4.4</b> Partición de datos</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.4.1</b> Métodos comunes para particionar datos</a></li>
-<li class="chapter" data-level="4.4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#conjunto-de-validación"><i class="fa fa-check"></i><b>4.4.2</b> Conjunto de validación</a></li>
+<li class="chapter" data-level="4.4.1" data-path="02-intro2tidy.html"><a href="#m%C3%A9todos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.4.1</b> Métodos comunes para particionar datos</a></li>
+<li class="chapter" data-level="4.4.2" data-path="02-intro2tidy.html"><a href="#conjunto-de-validaci%C3%B3n"><i class="fa fa-check"></i><b>4.4.2</b> Conjunto de validación</a></li>
 <li class="chapter" data-level="4.4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#leave-one-out-cross-validation"><i class="fa fa-check"></i><b>4.4.3</b> Leave-one-out cross-validation</a></li>
 <li class="chapter" data-level="4.4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#v-fold-cross-validation"><i class="fa fa-check"></i><b>4.4.4</b> V Fold Cross Validation</a></li>
 <li class="chapter" data-level="4.4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#medidas-de-ajuste"><i class="fa fa-check"></i><b>4.4.5</b> Medidas de ajuste</a></li>
-<li class="chapter" data-level="4.4.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.4.6</b> Validación cruzada para series de tiempo</a></li>
+<li class="chapter" data-level="4.4.6" data-path="02-intro2tidy.html"><a href="#validaci%C3%B3n-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.4.6</b> Validación cruzada para series de tiempo</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pre-procesamiento-de-datos"><i class="fa fa-check"></i><b>4.5</b> Pre-procesamiento de datos</a></li>
-<li class="chapter" data-level="4.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#ingeniería-de-datos"><i class="fa fa-check"></i><b>4.6</b> Ingeniería de datos</a></li>
+<li class="chapter" data-level="4.6" data-path="02-intro2tidy.html"><a href="#ingenier%C3%ADa-de-datos"><i class="fa fa-check"></i><b>4.6</b> Ingeniería de datos</a></li>
 <li class="chapter" data-level="4.7" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#recetas"><i class="fa fa-check"></i><b>4.7</b> Recetas</a>
 <ul>
 <li class="chapter" data-level="4.7.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pasos-y-estructura-de-recetas"><i class="fa fa-check"></i><b>4.7.1</b> Pasos y estructura de recetas</a></li>
@@ -270,108 +275,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.8" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#datos-y-tipos-de-modelos"><i class="fa fa-check"></i><b>4.8</b> Datos y tipos de modelos</a>
 <ul>
-<li class="chapter" data-level="4.8.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#separación-de-los-datos"><i class="fa fa-check"></i><b>4.8.1</b> Separación de los datos</a></li>
-<li class="chapter" data-level="4.8.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta"><i class="fa fa-check"></i><b>4.8.2</b> Definición de la receta</a></li>
-<li class="chapter" data-level="4.8.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#separación-de-los-datos-1"><i class="fa fa-check"></i><b>4.8.3</b> Separación de los datos</a></li>
-<li class="chapter" data-level="4.8.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#definición-de-la-receta-1"><i class="fa fa-check"></i><b>4.8.4</b> Definición de la receta</a></li>
+<li class="chapter" data-level="4.8.1" data-path="02-intro2tidy.html"><a href="#separaci%C3%B3n-de-los-datos"><i class="fa fa-check"></i><b>4.8.1</b> Separación de los datos</a></li>
+<li class="chapter" data-level="4.8.2" data-path="02-intro2tidy.html"><a href="#definici%C3%B3n-de-la-receta"><i class="fa fa-check"></i><b>4.8.2</b> Definición de la receta</a></li>
+<li class="chapter" data-level="4.8.3" data-path="02-intro2tidy.html"><a href="#separaci%C3%B3n-de-los-datos-1"><i class="fa fa-check"></i><b>4.8.3</b> Separación de los datos</a></li>
+<li class="chapter" data-level="4.8.4" data-path="02-intro2tidy.html"><a href="#definici%C3%B3n-de-la-receta-1"><i class="fa fa-check"></i><b>4.8.4</b> Definición de la receta</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
+<li class="chapter" data-level="5" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-lineal"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ajuste-de-modelo"><i class="fa fa-check"></i><b>5.1</b> Ajuste de modelo</a>
+<li class="chapter" data-level="5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5.1</b> Ajuste de modelo</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-simple"><i class="fa fa-check"></i><b>5.1.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
-<li class="chapter" data-level="5.1.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.1.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
+<li class="chapter" data-level="5.1.1" data-path="02-intro2tidy.html"><a href="#estimaci%C3%B3n-de-par%C3%A1metros-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>5.1.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
+<li class="chapter" data-level="5.1.2" data-path="02-intro2tidy.html"><a href="#estimaci%C3%B3n-de-par%C3%A1metros-regresi%C3%B3n-lineal-m%C3%BAltiple"><i class="fa fa-check"></i><b>5.1.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#residuos-del-modelo"><i class="fa fa-check"></i><b>5.2</b> Residuos del modelo</a>
 <ul>
-<li class="chapter" data-level="" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones-para-el-ajuste-de-una-regresión-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#condiciones-para-el-ajuste-de-una-regresi%C3%B3n-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>5.3</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-en-r"><i class="fa fa-check"></i><b>5.4</b> Implementación en R</a>
+<li class="chapter" data-level="5.3" data-path="02-intro2tidy.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o"><i class="fa fa-check"></i><b>5.3</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="5.4" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-r"><i class="fa fa-check"></i><b>5.4</b> Implementación en R</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#coeficientes-del-modelo"><i class="fa fa-check"></i><b>5.4.1</b> Coeficientes del modelo</a></li>
-<li class="chapter" data-level="5.4.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño-1"><i class="fa fa-check"></i><b>5.4.2</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="5.4.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#gráfica-de-ajuste"><i class="fa fa-check"></i><b>5.4.3</b> Gráfica de ajuste</a></li>
+<li class="chapter" data-level="5.4.2" data-path="02-intro2tidy.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o-1"><i class="fa fa-check"></i><b>5.4.2</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="5.4.3" data-path="02-intro2tidy.html"><a href="#gr%C3%A1fica-de-ajuste"><i class="fa fa-check"></i><b>5.4.3</b> Gráfica de ajuste</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métodos-se-selección-de-variables"><i class="fa fa-check"></i><b>5.5</b> Métodos se selección de variables</a>
+<li class="chapter" data-level="5.5" data-path="02-intro2tidy.html"><a href="#m%C3%A9todos-se-selecci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>5.5</b> Métodos se selección de variables</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#forward-selection-selección-hacia-adelante"><i class="fa fa-check"></i><b>5.5.1</b> Forward selection (selección hacia adelante)</a></li>
-<li class="chapter" data-level="5.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#backward-selection-selección-hacia-atrás"><i class="fa fa-check"></i><b>5.5.2</b> Backward selection (selección hacia atrás)</a></li>
+<li class="chapter" data-level="5.5.1" data-path="02-intro2tidy.html"><a href="#forward-selection-selecci%C3%B3n-hacia-adelante"><i class="fa fa-check"></i><b>5.5.1</b> Forward selection (selección hacia adelante)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="02-intro2tidy.html"><a href="#backward-selection-selecci%C3%B3n-hacia-atr%C3%A1s"><i class="fa fa-check"></i><b>5.5.2</b> Backward selection (selección hacia atrás)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
+<li class="chapter" data-level="6" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-log%C3%ADstica"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="regresión-logística.html"><a href="regresión-logística.html#función-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
-<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html#ajuste-del-modelo"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
-<li class="chapter" data-level="6.3" data-path="regresión-logística.html"><a href="regresión-logística.html#clasificación-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
-<li class="chapter" data-level="6.4" data-path="regresión-logística.html"><a href="regresión-logística.html#métricas-de-desempeño-2"><i class="fa fa-check"></i><b>6.4</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="6.5" data-path="regresión-logística.html"><a href="regresión-logística.html#implementación-en-r-1"><i class="fa fa-check"></i><b>6.5</b> Implementación en R</a></li>
-<li class="chapter" data-level="6.6" data-path="regresión-logística.html"><a href="regresión-logística.html#matriz-de-confusión"><i class="fa fa-check"></i><b>6.6</b> Matriz de Confusión</a></li>
+<li class="chapter" data-level="6.1" data-path="02-intro2tidy.html"><a href="#funci%C3%B3n-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
+<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
+<li class="chapter" data-level="6.3" data-path="02-intro2tidy.html"><a href="#clasificaci%C3%B3n-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
+<li class="chapter" data-level="6.4" data-path="02-intro2tidy.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o-2"><i class="fa fa-check"></i><b>6.4</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.5" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-r-1"><i class="fa fa-check"></i><b>6.5</b> Implementación en R</a></li>
+<li class="chapter" data-level="6.6" data-path="02-intro2tidy.html"><a href="#matriz-de-confusi%C3%B3n"><i class="fa fa-check"></i><b>6.6</b> Matriz de Confusión</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html"><i class="fa fa-check"></i><b>7</b> K-Nearest-Neighbor</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#clasificación-3"><i class="fa fa-check"></i><b>7.1</b> Clasificación</a></li>
-<li class="chapter" data-level="7.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-2"><i class="fa fa-check"></i><b>7.2</b> Regresión</a></li>
+<li class="chapter" data-level="7.1" data-path="02-intro2tidy.html"><a href="#clasificaci%C3%B3n-3"><i class="fa fa-check"></i><b>7.1</b> Clasificación</a></li>
+<li class="chapter" data-level="7.2" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-2"><i class="fa fa-check"></i><b>7.2</b> Regresión</a></li>
 <li class="chapter" data-level="7.3" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#ajuste-del-modelo-1"><i class="fa fa-check"></i><b>7.3</b> Ajuste del modelo</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#selección-de-hiper-parámetro-k"><i class="fa fa-check"></i><b>7.3.1</b> Selección de Hiper-parámetro K</a></li>
-<li class="chapter" data-level="7.3.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#métodos-de-cálculo-de-la-distancia-entre-observaciones"><i class="fa fa-check"></i><b>7.3.2</b> Métodos de cálculo de la distancia entre observaciones</a></li>
+<li class="chapter" data-level="7.3.1" data-path="02-intro2tidy.html"><a href="#selecci%C3%B3n-de-hiper-par%C3%A1metro-k"><i class="fa fa-check"></i><b>7.3.1</b> Selección de Hiper-parámetro K</a></li>
+<li class="chapter" data-level="7.3.2" data-path="02-intro2tidy.html"><a href="#m%C3%A9todos-de-c%C3%A1lculo-de-la-distancia-entre-observaciones"><i class="fa fa-check"></i><b>7.3.2</b> Métodos de cálculo de la distancia entre observaciones</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#implementación-en-r-2"><i class="fa fa-check"></i><b>7.4</b> Implementación en R</a>
+<li class="chapter" data-level="7.4" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-r-2"><i class="fa fa-check"></i><b>7.4</b> Implementación en R</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-3"><i class="fa fa-check"></i><b>7.4.1</b> Regresión</a></li>
-<li class="chapter" data-level="7.4.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#clasificación-4"><i class="fa fa-check"></i><b>7.4.2</b> Clasificación</a></li>
+<li class="chapter" data-level="7.4.1" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-3"><i class="fa fa-check"></i><b>7.4.1</b> Regresión</a></li>
+<li class="chapter" data-level="7.4.2" data-path="02-intro2tidy.html"><a href="#clasificaci%C3%B3n-4"><i class="fa fa-check"></i><b>7.4.2</b> Clasificación</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html"><i class="fa fa-check"></i><b>8</b> Árboles de decisión</a>
+<li class="chapter" data-level="8" data-path="02-intro2tidy.html"><a href="#%C3%A1rboles-de-decisi%C3%B3n"><i class="fa fa-check"></i><b>8</b> Árboles de decisión</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ajuste-del-modelo-2"><i class="fa fa-check"></i><b>8.1</b> Ajuste del modelo</a>
+<li class="chapter" data-level="8.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html"><i class="fa fa-check"></i><b>8.1</b> Ajuste del modelo</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#attribute-selective-measure-asm"><i class="fa fa-check"></i><b>8.1.1</b> Attribute Selective Measure (ASM)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regularización-de-árboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
+<li class="chapter" data-level="8.2" data-path="02-intro2tidy.html"><a href="#regularizaci%C3%B3n-de-%C3%A1rboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#nivel-de-profundidad-de-árbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
+<li class="chapter" data-level="8.2.1" data-path="02-intro2tidy.html"><a href="#nivel-de-profundidad-de-%C3%A1rbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aprendizaje-conjunto"><i class="fa fa-check"></i><b>8.3</b> Aprendizaje conjunto</a></li>
 <li class="chapter" data-level="8.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#bagging"><i class="fa fa-check"></i><b>8.4</b> Bagging</a></li>
 <li class="chapter" data-level="8.5" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#random-forest"><i class="fa fa-check"></i><b>8.5</b> Random Forest</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#qué-es"><i class="fa fa-check"></i><b>8.5.1</b> ¿Qué es?</a></li>
-<li class="chapter" data-level="8.5.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#características-de-los-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.2</b> Características de los bosques aleatorios</a></li>
-<li class="chapter" data-level="8.5.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aplicar-árboles-de-decisión-en-un-bosque-aleatorio"><i class="fa fa-check"></i><b>8.5.3</b> Aplicar árboles de decisión en un bosque aleatorio</a></li>
+<li class="chapter" data-level="8.5.1" data-path="02-intro2tidy.html"><a href="#qu%C3%A9-es"><i class="fa fa-check"></i><b>8.5.1</b> ¿Qué es?</a></li>
+<li class="chapter" data-level="8.5.2" data-path="02-intro2tidy.html"><a href="#caracter%C3%ADsticas-de-los-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.2</b> Características de los bosques aleatorios</a></li>
+<li class="chapter" data-level="8.5.3" data-path="02-intro2tidy.html"><a href="#aplicar-%C3%A1rboles-de-decisi%C3%B3n-en-un-bosque-aleatorio"><i class="fa fa-check"></i><b>8.5.3</b> Aplicar árboles de decisión en un bosque aleatorio</a></li>
 <li class="chapter" data-level="8.5.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ventajas-y-desventjas-de-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.4</b> Ventajas y desventjas de bosques aleatorios</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#implementación-de-rf-en-r"><i class="fa fa-check"></i><b>8.6</b> Implementación de RF en R</a>
+<li class="chapter" data-level="8.6" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-de-rf-en-r"><i class="fa fa-check"></i><b>8.6</b> Implementación de RF en R</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regresión-4"><i class="fa fa-check"></i><b>8.6.1</b> Regresión</a></li>
-<li class="chapter" data-level="8.6.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#clasificación-5"><i class="fa fa-check"></i><b>8.6.2</b> Clasificación</a></li>
+<li class="chapter" data-level="8.6.1" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-4"><i class="fa fa-check"></i><b>8.6.1</b> Regresión</a></li>
+<li class="chapter" data-level="8.6.2" data-path="02-intro2tidy.html"><a href="#clasificaci%C3%B3n-5"><i class="fa fa-check"></i><b>8.6.2</b> Clasificación</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html"><i class="fa fa-check"></i><b>9</b> Clustering No Jerárquico</a>
+<li class="chapter" data-level="9" data-path="02-intro2tidy.html"><a href="#clustering-no-jer%C3%A1rquico"><i class="fa fa-check"></i><b>9</b> Clustering No Jerárquico</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#cálculo-de-distancia"><i class="fa fa-check"></i><b>9.1</b> Cálculo de distancia</a>
+<li class="chapter" data-level="9.1" data-path="02-intro2tidy.html"><a href="#c%C3%A1lculo-de-distancia"><i class="fa fa-check"></i><b>9.1</b> Cálculo de distancia</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#distancias-homogéneas"><i class="fa fa-check"></i><b>9.1.1</b> Distancias homogéneas</a></li>
-<li class="chapter" data-level="9.1.2" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#distancias-mixtas"><i class="fa fa-check"></i><b>9.1.2</b> Distancias mixtas</a></li>
-<li class="chapter" data-level="9.1.3" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#visualización-de-distancias"><i class="fa fa-check"></i><b>9.1.3</b> Visualización de distancias</a></li>
+<li class="chapter" data-level="9.1.1" data-path="02-intro2tidy.html"><a href="#distancias-homog%C3%A9neas"><i class="fa fa-check"></i><b>9.1.1</b> Distancias homogéneas</a></li>
+<li class="chapter" data-level="9.1.2" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html"><i class="fa fa-check"></i><b>9.1.2</b> Distancias mixtas</a></li>
+<li class="chapter" data-level="9.1.3" data-path="02-intro2tidy.html"><a href="#visualizaci%C3%B3n-de-distancias"><i class="fa fa-check"></i><b>9.1.3</b> Visualización de distancias</a></li>
 </ul></li>
 <li class="chapter" data-level="9.2" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#tendencia-de-factibilidad"><i class="fa fa-check"></i><b>9.2</b> Tendencia de factibilidad</a></li>
 <li class="chapter" data-level="9.3" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#k---means"><i class="fa fa-check"></i><b>9.3</b> K - means</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#ajuste-de-modelo-cómo-funciona-el-algortimo"><i class="fa fa-check"></i><b>9.3.1</b> Ajuste de modelo: ¿Cómo funciona el algortimo?</a></li>
+<li class="chapter" data-level="9.3.1" data-path="02-intro2tidy.html"><a href="#ajuste-de-modelo-c%C3%B3mo-funciona-el-algortimo"><i class="fa fa-check"></i><b>9.3.1</b> Ajuste de modelo: ¿Cómo funciona el algortimo?</a></li>
 <li class="chapter" data-level="9.3.2" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#calidad-de-ajuste"><i class="fa fa-check"></i><b>9.3.2</b> Calidad de ajuste</a></li>
-<li class="chapter" data-level="9.3.3" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#cómo-seleccionamos-k"><i class="fa fa-check"></i><b>9.3.3</b> ¿Cómo seleccionamos K?</a></li>
-<li class="chapter" data-level="9.3.4" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#implementación-en-r-3"><i class="fa fa-check"></i><b>9.3.4</b> Implementación en R</a></li>
+<li class="chapter" data-level="9.3.3" data-path="02-intro2tidy.html"><a href="#c%C3%B3mo-seleccionamos-k"><i class="fa fa-check"></i><b>9.3.3</b> ¿Cómo seleccionamos K?</a></li>
+<li class="chapter" data-level="9.3.4" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-r-3"><i class="fa fa-check"></i><b>9.3.4</b> Implementación en R</a></li>
 <li class="chapter" data-level="9.3.5" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#warnings"><i class="fa fa-check"></i><b>9.3.5</b> Warnings</a></li>
 </ul></li>
 <li class="chapter" data-level="9.4" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#partitioning-around-medoids-pam"><i class="fa fa-check"></i><b>9.4</b> Partitioning Around Medoids (PAM)</a>
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#algoritmo-pam"><i class="fa fa-check"></i><b>9.4.1</b> Algoritmo PAM</a></li>
-<li class="chapter" data-level="9.4.2" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#implementación-en-r-4"><i class="fa fa-check"></i><b>9.4.2</b> Implementación en R</a></li>
+<li class="chapter" data-level="9.4.2" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-r-4"><i class="fa fa-check"></i><b>9.4.2</b> Implementación en R</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="clustering-no-jerárquico.html"><a href="clustering-no-jerárquico.html#comparación-de-algoritmos"><i class="fa fa-check"></i><b>9.5</b> Comparación de algoritmos</a></li>
+<li class="chapter" data-level="9.5" data-path="02-intro2tidy.html"><a href="#comparaci%C3%B3n-de-algoritmos"><i class="fa fa-check"></i><b>9.5</b> Comparación de algoritmos</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="02-intro2tidy.html"><a href="#clustering-jer%C3%A1rquico"><i class="fa fa-check"></i><b>10</b> Clustering Jerárquico</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html"><i class="fa fa-check"></i><b>10.1</b> Agglomerative &amp; Divise Clustering</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#algoritmo"><i class="fa fa-check"></i><b>10.1.1</b> Algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-r-5"><i class="fa fa-check"></i><b>10.2</b> Implementación en R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="02-intro2tidy.html"><a href="#preparaci%C3%B3n-y-estructuraci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>10.2.1</b> Preparación y estructuración de datos</a></li>
+<li class="chapter" data-level="10.2.2" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#medidas-de-disimilaridad"><i class="fa fa-check"></i><b>10.2.2</b> Medidas de (di)similaridad</a></li>
+<li class="chapter" data-level="10.2.3" data-path="02-intro2tidy.html"><a href="#funci%C3%B3n-liga"><i class="fa fa-check"></i><b>10.2.3</b> Función Liga</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="clustering-jerárquico.html"><a href="clustering-jerárquico.html#dendogramas"><i class="fa fa-check"></i><b>10.3</b> Dendogramas</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="02-intro2tidy.html"><a href="#selecci%C3%B3n-de-grupos"><i class="fa fa-check"></i><b>10.3.1</b> Selección de grupos</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
@@ -394,16 +416,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="introducción-a-r" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Capítulo 2</span> Introducción a R<a href="introducción-a-r.html#introducción-a-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Capítulo 2</span> Introducción a R<a href="#introducci%C3%B3n-a-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>R</em> (R Core Team) es un entorno y lenguaje de programación que permite el análisis estadístico de información y reportes gráficos. Es ampliamente usado en investigación por la comunidad estadística en campos como la biomedicina, minería de datos, matemáticas financieras, entre otros. Ha ganado mucha popularidad en los últimos años al ser un software libre que está en constante crecimiento por las aportaciones de otros usuarios y que permite la interacción con software estadísticos como STATA, SAS, SPSS, etc.. R permite la incorporación de librerías y paqueterías con funcionalidades específicas, por lo que es un lenguaje de programación muy completo y fácil de usar.</p>
 <div id="cómo-obtener-r" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> ¿Cómo obtener <em>R</em>?<a href="introducción-a-r.html#cómo-obtener-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.1</span> ¿Cómo obtener <em>R</em>?<a href="#c%C3%B3mo-obtener-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R puede ser fácilmente descargado de forma gratuita desde el sitio oficial <a href="http://www.r-project.org/" class="uri">http://www.r-project.org/</a>. R está disponible para las plataformas Windows, Mac y Linux.</p>
 </div>
-<div id="qué-es-rstudio" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> ¿Qué es RStudio?<a href="introducción-a-r.html#qué-es-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><em>RStudio</em> es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) para R. Este permite y facilita el desarrollo y ejecución de sintaxis para código en <em>R</em>, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. <em>RStudio</em> está disponible para Windows, Mac y Linux o para navegadores conectados a <em>RStudio Server o RStudio Server Pro</em>.</p>
-<p>Algunas de las principales características de Rstudio que lo hacen una gran herramienta para trabajar en <em>R</em>, son:</p>
+<div id="qué-es-positron" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> ¿Qué es Positron?<a href="#qu%C3%A9-es-positron" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Positron</em> es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) creado por Posit (antes Rstudio) para R y Python. Este permite y facilita el desarrollo y ejecución de sintaxis para código en <em>R</em> y <em>python</em>, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. <em>Positron</em> está disponible para Windows, Mac y Linux.</p>
+<p>Algunas de las principales características de Positron que lo hacen una gran herramienta para trabajar, son:</p>
 <ul>
 <li>Auto completado de código</li>
 <li>Sangría inteligente</li>
@@ -416,11 +438,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Depurador interactivo para corregir errores</li>
 <li>Conección con Rmarkwon y Sweave</li>
 </ul>
-<p>La siguiente imagen muestra la forma en la que está estructurado RStudio. El orden de los páneles puede ser elegido por el usuario, así como las características de tipo de letra, tamaño y color de fondo, entre otras características.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
-<img src="img/02-intro2r/rstudio.png" alt="Páneles de trabajo de Rstudio" width="960" />
+<p>La siguiente imagen muestra la forma en la que está estructurado Positron. El orden de los páneles puede ser elegido por el usuario, así como las características de tipo de letra, tamaño y color de fondo, entre otras características.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<img src="img/02-intro2r/02_rstudio_py.png" alt="Páneles de trabajo de Positron" width="924" />
 <p class="caption">
-Figure 2.1: Páneles de trabajo de Rstudio
+Figure 2.1: Páneles de trabajo de Positron
 </p>
 </div>
 </div>
@@ -445,17 +467,17 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>A la hora de importar conjuntos de datos en <em>R</em>, uno de los formatos más habituales en los que hallamos información es en archivos separados por comas (comma separated values), cuya extensión suele ser <em>.csv</em>. En ellos encontramos múltiples líneas que recogen la tabla de interés, y en las cuales los valores aparecen, de manera consecutiva, separados por el carácter <em>,</em>.</p>
 <p>Para importar este tipo de archivos en nuestra sesión de <em>R</em>, se utiliza la función <code>read_csv()</code>. Para acceder a su documentación utilizamos el comando <code>?read_csv</code>.</p>
 <p>El único argumento que debemos de pasar a esta función de manera obligatoria, es <code>file</code>, el nombre o la ruta completa del archivo que pretendemos importar.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introducción-a-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb4-2"><a href="introducción-a-r.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="introducción-a-r.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(</span>
-<span id="cb4-4"><a href="introducción-a-r.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  file,</span>
-<span id="cb4-5"><a href="introducción-a-r.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-6"><a href="introducción-a-r.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
-<span id="cb4-7"><a href="introducción-a-r.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">locale =</span> <span class="fu">default_locale</span>(),</span>
-<span id="cb4-8"><a href="introducción-a-r.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
-<span id="cb4-9"><a href="introducción-a-r.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">quoted_na =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-10"><a href="introducción-a-r.html#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">quote =</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>,</span>
-<span id="cb4-11"><a href="introducción-a-r.html#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">comment =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introducción-a-r.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb4-2"><a href="introducción-a-r.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="introducción-a-r.html#cb4-3" tabindex="-1"></a><span class="fu">read_csv</span>(</span>
+<span id="cb4-4"><a href="introducción-a-r.html#cb4-4" tabindex="-1"></a>  file,</span>
+<span id="cb4-5"><a href="introducción-a-r.html#cb4-5" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-6"><a href="introducción-a-r.html#cb4-6" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-7"><a href="introducción-a-r.html#cb4-7" tabindex="-1"></a>  <span class="at">locale =</span> <span class="fu">default_locale</span>(),</span>
+<span id="cb4-8"><a href="introducción-a-r.html#cb4-8" tabindex="-1"></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>),</span>
+<span id="cb4-9"><a href="introducción-a-r.html#cb4-9" tabindex="-1"></a>  <span class="at">quoted_na =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-10"><a href="introducción-a-r.html#cb4-10" tabindex="-1"></a>  <span class="at">quote =</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>,</span>
+<span id="cb4-11"><a href="introducción-a-r.html#cb4-11" tabindex="-1"></a>  <span class="at">comment =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>La paquetería <em>readr</em> fue desarrollada recientemente para lidiar con la lectura de archivos grandes rápidamente. El paquete proporciona reemplazos para funciones como <em>read.table()</em>, <em>read.csv()</em> entre otras. Esta paquetería proporciona funciones que suelen ser mucho más rápidas que las funciones base que proporciona <em>R</em>.</p>
 <p><strong>Ventajas de readr:</strong></p>
 <ul>
@@ -472,8 +494,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>Veamos un ejemplo:</p>
 <p>La base de datos llamada <a href="https://drive.google.com/file/d/1pCHFeF8rtQiUcip9zf4Xtk0pAQ-5Om-r/view?usp=sharing">AmesHousing</a> contiene un conjunto de datos con información de la Oficina del Tasador de Ames utilizada para calcular los valores tasados para las propiedades residenciales individuales vendidas en Ames, Iowa, de 2006 a 2010. FUENTES: Ames, Oficina del Tasador de Iowa.</p>
 <p>Pueden descargar los datos para la clase <a href="https://drive.google.com/drive/folders/1sNlUWIvKHOTt7qywhPIyl1X00do_Y6Zo?usp=sharing">aquí</a></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introducción-a-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ames.csv&quot;</span>) </span>
-<span id="cb5-2"><a href="introducción-a-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introducción-a-r.html#cb5-1" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/ames.csv&quot;</span>) </span>
+<span id="cb5-2"><a href="introducción-a-r.html#cb5-2" tabindex="-1"></a><span class="fu">head</span>(base, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##                           MS_SubClass                MS_Zoning Lot_Frontage
 ## 1 One_Story_1946_and_Newer_All_Styles  Residential_Low_Density          141
 ## 2 One_Story_1946_and_Newer_All_Styles Residential_High_Density           80
@@ -516,8 +538,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##   Longitude Latitude
 ## 1 -93.61975 42.05403
 ## 2 -93.61976 42.05301</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introducción-a-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a>tidy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
-<span id="cb7-2"><a href="introducción-a-r.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tidy, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introducción-a-r.html#cb7-1" tabindex="-1"></a>tidy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
+<span id="cb7-2"><a href="introducción-a-r.html#cb7-2" tabindex="-1"></a><span class="fu">head</span>(tidy, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 74
 ##   MS_SubClass             MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##   &lt;chr&gt;                   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
@@ -535,8 +557,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <div id="archivos-txt" class="section level3 hasAnchor" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Archivos txt<a href="introducción-a-r.html#archivos-txt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Uno de los archivos más comunes es el <em>.txt</em>. La librería <em>readr</em> también cuenta con funciones que permiten leer fácilmente los datos contenidos en formato tabular.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introducción-a-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a>ames_txt <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/ames.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-2"><a href="introducción-a-r.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ames_txt, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introducción-a-r.html#cb9-1" tabindex="-1"></a>ames_txt <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;data/ames.txt&quot;</span>, <span class="at">delim =</span> <span class="st">&quot;;&quot;</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-2"><a href="introducción-a-r.html#cb9-2" tabindex="-1"></a><span class="fu">head</span>(ames_txt, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 74
 ##   MS_SubClass             MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##   &lt;chr&gt;                   &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
@@ -559,63 +581,63 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <ul>
 <li><code>read_xlsx()</code> lee un archivo con extensión <em>xlsx</em>.</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introducción-a-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xlsx</span>(</span>
-<span id="cb11-2"><a href="introducción-a-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a> path,</span>
-<span id="cb11-3"><a href="introducción-a-r.html#cb11-3" aria-hidden="true" tabindex="-1"></a> <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-4"><a href="introducción-a-r.html#cb11-4" aria-hidden="true" tabindex="-1"></a> <span class="at">range =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-5"><a href="introducción-a-r.html#cb11-5" aria-hidden="true" tabindex="-1"></a> <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-6"><a href="introducción-a-r.html#cb11-6" aria-hidden="true" tabindex="-1"></a> <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-7"><a href="introducción-a-r.html#cb11-7" aria-hidden="true" tabindex="-1"></a> <span class="at">na =</span> <span class="st">&quot;&quot;</span>, </span>
-<span id="cb11-8"><a href="introducción-a-r.html#cb11-8" aria-hidden="true" tabindex="-1"></a> <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-9"><a href="introducción-a-r.html#cb11-9" aria-hidden="true" tabindex="-1"></a> <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb11-10"><a href="introducción-a-r.html#cb11-10" aria-hidden="true" tabindex="-1"></a> <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
-<span id="cb11-11"><a href="introducción-a-r.html#cb11-11" aria-hidden="true" tabindex="-1"></a> <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
-<span id="cb11-12"><a href="introducción-a-r.html#cb11-12" aria-hidden="true" tabindex="-1"></a> <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
-<span id="cb11-13"><a href="introducción-a-r.html#cb11-13" aria-hidden="true" tabindex="-1"></a> <span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span></span>
-<span id="cb11-14"><a href="introducción-a-r.html#cb11-14" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="introducción-a-r.html#cb11-1" tabindex="-1"></a><span class="fu">read_xlsx</span>(</span>
+<span id="cb11-2"><a href="introducción-a-r.html#cb11-2" tabindex="-1"></a> path,</span>
+<span id="cb11-3"><a href="introducción-a-r.html#cb11-3" tabindex="-1"></a> <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-4"><a href="introducción-a-r.html#cb11-4" tabindex="-1"></a> <span class="at">range =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-5"><a href="introducción-a-r.html#cb11-5" tabindex="-1"></a> <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-6"><a href="introducción-a-r.html#cb11-6" tabindex="-1"></a> <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-7"><a href="introducción-a-r.html#cb11-7" tabindex="-1"></a> <span class="at">na =</span> <span class="st">&quot;&quot;</span>, </span>
+<span id="cb11-8"><a href="introducción-a-r.html#cb11-8" tabindex="-1"></a> <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-9"><a href="introducción-a-r.html#cb11-9" tabindex="-1"></a> <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb11-10"><a href="introducción-a-r.html#cb11-10" tabindex="-1"></a> <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
+<span id="cb11-11"><a href="introducción-a-r.html#cb11-11" tabindex="-1"></a> <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
+<span id="cb11-12"><a href="introducción-a-r.html#cb11-12" tabindex="-1"></a> <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
+<span id="cb11-13"><a href="introducción-a-r.html#cb11-13" tabindex="-1"></a> <span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span></span>
+<span id="cb11-14"><a href="introducción-a-r.html#cb11-14" tabindex="-1"></a> )</span></code></pre></div>
 <ul>
 <li><code>read_xls()</code> lee un archivo con extensión <em>xls</em>.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introducción-a-r.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_xls</span>(</span>
-<span id="cb12-2"><a href="introducción-a-r.html#cb12-2" aria-hidden="true" tabindex="-1"></a> path,</span>
-<span id="cb12-3"><a href="introducción-a-r.html#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-4"><a href="introducción-a-r.html#cb12-4" aria-hidden="true" tabindex="-1"></a> <span class="at">range =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-5"><a href="introducción-a-r.html#cb12-5" aria-hidden="true" tabindex="-1"></a> <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-6"><a href="introducción-a-r.html#cb12-6" aria-hidden="true" tabindex="-1"></a> <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
-<span id="cb12-7"><a href="introducción-a-r.html#cb12-7" aria-hidden="true" tabindex="-1"></a> <span class="at">na =</span> <span class="st">&quot;&quot;</span>, </span>
-<span id="cb12-8"><a href="introducción-a-r.html#cb12-8" aria-hidden="true" tabindex="-1"></a> <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb12-9"><a href="introducción-a-r.html#cb12-9" aria-hidden="true" tabindex="-1"></a> <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb12-10"><a href="introducción-a-r.html#cb12-10" aria-hidden="true" tabindex="-1"></a> <span class="at">n_max =</span> <span class="cn">Inf</span>, </span>
-<span id="cb12-11"><a href="introducción-a-r.html#cb12-11" aria-hidden="true" tabindex="-1"></a> <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
-<span id="cb12-12"><a href="introducción-a-r.html#cb12-12" aria-hidden="true" tabindex="-1"></a> <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
-<span id="cb12-13"><a href="introducción-a-r.html#cb12-13" aria-hidden="true" tabindex="-1"></a> <span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span></span>
-<span id="cb12-14"><a href="introducción-a-r.html#cb12-14" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introducción-a-r.html#cb12-1" tabindex="-1"></a><span class="fu">read_xls</span>(</span>
+<span id="cb12-2"><a href="introducción-a-r.html#cb12-2" tabindex="-1"></a> path,</span>
+<span id="cb12-3"><a href="introducción-a-r.html#cb12-3" tabindex="-1"></a> <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-4"><a href="introducción-a-r.html#cb12-4" tabindex="-1"></a> <span class="at">range =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-5"><a href="introducción-a-r.html#cb12-5" tabindex="-1"></a> <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-6"><a href="introducción-a-r.html#cb12-6" tabindex="-1"></a> <span class="at">col_types =</span> <span class="cn">NULL</span>,</span>
+<span id="cb12-7"><a href="introducción-a-r.html#cb12-7" tabindex="-1"></a> <span class="at">na =</span> <span class="st">&quot;&quot;</span>, </span>
+<span id="cb12-8"><a href="introducción-a-r.html#cb12-8" tabindex="-1"></a> <span class="at">trim_ws =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-9"><a href="introducción-a-r.html#cb12-9" tabindex="-1"></a> <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb12-10"><a href="introducción-a-r.html#cb12-10" tabindex="-1"></a> <span class="at">n_max =</span> <span class="cn">Inf</span>, </span>
+<span id="cb12-11"><a href="introducción-a-r.html#cb12-11" tabindex="-1"></a> <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
+<span id="cb12-12"><a href="introducción-a-r.html#cb12-12" tabindex="-1"></a> <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
+<span id="cb12-13"><a href="introducción-a-r.html#cb12-13" tabindex="-1"></a> <span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span></span>
+<span id="cb12-14"><a href="introducción-a-r.html#cb12-14" tabindex="-1"></a> )</span></code></pre></div>
 <ul>
 <li><code>read_excel()</code> determina si el archivo es de tipo <em>xls</em> o <em>xlsx</em> para después llamar a una de las funciones mencionadas anteriormente.</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introducción-a-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(</span>
-<span id="cb13-2"><a href="introducción-a-r.html#cb13-2" aria-hidden="true" tabindex="-1"></a> path,</span>
-<span id="cb13-3"><a href="introducción-a-r.html#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-4"><a href="introducción-a-r.html#cb13-4" aria-hidden="true" tabindex="-1"></a> <span class="at">range =</span> <span class="cn">NULL</span>,</span>
-<span id="cb13-5"><a href="introducción-a-r.html#cb13-5" aria-hidden="true" tabindex="-1"></a> <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-6"><a href="introducción-a-r.html#cb13-6" aria-hidden="true" tabindex="-1"></a> <span class="at">col_types =</span> <span class="cn">NULL</span>, </span>
-<span id="cb13-7"><a href="introducción-a-r.html#cb13-7" aria-hidden="true" tabindex="-1"></a> <span class="at">na =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb13-8"><a href="introducción-a-r.html#cb13-8" aria-hidden="true" tabindex="-1"></a> <span class="at">trim_ws =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb13-9"><a href="introducción-a-r.html#cb13-9" aria-hidden="true" tabindex="-1"></a> <span class="at">skip =</span> <span class="dv">0</span>,</span>
-<span id="cb13-10"><a href="introducción-a-r.html#cb13-10" aria-hidden="true" tabindex="-1"></a> <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
-<span id="cb13-11"><a href="introducción-a-r.html#cb13-11" aria-hidden="true" tabindex="-1"></a> <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
-<span id="cb13-12"><a href="introducción-a-r.html#cb13-12" aria-hidden="true" tabindex="-1"></a> <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
-<span id="cb13-13"><a href="introducción-a-r.html#cb13-13" aria-hidden="true" tabindex="-1"></a> <span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span></span>
-<span id="cb13-14"><a href="introducción-a-r.html#cb13-14" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introducción-a-r.html#cb13-1" tabindex="-1"></a><span class="fu">read_excel</span>(</span>
+<span id="cb13-2"><a href="introducción-a-r.html#cb13-2" tabindex="-1"></a> path,</span>
+<span id="cb13-3"><a href="introducción-a-r.html#cb13-3" tabindex="-1"></a> <span class="at">sheet =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-4"><a href="introducción-a-r.html#cb13-4" tabindex="-1"></a> <span class="at">range =</span> <span class="cn">NULL</span>,</span>
+<span id="cb13-5"><a href="introducción-a-r.html#cb13-5" tabindex="-1"></a> <span class="at">col_names =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-6"><a href="introducción-a-r.html#cb13-6" tabindex="-1"></a> <span class="at">col_types =</span> <span class="cn">NULL</span>, </span>
+<span id="cb13-7"><a href="introducción-a-r.html#cb13-7" tabindex="-1"></a> <span class="at">na =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb13-8"><a href="introducción-a-r.html#cb13-8" tabindex="-1"></a> <span class="at">trim_ws =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb13-9"><a href="introducción-a-r.html#cb13-9" tabindex="-1"></a> <span class="at">skip =</span> <span class="dv">0</span>,</span>
+<span id="cb13-10"><a href="introducción-a-r.html#cb13-10" tabindex="-1"></a> <span class="at">n_max =</span> <span class="cn">Inf</span>,</span>
+<span id="cb13-11"><a href="introducción-a-r.html#cb13-11" tabindex="-1"></a> <span class="at">guess_max =</span> <span class="fu">min</span>(<span class="dv">1000</span>, n_max),</span>
+<span id="cb13-12"><a href="introducción-a-r.html#cb13-12" tabindex="-1"></a> <span class="at">progress =</span> <span class="fu">readxl_progress</span>(),</span>
+<span id="cb13-13"><a href="introducción-a-r.html#cb13-13" tabindex="-1"></a> <span class="at">.name_repair =</span> <span class="st">&quot;unique&quot;</span></span>
+<span id="cb13-14"><a href="introducción-a-r.html#cb13-14" tabindex="-1"></a> )</span></code></pre></div>
 <p><strong>EJERCICIO:</strong> Leer archivo excel de la carpeta del curso</p>
 </div>
 <div id="archivos-json" class="section level3 hasAnchor" number="2.3.4">
 <h3><span class="header-section-number">2.3.4</span> Archivos json<a href="introducción-a-r.html#archivos-json" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Se utiliza la función <code>fromJSON</code> de la paquetería <em>jsonlite</em></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introducción-a-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb14-2"><a href="introducción-a-r.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="introducción-a-r.html#cb14-3" aria-hidden="true" tabindex="-1"></a>base_json <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="st">&quot;data/ames.json&quot;</span>)</span>
-<span id="cb14-4"><a href="introducción-a-r.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base_json, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introducción-a-r.html#cb14-1" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb14-2"><a href="introducción-a-r.html#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="introducción-a-r.html#cb14-3" tabindex="-1"></a>base_json <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="st">&quot;data/ames.json&quot;</span>)</span>
+<span id="cb14-4"><a href="introducción-a-r.html#cb14-4" tabindex="-1"></a><span class="fu">head</span>(base_json, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##                           MS_SubClass                MS_Zoning Lot_Frontage
 ## 1 One_Story_1946_and_Newer_All_Styles  Residential_Low_Density          141
 ## 2 One_Story_1946_and_Newer_All_Styles Residential_High_Density           80
@@ -662,9 +684,9 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <div id="archivos-rds" class="section level3 hasAnchor" number="2.3.5">
 <h3><span class="header-section-number">2.3.5</span> Archivos rds<a href="introducción-a-r.html#archivos-rds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un tipo de archivo que resulta de particular interés, es el <em>.RDS</em>. Este archivo comprime cualquier objeto o resultado que sea usado o producido en <em>R</em>. Uno puede almacenar el objeto de interés de la siguiente manera:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introducción-a-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(base_json, <span class="st">&quot;data/ames.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introducción-a-r.html#cb16-1" tabindex="-1"></a><span class="fu">saveRDS</span>(base_json, <span class="st">&quot;data/ames.rds&quot;</span>)</span></code></pre></div>
 <p>Puede observarse que en el explorador de archivos se encuentra ahora el nuevo archivo con extensión <em>.rds</em>, el cual puede ser posteriormente incorporado a una sesión de <em>R</em> para seguir trabajando con él.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introducción-a-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a>base_rds <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/ames.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introducción-a-r.html#cb17-1" tabindex="-1"></a>base_rds <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/ames.rds&quot;</span>)</span></code></pre></div>
 <p>Algunas de las grandes ventajas que tiene almacenar los archivos en formato rds, son las siguientes:</p>
 <ul>
 <li><p>No es necesario volver a ejecutar procesos largos cuando ya se ha logrado realizar una vez.</p></li>
@@ -686,14 +708,14 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <li><p>group_by()</p></li>
 </ul>
 <p>Primero tenemos que instalar y cargar la paquetería (parte de tidyverse):</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introducción-a-r.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;)</span></span>
-<span id="cb18-2"><a href="introducción-a-r.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="introducción-a-r.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb18-4"><a href="introducción-a-r.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introducción-a-r.html#cb18-1" tabindex="-1"></a><span class="co"># install.packages(&quot;dplyr&quot;)</span></span>
+<span id="cb18-2"><a href="introducción-a-r.html#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="introducción-a-r.html#cb18-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-4"><a href="introducción-a-r.html#cb18-4" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
 <p>Usaremos el dataset <em>AmesHousing</em> que se proporcionó en el capítulo anterior (el alumno puede hacer el ejercicio con datos propios)</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introducción-a-r.html#cb19-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
-<span id="cb19-2"><a href="introducción-a-r.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="introducción-a-r.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ames_housing)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introducción-a-r.html#cb19-1" tabindex="-1"></a>ames_housing <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
+<span id="cb19-2"><a href="introducción-a-r.html#cb19-2" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="introducción-a-r.html#cb19-3" tabindex="-1"></a><span class="fu">glimpse</span>(ames_housing)</span></code></pre></div>
 <pre><code>## Rows: 2,930
 ## Columns: 74
 ## $ MS_SubClass        &lt;chr&gt; &quot;One_Story_1946_and_Newer_All_Styles&quot;, &quot;One_Story_1…
@@ -773,7 +795,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <div id="seleccionar-columnas" class="section level3 hasAnchor" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Seleccionar columnas<a href="introducción-a-r.html#seleccionar-columnas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Observamos que nuestros datos tienen 2,930 observaciones y 74 variables, con <em>select()</em> podemos seleccionar las variables que se indiquen.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introducción-a-r.html#cb21-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">select</span>(Lot_Area, Neighborhood, Year_Sold, Sale_Price)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introducción-a-r.html#cb21-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">select</span>(Lot_Area, Neighborhood, Year_Sold, Sale_Price)</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 4
 ##    Lot_Area Neighborhood Year_Sold Sale_Price
 ##       &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;
@@ -793,7 +815,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>El operador pipe (%&gt;%) se usa para conectar un elemento con una función o acción a realizar. En este caso solo se indica que en los datos de ames se seleccionan 4 variables.</p>
 </div>
 <p>Con <em>select()</em> y <em>contains()</em> podemos seleccionar variables con alguna cadena de texto.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introducción-a-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Area&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introducción-a-r.html#cb23-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;Area&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 5
 ##    Lot_Area Mas_Vnr_Area Gr_Liv_Area Garage_Area Pool_Area
 ##       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
@@ -809,7 +831,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## 10     7500            0        1804         442         0
 ## # ℹ 2,920 more rows</code></pre>
 <p>De igual manera, con <em>select()</em>, <em>ends_with</em> y <em>start_with()</em> podemos seleccionar que inicien o terminen con alguna cadena de texto.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introducción-a-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Garage&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introducción-a-r.html#cb25-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;Garage&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 5
 ##    Garage_Type Garage_Finish Garage_Cars Garage_Area Garage_Cond
 ##    &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;      
@@ -842,7 +864,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <div id="filtrar-observaciones" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Filtrar observaciones<a href="introducción-a-r.html#filtrar-observaciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>filter()</em> nos permite filtrar filas según una condición, primero notemos que la variable <em>Sale_Condition</em> tiene distintas categorías.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="introducción-a-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ames_housing<span class="sc">$</span>Sale_Condition)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="introducción-a-r.html#cb27-1" tabindex="-1"></a><span class="fu">table</span>(ames_housing<span class="sc">$</span>Sale_Condition)</span></code></pre></div>
 <pre><code>## 
 ## Abnorml AdjLand  Alloca  Family  Normal Partial 
 ##     190      12      24      46    2413     245</code></pre>
@@ -851,7 +873,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>En un modelo predictivo de Machine Learning, <strong>no es correcto</strong> agregar columnas cuyo valor es conocido hasta el momento de la observación. Es decir, no deben agregarse variables que no se conozca su valor al momento de la predicción, como es el caso de <em>condición de venta</em>.</p>
 </div>
 <p>Ahora usaremos la función <em>filter</em> para quedarnos solo con las observaciones con condición de venta “normal”.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="introducción-a-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sale_Condition <span class="sc">==</span> <span class="st">&quot;Normal&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="introducción-a-r.html#cb29-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Sale_Condition <span class="sc">==</span> <span class="st">&quot;Normal&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2,413 × 74
 ##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
@@ -873,7 +895,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
 ## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p>También se puede usar para filtrar variables numéricas:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="introducción-a-r.html#cb31-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Lot_Area <span class="sc">&gt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> Sale_Price <span class="sc">&gt;=</span> <span class="dv">150000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="introducción-a-r.html#cb31-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Lot_Area <span class="sc">&gt;</span> <span class="dv">1000</span> <span class="sc">&amp;</span> Sale_Price <span class="sc">&gt;=</span> <span class="dv">150000</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1,677 × 74
 ##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
@@ -896,7 +918,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p>Notemos que en el ejemplo anterior se usa <em>&amp;</em>, que ayuda a filtrar por dos condiciones.</p>
 <p>También puede usarse <em>|</em> para filtrar por alguna de las dos condiciones.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="introducción-a-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Lot_Area <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">|</span> Sale_Price <span class="sc">&lt;=</span> <span class="dv">150000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="introducción-a-r.html#cb33-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Lot_Area <span class="sc">&lt;</span> <span class="dv">1000</span> <span class="sc">|</span> Sale_Price <span class="sc">&lt;=</span> <span class="dv">150000</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1,271 × 74
 ##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
@@ -939,7 +961,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <h3><span class="header-section-number">2.4.3</span> Ordenar registros<a href="introducción-a-r.html#ordenar-registros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>arrange()</em> se utiliza para ordenar las filas de un data frame de acuerdo a una o varias variables. Este ordenamiento puede ser ascendente o descendente.</p>
 <p>Por defecto <em>arrange()</em> ordena las filas por orden ascendente:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="introducción-a-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Sale_Price)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="introducción-a-r.html#cb35-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Sale_Price)</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 74
 ##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
@@ -962,7 +984,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p><br> <br></p>
 <p>Si las queremos ordenar de forma ascendente, lo haremos del siguiente modo:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="introducción-a-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Sale_Price))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="introducción-a-r.html#cb37-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Sale_Price))</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 74
 ##    MS_SubClass            MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    
@@ -984,9 +1006,9 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## #   Exterior_1st &lt;chr&gt;, Exterior_2nd &lt;chr&gt;, Mas_Vnr_Type &lt;chr&gt;,
 ## #   Mas_Vnr_Area &lt;dbl&gt;, Exter_Cond &lt;chr&gt;, Foundation &lt;chr&gt;, Bsmt_Cond &lt;chr&gt;, …</code></pre>
 <p>Si se desea usar dos o más columnas para realizar el ordenamiento, deben separarse por comas cada una de las características</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="introducción-a-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> </span>
-<span id="cb39-2"><a href="introducción-a-r.html#cb39-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">arrange</span>(Sale_Condition, <span class="fu">desc</span>(Sale_Price), Lot_Area) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-3"><a href="introducción-a-r.html#cb39-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(Sale_Condition, Sale_Price, Lot_Area)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="introducción-a-r.html#cb39-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="introducción-a-r.html#cb39-2" tabindex="-1"></a> <span class="fu">arrange</span>(Sale_Condition, <span class="fu">desc</span>(Sale_Price), Lot_Area) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="introducción-a-r.html#cb39-3" tabindex="-1"></a> <span class="fu">select</span>(Sale_Condition, Sale_Price, Lot_Area)</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 3
 ##    Sale_Condition Sale_Price Lot_Area
 ##    &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;
@@ -1007,11 +1029,11 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <h3><span class="header-section-number">2.4.4</span> Agregar / Modificar<a href="introducción-a-r.html#agregar-modificar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con la función <em>mutate()</em> podemos computar transformaciones de variables en un data frame. A menudo, tendremos la necesidad de crear nuevas variables que se calculan a partir de variables existentes. La función <em>mutate()</em> proporciona una interfaz clara para realizar este tipo de operaciones.</p>
 <p>Por ejemplo, haremos el cálculo de la antigüedad del inmueble a partir de las variables <em>Year_Sold</em> y <em>Year_Remod_Add</em>:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="introducción-a-r.html#cb41-1" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate <span class="ot">&lt;-</span> ames_housing <span class="sc">%&gt;%</span> </span>
-<span id="cb41-2"><a href="introducción-a-r.html#cb41-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(Year_Sold, Year_Remod_Add) <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a href="introducción-a-r.html#cb41-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add)</span>
-<span id="cb41-4"><a href="introducción-a-r.html#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="introducción-a-r.html#cb41-5" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="introducción-a-r.html#cb41-1" tabindex="-1"></a>ejemplo_mutate <span class="ot">&lt;-</span> ames_housing <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="introducción-a-r.html#cb41-2" tabindex="-1"></a> <span class="fu">select</span>(Year_Sold, Year_Remod_Add) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="introducción-a-r.html#cb41-3" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add)</span>
+<span id="cb41-4"><a href="introducción-a-r.html#cb41-4" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="introducción-a-r.html#cb41-5" tabindex="-1"></a>ejemplo_mutate</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 3
 ##    Year_Sold Year_Remod_Add Antique
 ##        &lt;dbl&gt;          &lt;dbl&gt;   &lt;dbl&gt;
@@ -1027,8 +1049,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## 10      2010           1999      11
 ## # ℹ 2,920 more rows</code></pre>
 <p>El ejemplo anterior crea una nueva variable. Ahora se presenta otro ejemplo en donde se modifica una variable ya creada.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="introducción-a-r.html#cb43-1" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate <span class="sc">%&gt;%</span> </span>
-<span id="cb43-2"><a href="introducción-a-r.html#cb43-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Antique <span class="sc">*</span> <span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="introducción-a-r.html#cb43-1" tabindex="-1"></a>ejemplo_mutate <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="introducción-a-r.html#cb43-2" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Antique <span class="sc">*</span> <span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 3
 ##    Year_Sold Year_Remod_Add Antique
 ##        &lt;dbl&gt;          &lt;dbl&gt;   &lt;dbl&gt;
@@ -1046,13 +1068,13 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>En este segundo ejemplo, se modifica el número de años de antigüedad y se multiplica por un factor de 12 para modificar el tiempo en una escala de meses.</p>
 </div>
 <div id="resumen-estadístico" class="section level3 hasAnchor" number="2.4.5">
-<h3><span class="header-section-number">2.4.5</span> Resumen estadístico<a href="introducción-a-r.html#resumen-estadístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.4.5</span> Resumen estadístico<a href="#resumen-estad%C3%ADstico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>summarise()</em> se comporta de forma análoga a la función <em>mutate()</em>, excepto que en lugar de añadir nuevas columnas crea un nuevo data frame.</p>
 <p>Podemos usar el ejemplo anterior y calcular la media de la variable creada <em>Antique</em>:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="introducción-a-r.html#cb45-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> </span>
-<span id="cb45-2"><a href="introducción-a-r.html#cb45-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span>(Year_Sold, Year_Remod_Add) <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href="introducción-a-r.html#cb45-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add) <span class="sc">%&gt;%</span></span>
-<span id="cb45-4"><a href="introducción-a-r.html#cb45-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarise</span>(<span class="at">Mean_Antique =</span> <span class="fu">mean</span>(Antique))</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="introducción-a-r.html#cb45-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> </span>
+<span id="cb45-2"><a href="introducción-a-r.html#cb45-2" tabindex="-1"></a> <span class="fu">select</span>(Year_Sold, Year_Remod_Add) <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="introducción-a-r.html#cb45-3" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add) <span class="sc">%&gt;%</span></span>
+<span id="cb45-4"><a href="introducción-a-r.html#cb45-4" tabindex="-1"></a> <span class="fu">summarise</span>(<span class="at">Mean_Antique =</span> <span class="fu">mean</span>(Antique))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
 ##   Mean_Antique
 ##          &lt;dbl&gt;
@@ -1081,10 +1103,10 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <h3><span class="header-section-number">2.4.6</span> Agrupamiento<a href="introducción-a-r.html#agrupamiento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>group_by()</em> agrupa un conjunto de filas de acuerdo con los valores de una o más columnas o expresiones.</p>
 <p>Usaremos el ejemplo anterior. Primero creamos nuestra nueva variable <em>Antique</em>, después agrupamos por vecindario y al final calculamos la media de la variable <em>Antique</em>. Gracias al agrupamiento, nos regresara una media por cada grupo creado, es decir, nos regresara el promedio de la antigüedad por vecindario.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="introducción-a-r.html#cb47-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> </span>
-<span id="cb47-2"><a href="introducción-a-r.html#cb47-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-3"><a href="introducción-a-r.html#cb47-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(Neighborhood) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-4"><a href="introducción-a-r.html#cb47-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarise</span>(<span class="at">Mean_Antique =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Antique), <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="introducción-a-r.html#cb47-1" tabindex="-1"></a>ames_housing <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a href="introducción-a-r.html#cb47-2" tabindex="-1"></a> <span class="fu">mutate</span>(<span class="at">Antique =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-3"><a href="introducción-a-r.html#cb47-3" tabindex="-1"></a> <span class="fu">group_by</span>(Neighborhood) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-4"><a href="introducción-a-r.html#cb47-4" tabindex="-1"></a> <span class="fu">summarise</span>(<span class="at">Mean_Antique =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Antique), <span class="dv">0</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 28 × 2
 ##    Neighborhood        Mean_Antique
 ##    &lt;chr&gt;                      &lt;dbl&gt;
@@ -1128,14 +1150,14 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <p>Lo primero que se debe hacer para poder hacer uso de dicha función es instalar y cargar la librería.</p>
 <p>El siguiente conjunto de datos contiene el número de localidades rurales y urbanas por municipio de la Ciudad de México. Como es posible observar, algunos municipios aparecen más de una vez en el marco de datos, esto se debe a que cada municipio puede tener ambos ámbitos, rural y urbano. Para hacer que el conjunto de datos sea ordenado, es necesario que cada observación aparezca una sola vez por renglón y cada una de las categorías (rural y urbano) de la variable “Ámbito” deberá ocupar el lugar de una columna.</p>
 <p>El siguiente código muestra cómo convertir los datos no ordenados en un conjunto ordenado.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introducción-a-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb49-2"><a href="introducción-a-r.html#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-3"><a href="introducción-a-r.html#cb49-3" aria-hidden="true" tabindex="-1"></a>Resumen <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/loc_mun_cdmx.rds&quot;</span>)</span>
-<span id="cb49-4"><a href="introducción-a-r.html#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="introducción-a-r.html#cb49-5" aria-hidden="true" tabindex="-1"></a>Resumen <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb49-6"><a href="introducción-a-r.html#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> Ambito, </span>
-<span id="cb49-7"><a href="introducción-a-r.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span>  Total_localidades</span>
-<span id="cb49-8"><a href="introducción-a-r.html#cb49-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introducción-a-r.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb49-2"><a href="introducción-a-r.html#cb49-2" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="introducción-a-r.html#cb49-3" tabindex="-1"></a>Resumen <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/loc_mun_cdmx.rds&quot;</span>)</span>
+<span id="cb49-4"><a href="introducción-a-r.html#cb49-4" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="introducción-a-r.html#cb49-5" tabindex="-1"></a>Resumen <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(</span>
+<span id="cb49-6"><a href="introducción-a-r.html#cb49-6" tabindex="-1"></a>  <span class="at">names_from =</span> Ambito, </span>
+<span id="cb49-7"><a href="introducción-a-r.html#cb49-7" tabindex="-1"></a>  <span class="at">values_from =</span>  Total_localidades</span>
+<span id="cb49-8"><a href="introducción-a-r.html#cb49-8" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 16 × 3
 ##    NOM_MUN                Rural Urbano
 ##    &lt;chr&gt;                  &lt;int&gt;  &lt;int&gt;
@@ -1157,8 +1179,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## 16 Venustiano Carranza       NA      1</code></pre>
 <p>En la tabla actual existe ahora un y solo un registro por cada observación (nombre de municipio en este caso). El valor que le corresponde a cada una de las columnas creadas es la frecuencia absoluta de localidades que tienen la característica “Rural” y “Urbano” respectivamente.</p>
 <p>Pero… ¿qué pasa cuando no existen todos los valores en ambas columnas? Si no se especifica la manera de llenar los datos faltantes, estos contendrán NAs. Siempre se puede elegir el caracter o número con el cual se imputan los datos faltantes.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introducción-a-r.html#cb51-1" aria-hidden="true" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="introducción-a-r.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introducción-a-r.html#cb51-1" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="introducción-a-r.html#cb51-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen)</span></code></pre></div>
 <pre><code>## # A tibble: 19 × 12
 ##    fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW
 ##    &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
@@ -1181,8 +1203,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## 17 4863        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA
 ## 18 4864        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA
 ## 19 4865        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introducción-a-r.html#cb53-1" aria-hidden="true" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span></span>
-<span id="cb53-2"><a href="introducción-a-r.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen, <span class="at">values_fill =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introducción-a-r.html#cb53-1" tabindex="-1"></a>fish_encounters <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a href="introducción-a-r.html#cb53-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> station, <span class="at">values_from =</span> seen, <span class="at">values_fill =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 19 × 12
 ##    fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW
 ##    &lt;fct&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
@@ -1211,7 +1233,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <li><p>Rellena los datos faltantes con ceros.</p></li>
 </ol>
 <p>En caso de que existan múltiples columnas que se desean dispersar mediante el pivote de una columna con múltiples categorías, es posible especificar tal re estructuración a través del siguiente código.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introducción-a-r.html#cb55-1" aria-hidden="true" tabindex="-1"></a>us_rent_income <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(NAME)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="introducción-a-r.html#cb55-1" tabindex="-1"></a>us_rent_income <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(NAME)</span></code></pre></div>
 <pre><code>## # A tibble: 104 × 5
 ##    GEOID NAME       variable estimate   moe
 ##    &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -1226,8 +1248,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  9 06    California income      29454   109
 ## 10 06    California rent         1358     3
 ## # ℹ 94 more rows</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introducción-a-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a>us_rent_income <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a href="introducción-a-r.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe))</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introducción-a-r.html#cb57-1" tabindex="-1"></a>us_rent_income <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="introducción-a-r.html#cb57-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> <span class="fu">c</span>(estimate, moe))</span></code></pre></div>
 <pre><code>## # A tibble: 52 × 6
 ##    GEOID NAME                 estimate_income estimate_rent moe_income moe_rent
 ##    &lt;chr&gt; &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
@@ -1250,8 +1272,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <li><p>Ordena los registros de forma descendente de acuerdo con el total de localidades rural y urbano.</p></li>
 </ol>
 <p>Adicionalmente, se puede especificar una función de agregación que operara antes de acomodar los datos en las respectivas columnas indicadas. Un ejemplo de funciones agregadas en la re estructuración de tabla se muestra a continuación, donde se muestra la media de los valores en las categorías <em>tension</em> y <em>breaks</em>.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introducción-a-r.html#cb59-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="ot">&lt;-</span> warpbreaks[<span class="fu">c</span>(<span class="st">&quot;wool&quot;</span>, <span class="st">&quot;tension&quot;</span>, <span class="st">&quot;breaks&quot;</span>)] <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb59-2"><a href="introducción-a-r.html#cb59-2" aria-hidden="true" tabindex="-1"></a>warpbreaks</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introducción-a-r.html#cb59-1" tabindex="-1"></a>warpbreaks <span class="ot">&lt;-</span> warpbreaks[<span class="fu">c</span>(<span class="st">&quot;wool&quot;</span>, <span class="st">&quot;tension&quot;</span>, <span class="st">&quot;breaks&quot;</span>)] <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb59-2"><a href="introducción-a-r.html#cb59-2" tabindex="-1"></a>warpbreaks</span></code></pre></div>
 <pre><code>## # A tibble: 54 × 3
 ##    wool  tension breaks
 ##    &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;
@@ -1266,12 +1288,12 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ##  9 A     L           67
 ## 10 A     M           18
 ## # ℹ 44 more rows</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introducción-a-r.html#cb61-1" aria-hidden="true" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a href="introducción-a-r.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb61-3"><a href="introducción-a-r.html#cb61-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> wool,</span>
-<span id="cb61-4"><a href="introducción-a-r.html#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> breaks,</span>
-<span id="cb61-5"><a href="introducción-a-r.html#cb61-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_fn =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> T)</span>
-<span id="cb61-6"><a href="introducción-a-r.html#cb61-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introducción-a-r.html#cb61-1" tabindex="-1"></a>warpbreaks <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="introducción-a-r.html#cb61-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb61-3"><a href="introducción-a-r.html#cb61-3" tabindex="-1"></a>    <span class="at">names_from =</span> wool,</span>
+<span id="cb61-4"><a href="introducción-a-r.html#cb61-4" tabindex="-1"></a>    <span class="at">values_from =</span> breaks,</span>
+<span id="cb61-5"><a href="introducción-a-r.html#cb61-5" tabindex="-1"></a>    <span class="at">values_fn =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> T)</span>
+<span id="cb61-6"><a href="introducción-a-r.html#cb61-6" tabindex="-1"></a>  )</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   tension     A     B
 ##   &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -1290,7 +1312,7 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <h3><span class="header-section-number">2.5.2</span> Pivote vertical<a href="introducción-a-r.html#pivote-vertical" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><em>pivot_longer()</em> es podría ser la función inversa de la anterior, se necesita comúnmente para ordenar los conjuntos de datos capturados en crudo, ya que a menudo no son capturados acorde a las mejores estructuras para facilitar el análisis.</p>
 <p>El conjunto de datos <em>relig_income</em> almacena recuentos basados en una encuesta que (entre otras cosas) preguntó a las personas sobre su religión e ingresos anuales:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="introducción-a-r.html#cb63-1" aria-hidden="true" tabindex="-1"></a>relig_income</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="introducción-a-r.html#cb63-1" tabindex="-1"></a>relig_income</span></code></pre></div>
 <pre><code>## # A tibble: 18 × 11
 ##    religion `&lt;$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
 ##    &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
@@ -1322,8 +1344,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <li><p>count almacenado en los valores de las celdas.</p></li>
 </ol>
 <p>Para ordenarlo usamos <em>pivot_longer()</em>:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="introducción-a-r.html#cb65-1" aria-hidden="true" tabindex="-1"></a>relig_income <span class="sc">%&gt;%</span> </span>
-<span id="cb65-2"><a href="introducción-a-r.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>religion, <span class="at">names_to =</span> <span class="st">&quot;income&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="introducción-a-r.html#cb65-1" tabindex="-1"></a>relig_income <span class="sc">%&gt;%</span> </span>
+<span id="cb65-2"><a href="introducción-a-r.html#cb65-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>religion, <span class="at">names_to =</span> <span class="st">&quot;income&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 180 × 3
 ##    religion income             count
 ##    &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;
@@ -1346,16 +1368,16 @@ Figure 2.1: Páneles de trabajo de Rstudio
 </ul>
 </div>
 <div id="unión-de-columnas" class="section level3 hasAnchor" number="2.5.3">
-<h3><span class="header-section-number">2.5.3</span> Unión de columnas<a href="introducción-a-r.html#unión-de-columnas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.5.3</span> Unión de columnas<a href="#uni%C3%B3n-de-columnas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Es común que en los conjuntos de datos exista información esparcida en distintas columnas que sería deseable <strong>(en muy pocas ocasiones)</strong> tenerlas en una sola columna. Algunos ejemplos de esta situación deseable son las fechas y claves geoestadísticas. La función <em>unite()</em> sirve para <strong>concatenar el contenido de columnas</strong> mediante un separador elegible.</p>
 <p>Se usará la variable de la clave geoestadística de localidades del país como ejemplo.</p>
 <p>El formato para las claves geoestadísticas para estado, municipio y localidad son claves alfanuméricas que contienen 2, 3 y 4 caracteres respectivamente. Es indispensable que al trabajar con claves geoestadísticas, las claves estén en su formato original. A continuación se hará la homologación de las claves para usar la función <em>unite()</em>.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="introducción-a-r.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb67-2"><a href="introducción-a-r.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb67-3"><a href="introducción-a-r.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb67-4"><a href="introducción-a-r.html#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-5"><a href="introducción-a-r.html#cb67-5" aria-hidden="true" tabindex="-1"></a>Datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/Margin CONAPO.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Margin CONAPO&quot;</span>)</span>
-<span id="cb67-6"><a href="introducción-a-r.html#cb67-6" aria-hidden="true" tabindex="-1"></a>Datos</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="introducción-a-r.html#cb67-1" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb67-2"><a href="introducción-a-r.html#cb67-2" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb67-3"><a href="introducción-a-r.html#cb67-3" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb67-4"><a href="introducción-a-r.html#cb67-4" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="introducción-a-r.html#cb67-5" tabindex="-1"></a>Datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/Margin CONAPO.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="st">&quot;Margin CONAPO&quot;</span>)</span>
+<span id="cb67-6"><a href="introducción-a-r.html#cb67-6" tabindex="-1"></a>Datos</span></code></pre></div>
 <pre><code>## # A tibble: 107,458 × 21
 ##      ENT NOM_ENT         MUN NOM_MUN   LOC NOM_LOC POB_TOT    VPH ANAL10 SPRIM10
 ##    &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
@@ -1374,12 +1396,12 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## #   PROM_OCC10 &lt;dbl&gt;, PISOTIE10 &lt;dbl&gt;, SREFRI10 &lt;dbl&gt;, IM_2010 &lt;dbl&gt;,
 ## #   GM_2010 &lt;chr&gt;, IMC0A100 &lt;dbl&gt;, LUG_NAL &lt;dbl&gt;, LUG_EDO &lt;dbl&gt;</code></pre>
 <p>Como puede apreciarse en la tabla anterior, las claves de los campos <em>Ent</em>, <em>Mun</em> y <em>Loc</em> aparecen como numéricos. La estructura deseada para estos campos es de tipo alfanumérico y de longitud 2, 3 y 4 respectivamente. Para lograr esta estructura de datos, es necesario concatenar tantos ceros como sean necesarios antes del valor actual hasta lograr la longitud deseada.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="introducción-a-r.html#cb69-1" aria-hidden="true" tabindex="-1"></a>Datos2 <span class="ot">&lt;-</span> Datos <span class="sc">%&gt;%</span> <span class="fu">select</span>(ENT, MUN, LOC)</span>
-<span id="cb69-2"><a href="introducción-a-r.html#cb69-2" aria-hidden="true" tabindex="-1"></a>Datos2<span class="sc">$</span>ENT <span class="sc">%&lt;&gt;%</span> <span class="fu">str_pad</span>(<span class="at">width =</span> <span class="dv">2</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>, <span class="at">pad =</span> <span class="st">&quot;0&quot;</span>)</span>
-<span id="cb69-3"><a href="introducción-a-r.html#cb69-3" aria-hidden="true" tabindex="-1"></a>Datos2<span class="sc">$</span>MUN <span class="sc">%&lt;&gt;%</span> <span class="fu">str_pad</span>(<span class="at">width =</span> <span class="dv">3</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>, <span class="at">pad =</span> <span class="st">&quot;0&quot;</span>)</span>
-<span id="cb69-4"><a href="introducción-a-r.html#cb69-4" aria-hidden="true" tabindex="-1"></a>Datos2<span class="sc">$</span>LOC <span class="sc">%&lt;&gt;%</span> <span class="fu">str_pad</span>(<span class="at">width =</span> <span class="dv">4</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>, <span class="at">pad =</span> <span class="st">&quot;0&quot;</span>)</span>
-<span id="cb69-5"><a href="introducción-a-r.html#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-6"><a href="introducción-a-r.html#cb69-6" aria-hidden="true" tabindex="-1"></a>Datos2 <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="introducción-a-r.html#cb69-1" tabindex="-1"></a>Datos2 <span class="ot">&lt;-</span> Datos <span class="sc">%&gt;%</span> <span class="fu">select</span>(ENT, MUN, LOC)</span>
+<span id="cb69-2"><a href="introducción-a-r.html#cb69-2" tabindex="-1"></a>Datos2<span class="sc">$</span>ENT <span class="sc">%&lt;&gt;%</span> <span class="fu">str_pad</span>(<span class="at">width =</span> <span class="dv">2</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>, <span class="at">pad =</span> <span class="st">&quot;0&quot;</span>)</span>
+<span id="cb69-3"><a href="introducción-a-r.html#cb69-3" tabindex="-1"></a>Datos2<span class="sc">$</span>MUN <span class="sc">%&lt;&gt;%</span> <span class="fu">str_pad</span>(<span class="at">width =</span> <span class="dv">3</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>, <span class="at">pad =</span> <span class="st">&quot;0&quot;</span>)</span>
+<span id="cb69-4"><a href="introducción-a-r.html#cb69-4" tabindex="-1"></a>Datos2<span class="sc">$</span>LOC <span class="sc">%&lt;&gt;%</span> <span class="fu">str_pad</span>(<span class="at">width =</span> <span class="dv">4</span>, <span class="at">side =</span> <span class="st">&quot;left&quot;</span>, <span class="at">pad =</span> <span class="st">&quot;0&quot;</span>)</span>
+<span id="cb69-5"><a href="introducción-a-r.html#cb69-5" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="introducción-a-r.html#cb69-6" tabindex="-1"></a>Datos2 <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##   ENT   MUN   LOC  
 ##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
@@ -1388,9 +1410,9 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## 3 01    001   0104 
 ## 4 01    001   0106 
 ## 5 01    001   0112</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="introducción-a-r.html#cb71-1" aria-hidden="true" tabindex="-1"></a>Datos2 <span class="sc">%&gt;%</span> </span>
-<span id="cb71-2"><a href="introducción-a-r.html#cb71-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">unite</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;ENT&quot;</span>,<span class="st">&quot;MUN&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep=</span><span class="st">&quot;&quot;</span>, <span class="at">remove =</span> F) <span class="sc">%&gt;%</span> </span>
-<span id="cb71-3"><a href="introducción-a-r.html#cb71-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="introducción-a-r.html#cb71-1" tabindex="-1"></a>Datos2 <span class="sc">%&gt;%</span> </span>
+<span id="cb71-2"><a href="introducción-a-r.html#cb71-2" tabindex="-1"></a> <span class="fu">unite</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;ENT&quot;</span>,<span class="st">&quot;MUN&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep=</span><span class="st">&quot;&quot;</span>, <span class="at">remove =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb71-3"><a href="introducción-a-r.html#cb71-3" tabindex="-1"></a> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 4
 ##   CVE_GEO   ENT   MUN   LOC  
 ##   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
@@ -1399,9 +1421,9 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## 3 010010104 01    001   0104 
 ## 4 010010106 01    001   0106 
 ## 5 010010112 01    001   0112</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="introducción-a-r.html#cb73-1" aria-hidden="true" tabindex="-1"></a>Datos2 <span class="sc">%&gt;%</span> </span>
-<span id="cb73-2"><a href="introducción-a-r.html#cb73-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">unite</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;ENT&quot;</span>,<span class="st">&quot;MUN&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep=</span><span class="st">&quot;/&quot;</span>,<span class="at">remove =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb73-3"><a href="introducción-a-r.html#cb73-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="introducción-a-r.html#cb73-1" tabindex="-1"></a>Datos2 <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="introducción-a-r.html#cb73-2" tabindex="-1"></a> <span class="fu">unite</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;ENT&quot;</span>,<span class="st">&quot;MUN&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep=</span><span class="st">&quot;/&quot;</span>,<span class="at">remove =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="introducción-a-r.html#cb73-3" tabindex="-1"></a> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 1
 ##   CVE_GEO    
 ##   &lt;chr&gt;      
@@ -1416,8 +1438,8 @@ Figure 2.1: Páneles de trabajo de Rstudio
 <div id="separador-de-columnas" class="section level3 hasAnchor" number="2.5.4">
 <h3><span class="header-section-number">2.5.4</span> Separador de columnas<a href="introducción-a-r.html#separador-de-columnas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Los procesos que se han visto hasta ahora han tenido cada uno una función inversa, este es también el caso de la función <em>unite</em> que tiene por objetivo unir dos o más columnas en una. La función <em>separate()</em> separará una columna en dos o más dependiendo de la longitud que tenga y de las especificaciones de separación.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="introducción-a-r.html#cb75-1" aria-hidden="true" tabindex="-1"></a>Datos_unite1 <span class="ot">&lt;-</span> Datos2 <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;ENT&quot;</span>,<span class="st">&quot;MUN&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, <span class="at">remove =</span> T) </span>
-<span id="cb75-2"><a href="introducción-a-r.html#cb75-2" aria-hidden="true" tabindex="-1"></a>Datos_unite1 <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="introducción-a-r.html#cb75-1" tabindex="-1"></a>Datos_unite1 <span class="ot">&lt;-</span> Datos2 <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;ENT&quot;</span>,<span class="st">&quot;MUN&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;&quot;</span>, <span class="at">remove =</span> T) </span>
+<span id="cb75-2"><a href="introducción-a-r.html#cb75-2" tabindex="-1"></a>Datos_unite1 <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>) </span></code></pre></div>
 <pre><code>## # A tibble: 5 × 1
 ##   CVE_GEO  
 ##   &lt;chr&gt;    
@@ -1426,9 +1448,9 @@ Figure 2.1: Páneles de trabajo de Rstudio
 ## 3 010010104
 ## 4 010010106
 ## 5 010010112</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="introducción-a-r.html#cb77-1" aria-hidden="true" tabindex="-1"></a>Datos_unite1 <span class="sc">%&gt;%</span> </span>
-<span id="cb77-2"><a href="introducción-a-r.html#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;EDO&quot;</span>,<span class="st">&quot;MUNI&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>), <span class="at">remove=</span>F) <span class="sc">%&gt;%</span> </span>
-<span id="cb77-3"><a href="introducción-a-r.html#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="introducción-a-r.html#cb77-1" tabindex="-1"></a>Datos_unite1 <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="introducción-a-r.html#cb77-2" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">&quot;CVE_GEO&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;EDO&quot;</span>,<span class="st">&quot;MUNI&quot;</span>,<span class="st">&quot;LOC&quot;</span>), <span class="at">sep =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>), <span class="at">remove=</span>F) <span class="sc">%&gt;%</span> </span>
+<span id="cb77-3"><a href="introducción-a-r.html#cb77-3" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 4
 ##   CVE_GEO   EDO   MUNI  LOC  
 ##   &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
@@ -1490,42 +1512,42 @@ $('.pipehover_select_one_row tr').hover(function() {
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["intro2_ds_ml_r.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["intro2_ds_ml_r.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
