@@ -10,11 +10,11 @@
 
 R puede ser fácilmente descargado de forma gratuita desde el sitio oficial <http://www.r-project.org/>. R está disponible para las plataformas Windows, Mac y Linux.
 
-## ¿Qué es RStudio?
+## ¿Qué es Positron?
 
-*RStudio* es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) para R. Este permite y facilita el desarrollo y ejecución de sintaxis para código en *R*, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. *RStudio* está disponible para Windows, Mac y Linux o para navegadores conectados a *RStudio Server o RStudio Server Pro*.
+*Positron* es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) creado por Posit (antes Rstudio) para R y Python. Este permite y facilita el desarrollo y ejecución de sintaxis para código en *R* y *python*, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. *Positron* está disponible para Windows, Mac y Linux.
 
-Algunas de las principales características de Rstudio que lo hacen una gran herramienta para trabajar en *R*, son:
+Algunas de las principales características de Positron que lo hacen una gran herramienta para trabajar, son:
 
 -   Auto completado de código
 -   Sangría inteligente
@@ -27,10 +27,10 @@ Algunas de las principales características de Rstudio que lo hacen una gran her
 -   Depurador interactivo para corregir errores
 -   Conección con Rmarkwon y Sweave
 
-La siguiente imagen muestra la forma en la que está estructurado RStudio. El orden de los páneles puede ser elegido por el usuario, así como las características de tipo de letra, tamaño y color de fondo, entre otras características.
+La siguiente imagen muestra la forma en la que está estructurado Positron. El orden de los páneles puede ser elegido por el usuario, así como las características de tipo de letra, tamaño y color de fondo, entre otras características.
 
-```{r, echo = F, fig.align = "center", fig.cap= "Páneles de trabajo de Rstudio"}
-knitr::include_graphics("img/02-intro2r/rstudio.png")
+```{r, echo = F, fig.align = "center", fig.cap= "Páneles de trabajo de Positron"}
+knitr::include_graphics("img/02-intro2r/02_rstudio_py.png")
 ```
 
 

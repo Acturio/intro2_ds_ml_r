@@ -192,8 +192,7 @@ receta_casas <- recipe(
   step_relevel(Exter_Cond, ref_level = "Good") %>% 
   step_normalize(all_numeric_predictors()) %>%
   step_dummy(all_nominal_predictors()) %>% 
-  step_interact(~ matches("Bsmt_Cond"):TotRms_AbvGrd) %>% 
-  prep()
+  step_interact(~ matches("Bsmt_Cond"):TotRms_AbvGrd) 
 
 receta_casas
 ```
@@ -454,8 +453,7 @@ telco_rec <- recipe(
   step_mutate(Contract = as.factor(Contract)) %>% 
   step_impute_median(all_numeric_predictors()) %>% 
   step_normalize(all_numeric_predictors()) %>% 
-  step_dummy(all_nominal_predictors()) %>% 
-  prep()
+  step_dummy(all_nominal_predictors()) 
 
 telco_rec
 ```
@@ -609,8 +607,8 @@ results_cla <- predict(final_knn_model_cla, telco_test, type = 'prob') %>%
 results_cla
 
 bind_rows(
-  roc_auc(results_cla, truth = Churn, estimate = .pred_Yes),
-  pr_auc(results_cla, truth = Churn, estimate = .pred_Yes)
+  roc_auc(results_cla, truth = Churn, .pred_Yes),
+  pr_auc(results_cla, truth = Churn, .pred_Yes)
 )
 ```
 
@@ -619,14 +617,14 @@ bind_rows(
 pr_curve_data <- pr_curve(
   results_cla, 
   truth = Churn, 
-  estimate = .pred_Yes
+  .pred_Yes
   )
 pr_curve_data
 
 roc_curve_data <- roc_curve(
   results_cla, 
   truth = Churn, 
-  estimate = .pred_Yes
+  .pred_Yes
   )
 roc_curve_data
 ```
