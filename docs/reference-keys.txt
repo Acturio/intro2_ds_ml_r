@@ -24,11 +24,6 @@ ordenar-registros
 agregar-modificar
 resumen-estadístico
 agrupamiento
-orden-y-estructura
-pivote-horizontal
-pivote-vertical
-unión-de-columnas
-separador-de-columnas
 visualización
 eda-análisis-exploratorio-de-datos
 geda-análisis-exploratorio-de-datos-gráficos

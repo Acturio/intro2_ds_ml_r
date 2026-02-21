@@ -489,216 +489,216 @@ En este [link](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling
 :::
 
 
-## Orden y estructura
+<!-- ## Orden y estructura -->
 
-```{=tex}
-\begin{center}
-"Las familias felices son todas iguales, cada familia infeliz es infeliz  a su propio modo."
-\end{center}
-```
-```{=tex}
-\begin{flushright}
-\text{- Leo Tolstoy}
-\end{flushright}
-```
-Un conjunto de datos puede ser representado de muchas maneras distintas y contener en todos los casos la misma información. Sin embargo, no todos los modos en que se presenta la información resulta óptimo para su procesamiento y análisis. Los conjuntos de datos ordenados serán más fáciles de trabajar y analizar.
+<!-- ```{=tex} -->
+<!-- \begin{center} -->
+<!-- "Las familias felices son todas iguales, cada familia infeliz es infeliz  a su propio modo." -->
+<!-- \end{center} -->
+<!-- ``` -->
+<!-- ```{=tex} -->
+<!-- \begin{flushright} -->
+<!-- \text{- Leo Tolstoy} -->
+<!-- \end{flushright} -->
+<!-- ``` -->
+<!-- Un conjunto de datos puede ser representado de muchas maneras distintas y contener en todos los casos la misma información. Sin embargo, no todos los modos en que se presenta la información resulta óptimo para su procesamiento y análisis. Los conjuntos de datos ordenados serán más fáciles de trabajar y analizar. -->
 
-Algunas de las características principales que presentan los conjuntos de datos ordenados son las siguientes:
+<!-- Algunas de las características principales que presentan los conjuntos de datos ordenados son las siguientes: -->
 
-1.  Cada variable debe tener su propia columna.
+<!-- 1.  Cada variable debe tener su propia columna. -->
 
-2.  Cada observación debe tener su propio renglón.
+<!-- 2.  Cada observación debe tener su propio renglón. -->
 
-3.  Cada valor debe tener su propia celda.
+<!-- 3.  Cada valor debe tener su propia celda. -->
 
-```{r echo=FALSE,fig.align='center', out.width='700pt'}
-knitr::include_graphics("img/04-tidyverse/tidy-1.png")
-```
+<!-- ```{r echo=FALSE,fig.align='center', out.width='700pt'} -->
+<!-- knitr::include_graphics("img/04-tidyverse/tidy-1.png") -->
+<!-- ``` -->
 
-La figura anterior muestra la estructura de orden que debe tener un conjunto de datos. A pesar de que pueda parecer intuitivo y sencillo, en la práctica es considerable el número de conjuntos de datos desordenados. La limpieza y ordenamiento debe ser trabajado de forma impecable a fin de que puedan realizarse buenas prácticas. El tiempo de limpieza y ordenamiento varía mucho dependiendo de la dimensión del conjunto de datos.
+<!-- La figura anterior muestra la estructura de orden que debe tener un conjunto de datos. A pesar de que pueda parecer intuitivo y sencillo, en la práctica es considerable el número de conjuntos de datos desordenados. La limpieza y ordenamiento debe ser trabajado de forma impecable a fin de que puedan realizarse buenas prácticas. El tiempo de limpieza y ordenamiento varía mucho dependiendo de la dimensión del conjunto de datos. -->
 
-Algunos de los principales problemas que pueden tener los conjuntos de datos no ordenados son:
+<!-- Algunos de los principales problemas que pueden tener los conjuntos de datos no ordenados son: -->
 
--   Una variable puede estar dispersa en múltiples columnas
--   Una observación puede estar esparcida en múltiples renglones
+<!-- -   Una variable puede estar dispersa en múltiples columnas -->
+<!-- -   Una observación puede estar esparcida en múltiples renglones -->
 
-La paquetería *tidyr* cuenta con funciones para resolver dichos problemas. Entre las principales funciones que tiene la paquetería, se encuentran *pivot_longer()*, *pivot_wider()*, *separate()* y *unite()*, mismas que se analizarán a continuación.
+<!-- La paquetería *tidyr* cuenta con funciones para resolver dichos problemas. Entre las principales funciones que tiene la paquetería, se encuentran *pivot_longer()*, *pivot_wider()*, *separate()* y *unite()*, mismas que se analizarán a continuación. -->
 
-### Pivote horizontal
+<!-- ### Pivote horizontal -->
 
-La función *pivot_wider()* resulta muy útil a la hora de organizar los datos. Su función consiste en **dispersar una variable clave en múltiples columnas**.
+<!-- La función *pivot_wider()* resulta muy útil a la hora de organizar los datos. Su función consiste en **dispersar una variable clave en múltiples columnas**. -->
 
-Lo primero que se debe hacer para poder hacer uso de dicha función es instalar y cargar la librería.
+<!-- Lo primero que se debe hacer para poder hacer uso de dicha función es instalar y cargar la librería. -->
 
-El siguiente conjunto de datos contiene el número de localidades rurales y urbanas por municipio de la Ciudad de México. Como es posible observar, algunos municipios aparecen más de una vez en el marco de datos, esto se debe a que cada municipio puede tener ambos ámbitos, rural y urbano. Para hacer que el conjunto de datos sea ordenado, es necesario que cada observación aparezca una sola vez por renglón y cada una de las categorías (rural y urbano) de la variable "Ámbito" deberá ocupar el lugar de una columna.
+<!-- El siguiente conjunto de datos contiene el número de localidades rurales y urbanas por municipio de la Ciudad de México. Como es posible observar, algunos municipios aparecen más de una vez en el marco de datos, esto se debe a que cada municipio puede tener ambos ámbitos, rural y urbano. Para hacer que el conjunto de datos sea ordenado, es necesario que cada observación aparezca una sola vez por renglón y cada una de las categorías (rural y urbano) de la variable "Ámbito" deberá ocupar el lugar de una columna. -->
 
-El siguiente código muestra cómo convertir los datos no ordenados en un conjunto ordenado.
+<!-- El siguiente código muestra cómo convertir los datos no ordenados en un conjunto ordenado. -->
 
-```{r}
-library(tidyr)
+<!-- ```{r} -->
+<!-- library(tidyr) -->
 
-Resumen <- readRDS("data/loc_mun_cdmx.rds")
+<!-- Resumen <- readRDS("data/loc_mun_cdmx.rds") -->
 
-Resumen %>% pivot_wider(
-  names_from = Ambito, 
-  values_from =  Total_localidades
-  )
-```
+<!-- Resumen %>% pivot_wider( -->
+<!--   names_from = Ambito,  -->
+<!--   values_from =  Total_localidades -->
+<!--   ) -->
+<!-- ``` -->
 
-En la tabla actual existe ahora un y solo un registro por cada observación (nombre de municipio en este caso). El valor que le corresponde a cada una de las columnas creadas es la frecuencia absoluta de localidades que tienen la característica "Rural" y "Urbano" respectivamente.
+<!-- En la tabla actual existe ahora un y solo un registro por cada observación (nombre de municipio en este caso). El valor que le corresponde a cada una de las columnas creadas es la frecuencia absoluta de localidades que tienen la característica "Rural" y "Urbano" respectivamente. -->
 
-Pero... ¿qué pasa cuando no existen todos los valores en ambas columnas? Si no se especifica la manera de llenar los datos faltantes, estos contendrán NAs. Siempre se puede elegir el caracter o número con el cual se imputan los datos faltantes.
+<!-- Pero... ¿qué pasa cuando no existen todos los valores en ambas columnas? Si no se especifica la manera de llenar los datos faltantes, estos contendrán NAs. Siempre se puede elegir el caracter o número con el cual se imputan los datos faltantes. -->
 
-```{r}
-fish_encounters %>%
-  pivot_wider(names_from = station, values_from = seen)
-```
+<!-- ```{r} -->
+<!-- fish_encounters %>% -->
+<!--   pivot_wider(names_from = station, values_from = seen) -->
+<!-- ``` -->
 
-```{r}
-fish_encounters %>%
-  pivot_wider(names_from = station, values_from = seen, values_fill = 0)
-```
+<!-- ```{r} -->
+<!-- fish_encounters %>% -->
+<!--   pivot_wider(names_from = station, values_from = seen, values_fill = 0) -->
+<!-- ``` -->
 
-**Ejercicio:**
+<!-- **Ejercicio:** -->
 
-1) Realiza un pivote horizontal a través del ámbito y el total de localidades. 
+<!-- 1) Realiza un pivote horizontal a través del ámbito y el total de localidades.  -->
 
-2) Rellena los datos faltantes con ceros.
+<!-- 2) Rellena los datos faltantes con ceros. -->
 
 
-En caso de que existan múltiples columnas que se desean dispersar mediante el pivote de una columna con múltiples categorías, es posible especificar tal re estructuración a través del siguiente código.
+<!-- En caso de que existan múltiples columnas que se desean dispersar mediante el pivote de una columna con múltiples categorías, es posible especificar tal re estructuración a través del siguiente código. -->
 
-```{r}
-us_rent_income %>% arrange(NAME)
-us_rent_income %>%
-  pivot_wider(names_from = variable, values_from = c(estimate, moe))
-```
+<!-- ```{r} -->
+<!-- us_rent_income %>% arrange(NAME) -->
+<!-- us_rent_income %>% -->
+<!--   pivot_wider(names_from = variable, values_from = c(estimate, moe)) -->
+<!-- ``` -->
 
-**Ejercicio:**
+<!-- **Ejercicio:** -->
 
-1) Agrupa los datos de localidades por ámbito
+<!-- 1) Agrupa los datos de localidades por ámbito -->
 
-2) Agrega una columna con el porcentaje de localidades por alcaldía
+<!-- 2) Agrega una columna con el porcentaje de localidades por alcaldía -->
 
-3) Realiza un pivote horizontal sobre el ámbito y las variables numéricas de total de localidades y su respectivo porcentaje creado en el paso anterior
+<!-- 3) Realiza un pivote horizontal sobre el ámbito y las variables numéricas de total de localidades y su respectivo porcentaje creado en el paso anterior -->
 
-4) Ordena los registros de forma descendente de acuerdo con el total de localidades rural y urbano.
+<!-- 4) Ordena los registros de forma descendente de acuerdo con el total de localidades rural y urbano. -->
 
-Adicionalmente, se puede especificar una función de agregación que operara antes de acomodar los datos en las respectivas columnas indicadas. Un ejemplo de funciones agregadas en la re estructuración de tabla se muestra a continuación, donde se muestra la media de los valores en las categorías *tension* y *breaks*.
+<!-- Adicionalmente, se puede especificar una función de agregación que operara antes de acomodar los datos en las respectivas columnas indicadas. Un ejemplo de funciones agregadas en la re estructuración de tabla se muestra a continuación, donde se muestra la media de los valores en las categorías *tension* y *breaks*. -->
 
-```{r}
-warpbreaks <- warpbreaks[c("wool", "tension", "breaks")] %>% as_tibble()
-warpbreaks
+<!-- ```{r} -->
+<!-- warpbreaks <- warpbreaks[c("wool", "tension", "breaks")] %>% as_tibble() -->
+<!-- warpbreaks -->
 
-warpbreaks %>%
-  pivot_wider(
-    names_from = wool,
-    values_from = breaks,
-    values_fn = ~mean(.x, na.rm = T)
-  )
-```
+<!-- warpbreaks %>% -->
+<!--   pivot_wider( -->
+<!--     names_from = wool, -->
+<!--     values_from = breaks, -->
+<!--     values_fn = ~mean(.x, na.rm = T) -->
+<!--   ) -->
+<!-- ``` -->
 
-**Ejercicio:**
+<!-- **Ejercicio:** -->
 
-1) Sobre el conjunto de localidades crea una variable con 5 categorías numéricas creadas aleatoriamente.
+<!-- 1) Sobre el conjunto de localidades crea una variable con 5 categorías numéricas creadas aleatoriamente. -->
 
-2) Elimina la columna con el nombre del municipio.
+<!-- 2) Elimina la columna con el nombre del municipio. -->
 
-3) Crea un pivote horizontal con el ámbito, sumando el total de localidades y rellenando con ceros los datos faltantes.
+<!-- 3) Crea un pivote horizontal con el ámbito, sumando el total de localidades y rellenando con ceros los datos faltantes. -->
 
-4) Ordena las categorías numéricas de forma ascendente.
+<!-- 4) Ordena las categorías numéricas de forma ascendente. -->
 
 
 
-### Pivote vertical
+<!-- ### Pivote vertical -->
 
-*pivot_longer()* es podría ser la función inversa de la anterior, se necesita comúnmente para ordenar los conjuntos de datos capturados en crudo, ya que a menudo no son capturados acorde a las mejores estructuras para facilitar el análisis.
+<!-- *pivot_longer()* es podría ser la función inversa de la anterior, se necesita comúnmente para ordenar los conjuntos de datos capturados en crudo, ya que a menudo no son capturados acorde a las mejores estructuras para facilitar el análisis. -->
 
-El conjunto de datos *relig_income* almacena recuentos basados en una encuesta que (entre otras cosas) preguntó a las personas sobre su religión e ingresos anuales:
+<!-- El conjunto de datos *relig_income* almacena recuentos basados en una encuesta que (entre otras cosas) preguntó a las personas sobre su religión e ingresos anuales: -->
 
-```{r}
-relig_income
-```
+<!-- ```{r} -->
+<!-- relig_income -->
+<!-- ``` -->
 
-¿Crees que ésta es la mejor estructura para la tabla? ¿Cómo imaginas que podría modificarse?
+<!-- ¿Crees que ésta es la mejor estructura para la tabla? ¿Cómo imaginas que podría modificarse? -->
 
-Este conjunto de datos contiene tres variables:
+<!-- Este conjunto de datos contiene tres variables: -->
 
-1)  religión, almacenada en las filas
+<!-- 1)  religión, almacenada en las filas -->
 
-2)  income repartidos entre los nombres de columna
+<!-- 2)  income repartidos entre los nombres de columna -->
 
-3)  count almacenado en los valores de las celdas.
+<!-- 3)  count almacenado en los valores de las celdas. -->
 
-Para ordenarlo usamos *pivot_longer()*:
+<!-- Para ordenarlo usamos *pivot_longer()*: -->
 
-```{r}
-relig_income %>% 
-  pivot_longer(cols = -religion, names_to = "income", values_to = "count")
-```
+<!-- ```{r} -->
+<!-- relig_income %>%  -->
+<!--   pivot_longer(cols = -religion, names_to = "income", values_to = "count") -->
+<!-- ``` -->
 
--   El primer argumento es el conjunto de datos para remodelar, relig_income.
+<!-- -   El primer argumento es el conjunto de datos para remodelar, relig_income. -->
 
--   El segundo argumento describe qué columnas necesitan ser reformadas. En este caso, es cada columna aparte de religion.
+<!-- -   El segundo argumento describe qué columnas necesitan ser reformadas. En este caso, es cada columna aparte de religion. -->
 
--   El **names_to** da el nombre de la variable que se creará a partir de los datos almacenados en los nombres de columna, es decir, ingresos.
+<!-- -   El **names_to** da el nombre de la variable que se creará a partir de los datos almacenados en los nombres de columna, es decir, ingresos. -->
 
--   Los **values_to** dan el nombre de la variable que se creará a partir de los datos almacenados en el valor de la celda, es decir, count. Ni la columna names_to ni la values_to existen en relig_income, por lo que las proporcionamos como cadenas de caracteres entre comillas.
+<!-- -   Los **values_to** dan el nombre de la variable que se creará a partir de los datos almacenados en el valor de la celda, es decir, count. Ni la columna names_to ni la values_to existen en relig_income, por lo que las proporcionamos como cadenas de caracteres entre comillas. -->
 
-### Unión de columnas
+<!-- ### Unión de columnas -->
 
-Es común que en los conjuntos de datos exista información esparcida en distintas columnas que sería deseable **(en muy pocas ocasiones)** tenerlas en una sola columna. Algunos ejemplos de esta situación deseable son las fechas y claves geoestadísticas. La función *unite()* sirve para **concatenar el contenido de columnas** mediante un separador elegible.
+<!-- Es común que en los conjuntos de datos exista información esparcida en distintas columnas que sería deseable **(en muy pocas ocasiones)** tenerlas en una sola columna. Algunos ejemplos de esta situación deseable son las fechas y claves geoestadísticas. La función *unite()* sirve para **concatenar el contenido de columnas** mediante un separador elegible. -->
 
-Se usará la variable de la clave geoestadística de localidades del país como ejemplo.
+<!-- Se usará la variable de la clave geoestadística de localidades del país como ejemplo. -->
 
-El formato para las claves geoestadísticas para estado, municipio y localidad son claves alfanuméricas que contienen 2, 3 y 4 caracteres respectivamente. Es indispensable que al trabajar con claves geoestadísticas, las claves estén en su formato original. A continuación se hará la homologación de las claves para usar la función *unite()*.
+<!-- El formato para las claves geoestadísticas para estado, municipio y localidad son claves alfanuméricas que contienen 2, 3 y 4 caracteres respectivamente. Es indispensable que al trabajar con claves geoestadísticas, las claves estén en su formato original. A continuación se hará la homologación de las claves para usar la función *unite()*. -->
 
-```{R message=FALSE, warning=FALSE}
-library(magrittr)
-library(readxl)
-library(stringr)
+<!-- ```{R message=FALSE, warning=FALSE} -->
+<!-- library(magrittr) -->
+<!-- library(readxl) -->
+<!-- library(stringr) -->
 
-Datos <- read_excel("data/Margin CONAPO.xlsx", sheet = "Margin CONAPO")
-Datos
-```
+<!-- Datos <- read_excel("data/Margin CONAPO.xlsx", sheet = "Margin CONAPO") -->
+<!-- Datos -->
+<!-- ``` -->
 
-Como puede apreciarse en la tabla anterior, las claves de los campos *Ent*, *Mun* y *Loc* aparecen como numéricos. La estructura deseada para estos campos es de tipo alfanumérico y de longitud 2, 3 y 4 respectivamente. Para lograr esta estructura de datos, es necesario concatenar tantos ceros como sean necesarios antes del valor actual hasta lograr la longitud deseada.
+<!-- Como puede apreciarse en la tabla anterior, las claves de los campos *Ent*, *Mun* y *Loc* aparecen como numéricos. La estructura deseada para estos campos es de tipo alfanumérico y de longitud 2, 3 y 4 respectivamente. Para lograr esta estructura de datos, es necesario concatenar tantos ceros como sean necesarios antes del valor actual hasta lograr la longitud deseada. -->
 
-```{R}
-Datos2 <- Datos %>% select(ENT, MUN, LOC)
-Datos2$ENT %<>% str_pad(width = 2, side = "left", pad = "0")
-Datos2$MUN %<>% str_pad(width = 3, side = "left", pad = "0")
-Datos2$LOC %<>% str_pad(width = 4, side = "left", pad = "0")
+<!-- ```{R} -->
+<!-- Datos2 <- Datos %>% select(ENT, MUN, LOC) -->
+<!-- Datos2$ENT %<>% str_pad(width = 2, side = "left", pad = "0") -->
+<!-- Datos2$MUN %<>% str_pad(width = 3, side = "left", pad = "0") -->
+<!-- Datos2$LOC %<>% str_pad(width = 4, side = "left", pad = "0") -->
 
-Datos2 %>% head(5)
+<!-- Datos2 %>% head(5) -->
 
-Datos2 %>% 
- unite("CVE_GEO", c("ENT","MUN","LOC"), sep="", remove = F) %>% 
- head(5)
+<!-- Datos2 %>%  -->
+<!--  unite("CVE_GEO", c("ENT","MUN","LOC"), sep="", remove = F) %>%  -->
+<!--  head(5) -->
 
-Datos2 %>% 
- unite("CVE_GEO", c("ENT","MUN","LOC"), sep="/",remove = T) %>% 
- head(5)
-```
+<!-- Datos2 %>%  -->
+<!--  unite("CVE_GEO", c("ENT","MUN","LOC"), sep="/",remove = T) %>%  -->
+<!--  head(5) -->
+<!-- ``` -->
 
-En el código anterior se carga la librería *magrittr* para poder hacer uso del operador pipe doble "%\<\>%", que permite al igual que el operador pipe simple "%\>%", usar como argumento al primer elemento y mandarlo hacia la función definida, además de guardar el resultado final de la cadena de pipes en el argumento original que fue usado como insumo para la función. Es importante tener en cuenta que el dato será reescrito y no se podrá tener acceso a su información almacenada antes de ser usado el operador.
+<!-- En el código anterior se carga la librería *magrittr* para poder hacer uso del operador pipe doble "%\<\>%", que permite al igual que el operador pipe simple "%\>%", usar como argumento al primer elemento y mandarlo hacia la función definida, además de guardar el resultado final de la cadena de pipes en el argumento original que fue usado como insumo para la función. Es importante tener en cuenta que el dato será reescrito y no se podrá tener acceso a su información almacenada antes de ser usado el operador. -->
 
-Es opción del programador poder eliminar las variables originales que crearon la nueva variable o mantenerlas en el conjunto de datos. Esta opción está disponible en el parámetro *remove* de la función *unite()*.
+<!-- Es opción del programador poder eliminar las variables originales que crearon la nueva variable o mantenerlas en el conjunto de datos. Esta opción está disponible en el parámetro *remove* de la función *unite()*. -->
 
-### Separador de columnas
+<!-- ### Separador de columnas -->
 
-Los procesos que se han visto hasta ahora han tenido cada uno una función inversa, este es también el caso de la función *unite* que tiene por objetivo unir dos o más columnas en una. La función *separate()* separará una columna en dos o más dependiendo de la longitud que tenga y de las especificaciones de separación.
+<!-- Los procesos que se han visto hasta ahora han tenido cada uno una función inversa, este es también el caso de la función *unite* que tiene por objetivo unir dos o más columnas en una. La función *separate()* separará una columna en dos o más dependiendo de la longitud que tenga y de las especificaciones de separación. -->
 
-```{R}
-Datos_unite1 <- Datos2 %>% unite("CVE_GEO", c("ENT","MUN","LOC"), sep = "", remove = T) 
-Datos_unite1 %>% head(5) 
+<!-- ```{R} -->
+<!-- Datos_unite1 <- Datos2 %>% unite("CVE_GEO", c("ENT","MUN","LOC"), sep = "", remove = T)  -->
+<!-- Datos_unite1 %>% head(5)  -->
 
-Datos_unite1 %>% 
-  separate("CVE_GEO", c("EDO","MUNI","LOC"), sep = c(2, 5), remove=F) %>% 
-  head(5)
-```
+<!-- Datos_unite1 %>%  -->
+<!--   separate("CVE_GEO", c("EDO","MUNI","LOC"), sep = c(2, 5), remove=F) %>%  -->
+<!--   head(5) -->
+<!-- ``` -->
 
-Ya sea que se le especifique el número de caracteres que debe de contar para hacer un corte o que se le indique qué caracter debe identificar para hacer la separación, la función *separate()* puede dividir la columna indicada y crear nuevas a partir de la original.
+<!-- Ya sea que se le especifique el número de caracteres que debe de contar para hacer un corte o que se le indique qué caracter debe identificar para hacer la separación, la función *separate()* puede dividir la columna indicada y crear nuevas a partir de la original. -->
 
 
 

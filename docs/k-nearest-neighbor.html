@@ -200,13 +200,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.5" data-path="07-ml-knn.html"><a href="#resumen-estad%C3%ADstico"><i class="fa fa-check"></i><b>2.4.5</b> Resumen estadístico</a></li>
 <li class="chapter" data-level="2.4.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agrupamiento"><i class="fa fa-check"></i><b>2.4.6</b> Agrupamiento</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#orden-y-estructura"><i class="fa fa-check"></i><b>2.5</b> Orden y estructura</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-horizontal"><i class="fa fa-check"></i><b>2.5.1</b> Pivote horizontal</a></li>
-<li class="chapter" data-level="2.5.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-vertical"><i class="fa fa-check"></i><b>2.5.2</b> Pivote vertical</a></li>
-<li class="chapter" data-level="2.5.3" data-path="07-ml-knn.html"><a href="#uni%C3%B3n-de-columnas"><i class="fa fa-check"></i><b>2.5.3</b> Unión de columnas</a></li>
-<li class="chapter" data-level="2.5.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#separador-de-columnas"><i class="fa fa-check"></i><b>2.5.4</b> Separador de columnas</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="07-ml-knn.html"><a href="#visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3</b> Visualización</a>
 <ul>
@@ -477,80 +470,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="regresión-3" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> Regresión<a href="#regresi%C3%B3n-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Paso 1: Separación inicial de datos ( test, train <KFCV> )</strong></p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="k-nearest-neighbor.html#cb194-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb194-2"><a href="k-nearest-neighbor.html#cb194-2" tabindex="-1"></a></span>
-<span id="cb194-3"><a href="k-nearest-neighbor.html#cb194-3" tabindex="-1"></a><span class="fu">data</span>(ames)</span>
-<span id="cb194-4"><a href="k-nearest-neighbor.html#cb194-4" tabindex="-1"></a></span>
-<span id="cb194-5"><a href="k-nearest-neighbor.html#cb194-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4595</span>)</span>
-<span id="cb194-6"><a href="k-nearest-neighbor.html#cb194-6" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.75</span>)</span>
-<span id="cb194-7"><a href="k-nearest-neighbor.html#cb194-7" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
-<span id="cb194-8"><a href="k-nearest-neighbor.html#cb194-8" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(ames_split)</span>
-<span id="cb194-9"><a href="k-nearest-neighbor.html#cb194-9" tabindex="-1"></a>ames_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="k-nearest-neighbor.html#cb164-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb164-2"><a href="k-nearest-neighbor.html#cb164-2" tabindex="-1"></a></span>
+<span id="cb164-3"><a href="k-nearest-neighbor.html#cb164-3" tabindex="-1"></a><span class="fu">data</span>(ames)</span>
+<span id="cb164-4"><a href="k-nearest-neighbor.html#cb164-4" tabindex="-1"></a></span>
+<span id="cb164-5"><a href="k-nearest-neighbor.html#cb164-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4595</span>)</span>
+<span id="cb164-6"><a href="k-nearest-neighbor.html#cb164-6" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.75</span>)</span>
+<span id="cb164-7"><a href="k-nearest-neighbor.html#cb164-7" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
+<span id="cb164-8"><a href="k-nearest-neighbor.html#cb164-8" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(ames_split)</span>
+<span id="cb164-9"><a href="k-nearest-neighbor.html#cb164-9" tabindex="-1"></a>ames_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train)</span></code></pre></div>
 <p>Contando con datos de entrenamiento, procedemos a realizar el feature engineering para extraer las mejores características que permitirán realizar las estimaciones en el modelo.</p>
 <p><strong>Paso 2: Pre-procesamiento e ingeniería de variables</strong></p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="k-nearest-neighbor.html#cb195-1" tabindex="-1"></a>receta_casas <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
-<span id="cb195-2"><a href="k-nearest-neighbor.html#cb195-2" tabindex="-1"></a> Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> TotRms_AbvGrd <span class="sc">+</span> Exter_Cond <span class="sc">+</span> Bsmt_Cond <span class="sc">+</span></span>
-<span id="cb195-3"><a href="k-nearest-neighbor.html#cb195-3" tabindex="-1"></a>  Year_Sold <span class="sc">+</span> Year_Remod_Add, </span>
-<span id="cb195-4"><a href="k-nearest-neighbor.html#cb195-4" tabindex="-1"></a> <span class="at">data =</span> ames_train) <span class="sc">%&gt;%</span></span>
-<span id="cb195-5"><a href="k-nearest-neighbor.html#cb195-5" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
-<span id="cb195-6"><a href="k-nearest-neighbor.html#cb195-6" tabindex="-1"></a>    <span class="at">Age_House =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add,</span>
-<span id="cb195-7"><a href="k-nearest-neighbor.html#cb195-7" tabindex="-1"></a>    <span class="at">Exter_Cond =</span> forcats<span class="sc">::</span><span class="fu">fct_collapse</span>(Exter_Cond, <span class="at">Good =</span> <span class="fu">c</span>(<span class="st">&quot;Typical&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Excellent&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb195-8"><a href="k-nearest-neighbor.html#cb195-8" tabindex="-1"></a>  <span class="fu">step_relevel</span>(Exter_Cond, <span class="at">ref_level =</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb195-9"><a href="k-nearest-neighbor.html#cb195-9" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb195-10"><a href="k-nearest-neighbor.html#cb195-10" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb195-11"><a href="k-nearest-neighbor.html#cb195-11" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> <span class="fu">matches</span>(<span class="st">&quot;Bsmt_Cond&quot;</span>)<span class="sc">:</span>TotRms_AbvGrd) </span>
-<span id="cb195-12"><a href="k-nearest-neighbor.html#cb195-12" tabindex="-1"></a></span>
-<span id="cb195-13"><a href="k-nearest-neighbor.html#cb195-13" tabindex="-1"></a>receta_casas</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="k-nearest-neighbor.html#cb165-1" tabindex="-1"></a>receta_casas <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb165-2"><a href="k-nearest-neighbor.html#cb165-2" tabindex="-1"></a> Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> TotRms_AbvGrd <span class="sc">+</span> Exter_Cond <span class="sc">+</span> Bsmt_Cond <span class="sc">+</span></span>
+<span id="cb165-3"><a href="k-nearest-neighbor.html#cb165-3" tabindex="-1"></a>  Year_Sold <span class="sc">+</span> Year_Remod_Add, </span>
+<span id="cb165-4"><a href="k-nearest-neighbor.html#cb165-4" tabindex="-1"></a> <span class="at">data =</span> ames_train) <span class="sc">%&gt;%</span></span>
+<span id="cb165-5"><a href="k-nearest-neighbor.html#cb165-5" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
+<span id="cb165-6"><a href="k-nearest-neighbor.html#cb165-6" tabindex="-1"></a>    <span class="at">Age_House =</span> Year_Sold <span class="sc">-</span> Year_Remod_Add,</span>
+<span id="cb165-7"><a href="k-nearest-neighbor.html#cb165-7" tabindex="-1"></a>    <span class="at">Exter_Cond =</span> forcats<span class="sc">::</span><span class="fu">fct_collapse</span>(Exter_Cond, <span class="at">Good =</span> <span class="fu">c</span>(<span class="st">&quot;Typical&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Excellent&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb165-8"><a href="k-nearest-neighbor.html#cb165-8" tabindex="-1"></a>  <span class="fu">step_relevel</span>(Exter_Cond, <span class="at">ref_level =</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb165-9"><a href="k-nearest-neighbor.html#cb165-9" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb165-10"><a href="k-nearest-neighbor.html#cb165-10" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb165-11"><a href="k-nearest-neighbor.html#cb165-11" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> <span class="fu">matches</span>(<span class="st">&quot;Bsmt_Cond&quot;</span>)<span class="sc">:</span>TotRms_AbvGrd) </span>
+<span id="cb165-12"><a href="k-nearest-neighbor.html#cb165-12" tabindex="-1"></a></span>
+<span id="cb165-13"><a href="k-nearest-neighbor.html#cb165-13" tabindex="-1"></a>receta_casas</span></code></pre></div>
 <p>Recordemos que la función <strong>recipe()</strong> solo son los pasos a seguir, necesitamos usar la función <strong>prep()</strong> que nos devuelve una receta actualizada con las estimaciones y la función <strong>juice()</strong> que nos devuelve la matriz de diseño.</p>
 <p>Una vez que la receta de transformación de datos está lista, procedemos a implementar el pipeline del modelo de interés.</p>
 <p><strong>Paso 3: Selección de tipo de modelo con hiperparámetros iniciales</strong></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="k-nearest-neighbor.html#cb196-1" tabindex="-1"></a><span class="co"># install.packages(&quot;kknn&quot;)</span></span>
-<span id="cb196-2"><a href="k-nearest-neighbor.html#cb196-2" tabindex="-1"></a></span>
-<span id="cb196-3"><a href="k-nearest-neighbor.html#cb196-3" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(</span>
-<span id="cb196-4"><a href="k-nearest-neighbor.html#cb196-4" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;regression&quot;</span>,</span>
-<span id="cb196-5"><a href="k-nearest-neighbor.html#cb196-5" tabindex="-1"></a>  <span class="at">neighbors =</span> <span class="fu">tune</span>(<span class="st">&quot;K&quot;</span>),</span>
-<span id="cb196-6"><a href="k-nearest-neighbor.html#cb196-6" tabindex="-1"></a>  <span class="at">weight_func =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb196-7"><a href="k-nearest-neighbor.html#cb196-7" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;kknn&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="k-nearest-neighbor.html#cb166-1" tabindex="-1"></a><span class="co"># install.packages(&quot;kknn&quot;)</span></span>
+<span id="cb166-2"><a href="k-nearest-neighbor.html#cb166-2" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="k-nearest-neighbor.html#cb166-3" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(</span>
+<span id="cb166-4"><a href="k-nearest-neighbor.html#cb166-4" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;regression&quot;</span>,</span>
+<span id="cb166-5"><a href="k-nearest-neighbor.html#cb166-5" tabindex="-1"></a>  <span class="at">neighbors =</span> <span class="fu">tune</span>(<span class="st">&quot;K&quot;</span>),</span>
+<span id="cb166-6"><a href="k-nearest-neighbor.html#cb166-6" tabindex="-1"></a>  <span class="at">weight_func =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-7"><a href="k-nearest-neighbor.html#cb166-7" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;kknn&quot;</span>)</span></code></pre></div>
 <p><strong>Paso 4: Inicialización de workflow o pipeline</strong></p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="k-nearest-neighbor.html#cb197-1" tabindex="-1"></a>knn_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb197-2"><a href="k-nearest-neighbor.html#cb197-2" tabindex="-1"></a>  <span class="fu">add_recipe</span>(receta_casas) <span class="sc">%&gt;%</span> </span>
-<span id="cb197-3"><a href="k-nearest-neighbor.html#cb197-3" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_model)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="k-nearest-neighbor.html#cb167-1" tabindex="-1"></a>knn_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb167-2"><a href="k-nearest-neighbor.html#cb167-2" tabindex="-1"></a>  <span class="fu">add_recipe</span>(receta_casas) <span class="sc">%&gt;%</span> </span>
+<span id="cb167-3"><a href="k-nearest-neighbor.html#cb167-3" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_model)</span></code></pre></div>
 <p><strong>Paso 5: Creación de grid search</strong></p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="k-nearest-neighbor.html#cb198-1" tabindex="-1"></a>knn_parameters_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(knn_workflow) <span class="sc">%&gt;%</span> </span>
-<span id="cb198-2"><a href="k-nearest-neighbor.html#cb198-2" tabindex="-1"></a> <span class="fu">update</span>(</span>
-<span id="cb198-3"><a href="k-nearest-neighbor.html#cb198-3" tabindex="-1"></a>  <span class="at">K =</span> dials<span class="sc">::</span><span class="fu">neighbors</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">80</span>)),</span>
-<span id="cb198-4"><a href="k-nearest-neighbor.html#cb198-4" tabindex="-1"></a>  <span class="at">weight_func =</span> <span class="fu">weight_func</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;rectangular&quot;</span>, <span class="st">&quot;triangular&quot;</span>, <span class="st">&quot;inv&quot;</span>, <span class="st">&quot;gaussian&quot;</span>, <span class="st">&quot;cos&quot;</span>))</span>
-<span id="cb198-5"><a href="k-nearest-neighbor.html#cb198-5" tabindex="-1"></a>  )</span>
-<span id="cb198-6"><a href="k-nearest-neighbor.html#cb198-6" tabindex="-1"></a></span>
-<span id="cb198-7"><a href="k-nearest-neighbor.html#cb198-7" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb198-8"><a href="k-nearest-neighbor.html#cb198-8" tabindex="-1"></a>knn_grid <span class="ot">&lt;-</span> knn_parameters_set <span class="sc">%&gt;%</span> </span>
-<span id="cb198-9"><a href="k-nearest-neighbor.html#cb198-9" tabindex="-1"></a>  <span class="fu">grid_max_entropy</span>(<span class="at">size =</span> <span class="dv">50</span>)</span>
-<span id="cb198-10"><a href="k-nearest-neighbor.html#cb198-10" tabindex="-1"></a></span>
-<span id="cb198-11"><a href="k-nearest-neighbor.html#cb198-11" tabindex="-1"></a>ctrl_grid <span class="ot">&lt;-</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> T, <span class="at">verbose =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="k-nearest-neighbor.html#cb168-1" tabindex="-1"></a>knn_parameters_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(knn_workflow) <span class="sc">%&gt;%</span> </span>
+<span id="cb168-2"><a href="k-nearest-neighbor.html#cb168-2" tabindex="-1"></a> <span class="fu">update</span>(</span>
+<span id="cb168-3"><a href="k-nearest-neighbor.html#cb168-3" tabindex="-1"></a>  <span class="at">K =</span> dials<span class="sc">::</span><span class="fu">neighbors</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">80</span>)),</span>
+<span id="cb168-4"><a href="k-nearest-neighbor.html#cb168-4" tabindex="-1"></a>  <span class="at">weight_func =</span> <span class="fu">weight_func</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;rectangular&quot;</span>, <span class="st">&quot;triangular&quot;</span>, <span class="st">&quot;inv&quot;</span>, <span class="st">&quot;gaussian&quot;</span>, <span class="st">&quot;cos&quot;</span>))</span>
+<span id="cb168-5"><a href="k-nearest-neighbor.html#cb168-5" tabindex="-1"></a>  )</span>
+<span id="cb168-6"><a href="k-nearest-neighbor.html#cb168-6" tabindex="-1"></a></span>
+<span id="cb168-7"><a href="k-nearest-neighbor.html#cb168-7" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb168-8"><a href="k-nearest-neighbor.html#cb168-8" tabindex="-1"></a>knn_grid <span class="ot">&lt;-</span> knn_parameters_set <span class="sc">%&gt;%</span> </span>
+<span id="cb168-9"><a href="k-nearest-neighbor.html#cb168-9" tabindex="-1"></a>  <span class="fu">grid_max_entropy</span>(<span class="at">size =</span> <span class="dv">50</span>)</span>
+<span id="cb168-10"><a href="k-nearest-neighbor.html#cb168-10" tabindex="-1"></a></span>
+<span id="cb168-11"><a href="k-nearest-neighbor.html#cb168-11" tabindex="-1"></a>ctrl_grid <span class="ot">&lt;-</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> T, <span class="at">verbose =</span> T)</span></code></pre></div>
 <p><strong>Paso 6: Entrenamiento de modelos con hiperparámetros definidos</strong></p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="k-nearest-neighbor.html#cb199-1" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb199-2"><a href="k-nearest-neighbor.html#cb199-2" tabindex="-1"></a></span>
-<span id="cb199-3"><a href="k-nearest-neighbor.html#cb199-3" tabindex="-1"></a>UseCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>() <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb199-4"><a href="k-nearest-neighbor.html#cb199-4" tabindex="-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">makeCluster</span>(UseCores)</span>
-<span id="cb199-5"><a href="k-nearest-neighbor.html#cb199-5" tabindex="-1"></a><span class="fu">registerDoParallel</span>(cluster)</span>
-<span id="cb199-6"><a href="k-nearest-neighbor.html#cb199-6" tabindex="-1"></a></span>
-<span id="cb199-7"><a href="k-nearest-neighbor.html#cb199-7" tabindex="-1"></a>knnt1 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb199-8"><a href="k-nearest-neighbor.html#cb199-8" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
-<span id="cb199-9"><a href="k-nearest-neighbor.html#cb199-9" tabindex="-1"></a>  knn_workflow,</span>
-<span id="cb199-10"><a href="k-nearest-neighbor.html#cb199-10" tabindex="-1"></a>  <span class="at">resamples =</span> ames_folds,</span>
-<span id="cb199-11"><a href="k-nearest-neighbor.html#cb199-11" tabindex="-1"></a>  <span class="at">grid =</span> knn_grid,</span>
-<span id="cb199-12"><a href="k-nearest-neighbor.html#cb199-12" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, mae, mape, rsq),</span>
-<span id="cb199-13"><a href="k-nearest-neighbor.html#cb199-13" tabindex="-1"></a>  <span class="at">control =</span> ctrl_grid</span>
-<span id="cb199-14"><a href="k-nearest-neighbor.html#cb199-14" tabindex="-1"></a>)</span>
-<span id="cb199-15"><a href="k-nearest-neighbor.html#cb199-15" tabindex="-1"></a>knnt2 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>(); knnt2 <span class="sc">-</span> knnt1</span>
-<span id="cb199-16"><a href="k-nearest-neighbor.html#cb199-16" tabindex="-1"></a></span>
-<span id="cb199-17"><a href="k-nearest-neighbor.html#cb199-17" tabindex="-1"></a><span class="fu">stopCluster</span>(cluster)</span>
-<span id="cb199-18"><a href="k-nearest-neighbor.html#cb199-18" tabindex="-1"></a></span>
-<span id="cb199-19"><a href="k-nearest-neighbor.html#cb199-19" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/knn_model_reg.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="k-nearest-neighbor.html#cb169-1" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb169-2"><a href="k-nearest-neighbor.html#cb169-2" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="k-nearest-neighbor.html#cb169-3" tabindex="-1"></a>UseCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>() <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb169-4"><a href="k-nearest-neighbor.html#cb169-4" tabindex="-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">makeCluster</span>(UseCores)</span>
+<span id="cb169-5"><a href="k-nearest-neighbor.html#cb169-5" tabindex="-1"></a><span class="fu">registerDoParallel</span>(cluster)</span>
+<span id="cb169-6"><a href="k-nearest-neighbor.html#cb169-6" tabindex="-1"></a></span>
+<span id="cb169-7"><a href="k-nearest-neighbor.html#cb169-7" tabindex="-1"></a>knnt1 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb169-8"><a href="k-nearest-neighbor.html#cb169-8" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
+<span id="cb169-9"><a href="k-nearest-neighbor.html#cb169-9" tabindex="-1"></a>  knn_workflow,</span>
+<span id="cb169-10"><a href="k-nearest-neighbor.html#cb169-10" tabindex="-1"></a>  <span class="at">resamples =</span> ames_folds,</span>
+<span id="cb169-11"><a href="k-nearest-neighbor.html#cb169-11" tabindex="-1"></a>  <span class="at">grid =</span> knn_grid,</span>
+<span id="cb169-12"><a href="k-nearest-neighbor.html#cb169-12" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(rmse, mae, mape, rsq),</span>
+<span id="cb169-13"><a href="k-nearest-neighbor.html#cb169-13" tabindex="-1"></a>  <span class="at">control =</span> ctrl_grid</span>
+<span id="cb169-14"><a href="k-nearest-neighbor.html#cb169-14" tabindex="-1"></a>)</span>
+<span id="cb169-15"><a href="k-nearest-neighbor.html#cb169-15" tabindex="-1"></a>knnt2 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>(); knnt2 <span class="sc">-</span> knnt1</span>
+<span id="cb169-16"><a href="k-nearest-neighbor.html#cb169-16" tabindex="-1"></a></span>
+<span id="cb169-17"><a href="k-nearest-neighbor.html#cb169-17" tabindex="-1"></a><span class="fu">stopCluster</span>(cluster)</span>
+<span id="cb169-18"><a href="k-nearest-neighbor.html#cb169-18" tabindex="-1"></a></span>
+<span id="cb169-19"><a href="k-nearest-neighbor.html#cb169-19" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/knn_model_reg.rds&quot;</span>)</span></code></pre></div>
 <p>Podemos obtener las métricas de cada <em>fold</em> con el siguiente código:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="k-nearest-neighbor.html#cb200-1" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/knn_model_reg.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="k-nearest-neighbor.html#cb170-1" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/knn_model_reg.rds&quot;</span>)</span></code></pre></div>
 <p><strong>Paso 7: Análisis de métricas de error e hiperparámetros (Vuelve al paso 3, si es necesario)</strong></p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="k-nearest-neighbor.html#cb201-1" tabindex="-1"></a><span class="fu">collect_metrics</span>(knn_tune_result)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="k-nearest-neighbor.html#cb171-1" tabindex="-1"></a><span class="fu">collect_metrics</span>(knn_tune_result)</span></code></pre></div>
 <pre><code>## # A tibble: 196 × 8
 ##        K weight_func .metric .estimator      mean     n   std_err .config       
 ##    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;         
@@ -566,22 +559,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    38 cos         mape    standard      18.9      10    0.427  Preprocessor1…
 ## # ℹ 186 more rows</code></pre>
 <p>En la siguiente gráfica observamos las distintas métricas de error asociados a los hiperparámetros elegidos:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="k-nearest-neighbor.html#cb203-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>()</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="k-nearest-neighbor.html#cb173-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">autoplot</span>()</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-195-1.png" width="672" /></p>
 <p>En la siguiente gráfica observamos el error cuadrático medio de las distintas métricas con distintos números de vecinos.</p>
 <p>En los argumentos de la función, se puede seleccionar el kernel, esto es las opciones posibles para ponderar el promedio respecto a la distancia seleccionada. “Rectangular” (que es knn estándar no ponderado), “triangular”, “cos”, “inv”, “gaussiano”, “rango” y “óptimo”.</p>
 <p>Para conocer más a cerca de las distintas métricas de distancia pueden consultar:
 <a href="https://towardsdatascience.com/9-distance-measures-in-data-science-918109d069fa">Measures</a> y <a href="https://rdrr.io/cran/kknn/man/kknn.html">KNN function</a></p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="k-nearest-neighbor.html#cb204-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> </span>
-<span id="cb204-2"><a href="k-nearest-neighbor.html#cb204-2" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-207-1.png" width="672" /></p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="k-nearest-neighbor.html#cb174-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> </span>
+<span id="cb174-2"><a href="k-nearest-neighbor.html#cb174-2" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-196-1.png" width="672" /></p>
 <p>En la siguiente gráfica observamos el error absoluto promedio de las distintas métricas con distintos números de vecinos.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="k-nearest-neighbor.html#cb205-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> </span>
-<span id="cb205-2"><a href="k-nearest-neighbor.html#cb205-2" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">metric =</span> <span class="st">&quot;mae&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-208-1.png" width="672" /></p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="k-nearest-neighbor.html#cb175-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> </span>
+<span id="cb175-2"><a href="k-nearest-neighbor.html#cb175-2" tabindex="-1"></a>  <span class="fu">autoplot</span>(<span class="at">metric =</span> <span class="st">&quot;mae&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-197-1.png" width="672" /></p>
 <p><strong>Paso 8: Selección de modelo a usar</strong></p>
 <p>Con el siguiente código obtenemos los mejores 10 modelos respecto al <em>rmse</em>.</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="k-nearest-neighbor.html#cb206-1" tabindex="-1"></a><span class="fu">show_best</span>(knn_tune_result, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="k-nearest-neighbor.html#cb176-1" tabindex="-1"></a><span class="fu">show_best</span>(knn_tune_result, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 8
 ##        K weight_func .metric .estimator   mean     n std_err .config            
 ##    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;              
@@ -595,7 +588,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8    39 gaussian    rmse    standard   46307.    10   1386. Preprocessor1_Mode…
 ##  9    35 triangular  rmse    standard   46472.    10   1258. Preprocessor1_Mode…
 ## 10    47 gaussian    rmse    standard   46531.    10   1404. Preprocessor1_Mode…</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="k-nearest-neighbor.html#cb208-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">show_best</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">metric =</span> <span class="st">&quot;mape&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="k-nearest-neighbor.html#cb178-1" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">show_best</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">metric =</span> <span class="st">&quot;mape&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 8
 ##        K weight_func .metric .estimator  mean     n std_err .config             
 ##    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
@@ -610,46 +603,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    35 triangular  mape    standard    18.7    10   0.421 Preprocessor1_Model…
 ## 10    39 gaussian    mape    standard    18.7    10   0.408 Preprocessor1_Model…</code></pre>
 <p>Ahora obtendremos el modelo que mejor desempeño tiene tomando en cuenta el <em>rmse</em> y haremos las predicciones del conjunto de prueba con este modelo.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="k-nearest-neighbor.html#cb210-1" tabindex="-1"></a>best_knn_model_reg <span class="ot">&lt;-</span> knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>)</span>
-<span id="cb210-2"><a href="k-nearest-neighbor.html#cb210-2" tabindex="-1"></a></span>
-<span id="cb210-3"><a href="k-nearest-neighbor.html#cb210-3" tabindex="-1"></a>best_knn_model_reg</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="k-nearest-neighbor.html#cb180-1" tabindex="-1"></a>best_knn_model_reg <span class="ot">&lt;-</span> knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">select_best</span>(<span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>)</span>
+<span id="cb180-2"><a href="k-nearest-neighbor.html#cb180-2" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="k-nearest-neighbor.html#cb180-3" tabindex="-1"></a>best_knn_model_reg</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##       K weight_func .config              
 ##   &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;                
 ## 1    13 inv         Preprocessor1_Model20</code></pre>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="k-nearest-neighbor.html#cb212-1" tabindex="-1"></a>knn_regression_best_1se_model <span class="ot">&lt;-</span> knn_tune_result <span class="sc">%&gt;%</span> </span>
-<span id="cb212-2"><a href="k-nearest-neighbor.html#cb212-2" tabindex="-1"></a>  <span class="fu">select_by_one_std_err</span>(<span class="at">metric =</span> <span class="st">&quot;mape&quot;</span>, <span class="st">&quot;mape&quot;</span>)</span>
-<span id="cb212-3"><a href="k-nearest-neighbor.html#cb212-3" tabindex="-1"></a></span>
-<span id="cb212-4"><a href="k-nearest-neighbor.html#cb212-4" tabindex="-1"></a>knn_regression_best_1se_model</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="k-nearest-neighbor.html#cb182-1" tabindex="-1"></a>knn_regression_best_1se_model <span class="ot">&lt;-</span> knn_tune_result <span class="sc">%&gt;%</span> </span>
+<span id="cb182-2"><a href="k-nearest-neighbor.html#cb182-2" tabindex="-1"></a>  <span class="fu">select_by_one_std_err</span>(<span class="at">metric =</span> <span class="st">&quot;mape&quot;</span>, <span class="st">&quot;mape&quot;</span>)</span>
+<span id="cb182-3"><a href="k-nearest-neighbor.html#cb182-3" tabindex="-1"></a></span>
+<span id="cb182-4"><a href="k-nearest-neighbor.html#cb182-4" tabindex="-1"></a>knn_regression_best_1se_model</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##       K weight_func .config              
 ##   &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;                
 ## 1    17 gaussian    Preprocessor1_Model12</code></pre>
 <p><strong>Paso 9: Ajuste de modelo final con todos los datos (Vuelve al paso 2, si es necesario)</strong></p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="k-nearest-neighbor.html#cb214-1" tabindex="-1"></a>final_knn_model_reg <span class="ot">&lt;-</span> knn_workflow <span class="sc">%&gt;%</span> </span>
-<span id="cb214-2"><a href="k-nearest-neighbor.html#cb214-2" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_knn_model_reg) <span class="sc">%&gt;%</span> </span>
-<span id="cb214-3"><a href="k-nearest-neighbor.html#cb214-3" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">fit</span>(<span class="at">data =</span> ames_train)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="k-nearest-neighbor.html#cb184-1" tabindex="-1"></a>final_knn_model_reg <span class="ot">&lt;-</span> knn_workflow <span class="sc">%&gt;%</span> </span>
+<span id="cb184-2"><a href="k-nearest-neighbor.html#cb184-2" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_knn_model_reg) <span class="sc">%&gt;%</span> </span>
+<span id="cb184-3"><a href="k-nearest-neighbor.html#cb184-3" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">fit</span>(<span class="at">data =</span> ames_train)</span></code></pre></div>
 <p>Este último objeto es el modelo final entrenado, el cual contiene toda la información del pre-procesamiento de datos, por lo que en caso de ponerse en producción el modelo, sólo se necesita de este último elemento para poder realizar nuevas predicciones.</p>
 <p>Antes de pasar al siguiente paso, es importante validar que hayamos hecho un uso correcto de las variables predictivas. En este momento es posible detectar variables que no estén aportando valor o variables que no debiéramos estar usando debido a que cometeríamos <a href="https://towardsdatascience.com/data-leakage-in-machine-learning-6161c167e8ba">data leakage</a>. Para enfrentar esto, ayuda estimar y ordenar el valor de importancia de cada variable en el modelo.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="k-nearest-neighbor.html#cb215-1" tabindex="-1"></a><span class="co"># install.packages(&quot;kernlab&quot;)</span></span>
-<span id="cb215-2"><a href="k-nearest-neighbor.html#cb215-2" tabindex="-1"></a></span>
-<span id="cb215-3"><a href="k-nearest-neighbor.html#cb215-3" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
-<span id="cb215-4"><a href="k-nearest-neighbor.html#cb215-4" tabindex="-1"></a></span>
-<span id="cb215-5"><a href="k-nearest-neighbor.html#cb215-5" tabindex="-1"></a>ames_importance <span class="ot">&lt;-</span> final_knn_model_reg <span class="sc">%&gt;%</span> </span>
-<span id="cb215-6"><a href="k-nearest-neighbor.html#cb215-6" tabindex="-1"></a>  <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb215-7"><a href="k-nearest-neighbor.html#cb215-7" tabindex="-1"></a>  <span class="fu">vi</span>(</span>
-<span id="cb215-8"><a href="k-nearest-neighbor.html#cb215-8" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;permute&quot;</span>,</span>
-<span id="cb215-9"><a href="k-nearest-neighbor.html#cb215-9" tabindex="-1"></a>    <span class="at">nsim =</span> <span class="dv">30</span>,</span>
-<span id="cb215-10"><a href="k-nearest-neighbor.html#cb215-10" tabindex="-1"></a>    <span class="at">target =</span> <span class="st">&quot;Sale_Price&quot;</span>,</span>
-<span id="cb215-11"><a href="k-nearest-neighbor.html#cb215-11" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>,</span>
-<span id="cb215-12"><a href="k-nearest-neighbor.html#cb215-12" tabindex="-1"></a>    <span class="at">pred_wrapper =</span> kernlab<span class="sc">::</span>predict, </span>
-<span id="cb215-13"><a href="k-nearest-neighbor.html#cb215-13" tabindex="-1"></a>    <span class="at">train =</span> <span class="fu">juice</span>(receta_casas)</span>
-<span id="cb215-14"><a href="k-nearest-neighbor.html#cb215-14" tabindex="-1"></a>  )</span>
-<span id="cb215-15"><a href="k-nearest-neighbor.html#cb215-15" tabindex="-1"></a></span>
-<span id="cb215-16"><a href="k-nearest-neighbor.html#cb215-16" tabindex="-1"></a>ames_importance <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/vip_ames_knn.rds&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="k-nearest-neighbor.html#cb216-1" tabindex="-1"></a>ames_importance <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/vip_ames_knn.rds&quot;</span>)</span>
-<span id="cb216-2"><a href="k-nearest-neighbor.html#cb216-2" tabindex="-1"></a></span>
-<span id="cb216-3"><a href="k-nearest-neighbor.html#cb216-3" tabindex="-1"></a>ames_importance</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="k-nearest-neighbor.html#cb185-1" tabindex="-1"></a><span class="co"># install.packages(&quot;kernlab&quot;)</span></span>
+<span id="cb185-2"><a href="k-nearest-neighbor.html#cb185-2" tabindex="-1"></a></span>
+<span id="cb185-3"><a href="k-nearest-neighbor.html#cb185-3" tabindex="-1"></a><span class="fu">library</span>(vip)</span>
+<span id="cb185-4"><a href="k-nearest-neighbor.html#cb185-4" tabindex="-1"></a></span>
+<span id="cb185-5"><a href="k-nearest-neighbor.html#cb185-5" tabindex="-1"></a>ames_importance <span class="ot">&lt;-</span> final_knn_model_reg <span class="sc">%&gt;%</span> </span>
+<span id="cb185-6"><a href="k-nearest-neighbor.html#cb185-6" tabindex="-1"></a>  <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb185-7"><a href="k-nearest-neighbor.html#cb185-7" tabindex="-1"></a>  <span class="fu">vi</span>(</span>
+<span id="cb185-8"><a href="k-nearest-neighbor.html#cb185-8" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;permute&quot;</span>,</span>
+<span id="cb185-9"><a href="k-nearest-neighbor.html#cb185-9" tabindex="-1"></a>    <span class="at">nsim =</span> <span class="dv">30</span>,</span>
+<span id="cb185-10"><a href="k-nearest-neighbor.html#cb185-10" tabindex="-1"></a>    <span class="at">target =</span> <span class="st">&quot;Sale_Price&quot;</span>,</span>
+<span id="cb185-11"><a href="k-nearest-neighbor.html#cb185-11" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;rmse&quot;</span>,</span>
+<span id="cb185-12"><a href="k-nearest-neighbor.html#cb185-12" tabindex="-1"></a>    <span class="at">pred_wrapper =</span> kernlab<span class="sc">::</span>predict, </span>
+<span id="cb185-13"><a href="k-nearest-neighbor.html#cb185-13" tabindex="-1"></a>    <span class="at">train =</span> <span class="fu">juice</span>(receta_casas)</span>
+<span id="cb185-14"><a href="k-nearest-neighbor.html#cb185-14" tabindex="-1"></a>  )</span>
+<span id="cb185-15"><a href="k-nearest-neighbor.html#cb185-15" tabindex="-1"></a></span>
+<span id="cb185-16"><a href="k-nearest-neighbor.html#cb185-16" tabindex="-1"></a>ames_importance <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/vip_ames_knn.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="k-nearest-neighbor.html#cb186-1" tabindex="-1"></a>ames_importance <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/vip_ames_knn.rds&quot;</span>)</span>
+<span id="cb186-2"><a href="k-nearest-neighbor.html#cb186-2" tabindex="-1"></a></span>
+<span id="cb186-3"><a href="k-nearest-neighbor.html#cb186-3" tabindex="-1"></a>ames_importance</span></code></pre></div>
 <pre><code>## # A tibble: 17 × 3
 ##    Variable                              Importance StDev
 ##    &lt;chr&gt;                                      &lt;dbl&gt; &lt;dbl&gt;
@@ -670,23 +663,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15 Exter_Cond_Poor                            2828. 1090.
 ## 16 Bsmt_Cond_Poor_x_TotRms_AbvGrd             1424.  346.
 ## 17 Bsmt_Cond_Poor                             1215.  364.</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="k-nearest-neighbor.html#cb218-1" tabindex="-1"></a>ames_importance <span class="sc">%&gt;%</span></span>
-<span id="cb218-2"><a href="k-nearest-neighbor.html#cb218-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(Variable, Importance)) <span class="sc">%&gt;%</span></span>
-<span id="cb218-3"><a href="k-nearest-neighbor.html#cb218-3" tabindex="-1"></a>  <span class="fu">slice_max</span>(Importance, <span class="at">n =</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb218-4"><a href="k-nearest-neighbor.html#cb218-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Importance, Variable, <span class="at">color =</span> Variable)) <span class="sc">+</span></span>
-<span id="cb218-5"><a href="k-nearest-neighbor.html#cb218-5" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Importance <span class="sc">-</span> StDev, <span class="at">xmax =</span> Importance <span class="sc">+</span> StDev),</span>
-<span id="cb218-6"><a href="k-nearest-neighbor.html#cb218-6" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb218-7"><a href="k-nearest-neighbor.html#cb218-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb218-8"><a href="k-nearest-neighbor.html#cb218-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb218-9"><a href="k-nearest-neighbor.html#cb218-9" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable Importance Measure&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="k-nearest-neighbor.html#cb188-1" tabindex="-1"></a>ames_importance <span class="sc">%&gt;%</span></span>
+<span id="cb188-2"><a href="k-nearest-neighbor.html#cb188-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(Variable, Importance)) <span class="sc">%&gt;%</span></span>
+<span id="cb188-3"><a href="k-nearest-neighbor.html#cb188-3" tabindex="-1"></a>  <span class="fu">slice_max</span>(Importance, <span class="at">n =</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb188-4"><a href="k-nearest-neighbor.html#cb188-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Importance, Variable, <span class="at">color =</span> Variable)) <span class="sc">+</span></span>
+<span id="cb188-5"><a href="k-nearest-neighbor.html#cb188-5" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Importance <span class="sc">-</span> StDev, <span class="at">xmax =</span> Importance <span class="sc">+</span> StDev),</span>
+<span id="cb188-6"><a href="k-nearest-neighbor.html#cb188-6" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb188-7"><a href="k-nearest-neighbor.html#cb188-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb188-8"><a href="k-nearest-neighbor.html#cb188-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb188-9"><a href="k-nearest-neighbor.html#cb188-9" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable Importance Measure&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
 <p><strong>Paso 10: Validar poder predictivo con datos de prueba</strong></p>
 <p>Imaginemos por un momento que pasa un mes de tiempo desde que hicimos nuestro modelo, es hora de ponerlo a prueba prediciendo valores de nuevos elementos:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="k-nearest-neighbor.html#cb219-1" tabindex="-1"></a>results_reg <span class="ot">&lt;-</span> <span class="fu">predict</span>(final_knn_model_reg, ames_test) <span class="sc">%&gt;%</span> </span>
-<span id="cb219-2"><a href="k-nearest-neighbor.html#cb219-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_cols</span>(<span class="at">Sale_Price =</span> ames_test<span class="sc">$</span>Sale_Price, .) <span class="sc">%&gt;%</span> </span>
-<span id="cb219-3"><a href="k-nearest-neighbor.html#cb219-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">pred_knn_reg =</span> .pred)</span>
-<span id="cb219-4"><a href="k-nearest-neighbor.html#cb219-4" tabindex="-1"></a></span>
-<span id="cb219-5"><a href="k-nearest-neighbor.html#cb219-5" tabindex="-1"></a>results_reg</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="k-nearest-neighbor.html#cb189-1" tabindex="-1"></a>results_reg <span class="ot">&lt;-</span> <span class="fu">predict</span>(final_knn_model_reg, ames_test) <span class="sc">%&gt;%</span> </span>
+<span id="cb189-2"><a href="k-nearest-neighbor.html#cb189-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_cols</span>(<span class="at">Sale_Price =</span> ames_test<span class="sc">$</span>Sale_Price, .) <span class="sc">%&gt;%</span> </span>
+<span id="cb189-3"><a href="k-nearest-neighbor.html#cb189-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">pred_knn_reg =</span> .pred)</span>
+<span id="cb189-4"><a href="k-nearest-neighbor.html#cb189-4" tabindex="-1"></a></span>
+<span id="cb189-5"><a href="k-nearest-neighbor.html#cb189-5" tabindex="-1"></a>results_reg</span></code></pre></div>
 <pre><code>## # A tibble: 733 × 2
 ##    Sale_Price pred_knn_reg
 ##         &lt;int&gt;        &lt;dbl&gt;
@@ -703,12 +696,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # ℹ 723 more rows</code></pre>
 <p><strong>Métricas de desempeño</strong></p>
 <p>Ahora para calcular las métricas de desempeño usaremos la paquetería <em>MLmetrics</em>. Es posible definir nuestro propio conjunto de métricas que deseamos reportar creando el objeto <em>metric_set</em>:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="k-nearest-neighbor.html#cb221-1" tabindex="-1"></a><span class="fu">library</span>(MLmetrics)</span>
-<span id="cb221-2"><a href="k-nearest-neighbor.html#cb221-2" tabindex="-1"></a></span>
-<span id="cb221-3"><a href="k-nearest-neighbor.html#cb221-3" tabindex="-1"></a>multi_metric <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(mae, mape, rmse, rsq, ccc)</span>
-<span id="cb221-4"><a href="k-nearest-neighbor.html#cb221-4" tabindex="-1"></a><span class="fu">multi_metric</span>(results_reg, <span class="at">truth =</span> Sale_Price, <span class="at">estimate =</span> pred_knn_reg) <span class="sc">%&gt;%</span> </span>
-<span id="cb221-5"><a href="k-nearest-neighbor.html#cb221-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">.estimate =</span> <span class="fu">round</span>(.estimate, <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb221-6"><a href="k-nearest-neighbor.html#cb221-6" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>.estimator)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="k-nearest-neighbor.html#cb191-1" tabindex="-1"></a><span class="fu">library</span>(MLmetrics)</span>
+<span id="cb191-2"><a href="k-nearest-neighbor.html#cb191-2" tabindex="-1"></a></span>
+<span id="cb191-3"><a href="k-nearest-neighbor.html#cb191-3" tabindex="-1"></a>multi_metric <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(mae, mape, rmse, rsq, ccc)</span>
+<span id="cb191-4"><a href="k-nearest-neighbor.html#cb191-4" tabindex="-1"></a><span class="fu">multi_metric</span>(results_reg, <span class="at">truth =</span> Sale_Price, <span class="at">estimate =</span> pred_knn_reg) <span class="sc">%&gt;%</span> </span>
+<span id="cb191-5"><a href="k-nearest-neighbor.html#cb191-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">.estimate =</span> <span class="fu">round</span>(.estimate, <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb191-6"><a href="k-nearest-neighbor.html#cb191-6" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>.estimator)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   .metric .estimate
 ##   &lt;chr&gt;       &lt;dbl&gt;
@@ -717,27 +710,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 rmse     48366.  
 ## 4 rsq          0.64
 ## 5 ccc          0.78</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="k-nearest-neighbor.html#cb223-1" tabindex="-1"></a>results_reg <span class="sc">%&gt;%</span> </span>
-<span id="cb223-2"><a href="k-nearest-neighbor.html#cb223-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> pred_knn_reg, <span class="at">y =</span> Sale_Price)) <span class="sc">+</span></span>
-<span id="cb223-3"><a href="k-nearest-neighbor.html#cb223-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb223-4"><a href="k-nearest-neighbor.html#cb223-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb223-5"><a href="k-nearest-neighbor.html#cb223-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Prediction&quot;</span>) <span class="sc">+</span></span>
-<span id="cb223-6"><a href="k-nearest-neighbor.html#cb223-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Observation&quot;</span>) <span class="sc">+</span></span>
-<span id="cb223-7"><a href="k-nearest-neighbor.html#cb223-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Comparisson&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="k-nearest-neighbor.html#cb193-1" tabindex="-1"></a>results_reg <span class="sc">%&gt;%</span> </span>
+<span id="cb193-2"><a href="k-nearest-neighbor.html#cb193-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> pred_knn_reg, <span class="at">y =</span> Sale_Price)) <span class="sc">+</span></span>
+<span id="cb193-3"><a href="k-nearest-neighbor.html#cb193-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb193-4"><a href="k-nearest-neighbor.html#cb193-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb193-5"><a href="k-nearest-neighbor.html#cb193-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Prediction&quot;</span>) <span class="sc">+</span></span>
+<span id="cb193-6"><a href="k-nearest-neighbor.html#cb193-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Observation&quot;</span>) <span class="sc">+</span></span>
+<span id="cb193-7"><a href="k-nearest-neighbor.html#cb193-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Comparisson&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-207-1.png" width="672" /></p>
 </div>
 <div id="clasificación-4" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> Clasificación<a href="#clasificaci%C3%B3n-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Es turno de revisar la implementación de SVM con nuestro bien conocido problema de predicción de cancelación de servicios de telecomunicaciones.</p>
 <p>Los pasos para implementar en <em>R</em> este modelo predictivo son los mismos, cambiando únicamente las especificaciones del tipo de modelo, pre-procesamiento e hiper-parámetros.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="k-nearest-neighbor.html#cb224-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb224-2"><a href="k-nearest-neighbor.html#cb224-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb224-3"><a href="k-nearest-neighbor.html#cb224-3" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb224-4"><a href="k-nearest-neighbor.html#cb224-4" tabindex="-1"></a></span>
-<span id="cb224-5"><a href="k-nearest-neighbor.html#cb224-5" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
-<span id="cb224-6"><a href="k-nearest-neighbor.html#cb224-6" tabindex="-1"></a></span>
-<span id="cb224-7"><a href="k-nearest-neighbor.html#cb224-7" tabindex="-1"></a>telco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Churn.csv&quot;</span>)</span>
-<span id="cb224-8"><a href="k-nearest-neighbor.html#cb224-8" tabindex="-1"></a><span class="fu">glimpse</span>(telco)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="k-nearest-neighbor.html#cb194-1" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb194-2"><a href="k-nearest-neighbor.html#cb194-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb194-3"><a href="k-nearest-neighbor.html#cb194-3" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb194-4"><a href="k-nearest-neighbor.html#cb194-4" tabindex="-1"></a></span>
+<span id="cb194-5"><a href="k-nearest-neighbor.html#cb194-5" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb194-6"><a href="k-nearest-neighbor.html#cb194-6" tabindex="-1"></a></span>
+<span id="cb194-7"><a href="k-nearest-neighbor.html#cb194-7" tabindex="-1"></a>telco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Churn.csv&quot;</span>)</span>
+<span id="cb194-8"><a href="k-nearest-neighbor.html#cb194-8" tabindex="-1"></a><span class="fu">glimpse</span>(telco)</span></code></pre></div>
 <pre><code>## Rows: 7,043
 ## Columns: 21
 ## $ customerID       &lt;chr&gt; &quot;7590-VHVEG&quot;, &quot;5575-GNVDE&quot;, &quot;3668-QPYBK&quot;, &quot;7795-CFOCW…
@@ -762,14 +755,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ TotalCharges     &lt;dbl&gt; 29.85, 1889.50, 108.15, 1840.75, 151.65, 820.50, 1949…
 ## $ Churn            &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Y…</code></pre>
 <p><strong>Paso 1: Separación inicial de datos ( test, train <KFCV> )</strong></p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="k-nearest-neighbor.html#cb226-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb226-2"><a href="k-nearest-neighbor.html#cb226-2" tabindex="-1"></a>telco_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(telco, <span class="at">prop =</span> .<span class="dv">70</span>)</span>
-<span id="cb226-3"><a href="k-nearest-neighbor.html#cb226-3" tabindex="-1"></a></span>
-<span id="cb226-4"><a href="k-nearest-neighbor.html#cb226-4" tabindex="-1"></a>telco_train <span class="ot">&lt;-</span> <span class="fu">training</span>(telco_split)</span>
-<span id="cb226-5"><a href="k-nearest-neighbor.html#cb226-5" tabindex="-1"></a>telco_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(telco_split)</span>
-<span id="cb226-6"><a href="k-nearest-neighbor.html#cb226-6" tabindex="-1"></a>telco_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(telco_train)</span>
-<span id="cb226-7"><a href="k-nearest-neighbor.html#cb226-7" tabindex="-1"></a></span>
-<span id="cb226-8"><a href="k-nearest-neighbor.html#cb226-8" tabindex="-1"></a>telco_folds</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="k-nearest-neighbor.html#cb196-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb196-2"><a href="k-nearest-neighbor.html#cb196-2" tabindex="-1"></a>telco_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(telco, <span class="at">prop =</span> .<span class="dv">70</span>)</span>
+<span id="cb196-3"><a href="k-nearest-neighbor.html#cb196-3" tabindex="-1"></a></span>
+<span id="cb196-4"><a href="k-nearest-neighbor.html#cb196-4" tabindex="-1"></a>telco_train <span class="ot">&lt;-</span> <span class="fu">training</span>(telco_split)</span>
+<span id="cb196-5"><a href="k-nearest-neighbor.html#cb196-5" tabindex="-1"></a>telco_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(telco_split)</span>
+<span id="cb196-6"><a href="k-nearest-neighbor.html#cb196-6" tabindex="-1"></a>telco_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(telco_train)</span>
+<span id="cb196-7"><a href="k-nearest-neighbor.html#cb196-7" tabindex="-1"></a></span>
+<span id="cb196-8"><a href="k-nearest-neighbor.html#cb196-8" tabindex="-1"></a>telco_folds</span></code></pre></div>
 <pre><code>## #  10-fold cross-validation 
 ## # A tibble: 10 × 2
 ##    splits             id    
@@ -785,24 +778,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 &lt;split [4437/493]&gt; Fold09
 ## 10 &lt;split [4437/493]&gt; Fold10</code></pre>
 <p><strong>Paso 2: Pre-procesamiento e ingeniería de variables</strong></p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="k-nearest-neighbor.html#cb228-1" tabindex="-1"></a>telco_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
-<span id="cb228-2"><a href="k-nearest-neighbor.html#cb228-2" tabindex="-1"></a>  Churn <span class="sc">~</span> customerID <span class="sc">+</span> TotalCharges <span class="sc">+</span> MonthlyCharges <span class="sc">+</span> SeniorCitizen <span class="sc">+</span> Contract, </span>
-<span id="cb228-3"><a href="k-nearest-neighbor.html#cb228-3" tabindex="-1"></a>  <span class="at">data =</span> telco_train) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-4"><a href="k-nearest-neighbor.html#cb228-4" tabindex="-1"></a>  <span class="fu">update_role</span>(customerID, <span class="at">new_role =</span> <span class="st">&quot;id variable&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-5"><a href="k-nearest-neighbor.html#cb228-5" tabindex="-1"></a>  <span class="fu">step_mutate</span>(<span class="at">Contract =</span> <span class="fu">as.factor</span>(Contract)) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-6"><a href="k-nearest-neighbor.html#cb228-6" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-7"><a href="k-nearest-neighbor.html#cb228-7" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb228-8"><a href="k-nearest-neighbor.html#cb228-8" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) </span>
-<span id="cb228-9"><a href="k-nearest-neighbor.html#cb228-9" tabindex="-1"></a></span>
-<span id="cb228-10"><a href="k-nearest-neighbor.html#cb228-10" tabindex="-1"></a>telco_rec</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="k-nearest-neighbor.html#cb198-1" tabindex="-1"></a>telco_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb198-2"><a href="k-nearest-neighbor.html#cb198-2" tabindex="-1"></a>  Churn <span class="sc">~</span> customerID <span class="sc">+</span> TotalCharges <span class="sc">+</span> MonthlyCharges <span class="sc">+</span> SeniorCitizen <span class="sc">+</span> Contract, </span>
+<span id="cb198-3"><a href="k-nearest-neighbor.html#cb198-3" tabindex="-1"></a>  <span class="at">data =</span> telco_train) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-4"><a href="k-nearest-neighbor.html#cb198-4" tabindex="-1"></a>  <span class="fu">update_role</span>(customerID, <span class="at">new_role =</span> <span class="st">&quot;id variable&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-5"><a href="k-nearest-neighbor.html#cb198-5" tabindex="-1"></a>  <span class="fu">step_mutate</span>(<span class="at">Contract =</span> <span class="fu">as.factor</span>(Contract)) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-6"><a href="k-nearest-neighbor.html#cb198-6" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-7"><a href="k-nearest-neighbor.html#cb198-7" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-8"><a href="k-nearest-neighbor.html#cb198-8" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) </span>
+<span id="cb198-9"><a href="k-nearest-neighbor.html#cb198-9" tabindex="-1"></a></span>
+<span id="cb198-10"><a href="k-nearest-neighbor.html#cb198-10" tabindex="-1"></a>telco_rec</span></code></pre></div>
 <p><strong>Paso 3: Selección de tipo de modelo con hiperparámetros iniciales</strong></p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="k-nearest-neighbor.html#cb229-1" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(</span>
-<span id="cb229-2"><a href="k-nearest-neighbor.html#cb229-2" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;classification&quot;</span>,</span>
-<span id="cb229-3"><a href="k-nearest-neighbor.html#cb229-3" tabindex="-1"></a>  <span class="at">neighbors =</span> <span class="fu">tune</span>(<span class="st">&quot;K&quot;</span>),</span>
-<span id="cb229-4"><a href="k-nearest-neighbor.html#cb229-4" tabindex="-1"></a>  <span class="at">weight_func =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb229-5"><a href="k-nearest-neighbor.html#cb229-5" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;kknn&quot;</span>)</span>
-<span id="cb229-6"><a href="k-nearest-neighbor.html#cb229-6" tabindex="-1"></a></span>
-<span id="cb229-7"><a href="k-nearest-neighbor.html#cb229-7" tabindex="-1"></a>knn_model</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="k-nearest-neighbor.html#cb199-1" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>(</span>
+<span id="cb199-2"><a href="k-nearest-neighbor.html#cb199-2" tabindex="-1"></a>  <span class="at">mode =</span> <span class="st">&quot;classification&quot;</span>,</span>
+<span id="cb199-3"><a href="k-nearest-neighbor.html#cb199-3" tabindex="-1"></a>  <span class="at">neighbors =</span> <span class="fu">tune</span>(<span class="st">&quot;K&quot;</span>),</span>
+<span id="cb199-4"><a href="k-nearest-neighbor.html#cb199-4" tabindex="-1"></a>  <span class="at">weight_func =</span> <span class="fu">tune</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb199-5"><a href="k-nearest-neighbor.html#cb199-5" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;kknn&quot;</span>)</span>
+<span id="cb199-6"><a href="k-nearest-neighbor.html#cb199-6" tabindex="-1"></a></span>
+<span id="cb199-7"><a href="k-nearest-neighbor.html#cb199-7" tabindex="-1"></a>knn_model</span></code></pre></div>
 <pre><code>## K-Nearest Neighbor Model Specification (classification)
 ## 
 ## Main Arguments:
@@ -811,11 +804,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Computational engine: kknn</code></pre>
 <p><strong>Paso 4: Inicialización de workflow o pipeline</strong></p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="k-nearest-neighbor.html#cb231-1" tabindex="-1"></a>knn_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb231-2"><a href="k-nearest-neighbor.html#cb231-2" tabindex="-1"></a>  <span class="fu">add_recipe</span>(telco_rec) <span class="sc">%&gt;%</span> </span>
-<span id="cb231-3"><a href="k-nearest-neighbor.html#cb231-3" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_model)</span>
-<span id="cb231-4"><a href="k-nearest-neighbor.html#cb231-4" tabindex="-1"></a></span>
-<span id="cb231-5"><a href="k-nearest-neighbor.html#cb231-5" tabindex="-1"></a>knn_workflow</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="k-nearest-neighbor.html#cb201-1" tabindex="-1"></a>knn_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb201-2"><a href="k-nearest-neighbor.html#cb201-2" tabindex="-1"></a>  <span class="fu">add_recipe</span>(telco_rec) <span class="sc">%&gt;%</span> </span>
+<span id="cb201-3"><a href="k-nearest-neighbor.html#cb201-3" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_model)</span>
+<span id="cb201-4"><a href="k-nearest-neighbor.html#cb201-4" tabindex="-1"></a></span>
+<span id="cb201-5"><a href="k-nearest-neighbor.html#cb201-5" tabindex="-1"></a>knn_workflow</span></code></pre></div>
 <pre><code>## ══ Workflow ══════════════════
 ## Preprocessor: Recipe
 ## Model: nearest_neighbor()
@@ -837,39 +830,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Computational engine: kknn</code></pre>
 <p><strong>Paso 5: Creación de grid search</strong></p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="k-nearest-neighbor.html#cb233-1" tabindex="-1"></a>knn_parameters_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(knn_workflow) <span class="sc">%&gt;%</span> </span>
-<span id="cb233-2"><a href="k-nearest-neighbor.html#cb233-2" tabindex="-1"></a>  <span class="fu">update</span>(<span class="at">K =</span> dials<span class="sc">::</span><span class="fu">neighbors</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">80</span>)),</span>
-<span id="cb233-3"><a href="k-nearest-neighbor.html#cb233-3" tabindex="-1"></a>         <span class="at">weight_func =</span> <span class="fu">weight_func</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;rectangular&quot;</span>, <span class="st">&quot;inv&quot;</span>, <span class="st">&quot;gaussian&quot;</span>, <span class="st">&quot;cos&quot;</span>))</span>
-<span id="cb233-4"><a href="k-nearest-neighbor.html#cb233-4" tabindex="-1"></a>         )</span>
-<span id="cb233-5"><a href="k-nearest-neighbor.html#cb233-5" tabindex="-1"></a></span>
-<span id="cb233-6"><a href="k-nearest-neighbor.html#cb233-6" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb233-7"><a href="k-nearest-neighbor.html#cb233-7" tabindex="-1"></a>knn_grid <span class="ot">&lt;-</span> knn_parameters_set <span class="sc">%&gt;%</span> </span>
-<span id="cb233-8"><a href="k-nearest-neighbor.html#cb233-8" tabindex="-1"></a>  <span class="fu">grid_max_entropy</span>(<span class="at">size =</span> <span class="dv">50</span>)</span>
-<span id="cb233-9"><a href="k-nearest-neighbor.html#cb233-9" tabindex="-1"></a></span>
-<span id="cb233-10"><a href="k-nearest-neighbor.html#cb233-10" tabindex="-1"></a>ctrl_grid <span class="ot">&lt;-</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> T, <span class="at">verbose =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="k-nearest-neighbor.html#cb203-1" tabindex="-1"></a>knn_parameters_set <span class="ot">&lt;-</span> <span class="fu">extract_parameter_set_dials</span>(knn_workflow) <span class="sc">%&gt;%</span> </span>
+<span id="cb203-2"><a href="k-nearest-neighbor.html#cb203-2" tabindex="-1"></a>  <span class="fu">update</span>(<span class="at">K =</span> dials<span class="sc">::</span><span class="fu">neighbors</span>(<span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">80</span>)),</span>
+<span id="cb203-3"><a href="k-nearest-neighbor.html#cb203-3" tabindex="-1"></a>         <span class="at">weight_func =</span> <span class="fu">weight_func</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;rectangular&quot;</span>, <span class="st">&quot;inv&quot;</span>, <span class="st">&quot;gaussian&quot;</span>, <span class="st">&quot;cos&quot;</span>))</span>
+<span id="cb203-4"><a href="k-nearest-neighbor.html#cb203-4" tabindex="-1"></a>         )</span>
+<span id="cb203-5"><a href="k-nearest-neighbor.html#cb203-5" tabindex="-1"></a></span>
+<span id="cb203-6"><a href="k-nearest-neighbor.html#cb203-6" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb203-7"><a href="k-nearest-neighbor.html#cb203-7" tabindex="-1"></a>knn_grid <span class="ot">&lt;-</span> knn_parameters_set <span class="sc">%&gt;%</span> </span>
+<span id="cb203-8"><a href="k-nearest-neighbor.html#cb203-8" tabindex="-1"></a>  <span class="fu">grid_max_entropy</span>(<span class="at">size =</span> <span class="dv">50</span>)</span>
+<span id="cb203-9"><a href="k-nearest-neighbor.html#cb203-9" tabindex="-1"></a></span>
+<span id="cb203-10"><a href="k-nearest-neighbor.html#cb203-10" tabindex="-1"></a>ctrl_grid <span class="ot">&lt;-</span> <span class="fu">control_grid</span>(<span class="at">save_pred =</span> T, <span class="at">verbose =</span> T)</span></code></pre></div>
 <p><strong>Paso 6: Entrenamiento de modelos con hiperparámetros definidos</strong></p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="k-nearest-neighbor.html#cb234-1" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb234-2"><a href="k-nearest-neighbor.html#cb234-2" tabindex="-1"></a></span>
-<span id="cb234-3"><a href="k-nearest-neighbor.html#cb234-3" tabindex="-1"></a>UseCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>() <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb234-4"><a href="k-nearest-neighbor.html#cb234-4" tabindex="-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">makeCluster</span>(UseCores)</span>
-<span id="cb234-5"><a href="k-nearest-neighbor.html#cb234-5" tabindex="-1"></a><span class="fu">registerDoParallel</span>(cluster)</span>
-<span id="cb234-6"><a href="k-nearest-neighbor.html#cb234-6" tabindex="-1"></a></span>
-<span id="cb234-7"><a href="k-nearest-neighbor.html#cb234-7" tabindex="-1"></a>knnt1 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb234-8"><a href="k-nearest-neighbor.html#cb234-8" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
-<span id="cb234-9"><a href="k-nearest-neighbor.html#cb234-9" tabindex="-1"></a>  knn_workflow,</span>
-<span id="cb234-10"><a href="k-nearest-neighbor.html#cb234-10" tabindex="-1"></a>  <span class="at">resamples =</span> telco_folds,</span>
-<span id="cb234-11"><a href="k-nearest-neighbor.html#cb234-11" tabindex="-1"></a>  <span class="at">grid =</span> knn_grid,</span>
-<span id="cb234-12"><a href="k-nearest-neighbor.html#cb234-12" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(roc_auc, pr_auc),</span>
-<span id="cb234-13"><a href="k-nearest-neighbor.html#cb234-13" tabindex="-1"></a>  <span class="at">control =</span> ctrl_grid</span>
-<span id="cb234-14"><a href="k-nearest-neighbor.html#cb234-14" tabindex="-1"></a>)</span>
-<span id="cb234-15"><a href="k-nearest-neighbor.html#cb234-15" tabindex="-1"></a>knnt2 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>(); knnt2 <span class="sc">-</span> knnt1</span>
-<span id="cb234-16"><a href="k-nearest-neighbor.html#cb234-16" tabindex="-1"></a></span>
-<span id="cb234-17"><a href="k-nearest-neighbor.html#cb234-17" tabindex="-1"></a><span class="fu">stopCluster</span>(cluster)</span>
-<span id="cb234-18"><a href="k-nearest-neighbor.html#cb234-18" tabindex="-1"></a></span>
-<span id="cb234-19"><a href="k-nearest-neighbor.html#cb234-19" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/knn_model_cla.rds&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="k-nearest-neighbor.html#cb235-1" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/knn_model_cla.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="k-nearest-neighbor.html#cb204-1" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
+<span id="cb204-2"><a href="k-nearest-neighbor.html#cb204-2" tabindex="-1"></a></span>
+<span id="cb204-3"><a href="k-nearest-neighbor.html#cb204-3" tabindex="-1"></a>UseCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>() <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb204-4"><a href="k-nearest-neighbor.html#cb204-4" tabindex="-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">makeCluster</span>(UseCores)</span>
+<span id="cb204-5"><a href="k-nearest-neighbor.html#cb204-5" tabindex="-1"></a><span class="fu">registerDoParallel</span>(cluster)</span>
+<span id="cb204-6"><a href="k-nearest-neighbor.html#cb204-6" tabindex="-1"></a></span>
+<span id="cb204-7"><a href="k-nearest-neighbor.html#cb204-7" tabindex="-1"></a>knnt1 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb204-8"><a href="k-nearest-neighbor.html#cb204-8" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">tune_grid</span>(</span>
+<span id="cb204-9"><a href="k-nearest-neighbor.html#cb204-9" tabindex="-1"></a>  knn_workflow,</span>
+<span id="cb204-10"><a href="k-nearest-neighbor.html#cb204-10" tabindex="-1"></a>  <span class="at">resamples =</span> telco_folds,</span>
+<span id="cb204-11"><a href="k-nearest-neighbor.html#cb204-11" tabindex="-1"></a>  <span class="at">grid =</span> knn_grid,</span>
+<span id="cb204-12"><a href="k-nearest-neighbor.html#cb204-12" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">metric_set</span>(roc_auc, pr_auc),</span>
+<span id="cb204-13"><a href="k-nearest-neighbor.html#cb204-13" tabindex="-1"></a>  <span class="at">control =</span> ctrl_grid</span>
+<span id="cb204-14"><a href="k-nearest-neighbor.html#cb204-14" tabindex="-1"></a>)</span>
+<span id="cb204-15"><a href="k-nearest-neighbor.html#cb204-15" tabindex="-1"></a>knnt2 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>(); knnt2 <span class="sc">-</span> knnt1</span>
+<span id="cb204-16"><a href="k-nearest-neighbor.html#cb204-16" tabindex="-1"></a></span>
+<span id="cb204-17"><a href="k-nearest-neighbor.html#cb204-17" tabindex="-1"></a><span class="fu">stopCluster</span>(cluster)</span>
+<span id="cb204-18"><a href="k-nearest-neighbor.html#cb204-18" tabindex="-1"></a></span>
+<span id="cb204-19"><a href="k-nearest-neighbor.html#cb204-19" tabindex="-1"></a>knn_tune_result <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/knn_model_cla.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="k-nearest-neighbor.html#cb205-1" tabindex="-1"></a>knn_tune_result <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/knn_model_cla.rds&quot;</span>)</span></code></pre></div>
 <p><strong>Paso 7: Análisis de métricas de error e hiperparámetros (Vuelve al paso 3, si es necesario)</strong></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="k-nearest-neighbor.html#cb236-1" tabindex="-1"></a><span class="fu">collect_metrics</span>(knn_tune_result)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="k-nearest-neighbor.html#cb206-1" tabindex="-1"></a><span class="fu">collect_metrics</span>(knn_tune_result)</span></code></pre></div>
 <pre><code>## # A tibble: 96 × 8
 ##        K weight_func .metric .estimator  mean     n std_err .config             
 ##    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
@@ -885,11 +878,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    43 cos         roc_auc binary     0.830    10 0.00448 Preprocessor1_Model…
 ## # ℹ 86 more rows</code></pre>
 <p>En la siguiente gráfica observamos las distintas métricas de error asociados a los hiperparámetros elegidos.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="k-nearest-neighbor.html#cb238-1" tabindex="-1"></a><span class="fu">autoplot</span>(knn_tune_result, <span class="at">metric =</span> <span class="st">&quot;pr_auc&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="k-nearest-neighbor.html#cb239-1" tabindex="-1"></a><span class="fu">autoplot</span>(knn_tune_result, <span class="at">metric =</span> <span class="st">&quot;roc_auc&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="k-nearest-neighbor.html#cb240-1" tabindex="-1"></a><span class="fu">show_best</span>(knn_tune_result, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">metric =</span> <span class="st">&quot;pr_auc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="k-nearest-neighbor.html#cb208-1" tabindex="-1"></a><span class="fu">autoplot</span>(knn_tune_result, <span class="at">metric =</span> <span class="st">&quot;pr_auc&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="k-nearest-neighbor.html#cb209-1" tabindex="-1"></a><span class="fu">autoplot</span>(knn_tune_result, <span class="at">metric =</span> <span class="st">&quot;roc_auc&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="k-nearest-neighbor.html#cb210-1" tabindex="-1"></a><span class="fu">show_best</span>(knn_tune_result, <span class="at">n =</span> <span class="dv">10</span>, <span class="at">metric =</span> <span class="st">&quot;pr_auc&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 8
 ##        K weight_func .metric .estimator  mean     n std_err .config             
 ##    &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
@@ -904,41 +897,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    48 cos         pr_auc  binary     0.930    10 0.00217 Preprocessor1_Model…
 ## 10    59 gaussian    pr_auc  binary     0.930    10 0.00223 Preprocessor1_Model…</code></pre>
 <p><strong>Paso 8: Selección de modelo a usar</strong></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="k-nearest-neighbor.html#cb242-1" tabindex="-1"></a>best_knn_model_cla <span class="ot">&lt;-</span> <span class="fu">select_best</span>(knn_tune_result, <span class="at">metric =</span> <span class="st">&quot;pr_auc&quot;</span>)</span>
-<span id="cb242-2"><a href="k-nearest-neighbor.html#cb242-2" tabindex="-1"></a>best_knn_model_cla</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="k-nearest-neighbor.html#cb212-1" tabindex="-1"></a>best_knn_model_cla <span class="ot">&lt;-</span> <span class="fu">select_best</span>(knn_tune_result, <span class="at">metric =</span> <span class="st">&quot;pr_auc&quot;</span>)</span>
+<span id="cb212-2"><a href="k-nearest-neighbor.html#cb212-2" tabindex="-1"></a>best_knn_model_cla</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##       K weight_func .config              
 ##   &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;                
 ## 1    79 cos         Preprocessor1_Model12</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="k-nearest-neighbor.html#cb244-1" tabindex="-1"></a>knn_classification_best_1se_model <span class="ot">&lt;-</span> knn_tune_result <span class="sc">%&gt;%</span> </span>
-<span id="cb244-2"><a href="k-nearest-neighbor.html#cb244-2" tabindex="-1"></a>  <span class="fu">select_by_one_std_err</span>(<span class="at">metric =</span> <span class="st">&quot;roc_auc&quot;</span>, <span class="st">&quot;roc_auc&quot;</span>)</span>
-<span id="cb244-3"><a href="k-nearest-neighbor.html#cb244-3" tabindex="-1"></a>knn_classification_best_1se_model</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="k-nearest-neighbor.html#cb214-1" tabindex="-1"></a>knn_classification_best_1se_model <span class="ot">&lt;-</span> knn_tune_result <span class="sc">%&gt;%</span> </span>
+<span id="cb214-2"><a href="k-nearest-neighbor.html#cb214-2" tabindex="-1"></a>  <span class="fu">select_by_one_std_err</span>(<span class="at">metric =</span> <span class="st">&quot;roc_auc&quot;</span>, <span class="st">&quot;roc_auc&quot;</span>)</span>
+<span id="cb214-3"><a href="k-nearest-neighbor.html#cb214-3" tabindex="-1"></a>knn_classification_best_1se_model</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 3
 ##       K weight_func .config              
 ##   &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;                
 ## 1    32 cos         Preprocessor1_Model03</code></pre>
 <p><strong>Paso 9: Ajuste de modelo final con todos los datos (Vuelve al paso 2, si es necesario)</strong></p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="k-nearest-neighbor.html#cb246-1" tabindex="-1"></a>final_knn_model_cla <span class="ot">&lt;-</span> knn_workflow <span class="sc">%&gt;%</span> </span>
-<span id="cb246-2"><a href="k-nearest-neighbor.html#cb246-2" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_knn_model_cla) <span class="sc">%&gt;%</span> </span>
-<span id="cb246-3"><a href="k-nearest-neighbor.html#cb246-3" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">fit</span>(<span class="at">data =</span> telco_train)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="k-nearest-neighbor.html#cb216-1" tabindex="-1"></a>final_knn_model_cla <span class="ot">&lt;-</span> knn_workflow <span class="sc">%&gt;%</span> </span>
+<span id="cb216-2"><a href="k-nearest-neighbor.html#cb216-2" tabindex="-1"></a>  <span class="fu">finalize_workflow</span>(best_knn_model_cla) <span class="sc">%&gt;%</span> </span>
+<span id="cb216-3"><a href="k-nearest-neighbor.html#cb216-3" tabindex="-1"></a>  parsnip<span class="sc">::</span><span class="fu">fit</span>(<span class="at">data =</span> telco_train)</span></code></pre></div>
 <p>Este último objeto es el modelo final entrenado, el cual contiene toda la información del pre-procesamiento de datos, por lo que en caso de ponerse en producción el modelo, sólo se necesita de este último elemento para poder realizar nuevas predicciones.</p>
 <p>Antes de pasar al siguiente paso, es importante validar que hayamos hecho un uso correcto de las variables predictivas. En este momento es posible detectar variables que no estén aportando valor o variables que no debiéramos estar usando debido a que cometeríamos <a href="https://towardsdatascience.com/data-leakage-in-machine-learning-6161c167e8ba">data leakage</a>. Para enfrentar esto, ayuda estimar y ordenar el valor de importancia del modelo.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="k-nearest-neighbor.html#cb247-1" tabindex="-1"></a>churn_importance <span class="ot">&lt;-</span> final_knn_model_cla <span class="sc">%&gt;%</span> </span>
-<span id="cb247-2"><a href="k-nearest-neighbor.html#cb247-2" tabindex="-1"></a>  <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb247-3"><a href="k-nearest-neighbor.html#cb247-3" tabindex="-1"></a>  <span class="fu">vi</span>(</span>
-<span id="cb247-4"><a href="k-nearest-neighbor.html#cb247-4" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;permute&quot;</span>,</span>
-<span id="cb247-5"><a href="k-nearest-neighbor.html#cb247-5" tabindex="-1"></a>    <span class="at">nsim =</span> <span class="dv">30</span>,</span>
-<span id="cb247-6"><a href="k-nearest-neighbor.html#cb247-6" tabindex="-1"></a>    <span class="at">target =</span> <span class="st">&quot;Churn&quot;</span>,</span>
-<span id="cb247-7"><a href="k-nearest-neighbor.html#cb247-7" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;auc&quot;</span>,</span>
-<span id="cb247-8"><a href="k-nearest-neighbor.html#cb247-8" tabindex="-1"></a>    <span class="at">reference_class =</span> <span class="st">&quot;Yes&quot;</span>,</span>
-<span id="cb247-9"><a href="k-nearest-neighbor.html#cb247-9" tabindex="-1"></a>    <span class="at">pred_wrapper =</span> kernlab<span class="sc">::</span>predict, </span>
-<span id="cb247-10"><a href="k-nearest-neighbor.html#cb247-10" tabindex="-1"></a>    <span class="at">train =</span> <span class="fu">juice</span>(telco_rec)</span>
-<span id="cb247-11"><a href="k-nearest-neighbor.html#cb247-11" tabindex="-1"></a>  )</span>
-<span id="cb247-12"><a href="k-nearest-neighbor.html#cb247-12" tabindex="-1"></a></span>
-<span id="cb247-13"><a href="k-nearest-neighbor.html#cb247-13" tabindex="-1"></a>churn_importance <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/vip_telco_knn.rds&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="k-nearest-neighbor.html#cb248-1" tabindex="-1"></a>churn_importance <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/vip_telco_knn.rds&quot;</span>)</span>
-<span id="cb248-2"><a href="k-nearest-neighbor.html#cb248-2" tabindex="-1"></a></span>
-<span id="cb248-3"><a href="k-nearest-neighbor.html#cb248-3" tabindex="-1"></a>churn_importance</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="k-nearest-neighbor.html#cb217-1" tabindex="-1"></a>churn_importance <span class="ot">&lt;-</span> final_knn_model_cla <span class="sc">%&gt;%</span> </span>
+<span id="cb217-2"><a href="k-nearest-neighbor.html#cb217-2" tabindex="-1"></a>  <span class="fu">extract_fit_parsnip</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb217-3"><a href="k-nearest-neighbor.html#cb217-3" tabindex="-1"></a>  <span class="fu">vi</span>(</span>
+<span id="cb217-4"><a href="k-nearest-neighbor.html#cb217-4" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;permute&quot;</span>,</span>
+<span id="cb217-5"><a href="k-nearest-neighbor.html#cb217-5" tabindex="-1"></a>    <span class="at">nsim =</span> <span class="dv">30</span>,</span>
+<span id="cb217-6"><a href="k-nearest-neighbor.html#cb217-6" tabindex="-1"></a>    <span class="at">target =</span> <span class="st">&quot;Churn&quot;</span>,</span>
+<span id="cb217-7"><a href="k-nearest-neighbor.html#cb217-7" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">&quot;auc&quot;</span>,</span>
+<span id="cb217-8"><a href="k-nearest-neighbor.html#cb217-8" tabindex="-1"></a>    <span class="at">reference_class =</span> <span class="st">&quot;Yes&quot;</span>,</span>
+<span id="cb217-9"><a href="k-nearest-neighbor.html#cb217-9" tabindex="-1"></a>    <span class="at">pred_wrapper =</span> kernlab<span class="sc">::</span>predict, </span>
+<span id="cb217-10"><a href="k-nearest-neighbor.html#cb217-10" tabindex="-1"></a>    <span class="at">train =</span> <span class="fu">juice</span>(telco_rec)</span>
+<span id="cb217-11"><a href="k-nearest-neighbor.html#cb217-11" tabindex="-1"></a>  )</span>
+<span id="cb217-12"><a href="k-nearest-neighbor.html#cb217-12" tabindex="-1"></a></span>
+<span id="cb217-13"><a href="k-nearest-neighbor.html#cb217-13" tabindex="-1"></a>churn_importance <span class="sc">%&gt;%</span> <span class="fu">saveRDS</span>(<span class="st">&quot;models/vip_telco_knn.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="k-nearest-neighbor.html#cb218-1" tabindex="-1"></a>churn_importance <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;models/vip_telco_knn.rds&quot;</span>)</span>
+<span id="cb218-2"><a href="k-nearest-neighbor.html#cb218-2" tabindex="-1"></a></span>
+<span id="cb218-3"><a href="k-nearest-neighbor.html#cb218-3" tabindex="-1"></a>churn_importance</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##   Variable          Importance   StDev
 ##   &lt;chr&gt;                  &lt;dbl&gt;   &lt;dbl&gt;
@@ -947,22 +940,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 Contract_Two.year     0.0507 0.00353
 ## 4 Contract_One.year     0.0468 0.00389
 ## 5 SeniorCitizen         0.0232 0.00329</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="k-nearest-neighbor.html#cb250-1" tabindex="-1"></a>churn_importance <span class="sc">%&gt;%</span></span>
-<span id="cb250-2"><a href="k-nearest-neighbor.html#cb250-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(Variable, Importance)) <span class="sc">%&gt;%</span></span>
-<span id="cb250-3"><a href="k-nearest-neighbor.html#cb250-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Importance, Variable, <span class="at">color =</span> Variable)) <span class="sc">+</span></span>
-<span id="cb250-4"><a href="k-nearest-neighbor.html#cb250-4" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Importance <span class="sc">-</span> StDev, <span class="at">xmax =</span> Importance <span class="sc">+</span> StDev),</span>
-<span id="cb250-5"><a href="k-nearest-neighbor.html#cb250-5" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb250-6"><a href="k-nearest-neighbor.html#cb250-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb250-7"><a href="k-nearest-neighbor.html#cb250-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb250-8"><a href="k-nearest-neighbor.html#cb250-8" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable Importance Measure&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="k-nearest-neighbor.html#cb220-1" tabindex="-1"></a>churn_importance <span class="sc">%&gt;%</span></span>
+<span id="cb220-2"><a href="k-nearest-neighbor.html#cb220-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Variable =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(Variable, Importance)) <span class="sc">%&gt;%</span></span>
+<span id="cb220-3"><a href="k-nearest-neighbor.html#cb220-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Importance, Variable, <span class="at">color =</span> Variable)) <span class="sc">+</span></span>
+<span id="cb220-4"><a href="k-nearest-neighbor.html#cb220-4" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> Importance <span class="sc">-</span> StDev, <span class="at">xmax =</span> Importance <span class="sc">+</span> StDev),</span>
+<span id="cb220-5"><a href="k-nearest-neighbor.html#cb220-5" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb220-6"><a href="k-nearest-neighbor.html#cb220-6" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb220-7"><a href="k-nearest-neighbor.html#cb220-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb220-8"><a href="k-nearest-neighbor.html#cb220-8" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Variable Importance Measure&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <p><strong>Paso 10: Validar poder predictivo con datos de prueba</strong></p>
 <p>Imaginemos por un momento que pasa un mes de tiempo desde que hicimos nuestro modelo, es hora de ponerlo a prueba prediciendo valores de nuevos elementos:</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="k-nearest-neighbor.html#cb251-1" tabindex="-1"></a>results_cla <span class="ot">&lt;-</span> <span class="fu">predict</span>(final_knn_model_cla, telco_test, <span class="at">type =</span> <span class="st">&#39;prob&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb251-2"><a href="k-nearest-neighbor.html#cb251-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_cols</span>(<span class="at">Churn =</span> telco_test<span class="sc">$</span>Churn, .) <span class="sc">%&gt;%</span> </span>
-<span id="cb251-3"><a href="k-nearest-neighbor.html#cb251-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Churn =</span> <span class="fu">factor</span>(Churn, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>, <span class="st">&#39;No&#39;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>, <span class="st">&#39;No&#39;</span>)))</span>
-<span id="cb251-4"><a href="k-nearest-neighbor.html#cb251-4" tabindex="-1"></a></span>
-<span id="cb251-5"><a href="k-nearest-neighbor.html#cb251-5" tabindex="-1"></a>results_cla</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="k-nearest-neighbor.html#cb221-1" tabindex="-1"></a>results_cla <span class="ot">&lt;-</span> <span class="fu">predict</span>(final_knn_model_cla, telco_test, <span class="at">type =</span> <span class="st">&#39;prob&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb221-2"><a href="k-nearest-neighbor.html#cb221-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">bind_cols</span>(<span class="at">Churn =</span> telco_test<span class="sc">$</span>Churn, .) <span class="sc">%&gt;%</span> </span>
+<span id="cb221-3"><a href="k-nearest-neighbor.html#cb221-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Churn =</span> <span class="fu">factor</span>(Churn, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>, <span class="st">&#39;No&#39;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Yes&#39;</span>, <span class="st">&#39;No&#39;</span>)))</span>
+<span id="cb221-4"><a href="k-nearest-neighbor.html#cb221-4" tabindex="-1"></a></span>
+<span id="cb221-5"><a href="k-nearest-neighbor.html#cb221-5" tabindex="-1"></a>results_cla</span></code></pre></div>
 <pre><code>## # A tibble: 2,113 × 3
 ##    Churn .pred_No .pred_Yes
 ##    &lt;fct&gt;    &lt;dbl&gt;     &lt;dbl&gt;
@@ -977,21 +970,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 Yes      0.642   0.358  
 ## 10 No       0.987   0.0126 
 ## # ℹ 2,103 more rows</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="k-nearest-neighbor.html#cb253-1" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
-<span id="cb253-2"><a href="k-nearest-neighbor.html#cb253-2" tabindex="-1"></a>  <span class="fu">roc_auc</span>(results_cla, <span class="at">truth =</span> Churn, .pred_Yes),</span>
-<span id="cb253-3"><a href="k-nearest-neighbor.html#cb253-3" tabindex="-1"></a>  <span class="fu">pr_auc</span>(results_cla, <span class="at">truth =</span> Churn, .pred_Yes)</span>
-<span id="cb253-4"><a href="k-nearest-neighbor.html#cb253-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="k-nearest-neighbor.html#cb223-1" tabindex="-1"></a><span class="fu">bind_rows</span>(</span>
+<span id="cb223-2"><a href="k-nearest-neighbor.html#cb223-2" tabindex="-1"></a>  <span class="fu">roc_auc</span>(results_cla, <span class="at">truth =</span> Churn, .pred_Yes),</span>
+<span id="cb223-3"><a href="k-nearest-neighbor.html#cb223-3" tabindex="-1"></a>  <span class="fu">pr_auc</span>(results_cla, <span class="at">truth =</span> Churn, .pred_Yes)</span>
+<span id="cb223-4"><a href="k-nearest-neighbor.html#cb223-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 3
 ##   .metric .estimator .estimate
 ##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
 ## 1 roc_auc binary         0.834
 ## 2 pr_auc  binary         0.629</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="k-nearest-neighbor.html#cb255-1" tabindex="-1"></a>pr_curve_data <span class="ot">&lt;-</span> <span class="fu">pr_curve</span>(</span>
-<span id="cb255-2"><a href="k-nearest-neighbor.html#cb255-2" tabindex="-1"></a>  results_cla, </span>
-<span id="cb255-3"><a href="k-nearest-neighbor.html#cb255-3" tabindex="-1"></a>  <span class="at">truth =</span> Churn, </span>
-<span id="cb255-4"><a href="k-nearest-neighbor.html#cb255-4" tabindex="-1"></a>  .pred_Yes</span>
-<span id="cb255-5"><a href="k-nearest-neighbor.html#cb255-5" tabindex="-1"></a>  )</span>
-<span id="cb255-6"><a href="k-nearest-neighbor.html#cb255-6" tabindex="-1"></a>pr_curve_data</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="k-nearest-neighbor.html#cb225-1" tabindex="-1"></a>pr_curve_data <span class="ot">&lt;-</span> <span class="fu">pr_curve</span>(</span>
+<span id="cb225-2"><a href="k-nearest-neighbor.html#cb225-2" tabindex="-1"></a>  results_cla, </span>
+<span id="cb225-3"><a href="k-nearest-neighbor.html#cb225-3" tabindex="-1"></a>  <span class="at">truth =</span> Churn, </span>
+<span id="cb225-4"><a href="k-nearest-neighbor.html#cb225-4" tabindex="-1"></a>  .pred_Yes</span>
+<span id="cb225-5"><a href="k-nearest-neighbor.html#cb225-5" tabindex="-1"></a>  )</span>
+<span id="cb225-6"><a href="k-nearest-neighbor.html#cb225-6" tabindex="-1"></a>pr_curve_data</span></code></pre></div>
 <pre><code>## # A tibble: 1,890 × 3
 ##    .threshold  recall precision
 ##         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
@@ -1006,12 +999,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9      0.835 0.0177      0.909
 ## 10      0.835 0.0194      0.917
 ## # ℹ 1,880 more rows</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="k-nearest-neighbor.html#cb257-1" tabindex="-1"></a>roc_curve_data <span class="ot">&lt;-</span> <span class="fu">roc_curve</span>(</span>
-<span id="cb257-2"><a href="k-nearest-neighbor.html#cb257-2" tabindex="-1"></a>  results_cla, </span>
-<span id="cb257-3"><a href="k-nearest-neighbor.html#cb257-3" tabindex="-1"></a>  <span class="at">truth =</span> Churn, </span>
-<span id="cb257-4"><a href="k-nearest-neighbor.html#cb257-4" tabindex="-1"></a>  .pred_Yes</span>
-<span id="cb257-5"><a href="k-nearest-neighbor.html#cb257-5" tabindex="-1"></a>  )</span>
-<span id="cb257-6"><a href="k-nearest-neighbor.html#cb257-6" tabindex="-1"></a>roc_curve_data</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="k-nearest-neighbor.html#cb227-1" tabindex="-1"></a>roc_curve_data <span class="ot">&lt;-</span> <span class="fu">roc_curve</span>(</span>
+<span id="cb227-2"><a href="k-nearest-neighbor.html#cb227-2" tabindex="-1"></a>  results_cla, </span>
+<span id="cb227-3"><a href="k-nearest-neighbor.html#cb227-3" tabindex="-1"></a>  <span class="at">truth =</span> Churn, </span>
+<span id="cb227-4"><a href="k-nearest-neighbor.html#cb227-4" tabindex="-1"></a>  .pred_Yes</span>
+<span id="cb227-5"><a href="k-nearest-neighbor.html#cb227-5" tabindex="-1"></a>  )</span>
+<span id="cb227-6"><a href="k-nearest-neighbor.html#cb227-6" tabindex="-1"></a>roc_curve_data</span></code></pre></div>
 <pre><code>## # A tibble: 1,891 × 3
 ##      .threshold specificity sensitivity
 ##           &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -1026,27 +1019,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    0.00118         0.127       0.993
 ## 10    0.00126         0.128       0.993
 ## # ℹ 1,881 more rows</code></pre>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="k-nearest-neighbor.html#cb259-1" tabindex="-1"></a>pr_curve_plot <span class="ot">&lt;-</span> pr_curve_data <span class="sc">%&gt;%</span> </span>
-<span id="cb259-2"><a href="k-nearest-neighbor.html#cb259-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> recall, <span class="at">y =</span> precision)) <span class="sc">+</span></span>
-<span id="cb259-3"><a href="k-nearest-neighbor.html#cb259-3" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb259-4"><a href="k-nearest-neighbor.html#cb259-4" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&#39;lightblue&#39;</span>) <span class="sc">+</span></span>
-<span id="cb259-5"><a href="k-nearest-neighbor.html#cb259-5" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb259-6"><a href="k-nearest-neighbor.html#cb259-6" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb259-7"><a href="k-nearest-neighbor.html#cb259-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Precision vs Recall&quot;</span>)<span class="sc">+</span></span>
-<span id="cb259-8"><a href="k-nearest-neighbor.html#cb259-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb259-9"><a href="k-nearest-neighbor.html#cb259-9" tabindex="-1"></a></span>
-<span id="cb259-10"><a href="k-nearest-neighbor.html#cb259-10" tabindex="-1"></a>pr_curve_plot</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="k-nearest-neighbor.html#cb260-1" tabindex="-1"></a>roc_curve_plot <span class="ot">&lt;-</span> roc_curve_data <span class="sc">%&gt;%</span> </span>
-<span id="cb260-2"><a href="k-nearest-neighbor.html#cb260-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span> <span class="sc">-</span> specificity, <span class="at">y =</span> sensitivity)) <span class="sc">+</span></span>
-<span id="cb260-3"><a href="k-nearest-neighbor.html#cb260-3" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&#39;lightblue&#39;</span>) <span class="sc">+</span></span>
-<span id="cb260-4"><a href="k-nearest-neighbor.html#cb260-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>() <span class="sc">+</span></span>
-<span id="cb260-5"><a href="k-nearest-neighbor.html#cb260-5" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
-<span id="cb260-6"><a href="k-nearest-neighbor.html#cb260-6" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;ROC Curve&quot;</span>)<span class="sc">+</span></span>
-<span id="cb260-7"><a href="k-nearest-neighbor.html#cb260-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb260-8"><a href="k-nearest-neighbor.html#cb260-8" tabindex="-1"></a></span>
-<span id="cb260-9"><a href="k-nearest-neighbor.html#cb260-9" tabindex="-1"></a>roc_curve_plot</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-237-2.png" width="672" /></p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="k-nearest-neighbor.html#cb229-1" tabindex="-1"></a>pr_curve_plot <span class="ot">&lt;-</span> pr_curve_data <span class="sc">%&gt;%</span> </span>
+<span id="cb229-2"><a href="k-nearest-neighbor.html#cb229-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> recall, <span class="at">y =</span> precision)) <span class="sc">+</span></span>
+<span id="cb229-3"><a href="k-nearest-neighbor.html#cb229-3" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb229-4"><a href="k-nearest-neighbor.html#cb229-4" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&#39;lightblue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb229-5"><a href="k-nearest-neighbor.html#cb229-5" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb229-6"><a href="k-nearest-neighbor.html#cb229-6" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb229-7"><a href="k-nearest-neighbor.html#cb229-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Precision vs Recall&quot;</span>)<span class="sc">+</span></span>
+<span id="cb229-8"><a href="k-nearest-neighbor.html#cb229-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb229-9"><a href="k-nearest-neighbor.html#cb229-9" tabindex="-1"></a></span>
+<span id="cb229-10"><a href="k-nearest-neighbor.html#cb229-10" tabindex="-1"></a>pr_curve_plot</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="k-nearest-neighbor.html#cb230-1" tabindex="-1"></a>roc_curve_plot <span class="ot">&lt;-</span> roc_curve_data <span class="sc">%&gt;%</span> </span>
+<span id="cb230-2"><a href="k-nearest-neighbor.html#cb230-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span> <span class="sc">-</span> specificity, <span class="at">y =</span> sensitivity)) <span class="sc">+</span></span>
+<span id="cb230-3"><a href="k-nearest-neighbor.html#cb230-3" tabindex="-1"></a>  <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">&#39;lightblue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb230-4"><a href="k-nearest-neighbor.html#cb230-4" tabindex="-1"></a>  <span class="fu">geom_abline</span>() <span class="sc">+</span></span>
+<span id="cb230-5"><a href="k-nearest-neighbor.html#cb230-5" tabindex="-1"></a>  <span class="fu">coord_equal</span>() <span class="sc">+</span></span>
+<span id="cb230-6"><a href="k-nearest-neighbor.html#cb230-6" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;ROC Curve&quot;</span>)<span class="sc">+</span></span>
+<span id="cb230-7"><a href="k-nearest-neighbor.html#cb230-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb230-8"><a href="k-nearest-neighbor.html#cb230-8" tabindex="-1"></a></span>
+<span id="cb230-9"><a href="k-nearest-neighbor.html#cb230-9" tabindex="-1"></a>roc_curve_plot</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-226-2.png" width="672" /></p>
 <p>Pueden usar la app de <a href="https://acturio.shinyapps.io/confusion_matrix/?_ga=2.157345976.322506426.1653670259-130075619.1646374742">shiny</a> que nos permite jugar con el threshold de clasificación para tomar la mejor decisión.</p>
 
 <div class="watermark">

@@ -200,13 +200,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.5" data-path="04-intro2ml.html"><a href="#resumen-estad%C3%ADstico"><i class="fa fa-check"></i><b>2.4.5</b> Resumen estadístico</a></li>
 <li class="chapter" data-level="2.4.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#agrupamiento"><i class="fa fa-check"></i><b>2.4.6</b> Agrupamiento</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#orden-y-estructura"><i class="fa fa-check"></i><b>2.5</b> Orden y estructura</a>
-<ul>
-<li class="chapter" data-level="2.5.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-horizontal"><i class="fa fa-check"></i><b>2.5.1</b> Pivote horizontal</a></li>
-<li class="chapter" data-level="2.5.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#pivote-vertical"><i class="fa fa-check"></i><b>2.5.2</b> Pivote vertical</a></li>
-<li class="chapter" data-level="2.5.3" data-path="04-intro2ml.html"><a href="#uni%C3%B3n-de-columnas"><i class="fa fa-check"></i><b>2.5.3</b> Unión de columnas</a></li>
-<li class="chapter" data-level="2.5.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#separador-de-columnas"><i class="fa fa-check"></i><b>2.5.4</b> Separador de columnas</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="04-intro2ml.html"><a href="#visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3</b> Visualización</a>
 <ul>
@@ -592,9 +585,9 @@ proyecto.</p>
 <a href="http://projecttemplate.net/"><strong>ProjectTemplate</strong></a>, la cual facilita una
 estructura predeterminada que ayudará como punto de partida para mantener orden
 y control en cada momento del proyecto.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="introducción-a-machine-learning.html#cb103-1" tabindex="-1"></a><span class="fu">library</span>(ProjectTemplate)</span>
-<span id="cb103-2"><a href="introducción-a-machine-learning.html#cb103-2" tabindex="-1"></a></span>
-<span id="cb103-3"><a href="introducción-a-machine-learning.html#cb103-3" tabindex="-1"></a><span class="fu">create.project</span>(<span class="at">project.name =</span> <span class="st">&#39;intro2dsml&#39;</span>, <span class="at">rstudio.project =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="introducción-a-machine-learning.html#cb73-1" tabindex="-1"></a><span class="fu">library</span>(ProjectTemplate)</span>
+<span id="cb73-2"><a href="introducción-a-machine-learning.html#cb73-2" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="introducción-a-machine-learning.html#cb73-3" tabindex="-1"></a><span class="fu">create.project</span>(<span class="at">project.name =</span> <span class="st">&#39;intro2dsml&#39;</span>, <span class="at">rstudio.project =</span> T)</span></code></pre></div>
 <p><strong>create.project()</strong> creará toda la estructura de carpetas para un nuevo
 proyecto. Configurará todos los directorios relevantes y sus contenidos
 iniciales. Para aquellos que solo desean la funcionalidad mínima, el argumento
@@ -665,7 +658,7 @@ correcciones de errores que planea realizar en sus análisis.</p></li>
 </ul>
 <p>Si algunas o todas estas carpetas resultan innecesarias, puede comenzarse con
 una versión simplificada a través del comando:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="introducción-a-machine-learning.html#cb104-1" tabindex="-1"></a><span class="fu">create.project</span>(<span class="at">project.name =</span> <span class="st">&#39;intro2dsml&#39;</span>, <span class="at">template=</span><span class="st">&#39;minimal&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="introducción-a-machine-learning.html#cb74-1" tabindex="-1"></a><span class="fu">create.project</span>(<span class="at">project.name =</span> <span class="st">&#39;intro2dsml&#39;</span>, <span class="at">template=</span><span class="st">&#39;minimal&#39;</span>)</span></code></pre></div>
 <p><img src="img/06-ml/19_create_project_minimal.png" width="600px" height="300px" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -701,16 +694,16 @@ el <span class="math inline">\(20\%\)</span> restante a las pruebas. El método 
 aleatorio simple. El paquete <em>rsample</em> tiene herramientas para realizar
 divisiones de datos como esta; la función <code>initial_split()</code> fue creada para este
 propósito.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="introducción-a-machine-learning.html#cb105-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb105-2"><a href="introducción-a-machine-learning.html#cb105-2" tabindex="-1"></a></span>
-<span id="cb105-3"><a href="introducción-a-machine-learning.html#cb105-3" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
-<span id="cb105-4"><a href="introducción-a-machine-learning.html#cb105-4" tabindex="-1"></a></span>
-<span id="cb105-5"><a href="introducción-a-machine-learning.html#cb105-5" tabindex="-1"></a><span class="co"># Fijar un número aleatorio con para que los resultados puedan ser reproducibles </span></span>
-<span id="cb105-6"><a href="introducción-a-machine-learning.html#cb105-6" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb105-7"><a href="introducción-a-machine-learning.html#cb105-7" tabindex="-1"></a></span>
-<span id="cb105-8"><a href="introducción-a-machine-learning.html#cb105-8" tabindex="-1"></a><span class="co"># Partición 80/20 de los datos</span></span>
-<span id="cb105-9"><a href="introducción-a-machine-learning.html#cb105-9" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.80</span>)</span>
-<span id="cb105-10"><a href="introducción-a-machine-learning.html#cb105-10" tabindex="-1"></a>ames_split</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="introducción-a-machine-learning.html#cb75-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb75-2"><a href="introducción-a-machine-learning.html#cb75-2" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="introducción-a-machine-learning.html#cb75-3" tabindex="-1"></a><span class="fu">tidymodels_prefer</span>()</span>
+<span id="cb75-4"><a href="introducción-a-machine-learning.html#cb75-4" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="introducción-a-machine-learning.html#cb75-5" tabindex="-1"></a><span class="co"># Fijar un número aleatorio con para que los resultados puedan ser reproducibles </span></span>
+<span id="cb75-6"><a href="introducción-a-machine-learning.html#cb75-6" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb75-7"><a href="introducción-a-machine-learning.html#cb75-7" tabindex="-1"></a></span>
+<span id="cb75-8"><a href="introducción-a-machine-learning.html#cb75-8" tabindex="-1"></a><span class="co"># Partición 80/20 de los datos</span></span>
+<span id="cb75-9"><a href="introducción-a-machine-learning.html#cb75-9" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.80</span>)</span>
+<span id="cb75-10"><a href="introducción-a-machine-learning.html#cb75-10" tabindex="-1"></a>ames_split</span></code></pre></div>
 <pre><code>## &lt;Training/Testing/Total&gt;
 ## &lt;2344/586/2930&gt;</code></pre>
 <p>La información impresa denota la cantidad de datos en el conjunto de
@@ -719,10 +712,10 @@ el tamaño del grupo original de muestras <span class="math inline">\((n = 2,930
 <p>El objeto <code>ames_split</code> es un objeto <em>rsplit</em> y solo contiene la información de
 partición; para obtener los conjuntos de datos resultantes, aplicamos dos
 funciones más:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="introducción-a-machine-learning.html#cb107-1" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
-<span id="cb107-2"><a href="introducción-a-machine-learning.html#cb107-2" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span>  <span class="fu">testing</span>(ames_split)</span>
-<span id="cb107-3"><a href="introducción-a-machine-learning.html#cb107-3" tabindex="-1"></a></span>
-<span id="cb107-4"><a href="introducción-a-machine-learning.html#cb107-4" tabindex="-1"></a><span class="fu">dim</span>(ames_train)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="introducción-a-machine-learning.html#cb77-1" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
+<span id="cb77-2"><a href="introducción-a-machine-learning.html#cb77-2" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span>  <span class="fu">testing</span>(ames_split)</span>
+<span id="cb77-3"><a href="introducción-a-machine-learning.html#cb77-3" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="introducción-a-machine-learning.html#cb77-4" tabindex="-1"></a><span class="fu">dim</span>(ames_train)</span></code></pre></div>
 <pre><code>## [1] 2344   74</code></pre>
 <p>El muestreo aleatorio simple es apropiado en muchos casos, pero hay excepciones.</p>
 <p>Cuando hay un desbalance de clases en los problemas de clasificación, el uso de
@@ -735,7 +728,7 @@ estas submuestras se combinan en el conjunto general de entrenamiento y prueba.<
 artificialmente en cuartiles y luego realizar un muestreo estratificado cuatro
 veces por separado. Este es un método eficaz para mantener similares las
 distribuciones del resultado entre el conjunto de entrenamiento y prueba.</p>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Observamos que la distribución del precio de venta está sesgada a la derecha.
 Las casas más caras no estarían bien representadas en el conjunto de
 entrenamiento con una simple partición; esto aumentaría el riesgo de que nuestro
@@ -744,10 +737,10 @@ modelo sea ineficaz para predecir el precio de dichas propiedades.</p>
 Una muestra aleatoria estratificada llevaría a cabo la división 80/20 dentro de
 cada uno de estos subconjuntos de datos y luego combinaría los resultados. En
 <em>rsample</em>, esto se logra usando el argumento de estratos:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="introducción-a-machine-learning.html#cb109-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb109-2"><a href="introducción-a-machine-learning.html#cb109-2" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.80</span>, <span class="at">strata =</span> Sale_Price)</span>
-<span id="cb109-3"><a href="introducción-a-machine-learning.html#cb109-3" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
-<span id="cb109-4"><a href="introducción-a-machine-learning.html#cb109-4" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span>  <span class="fu">testing</span>(ames_split)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="introducción-a-machine-learning.html#cb79-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb79-2"><a href="introducción-a-machine-learning.html#cb79-2" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.80</span>, <span class="at">strata =</span> Sale_Price)</span>
+<span id="cb79-3"><a href="introducción-a-machine-learning.html#cb79-3" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
+<span id="cb79-4"><a href="introducción-a-machine-learning.html#cb79-4" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span>  <span class="fu">testing</span>(ames_split)</span></code></pre></div>
 <p><strong>Hay muy pocas desventajas en el uso de muestreo estratificado.</strong></p>
 <p>Un caso es cuando los datos tienen un componente de tiempo, como los datos de
 series de tiempo. Aquí, es más común utilizar los datos más recientes como
@@ -802,9 +795,9 @@ múltiples iteraciones de remuestreo.</p>
 <p>Con <em>rsample</em>, un conjunto de validación es como cualquier otro objeto de
 remuestreo; este tipo es diferente solo en que tiene una sola iteración</p>
 <p><img src="img/06-ml/3-5-3-conjunto-validacion-2.png" width="500pt" height="350pt" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="introducción-a-machine-learning.html#cb110-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
-<span id="cb110-2"><a href="introducción-a-machine-learning.html#cb110-2" tabindex="-1"></a>val_set <span class="ot">&lt;-</span> <span class="fu">validation_split</span>(ames_train, <span class="at">prop =</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>, <span class="at">strata =</span> <span class="cn">NULL</span>)</span>
-<span id="cb110-3"><a href="introducción-a-machine-learning.html#cb110-3" tabindex="-1"></a>val_set <span class="co">#val_set contiene el conjunto de entrenamiento y validación.</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="introducción-a-machine-learning.html#cb80-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span>
+<span id="cb80-2"><a href="introducción-a-machine-learning.html#cb80-2" tabindex="-1"></a>val_set <span class="ot">&lt;-</span> <span class="fu">validation_split</span>(ames_train, <span class="at">prop =</span> <span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>, <span class="at">strata =</span> <span class="cn">NULL</span>)</span>
+<span id="cb80-3"><a href="introducción-a-machine-learning.html#cb80-3" tabindex="-1"></a>val_set <span class="co">#val_set contiene el conjunto de entrenamiento y validación.</span></span></code></pre></div>
 <pre><code>## # Validation Set Split (0.75/0.25)  
 ## # A tibble: 1 × 2
 ##   splits             id        
@@ -842,9 +835,9 @@ calculados.</p>
 requiere que el modelo sea reajustado y validado tantas veces como observaciones
 disponibles se tengan lo que en algunos casos puede ser muy complicado.</p>
 <p><em>rsample</em> contiene la función <code>loo_cv()</code>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="introducción-a-machine-learning.html#cb112-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
-<span id="cb112-2"><a href="introducción-a-machine-learning.html#cb112-2" tabindex="-1"></a>ames_loo <span class="ot">&lt;-</span> <span class="fu">loo_cv</span>(ames_train)</span>
-<span id="cb112-3"><a href="introducción-a-machine-learning.html#cb112-3" tabindex="-1"></a>ames_loo</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="introducción-a-machine-learning.html#cb82-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
+<span id="cb82-2"><a href="introducción-a-machine-learning.html#cb82-2" tabindex="-1"></a>ames_loo <span class="ot">&lt;-</span> <span class="fu">loo_cv</span>(ames_train)</span>
+<span id="cb82-3"><a href="introducción-a-machine-learning.html#cb82-3" tabindex="-1"></a>ames_loo</span></code></pre></div>
 <pre><code>## # Leave-one-out cross-validation 
 ## # A tibble: 2,342 × 2
 ##    splits           id        
@@ -894,9 +887,9 @@ pequeño.</p></li>
 <p><img src="img/06-ml/3-5-4-VFCV-tune.png" width="550pt" height="250pt" style="display: block; margin: auto;" /></p>
 <p>En la función <code>vfold_cv()</code> la entrada principal es el conjunto de entrenamiento,
 así como el número de bloques:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="introducción-a-machine-learning.html#cb114-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
-<span id="cb114-2"><a href="introducción-a-machine-learning.html#cb114-2" tabindex="-1"></a>ames_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train, <span class="at">v =</span> <span class="dv">10</span>)</span>
-<span id="cb114-3"><a href="introducción-a-machine-learning.html#cb114-3" tabindex="-1"></a>ames_folds</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="introducción-a-machine-learning.html#cb84-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">55</span>)</span>
+<span id="cb84-2"><a href="introducción-a-machine-learning.html#cb84-2" tabindex="-1"></a>ames_folds <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb84-3"><a href="introducción-a-machine-learning.html#cb84-3" tabindex="-1"></a>ames_folds</span></code></pre></div>
 <pre><code>## #  10-fold cross-validation 
 ## # A tibble: 10 × 2
 ##    splits             id    
@@ -926,10 +919,10 @@ varios campos de identificación.</p>
 <p>Para recuperar manualmente los datos particionados, las funciones de
 <code>analysis()</code> y <code>assessment()</code> devuelven los de datos de análisis y evaluación
 respectivamente.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="introducción-a-machine-learning.html#cb116-1" tabindex="-1"></a><span class="co"># Primer bloque</span></span>
-<span id="cb116-2"><a href="introducción-a-machine-learning.html#cb116-2" tabindex="-1"></a>ames_folds<span class="sc">$</span>splits[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
-<span id="cb116-3"><a href="introducción-a-machine-learning.html#cb116-3" tabindex="-1"></a>  <span class="fu">analysis</span>() <span class="sc">%&gt;%</span> <span class="co"># O assessment()</span></span>
-<span id="cb116-4"><a href="introducción-a-machine-learning.html#cb116-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="introducción-a-machine-learning.html#cb86-1" tabindex="-1"></a><span class="co"># Primer bloque</span></span>
+<span id="cb86-2"><a href="introducción-a-machine-learning.html#cb86-2" tabindex="-1"></a>ames_folds<span class="sc">$</span>splits[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
+<span id="cb86-3"><a href="introducción-a-machine-learning.html#cb86-3" tabindex="-1"></a>  <span class="fu">analysis</span>() <span class="sc">%&gt;%</span> <span class="co"># O assessment()</span></span>
+<span id="cb86-4"><a href="introducción-a-machine-learning.html#cb86-4" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 74
 ##   MS_SubClass             MS_Zoning Lot_Frontage Lot_Area Street Alley Lot_Shape
 ##   &lt;fct&gt;                   &lt;fct&gt;            &lt;dbl&gt;    &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;    
@@ -1224,15 +1217,15 @@ siguientes pasos:</p>
 <li><p>Aplicación</p></li>
 </ol>
 <p>La siguiente sección explica la estructura y flujo de transformaciones:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="introducción-a-machine-learning.html#cb118-1" tabindex="-1"></a>receta <span class="ot">&lt;-</span> <span class="fu">recipe</span>(response <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3 <span class="sc">+</span> ... <span class="sc">+</span> Xn, <span class="at">data =</span> dataset ) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-2"><a href="introducción-a-machine-learning.html#cb118-2" tabindex="-1"></a>  <span class="fu">transformation_1</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-3"><a href="introducción-a-machine-learning.html#cb118-3" tabindex="-1"></a>  <span class="fu">transformation_2</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-4"><a href="introducción-a-machine-learning.html#cb118-4" tabindex="-1"></a>  <span class="fu">transformation_3</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-5"><a href="introducción-a-machine-learning.html#cb118-5" tabindex="-1"></a>  ...</span>
-<span id="cb118-6"><a href="introducción-a-machine-learning.html#cb118-6" tabindex="-1"></a>  <span class="fu">final_transformation</span>(...) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-7"><a href="introducción-a-machine-learning.html#cb118-7" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
-<span id="cb118-8"><a href="introducción-a-machine-learning.html#cb118-8" tabindex="-1"></a></span>
-<span id="cb118-9"><a href="introducción-a-machine-learning.html#cb118-9" tabindex="-1"></a><span class="fu">bake</span>(receta, <span class="at">new_data =</span> new_dataset)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="introducción-a-machine-learning.html#cb88-1" tabindex="-1"></a>receta <span class="ot">&lt;-</span> <span class="fu">recipe</span>(response <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3 <span class="sc">+</span> ... <span class="sc">+</span> Xn, <span class="at">data =</span> dataset ) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-2"><a href="introducción-a-machine-learning.html#cb88-2" tabindex="-1"></a>  <span class="fu">transformation_1</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-3"><a href="introducción-a-machine-learning.html#cb88-3" tabindex="-1"></a>  <span class="fu">transformation_2</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-4"><a href="introducción-a-machine-learning.html#cb88-4" tabindex="-1"></a>  <span class="fu">transformation_3</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-5"><a href="introducción-a-machine-learning.html#cb88-5" tabindex="-1"></a>  ...</span>
+<span id="cb88-6"><a href="introducción-a-machine-learning.html#cb88-6" tabindex="-1"></a>  <span class="fu">final_transformation</span>(...) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-7"><a href="introducción-a-machine-learning.html#cb88-7" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb88-8"><a href="introducción-a-machine-learning.html#cb88-8" tabindex="-1"></a></span>
+<span id="cb88-9"><a href="introducción-a-machine-learning.html#cb88-9" tabindex="-1"></a><span class="fu">bake</span>(receta, <span class="at">new_data =</span> new_dataset)</span></code></pre></div>
 <p>A continuación se muestran distintos ejemplos de transformaciones realizadas
 comúnmente en el pre-procesamiento de modelos predictivos. Como ejemplo,
 utilizaremos el subconjunto de predictores disponibles en los datos de vivienda:
@@ -1245,7 +1238,7 @@ utilizaremos el subconjunto de predictores disponibles en los datos de vivienda:
 </ul>
 <p><strong>ANTERIORMENTE…</strong> Un modelo de regresión lineal ordinario se ajustaba a los
 datos con la función estándar <code>lm()</code> de la siguiente manera:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="introducción-a-machine-learning.html#cb119-1" tabindex="-1"></a><span class="fu">lm</span>(Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> <span class="fu">log10</span>(Gr_Liv_Area) <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type, <span class="at">data =</span> ames)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="introducción-a-machine-learning.html#cb89-1" tabindex="-1"></a><span class="fu">lm</span>(Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> <span class="fu">log10</span>(Gr_Liv_Area) <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type, <span class="at">data =</span> ames)</span></code></pre></div>
 <p>Cuando se ejecuta esta función, los datos se convierten en a una matriz de
 diseño numérico (también llamada matriz de modelo) y luego se utiliza el método
 de mínimos cuadrados para estimar los parámetros. Lo que hace <strong>la fórmula
@@ -1265,13 +1258,13 @@ formato no numérico a un formato numérico (dado que los mínimos cuadrados
 requieren predictores numéricos).</p>
 </blockquote>
 <p>La siguiente receta es equivalente a la fórmula anterior:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="introducción-a-machine-learning.html#cb120-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
-<span id="cb120-2"><a href="introducción-a-machine-learning.html#cb120-2" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
-<span id="cb120-3"><a href="introducción-a-machine-learning.html#cb120-3" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
-<span id="cb120-4"><a href="introducción-a-machine-learning.html#cb120-4" tabindex="-1"></a>  <span class="fu">step_log</span>(Gr_Liv_Area, <span class="at">base =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb120-5"><a href="introducción-a-machine-learning.html#cb120-5" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
-<span id="cb120-6"><a href="introducción-a-machine-learning.html#cb120-6" tabindex="-1"></a></span>
-<span id="cb120-7"><a href="introducción-a-machine-learning.html#cb120-7" tabindex="-1"></a>simple_ames</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="introducción-a-machine-learning.html#cb90-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb90-2"><a href="introducción-a-machine-learning.html#cb90-2" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
+<span id="cb90-3"><a href="introducción-a-machine-learning.html#cb90-3" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb90-4"><a href="introducción-a-machine-learning.html#cb90-4" tabindex="-1"></a>  <span class="fu">step_log</span>(Gr_Liv_Area, <span class="at">base =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-5"><a href="introducción-a-machine-learning.html#cb90-5" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb90-6"><a href="introducción-a-machine-learning.html#cb90-6" tabindex="-1"></a></span>
+<span id="cb90-7"><a href="introducción-a-machine-learning.html#cb90-7" tabindex="-1"></a>simple_ames</span></code></pre></div>
 <p><strong>Ventajas de usar una receta:</strong></p>
 <ul>
 <li><p><strong>Los cálculos se pueden reciclar entre modelos</strong> ya que no están
@@ -1299,8 +1292,8 @@ resultado</p></li>
 </ul>
 <p>La función <strong><code>prep()</code></strong> estima las cantidades requeridas y las estadísticas
 necesarias para cualquier paso declarado en la receta.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="introducción-a-machine-learning.html#cb121-1" tabindex="-1"></a>prep <span class="ot">&lt;-</span> <span class="fu">prep</span>(simple_ames) </span>
-<span id="cb121-2"><a href="introducción-a-machine-learning.html#cb121-2" tabindex="-1"></a>prep</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="introducción-a-machine-learning.html#cb91-1" tabindex="-1"></a>prep <span class="ot">&lt;-</span> <span class="fu">prep</span>(simple_ames) </span>
+<span id="cb91-2"><a href="introducción-a-machine-learning.html#cb91-2" tabindex="-1"></a>prep</span></code></pre></div>
 <ul>
 <li><strong>Aplicación</strong> Se llevan a cabo las transformaciones especificadas en la
 receta preparada a un conjunto de datos.</li>
@@ -1313,10 +1306,10 @@ que se entrenó la receta.</p>
 <p><strong>Nota:</strong> La función <strong><code>juice()</code></strong> devolverá los resultados de una receta en la
 que se hayan aplicado todos los pasos a los datos. Similar a la función <code>bake()</code>
 con el comando <code>new_data = NULL</code>.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="introducción-a-machine-learning.html#cb122-1" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> </span>
-<span id="cb122-2"><a href="introducción-a-machine-learning.html#cb122-2" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb122-3"><a href="introducción-a-machine-learning.html#cb122-3" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb122-4"><a href="introducción-a-machine-learning.html#cb122-4" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="introducción-a-machine-learning.html#cb92-1" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> </span>
+<span id="cb92-2"><a href="introducción-a-machine-learning.html#cb92-2" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb92-3"><a href="introducción-a-machine-learning.html#cb92-3" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-4"><a href="introducción-a-machine-learning.html#cb92-4" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
 <pre><code>## Rows: 2,930
 ## Columns: 35
 ## $ Gr_Liv_Area                                          &lt;dbl&gt; 3.219060, 2.95230…
@@ -1383,8 +1376,8 @@ proceso se tiene de fondo el siguiente proceso estadístico:</p>
 </ul>
 <p>La librería <em>recipes</em> nos permite realizar este proceso ágilmente mediante la
 función: <code>step_normalize()</code>.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="introducción-a-machine-learning.html#cb124-1" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price, Neighborhood, Gr_Liv_Area, Year_Built, Bldg_Type) <span class="sc">%&gt;%</span> </span>
-<span id="cb124-2"><a href="introducción-a-machine-learning.html#cb124-2" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="introducción-a-machine-learning.html#cb94-1" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price, Neighborhood, Gr_Liv_Area, Year_Built, Bldg_Type) <span class="sc">%&gt;%</span> </span>
+<span id="cb94-2"><a href="introducción-a-machine-learning.html#cb94-2" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 5
 ##   Sale_Price Neighborhood Gr_Liv_Area Year_Built Bldg_Type
 ##        &lt;int&gt; &lt;fct&gt;              &lt;int&gt;      &lt;int&gt; &lt;fct&gt;    
@@ -1393,16 +1386,16 @@ función: <code>step_normalize()</code>.</p>
 ## 3     172000 North_Ames          1329       1958 OneFam   
 ## 4     244000 North_Ames          2110       1968 OneFam   
 ## 5     189900 Gilbert             1629       1997 OneFam</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="introducción-a-machine-learning.html#cb126-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> ., <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
-<span id="cb126-2"><a href="introducción-a-machine-learning.html#cb126-2" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
-<span id="cb126-3"><a href="introducción-a-machine-learning.html#cb126-3" tabindex="-1"></a></span>
-<span id="cb126-4"><a href="introducción-a-machine-learning.html#cb126-4" tabindex="-1"></a>simple_ames</span>
-<span id="cb126-5"><a href="introducción-a-machine-learning.html#cb126-5" tabindex="-1"></a></span>
-<span id="cb126-6"><a href="introducción-a-machine-learning.html#cb126-6" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> </span>
-<span id="cb126-7"><a href="introducción-a-machine-learning.html#cb126-7" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb126-8"><a href="introducción-a-machine-learning.html#cb126-8" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb126-9"><a href="introducción-a-machine-learning.html#cb126-9" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Neighborhood, Gr_Liv_Area, Year_Built, Bldg_Type) <span class="sc">%&gt;%</span> </span>
-<span id="cb126-10"><a href="introducción-a-machine-learning.html#cb126-10" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="introducción-a-machine-learning.html#cb96-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> ., <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb96-2"><a href="introducción-a-machine-learning.html#cb96-2" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb96-3"><a href="introducción-a-machine-learning.html#cb96-3" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="introducción-a-machine-learning.html#cb96-4" tabindex="-1"></a>simple_ames</span>
+<span id="cb96-5"><a href="introducción-a-machine-learning.html#cb96-5" tabindex="-1"></a></span>
+<span id="cb96-6"><a href="introducción-a-machine-learning.html#cb96-6" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> </span>
+<span id="cb96-7"><a href="introducción-a-machine-learning.html#cb96-7" tabindex="-1"></a>  <span class="fu">prep</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb96-8"><a href="introducción-a-machine-learning.html#cb96-8" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-9"><a href="introducción-a-machine-learning.html#cb96-9" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Neighborhood, Gr_Liv_Area, Year_Built, Bldg_Type) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-10"><a href="introducción-a-machine-learning.html#cb96-10" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 5
 ##   Sale_Price Neighborhood Gr_Liv_Area Year_Built Bldg_Type
 ##        &lt;int&gt; &lt;fct&gt;              &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt;    
@@ -1420,7 +1413,7 @@ requieren de una matriz numérica de características explicativas que permita
 calcular patrones estadísticos para predecir la variable de respuesta. El
 proceso de dicotomización consiste en <strong>crear una variable dicotómica por cada
 categoría de una columna con valores nominales</strong>.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="introducción-a-machine-learning.html#cb128-1" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price, Bldg_Type) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="introducción-a-machine-learning.html#cb98-1" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Sale_Price, Bldg_Type) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   Sale_Price Bldg_Type
 ##        &lt;int&gt; &lt;fct&gt;    
@@ -1429,16 +1422,16 @@ categoría de una columna con valores nominales</strong>.</p>
 ## 3     172000 OneFam   
 ## 4     244000 OneFam   
 ## 5     189900 OneFam</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="introducción-a-machine-learning.html#cb130-1" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Bldg_Type) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="introducción-a-machine-learning.html#cb100-1" tabindex="-1"></a>ames <span class="sc">%&gt;%</span> <span class="fu">select</span>(Bldg_Type) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>()</span></code></pre></div>
 <pre><code>## [1] OneFam   TwnhsE   Twnhs    Duplex   TwoFmCon
 ## Levels: OneFam TwoFmCon Duplex Twnhs TwnhsE</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="introducción-a-machine-learning.html#cb132-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Bldg_Type, <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
-<span id="cb132-2"><a href="introducción-a-machine-learning.html#cb132-2" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb132-3"><a href="introducción-a-machine-learning.html#cb132-3" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
-<span id="cb132-4"><a href="introducción-a-machine-learning.html#cb132-4" tabindex="-1"></a></span>
-<span id="cb132-5"><a href="introducción-a-machine-learning.html#cb132-5" tabindex="-1"></a>simple_ames</span>
-<span id="cb132-6"><a href="introducción-a-machine-learning.html#cb132-6" tabindex="-1"></a></span>
-<span id="cb132-7"><a href="introducción-a-machine-learning.html#cb132-7" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="introducción-a-machine-learning.html#cb102-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Bldg_Type, <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="introducción-a-machine-learning.html#cb102-2" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb102-3"><a href="introducción-a-machine-learning.html#cb102-3" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb102-4"><a href="introducción-a-machine-learning.html#cb102-4" tabindex="-1"></a></span>
+<span id="cb102-5"><a href="introducción-a-machine-learning.html#cb102-5" tabindex="-1"></a>simple_ames</span>
+<span id="cb102-6"><a href="introducción-a-machine-learning.html#cb102-6" tabindex="-1"></a></span>
+<span id="cb102-7"><a href="introducción-a-machine-learning.html#cb102-7" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 5
 ##   Sale_Price Bldg_Type_TwoFmCon Bldg_Type_Duplex Bldg_Type_Twnhs
 ##        &lt;int&gt;              &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;
@@ -1472,28 +1465,28 @@ encontrar un nuevo factor en datos futuros.</p></li>
 </ul>
 <p>Un buen ejemplo es el predictor de <strong>vecindad</strong> en nuestros datos. Aquí hay dos
 vecindarios que tienen menos de cinco propiedades.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="introducción-a-machine-learning.html#cb134-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> ames, <span class="fu">aes</span>(<span class="at">y =</span> Neighborhood)) <span class="sc">+</span> </span>
-<span id="cb134-2"><a href="introducción-a-machine-learning.html#cb134-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb134-3"><a href="introducción-a-machine-learning.html#cb134-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="introducción-a-machine-learning.html#cb104-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> ames, <span class="fu">aes</span>(<span class="at">y =</span> Neighborhood)) <span class="sc">+</span> </span>
+<span id="cb104-2"><a href="introducción-a-machine-learning.html#cb104-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb104-3"><a href="introducción-a-machine-learning.html#cb104-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <p>Para algunos modelos, puede resultar problemático tener variables dummy con una
 sola entrada distinta de cero en la columna. Como mínimo, es muy improbable que
 estas características sean importantes para un modelo.</p>
 <p>Si agregamos <code>step_other (Neighborhood, threshold = 0.01)</code> a nuestra receta, el
 último <span class="math inline">\(1\%\)</span> de los vecindarios se agrupará en un nuevo nivel llamado “otro”,
 esto atrapará a 8 vecindarios.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="introducción-a-machine-learning.html#cb135-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
-<span id="cb135-2"><a href="introducción-a-machine-learning.html#cb135-2" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
-<span id="cb135-3"><a href="introducción-a-machine-learning.html#cb135-3" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
-<span id="cb135-4"><a href="introducción-a-machine-learning.html#cb135-4" tabindex="-1"></a>  <span class="fu">step_other</span>(Neighborhood, <span class="at">threshold =</span> <span class="fl">0.01</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb135-5"><a href="introducción-a-machine-learning.html#cb135-5" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
-<span id="cb135-6"><a href="introducción-a-machine-learning.html#cb135-6" tabindex="-1"></a></span>
-<span id="cb135-7"><a href="introducción-a-machine-learning.html#cb135-7" tabindex="-1"></a>ejemplo <span class="ot">&lt;-</span> <span class="fu">juice</span>(simple_ames)</span>
-<span id="cb135-8"><a href="introducción-a-machine-learning.html#cb135-8" tabindex="-1"></a></span>
-<span id="cb135-9"><a href="introducción-a-machine-learning.html#cb135-9" tabindex="-1"></a><span class="fu">ggplot</span>(ejemplo, <span class="fu">aes</span>(<span class="at">y =</span> Neighborhood)) <span class="sc">+</span> </span>
-<span id="cb135-10"><a href="introducción-a-machine-learning.html#cb135-10" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb135-11"><a href="introducción-a-machine-learning.html#cb135-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="introducción-a-machine-learning.html#cb105-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb105-2"><a href="introducción-a-machine-learning.html#cb105-2" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
+<span id="cb105-3"><a href="introducción-a-machine-learning.html#cb105-3" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb105-4"><a href="introducción-a-machine-learning.html#cb105-4" tabindex="-1"></a>  <span class="fu">step_other</span>(Neighborhood, <span class="at">threshold =</span> <span class="fl">0.01</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb105-5"><a href="introducción-a-machine-learning.html#cb105-5" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb105-6"><a href="introducción-a-machine-learning.html#cb105-6" tabindex="-1"></a></span>
+<span id="cb105-7"><a href="introducción-a-machine-learning.html#cb105-7" tabindex="-1"></a>ejemplo <span class="ot">&lt;-</span> <span class="fu">juice</span>(simple_ames)</span>
+<span id="cb105-8"><a href="introducción-a-machine-learning.html#cb105-8" tabindex="-1"></a></span>
+<span id="cb105-9"><a href="introducción-a-machine-learning.html#cb105-9" tabindex="-1"></a><span class="fu">ggplot</span>(ejemplo, <span class="fu">aes</span>(<span class="at">y =</span> Neighborhood)) <span class="sc">+</span> </span>
+<span id="cb105-10"><a href="introducción-a-machine-learning.html#cb105-10" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb105-11"><a href="introducción-a-machine-learning.html#cb105-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
 </div>
 </div>
 <div id="imputaciones" class="section level3 hasAnchor" number="4.7.2">
@@ -1503,11 +1496,11 @@ como reemplazo de datos categóricos faltantes, sin embargo, para imputar datos
 numéricos se requiere de otra estrategia. Las imputaciones o sustituciones más
 comunes son realizadas a través de medidas de tendencia central tales como la
 media y mediana. A continuación se muestra un ejemplo:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="introducción-a-machine-learning.html#cb136-1" tabindex="-1"></a>ames_na <span class="ot">&lt;-</span> ames</span>
-<span id="cb136-2"><a href="introducción-a-machine-learning.html#cb136-2" tabindex="-1"></a>ames_na[<span class="fu">sample</span>(<span class="fu">nrow</span>(ames), <span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&quot;Gr_Liv_Area&quot;</span>, <span class="st">&quot;Lot_Area&quot;</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb136-3"><a href="introducción-a-machine-learning.html#cb136-3" tabindex="-1"></a></span>
-<span id="cb136-4"><a href="introducción-a-machine-learning.html#cb136-4" tabindex="-1"></a>ames_na <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(Gr_Liv_Area) <span class="sc">|</span> <span class="fu">is.na</span>(Lot_Area)) <span class="sc">%&gt;%</span> </span>
-<span id="cb136-5"><a href="introducción-a-machine-learning.html#cb136-5" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Gr_Liv_Area, Lot_Area)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="introducción-a-machine-learning.html#cb106-1" tabindex="-1"></a>ames_na <span class="ot">&lt;-</span> ames</span>
+<span id="cb106-2"><a href="introducción-a-machine-learning.html#cb106-2" tabindex="-1"></a>ames_na[<span class="fu">sample</span>(<span class="fu">nrow</span>(ames), <span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&quot;Gr_Liv_Area&quot;</span>, <span class="st">&quot;Lot_Area&quot;</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb106-3"><a href="introducción-a-machine-learning.html#cb106-3" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="introducción-a-machine-learning.html#cb106-4" tabindex="-1"></a>ames_na <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(Gr_Liv_Area) <span class="sc">|</span> <span class="fu">is.na</span>(Lot_Area)) <span class="sc">%&gt;%</span> </span>
+<span id="cb106-5"><a href="introducción-a-machine-learning.html#cb106-5" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Gr_Liv_Area, Lot_Area)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##   Sale_Price Gr_Liv_Area Lot_Area
 ##        &lt;int&gt;       &lt;int&gt;    &lt;int&gt;
@@ -1516,13 +1509,13 @@ media y mediana. A continuación se muestra un ejemplo:</p>
 ## 3     189000          NA       NA
 ## 4     302000          NA       NA
 ## 5     111500          NA       NA</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="introducción-a-machine-learning.html#cb138-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Lot_Area, <span class="at">data =</span> ames_na) <span class="sc">%&gt;%</span></span>
-<span id="cb138-2"><a href="introducción-a-machine-learning.html#cb138-2" tabindex="-1"></a>  <span class="fu">step_impute_mean</span>(Gr_Liv_Area) <span class="sc">%&gt;%</span> </span>
-<span id="cb138-3"><a href="introducción-a-machine-learning.html#cb138-3" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(Lot_Area) <span class="sc">%&gt;%</span> </span>
-<span id="cb138-4"><a href="introducción-a-machine-learning.html#cb138-4" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
-<span id="cb138-5"><a href="introducción-a-machine-learning.html#cb138-5" tabindex="-1"></a></span>
-<span id="cb138-6"><a href="introducción-a-machine-learning.html#cb138-6" tabindex="-1"></a><span class="fu">bake</span>(simple_ames, <span class="at">new_data =</span> ames_na) <span class="sc">%&gt;%</span> </span>
-<span id="cb138-7"><a href="introducción-a-machine-learning.html#cb138-7" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Gr_Liv_Area) <span class="sc">|</span> <span class="fu">is.na</span>(Lot_Area))</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="introducción-a-machine-learning.html#cb108-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Gr_Liv_Area <span class="sc">+</span> Lot_Area, <span class="at">data =</span> ames_na) <span class="sc">%&gt;%</span></span>
+<span id="cb108-2"><a href="introducción-a-machine-learning.html#cb108-2" tabindex="-1"></a>  <span class="fu">step_impute_mean</span>(Gr_Liv_Area) <span class="sc">%&gt;%</span> </span>
+<span id="cb108-3"><a href="introducción-a-machine-learning.html#cb108-3" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(Lot_Area) <span class="sc">%&gt;%</span> </span>
+<span id="cb108-4"><a href="introducción-a-machine-learning.html#cb108-4" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb108-5"><a href="introducción-a-machine-learning.html#cb108-5" tabindex="-1"></a></span>
+<span id="cb108-6"><a href="introducción-a-machine-learning.html#cb108-6" tabindex="-1"></a><span class="fu">bake</span>(simple_ames, <span class="at">new_data =</span> ames_na) <span class="sc">%&gt;%</span> </span>
+<span id="cb108-7"><a href="introducción-a-machine-learning.html#cb108-7" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(Gr_Liv_Area) <span class="sc">|</span> <span class="fu">is.na</span>(Lot_Area))</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 3
 ## # ℹ 3 variables: Gr_Liv_Area &lt;int&gt;, Lot_Area &lt;int&gt;, Sale_Price &lt;int&gt;</code></pre>
 <p>Forzamos algunos renglones a que sean omitidos aleatoriamente. Posteriormente,
@@ -1534,20 +1527,20 @@ estos valores son imputados mediante su media y mediana.</p>
 existentes. Similar a la función <code>mutate()</code> de <em>dplyr</em>, la función
 <code>step_mutate()</code> se encarga de realizar esta tarea dentro de un <em>pipeline</em> o
 receta.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="introducción-a-machine-learning.html#cb140-1" tabindex="-1"></a>ejemplo <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
-<span id="cb140-2"><a href="introducción-a-machine-learning.html#cb140-2" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type <span class="sc">+</span> Year_Remod_Add,</span>
-<span id="cb140-3"><a href="introducción-a-machine-learning.html#cb140-3" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
-<span id="cb140-4"><a href="introducción-a-machine-learning.html#cb140-4" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
-<span id="cb140-5"><a href="introducción-a-machine-learning.html#cb140-5" tabindex="-1"></a>    <span class="at">Sale_Price_Peso =</span> Sale_Price <span class="sc">*</span> <span class="fl">19.87</span>,</span>
-<span id="cb140-6"><a href="introducción-a-machine-learning.html#cb140-6" tabindex="-1"></a>    <span class="at">Last_Inversion =</span> Year_Remod_Add <span class="sc">-</span> Year_Built</span>
-<span id="cb140-7"><a href="introducción-a-machine-learning.html#cb140-7" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb140-8"><a href="introducción-a-machine-learning.html#cb140-8" tabindex="-1"></a>  <span class="fu">step_arrange</span>(<span class="fu">desc</span>(Last_Inversion)) <span class="sc">%&gt;%</span> </span>
-<span id="cb140-9"><a href="introducción-a-machine-learning.html#cb140-9" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
-<span id="cb140-10"><a href="introducción-a-machine-learning.html#cb140-10" tabindex="-1"></a></span>
-<span id="cb140-11"><a href="introducción-a-machine-learning.html#cb140-11" tabindex="-1"></a>ejemplo</span>
-<span id="cb140-12"><a href="introducción-a-machine-learning.html#cb140-12" tabindex="-1"></a></span>
-<span id="cb140-13"><a href="introducción-a-machine-learning.html#cb140-13" tabindex="-1"></a>ejemplo <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb140-14"><a href="introducción-a-machine-learning.html#cb140-14" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Sale_Price_Peso, Year_Remod_Add, Year_Built, Last_Inversion)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="introducción-a-machine-learning.html#cb110-1" tabindex="-1"></a>ejemplo <span class="ot">&lt;-</span> <span class="fu">recipe</span>(</span>
+<span id="cb110-2"><a href="introducción-a-machine-learning.html#cb110-2" tabindex="-1"></a>  Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type <span class="sc">+</span> Year_Remod_Add,</span>
+<span id="cb110-3"><a href="introducción-a-machine-learning.html#cb110-3" tabindex="-1"></a>  <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb110-4"><a href="introducción-a-machine-learning.html#cb110-4" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
+<span id="cb110-5"><a href="introducción-a-machine-learning.html#cb110-5" tabindex="-1"></a>    <span class="at">Sale_Price_Peso =</span> Sale_Price <span class="sc">*</span> <span class="fl">19.87</span>,</span>
+<span id="cb110-6"><a href="introducción-a-machine-learning.html#cb110-6" tabindex="-1"></a>    <span class="at">Last_Inversion =</span> Year_Remod_Add <span class="sc">-</span> Year_Built</span>
+<span id="cb110-7"><a href="introducción-a-machine-learning.html#cb110-7" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb110-8"><a href="introducción-a-machine-learning.html#cb110-8" tabindex="-1"></a>  <span class="fu">step_arrange</span>(<span class="fu">desc</span>(Last_Inversion)) <span class="sc">%&gt;%</span> </span>
+<span id="cb110-9"><a href="introducción-a-machine-learning.html#cb110-9" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb110-10"><a href="introducción-a-machine-learning.html#cb110-10" tabindex="-1"></a></span>
+<span id="cb110-11"><a href="introducción-a-machine-learning.html#cb110-11" tabindex="-1"></a>ejemplo</span>
+<span id="cb110-12"><a href="introducción-a-machine-learning.html#cb110-12" tabindex="-1"></a></span>
+<span id="cb110-13"><a href="introducción-a-machine-learning.html#cb110-13" tabindex="-1"></a>ejemplo <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb110-14"><a href="introducción-a-machine-learning.html#cb110-14" tabindex="-1"></a>  <span class="fu">select</span>(Sale_Price, Sale_Price_Peso, Year_Remod_Add, Year_Built, Last_Inversion)</span></code></pre></div>
 <pre><code>## # A tibble: 2,930 × 5
 ##    Sale_Price Sale_Price_Peso Year_Remod_Add Year_Built Last_Inversion
 ##         &lt;int&gt;           &lt;dbl&gt;          &lt;int&gt;      &lt;int&gt;          &lt;int&gt;
@@ -1577,27 +1570,27 @@ numéricos, categóricos, etc.).</p>
 <p>Después de explorar el conjunto de datos de Ames, podríamos encontrar que las
 pendientes de regresión para el área habitable bruta difieren para los
 diferentes tipos de edificios:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="introducción-a-machine-learning.html#cb142-1" tabindex="-1"></a><span class="fu">ggplot</span>(ames, <span class="fu">aes</span>(<span class="at">x =</span> Gr_Liv_Area, <span class="at">y =</span> Sale_Price)) <span class="sc">+</span> </span>
-<span id="cb142-2"><a href="introducción-a-machine-learning.html#cb142-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb142-3"><a href="introducción-a-machine-learning.html#cb142-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Bldg_Type) <span class="sc">+</span> </span>
-<span id="cb142-4"><a href="introducción-a-machine-learning.html#cb142-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb142-5"><a href="introducción-a-machine-learning.html#cb142-5" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
-<span id="cb142-6"><a href="introducción-a-machine-learning.html#cb142-6" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
-<span id="cb142-7"><a href="introducción-a-machine-learning.html#cb142-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Gross Living Area&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sale Price (USD)&quot;</span>)</span></code></pre></div>
-<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="introducción-a-machine-learning.html#cb112-1" tabindex="-1"></a><span class="fu">ggplot</span>(ames, <span class="fu">aes</span>(<span class="at">x =</span> Gr_Liv_Area, <span class="at">y =</span> Sale_Price)) <span class="sc">+</span> </span>
+<span id="cb112-2"><a href="introducción-a-machine-learning.html#cb112-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb112-3"><a href="introducción-a-machine-learning.html#cb112-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Bldg_Type) <span class="sc">+</span> </span>
+<span id="cb112-4"><a href="introducción-a-machine-learning.html#cb112-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm, <span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb112-5"><a href="introducción-a-machine-learning.html#cb112-5" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> </span>
+<span id="cb112-6"><a href="introducción-a-machine-learning.html#cb112-6" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
+<span id="cb112-7"><a href="introducción-a-machine-learning.html#cb112-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Gross Living Area&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sale Price (USD)&quot;</span>)</span></code></pre></div>
+<p><img src="intro2_ds_ml_r_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
 <p>Con la receta actual, <code>step_dummy()</code> ya ha creado variables ficticias. ¿Cómo
 combinaríamos estos para una interacción? El paso adicional se vería como
 <code>step_interact(~ términos de interacción)</code> donde los términos en el lado derecho
 de la tilde son las interacciones. Estos pueden incluir selectores, por lo que
 sería apropiado usar:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="introducción-a-machine-learning.html#cb143-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
-<span id="cb143-2"><a href="introducción-a-machine-learning.html#cb143-2" tabindex="-1"></a>         <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
-<span id="cb143-3"><a href="introducción-a-machine-learning.html#cb143-3" tabindex="-1"></a>  <span class="fu">step_other</span>(Neighborhood, <span class="at">threshold =</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb143-4"><a href="introducción-a-machine-learning.html#cb143-4" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb143-5"><a href="introducción-a-machine-learning.html#cb143-5" tabindex="-1"></a>  <span class="fu">step_interact</span>( <span class="sc">~</span> Gr_Liv_Area<span class="sc">:</span><span class="fu">starts_with</span>(<span class="st">&quot;Bldg_Type_&quot;</span>) ) <span class="sc">%&gt;%</span> </span>
-<span id="cb143-6"><a href="introducción-a-machine-learning.html#cb143-6" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
-<span id="cb143-7"><a href="introducción-a-machine-learning.html#cb143-7" tabindex="-1"></a></span>
-<span id="cb143-8"><a href="introducción-a-machine-learning.html#cb143-8" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="introducción-a-machine-learning.html#cb113-1" tabindex="-1"></a>simple_ames <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> Neighborhood <span class="sc">+</span> Gr_Liv_Area <span class="sc">+</span> Year_Built <span class="sc">+</span> Bldg_Type,</span>
+<span id="cb113-2"><a href="introducción-a-machine-learning.html#cb113-2" tabindex="-1"></a>         <span class="at">data =</span> ames) <span class="sc">%&gt;%</span></span>
+<span id="cb113-3"><a href="introducción-a-machine-learning.html#cb113-3" tabindex="-1"></a>  <span class="fu">step_other</span>(Neighborhood, <span class="at">threshold =</span> <span class="fl">0.05</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb113-4"><a href="introducción-a-machine-learning.html#cb113-4" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb113-5"><a href="introducción-a-machine-learning.html#cb113-5" tabindex="-1"></a>  <span class="fu">step_interact</span>( <span class="sc">~</span> Gr_Liv_Area<span class="sc">:</span><span class="fu">starts_with</span>(<span class="st">&quot;Bldg_Type_&quot;</span>) ) <span class="sc">%&gt;%</span> </span>
+<span id="cb113-6"><a href="introducción-a-machine-learning.html#cb113-6" tabindex="-1"></a>  <span class="fu">prep</span>()</span>
+<span id="cb113-7"><a href="introducción-a-machine-learning.html#cb113-7" tabindex="-1"></a></span>
+<span id="cb113-8"><a href="introducción-a-machine-learning.html#cb113-8" tabindex="-1"></a>simple_ames <span class="sc">%&gt;%</span> <span class="fu">bake</span>(<span class="at">new_data =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>()</span></code></pre></div>
 <pre><code>## Rows: 2,930
 ## Columns: 19
 ## $ Gr_Liv_Area                      &lt;int&gt; 1656, 896, 1329, 2110, 1629, 1604, 13…
@@ -1673,12 +1666,12 @@ mencionadas.</p></li>
 <p>En esta sección, prepararemos datos para ajustar modelos de regresión y de clasificación, usando la paquetería <em>recipes</em>. Primero ajustaremos la receta, después obtendremos la receta actualizada con las estimaciones y al final el conjunto de datos listo para el modelo.</p>
 <p><strong>Datos de regresión: Ames Housing Data</strong></p>
 <p>Los datos que usaremos son los de <em>Ames Housing Data</em>, el conjunto de datos contiene información de la <em>Ames Assessor’s Office</em> utilizada para calcular valuaciones para propiedades residenciales individuales vendidas en Ames, IA, de 2006 a 2010. Podemos encontrar más información en el siguiente link <a href="http://jse.amstat.org/v19n3/decock/DataDocumentation.txt"><em>Ames Housing Data</em></a>.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="introducción-a-machine-learning.html#cb145-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb145-2"><a href="introducción-a-machine-learning.html#cb145-2" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb145-3"><a href="introducción-a-machine-learning.html#cb145-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb145-4"><a href="introducción-a-machine-learning.html#cb145-4" tabindex="-1"></a></span>
-<span id="cb145-5"><a href="introducción-a-machine-learning.html#cb145-5" tabindex="-1"></a><span class="fu">data</span>(ames)</span>
-<span id="cb145-6"><a href="introducción-a-machine-learning.html#cb145-6" tabindex="-1"></a><span class="fu">glimpse</span>(ames)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="introducción-a-machine-learning.html#cb115-1" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb115-2"><a href="introducción-a-machine-learning.html#cb115-2" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb115-3"><a href="introducción-a-machine-learning.html#cb115-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb115-4"><a href="introducción-a-machine-learning.html#cb115-4" tabindex="-1"></a></span>
+<span id="cb115-5"><a href="introducción-a-machine-learning.html#cb115-5" tabindex="-1"></a><span class="fu">data</span>(ames)</span>
+<span id="cb115-6"><a href="introducción-a-machine-learning.html#cb115-6" tabindex="-1"></a><span class="fu">glimpse</span>(ames)</span></code></pre></div>
 <pre><code>## Rows: 2,930
 ## Columns: 74
 ## $ MS_SubClass        &lt;fct&gt; One_Story_1946_and_Newer_All_Styles, One_Story_1946…
@@ -1761,44 +1754,44 @@ mencionadas.</p></li>
 <p>El primer paso para crear un modelo de regresión es dividir nuestros datos originales en un conjunto de entrenamiento y prueba.</p>
 <p>No hay que olvidar usar siempre una semilla con la función <em>set.seed()</em> para que sus resultados sean reproducibles.</p>
 <p>Primero usaremos la función <strong>initial_split()</strong> de <em>rsample</em> para dividir los datos <em>ames</em> en conjuntos de entrenamiento y prueba. Usamos el parámetro <em>prop</em> para indicar la proporción de los conjuntos <em>train</em> y <em>test</em>.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="introducción-a-machine-learning.html#cb147-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4595</span>)</span>
-<span id="cb147-2"><a href="introducción-a-machine-learning.html#cb147-2" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.75</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="introducción-a-machine-learning.html#cb117-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4595</span>)</span>
+<span id="cb117-2"><a href="introducción-a-machine-learning.html#cb117-2" tabindex="-1"></a>ames_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(ames, <span class="at">prop =</span> <span class="fl">0.75</span>)</span></code></pre></div>
 <p>El objeto <em>ames_split</em> es un objeto <em>rsplit</em> y solo contiene la información de partición, para obtener los conjuntos de datos resultantes, aplicamos dos funciones adicionales, <strong>training</strong> y <strong>testing</strong>.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="introducción-a-machine-learning.html#cb148-1" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
-<span id="cb148-2"><a href="introducción-a-machine-learning.html#cb148-2" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(ames_split)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="introducción-a-machine-learning.html#cb118-1" tabindex="-1"></a>ames_train <span class="ot">&lt;-</span> <span class="fu">training</span>(ames_split)</span>
+<span id="cb118-2"><a href="introducción-a-machine-learning.html#cb118-2" tabindex="-1"></a>ames_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(ames_split)</span></code></pre></div>
 <p>Estos objetos son <em>data frames</em> con las mismas columnas que los datos originales, pero solo las filas apropiadas para cada conjunto.</p>
 <p>También existe la función <strong>vfold_cv</strong> que se usa para crear <em><strong>v</strong></em> particiones del conjunto de entrenamiento.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="introducción-a-machine-learning.html#cb149-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2453</span>)</span>
-<span id="cb149-2"><a href="introducción-a-machine-learning.html#cb149-2" tabindex="-1"></a>ames_folds<span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train, <span class="at">v =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="introducción-a-machine-learning.html#cb119-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2453</span>)</span>
+<span id="cb119-2"><a href="introducción-a-machine-learning.html#cb119-2" tabindex="-1"></a>ames_folds<span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(ames_train, <span class="at">v =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p>Ya con los conjuntos de entrenamiento y prueba definidos, iniciaremos con <em>feature engineering</em> sobre el conjunto de entrenamiento.</p>
 </div>
 <div id="definición-de-la-receta" class="section level3 hasAnchor" number="4.8.2">
 <h3><span class="header-section-number">4.8.2</span> Definición de la receta<a href="#definici%C3%B3n-de-la-receta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Ahora usaremos la función vista en la sección anterior, <em>recipe()</em>, para definir los pasos de preprocesamiento antes de usar los datos para modelado.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="introducción-a-machine-learning.html#cb150-1" tabindex="-1"></a>receta_casas <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> . , <span class="at">data =</span> ames_train) <span class="sc">%&gt;%</span></span>
-<span id="cb150-2"><a href="introducción-a-machine-learning.html#cb150-2" tabindex="-1"></a>  <span class="fu">step_unknown</span>(Alley) <span class="sc">%&gt;%</span></span>
-<span id="cb150-3"><a href="introducción-a-machine-learning.html#cb150-3" tabindex="-1"></a>  <span class="fu">step_rename</span>(<span class="at">Year_Remod =</span> Year_Remod_Add) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-4"><a href="introducción-a-machine-learning.html#cb150-4" tabindex="-1"></a>  <span class="fu">step_rename</span>(<span class="at">ThirdSsn_Porch =</span> Three_season_porch) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-5"><a href="introducción-a-machine-learning.html#cb150-5" tabindex="-1"></a>  <span class="fu">step_ratio</span>(Bedroom_AbvGr, <span class="at">denom =</span> <span class="fu">denom_vars</span>(Gr_Liv_Area)) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-6"><a href="introducción-a-machine-learning.html#cb150-6" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
-<span id="cb150-7"><a href="introducción-a-machine-learning.html#cb150-7" tabindex="-1"></a>    <span class="at">Age_House =</span> Year_Sold <span class="sc">-</span> Year_Remod,</span>
-<span id="cb150-8"><a href="introducción-a-machine-learning.html#cb150-8" tabindex="-1"></a>    <span class="at">TotalSF   =</span> Gr_Liv_Area <span class="sc">+</span> Total_Bsmt_SF,</span>
-<span id="cb150-9"><a href="introducción-a-machine-learning.html#cb150-9" tabindex="-1"></a>    <span class="at">AvgRoomSF   =</span> Gr_Liv_Area <span class="sc">/</span> TotRms_AbvGrd,</span>
-<span id="cb150-10"><a href="introducción-a-machine-learning.html#cb150-10" tabindex="-1"></a>    <span class="at">Pool =</span> <span class="fu">if_else</span>(Pool_Area <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb150-11"><a href="introducción-a-machine-learning.html#cb150-11" tabindex="-1"></a>    <span class="at">Exter_Cond =</span> forcats<span class="sc">::</span><span class="fu">fct_collapse</span>(Exter_Cond, <span class="at">Good =</span> <span class="fu">c</span>(<span class="st">&quot;Typical&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Excellent&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-12"><a href="introducción-a-machine-learning.html#cb150-12" tabindex="-1"></a>  <span class="fu">step_relevel</span>(Exter_Cond, <span class="at">ref_level =</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-13"><a href="introducción-a-machine-learning.html#cb150-13" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>(), <span class="sc">-</span><span class="fu">all_nominal</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb150-14"><a href="introducción-a-machine-learning.html#cb150-14" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-15"><a href="introducción-a-machine-learning.html#cb150-15" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> Second_Flr_SF<span class="sc">:</span>First_Flr_SF) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-16"><a href="introducción-a-machine-learning.html#cb150-16" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> <span class="fu">matches</span>(<span class="st">&quot;Bsmt_Cond&quot;</span>)<span class="sc">:</span>TotRms_AbvGrd) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-17"><a href="introducción-a-machine-learning.html#cb150-17" tabindex="-1"></a>  <span class="fu">step_rm</span>(</span>
-<span id="cb150-18"><a href="introducción-a-machine-learning.html#cb150-18" tabindex="-1"></a>    First_Flr_SF, Second_Flr_SF, Year_Remod,</span>
-<span id="cb150-19"><a href="introducción-a-machine-learning.html#cb150-19" tabindex="-1"></a>    Bsmt_Full_Bath, Bsmt_Half_Bath, </span>
-<span id="cb150-20"><a href="introducción-a-machine-learning.html#cb150-20" tabindex="-1"></a>    Kitchen_AbvGr, BsmtFin_Type_1_Unf, </span>
-<span id="cb150-21"><a href="introducción-a-machine-learning.html#cb150-21" tabindex="-1"></a>    Total_Bsmt_SF, Kitchen_AbvGr, Pool_Area, </span>
-<span id="cb150-22"><a href="introducción-a-machine-learning.html#cb150-22" tabindex="-1"></a>    Gr_Liv_Area, Sale_Type_Oth, Sale_Type_VWD</span>
-<span id="cb150-23"><a href="introducción-a-machine-learning.html#cb150-23" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb150-24"><a href="introducción-a-machine-learning.html#cb150-24" tabindex="-1"></a>  <span class="fu">prep</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="introducción-a-machine-learning.html#cb120-1" tabindex="-1"></a>receta_casas <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Sale_Price <span class="sc">~</span> . , <span class="at">data =</span> ames_train) <span class="sc">%&gt;%</span></span>
+<span id="cb120-2"><a href="introducción-a-machine-learning.html#cb120-2" tabindex="-1"></a>  <span class="fu">step_unknown</span>(Alley) <span class="sc">%&gt;%</span></span>
+<span id="cb120-3"><a href="introducción-a-machine-learning.html#cb120-3" tabindex="-1"></a>  <span class="fu">step_rename</span>(<span class="at">Year_Remod =</span> Year_Remod_Add) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-4"><a href="introducción-a-machine-learning.html#cb120-4" tabindex="-1"></a>  <span class="fu">step_rename</span>(<span class="at">ThirdSsn_Porch =</span> Three_season_porch) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-5"><a href="introducción-a-machine-learning.html#cb120-5" tabindex="-1"></a>  <span class="fu">step_ratio</span>(Bedroom_AbvGr, <span class="at">denom =</span> <span class="fu">denom_vars</span>(Gr_Liv_Area)) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-6"><a href="introducción-a-machine-learning.html#cb120-6" tabindex="-1"></a>  <span class="fu">step_mutate</span>(</span>
+<span id="cb120-7"><a href="introducción-a-machine-learning.html#cb120-7" tabindex="-1"></a>    <span class="at">Age_House =</span> Year_Sold <span class="sc">-</span> Year_Remod,</span>
+<span id="cb120-8"><a href="introducción-a-machine-learning.html#cb120-8" tabindex="-1"></a>    <span class="at">TotalSF   =</span> Gr_Liv_Area <span class="sc">+</span> Total_Bsmt_SF,</span>
+<span id="cb120-9"><a href="introducción-a-machine-learning.html#cb120-9" tabindex="-1"></a>    <span class="at">AvgRoomSF   =</span> Gr_Liv_Area <span class="sc">/</span> TotRms_AbvGrd,</span>
+<span id="cb120-10"><a href="introducción-a-machine-learning.html#cb120-10" tabindex="-1"></a>    <span class="at">Pool =</span> <span class="fu">if_else</span>(Pool_Area <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb120-11"><a href="introducción-a-machine-learning.html#cb120-11" tabindex="-1"></a>    <span class="at">Exter_Cond =</span> forcats<span class="sc">::</span><span class="fu">fct_collapse</span>(Exter_Cond, <span class="at">Good =</span> <span class="fu">c</span>(<span class="st">&quot;Typical&quot;</span>, <span class="st">&quot;Good&quot;</span>, <span class="st">&quot;Excellent&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-12"><a href="introducción-a-machine-learning.html#cb120-12" tabindex="-1"></a>  <span class="fu">step_relevel</span>(Exter_Cond, <span class="at">ref_level =</span> <span class="st">&quot;Good&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-13"><a href="introducción-a-machine-learning.html#cb120-13" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>(), <span class="sc">-</span><span class="fu">all_nominal</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb120-14"><a href="introducción-a-machine-learning.html#cb120-14" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-15"><a href="introducción-a-machine-learning.html#cb120-15" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> Second_Flr_SF<span class="sc">:</span>First_Flr_SF) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-16"><a href="introducción-a-machine-learning.html#cb120-16" tabindex="-1"></a>  <span class="fu">step_interact</span>(<span class="sc">~</span> <span class="fu">matches</span>(<span class="st">&quot;Bsmt_Cond&quot;</span>)<span class="sc">:</span>TotRms_AbvGrd) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-17"><a href="introducción-a-machine-learning.html#cb120-17" tabindex="-1"></a>  <span class="fu">step_rm</span>(</span>
+<span id="cb120-18"><a href="introducción-a-machine-learning.html#cb120-18" tabindex="-1"></a>    First_Flr_SF, Second_Flr_SF, Year_Remod,</span>
+<span id="cb120-19"><a href="introducción-a-machine-learning.html#cb120-19" tabindex="-1"></a>    Bsmt_Full_Bath, Bsmt_Half_Bath, </span>
+<span id="cb120-20"><a href="introducción-a-machine-learning.html#cb120-20" tabindex="-1"></a>    Kitchen_AbvGr, BsmtFin_Type_1_Unf, </span>
+<span id="cb120-21"><a href="introducción-a-machine-learning.html#cb120-21" tabindex="-1"></a>    Total_Bsmt_SF, Kitchen_AbvGr, Pool_Area, </span>
+<span id="cb120-22"><a href="introducción-a-machine-learning.html#cb120-22" tabindex="-1"></a>    Gr_Liv_Area, Sale_Type_Oth, Sale_Type_VWD</span>
+<span id="cb120-23"><a href="introducción-a-machine-learning.html#cb120-23" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb120-24"><a href="introducción-a-machine-learning.html#cb120-24" tabindex="-1"></a>  <span class="fu">prep</span>()</span></code></pre></div>
 <ul>
 <li><p>Usamos la función <em><strong>step_mutate()</strong></em> para generar nuevas variables dentro de la receta.</p></li>
 <li><p>La función <em><strong>step_interact()</strong></em> nos ayuda a crear nuevas variables que son interacciones entre las variables especificadas.</p></li>
@@ -1810,8 +1803,8 @@ mencionadas.</p></li>
 <li><p>Por último usamos la función <em><strong>step_rm()</strong></em> para eliminar variables que no son de utilidad para el modelo.</p></li>
 </ul>
 <p>Ahora crearemos algunas variables auxiliares que podrían ser de utilidad para el ajuste de un modelo de regresión. Recordemos que la función <strong>recipe()</strong> solo son los pasos a seguir, necesitamos usar la función <strong>prep()</strong> que nos devuelve una receta actualizada con las estimaciones y la función <strong>juice()</strong> que nos devuelve la matriz de diseño.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="introducción-a-machine-learning.html#cb151-1" tabindex="-1"></a>casa_juiced <span class="ot">&lt;-</span> <span class="fu">juice</span>(receta_casas)</span>
-<span id="cb151-2"><a href="introducción-a-machine-learning.html#cb151-2" tabindex="-1"></a>casa_juiced</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="introducción-a-machine-learning.html#cb121-1" tabindex="-1"></a>casa_juiced <span class="ot">&lt;-</span> <span class="fu">juice</span>(receta_casas)</span>
+<span id="cb121-2"><a href="introducción-a-machine-learning.html#cb121-2" tabindex="-1"></a>casa_juiced</span></code></pre></div>
 <pre><code>## # A tibble: 2,197 × 275
 ##    Lot_Frontage Lot_Area Year_Built Mas_Vnr_Area BsmtFin_SF_1 BsmtFin_SF_2
 ##           &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
@@ -1832,8 +1825,8 @@ mencionadas.</p></li>
 ## #   Open_Porch_SF &lt;dbl&gt;, Enclosed_Porch &lt;dbl&gt;, ThirdSsn_Porch &lt;dbl&gt;,
 ## #   Screen_Porch &lt;dbl&gt;, Misc_Val &lt;dbl&gt;, Mo_Sold &lt;dbl&gt;, Year_Sold &lt;dbl&gt;,
 ## #   Longitude &lt;dbl&gt;, Latitude &lt;dbl&gt;, Sale_Price &lt;int&gt;, …</code></pre>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="introducción-a-machine-learning.html#cb153-1" tabindex="-1"></a>casa_test_bake <span class="ot">&lt;-</span> <span class="fu">bake</span>(receta_casas, <span class="at">new_data =</span> ames_test)</span>
-<span id="cb153-2"><a href="introducción-a-machine-learning.html#cb153-2" tabindex="-1"></a><span class="fu">glimpse</span>(casa_test_bake)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="introducción-a-machine-learning.html#cb123-1" tabindex="-1"></a>casa_test_bake <span class="ot">&lt;-</span> <span class="fu">bake</span>(receta_casas, <span class="at">new_data =</span> ames_test)</span>
+<span id="cb123-2"><a href="introducción-a-machine-learning.html#cb123-2" tabindex="-1"></a><span class="fu">glimpse</span>(casa_test_bake)</span></code></pre></div>
 <pre><code>## Rows: 733
 ## Columns: 275
 ## $ Lot_Frontage                                          &lt;dbl&gt; 0.6607556, -1.72…
@@ -2115,8 +2108,8 @@ mencionadas.</p></li>
 <h4>Clasificación: Preparación de Datos<a href="#clasificaci%C3%B3n-preparaci%C3%B3n-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Ahora prepararemos los datos para un ejemplo de <em>churn</em>, es decir, la <strong>tasa de cancelación de clientes</strong>. Usaremos datos de <a href="https://www.kaggle.com/blastchar/telco-customer-churn">Telco</a>.</p>
 <p>En este conjunto de datos, la variable a predecir será la cancelación por parte del cliente de los servicios de telecomunicaciones contratados.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="introducción-a-machine-learning.html#cb155-1" tabindex="-1"></a>telco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Churn.csv&quot;</span>)</span>
-<span id="cb155-2"><a href="introducción-a-machine-learning.html#cb155-2" tabindex="-1"></a><span class="fu">glimpse</span>(telco)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="introducción-a-machine-learning.html#cb125-1" tabindex="-1"></a>telco <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/Churn.csv&quot;</span>)</span>
+<span id="cb125-2"><a href="introducción-a-machine-learning.html#cb125-2" tabindex="-1"></a><span class="fu">glimpse</span>(telco)</span></code></pre></div>
 <pre><code>## Rows: 7,043
 ## Columns: 21
 ## $ customerID       &lt;chr&gt; &quot;7590-VHVEG&quot;, &quot;5575-GNVDE&quot;, &quot;3668-QPYBK&quot;, &quot;7795-CFOCW…
@@ -2145,25 +2138,25 @@ mencionadas.</p></li>
 <div id="separación-de-los-datos-1" class="section level3 hasAnchor" number="4.8.3">
 <h3><span class="header-section-number">4.8.3</span> Separación de los datos<a href="#separaci%C3%B3n-de-los-datos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Como en el ejemplo de regresión, primero crearemos los conjuntos de entrenamiento y de prueba.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="introducción-a-machine-learning.html#cb157-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb157-2"><a href="introducción-a-machine-learning.html#cb157-2" tabindex="-1"></a>telco_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(telco, <span class="at">prop =</span> .<span class="dv">7</span>)</span>
-<span id="cb157-3"><a href="introducción-a-machine-learning.html#cb157-3" tabindex="-1"></a></span>
-<span id="cb157-4"><a href="introducción-a-machine-learning.html#cb157-4" tabindex="-1"></a>telco_train <span class="ot">&lt;-</span> <span class="fu">training</span>(telco_split)</span>
-<span id="cb157-5"><a href="introducción-a-machine-learning.html#cb157-5" tabindex="-1"></a>telco_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(telco_split)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="introducción-a-machine-learning.html#cb127-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb127-2"><a href="introducción-a-machine-learning.html#cb127-2" tabindex="-1"></a>telco_split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(telco, <span class="at">prop =</span> .<span class="dv">7</span>)</span>
+<span id="cb127-3"><a href="introducción-a-machine-learning.html#cb127-3" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="introducción-a-machine-learning.html#cb127-4" tabindex="-1"></a>telco_train <span class="ot">&lt;-</span> <span class="fu">training</span>(telco_split)</span>
+<span id="cb127-5"><a href="introducción-a-machine-learning.html#cb127-5" tabindex="-1"></a>telco_test  <span class="ot">&lt;-</span> <span class="fu">testing</span>(telco_split)</span></code></pre></div>
 </div>
 <div id="definición-de-la-receta-1" class="section level3 hasAnchor" number="4.8.4">
 <h3><span class="header-section-number">4.8.4</span> Definición de la receta<a href="#definici%C3%B3n-de-la-receta-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A continuación, se presenta el desarrollo de una receta para el conjunto de datos de <em>Telco</em>:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="introducción-a-machine-learning.html#cb158-1" tabindex="-1"></a>telco_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Churn <span class="sc">~</span> ., <span class="at">data =</span> telco_train) <span class="sc">%&gt;%</span> </span>
-<span id="cb158-2"><a href="introducción-a-machine-learning.html#cb158-2" tabindex="-1"></a>  <span class="fu">update_role</span>(customerID, <span class="at">new_role =</span> <span class="st">&quot;id variable&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb158-3"><a href="introducción-a-machine-learning.html#cb158-3" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb158-4"><a href="introducción-a-machine-learning.html#cb158-4" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb158-5"><a href="introducción-a-machine-learning.html#cb158-5" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb158-6"><a href="introducción-a-machine-learning.html#cb158-6" tabindex="-1"></a>  <span class="fu">step_rm</span>(customerID, <span class="at">skip=</span>T) <span class="sc">%&gt;%</span> </span>
-<span id="cb158-7"><a href="introducción-a-machine-learning.html#cb158-7" tabindex="-1"></a>  <span class="fu">prep</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="introducción-a-machine-learning.html#cb128-1" tabindex="-1"></a>telco_rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(Churn <span class="sc">~</span> ., <span class="at">data =</span> telco_train) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-2"><a href="introducción-a-machine-learning.html#cb128-2" tabindex="-1"></a>  <span class="fu">update_role</span>(customerID, <span class="at">new_role =</span> <span class="st">&quot;id variable&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-3"><a href="introducción-a-machine-learning.html#cb128-3" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-4"><a href="introducción-a-machine-learning.html#cb128-4" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-5"><a href="introducción-a-machine-learning.html#cb128-5" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-6"><a href="introducción-a-machine-learning.html#cb128-6" tabindex="-1"></a>  <span class="fu">step_rm</span>(customerID, <span class="at">skip=</span>T) <span class="sc">%&gt;%</span> </span>
+<span id="cb128-7"><a href="introducción-a-machine-learning.html#cb128-7" tabindex="-1"></a>  <span class="fu">prep</span>()</span></code></pre></div>
 <p>Ahora recuperamos la matriz de diseño con las funciones <em>prep()</em> y <em>juice()</em>.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="introducción-a-machine-learning.html#cb159-1" tabindex="-1"></a>telco_juiced <span class="ot">&lt;-</span> <span class="fu">juice</span>(telco_rec)</span>
-<span id="cb159-2"><a href="introducción-a-machine-learning.html#cb159-2" tabindex="-1"></a><span class="fu">glimpse</span>(telco_juiced)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="introducción-a-machine-learning.html#cb129-1" tabindex="-1"></a>telco_juiced <span class="ot">&lt;-</span> <span class="fu">juice</span>(telco_rec)</span>
+<span id="cb129-2"><a href="introducción-a-machine-learning.html#cb129-2" tabindex="-1"></a><span class="fu">glimpse</span>(telco_juiced)</span></code></pre></div>
 <pre><code>## Rows: 4,930
 ## Columns: 31
 ## $ SeniorCitizen                         &lt;dbl&gt; -0.4417148, -0.4417148, -0.44171…
@@ -2197,8 +2190,8 @@ mencionadas.</p></li>
 ## $ PaymentMethod_Credit.card..automatic. &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1,…
 ## $ PaymentMethod_Electronic.check        &lt;dbl&gt; 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0,…
 ## $ PaymentMethod_Mailed.check            &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="introducción-a-machine-learning.html#cb161-1" tabindex="-1"></a>telco_test_bake <span class="ot">&lt;-</span>  <span class="fu">bake</span>(telco_rec, <span class="at">new_data =</span> telco_test)</span>
-<span id="cb161-2"><a href="introducción-a-machine-learning.html#cb161-2" tabindex="-1"></a><span class="fu">glimpse</span>(telco_test_bake)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="introducción-a-machine-learning.html#cb131-1" tabindex="-1"></a>telco_test_bake <span class="ot">&lt;-</span>  <span class="fu">bake</span>(telco_rec, <span class="at">new_data =</span> telco_test)</span>
+<span id="cb131-2"><a href="introducción-a-machine-learning.html#cb131-2" tabindex="-1"></a><span class="fu">glimpse</span>(telco_test_bake)</span></code></pre></div>
 <pre><code>## Rows: 2,113
 ## Columns: 32
 ## $ customerID                            &lt;chr&gt; &quot;5575-GNVDE&quot;, &quot;9305-CDSKC&quot;, &quot;671…
